@@ -1,0 +1,95 @@
+body
+{
+	background-color: #e4e4e4;
+}
+
+.card
+{
+	padding: 40px;
+	border-radius: 5px;
+}
+
+.wrapper
+{
+	padding: 50px 150px 20px 150px;
+	height: auto;
+}
+
+.button
+{
+	margin-top: 50px;
+}
+
+.button:hover
+{
+	background-color:#00695c ;
+	color:#b2dfdb;
+}
+
+.link:hover
+{
+	color:#b2dfdb !important;
+	text-decoration: none;
+}
+
+.heading
+{
+	color:#009688;
+}
+
+div>span
+{
+	font-size: 25px;
+}
+
+@media (max-width: 700px) {
+  .wrapper {
+	padding: 20px 50px 20px 50px;
+  }
+}
+
+@media (max-width: 400px) {
+  .wrapper {
+	padding: 10px 10px 10px 10px;
+  }
+}
+
+.footer
+{
+	height: 60px;
+	background-color: #212121;
+	/*border: 1px solid black;*/
+	color:#727272;
+	padding-top: 20px;
+}
+
+.margin-fix
+{
+	margin: 0px !important;
+	padding: 0px !important;
+}
+
+nav
+{
+	padding-left: 30px;
+}
+
+nav>div>a:hover
+{
+	text-decoration: none;
+}
+
+div>label
+{
+	color:#009688;	
+}
+
+div>select
+{
+	margin-top: 2%;
+}
+
+div>label
+{
+	font-size: 0.95em;
+}
