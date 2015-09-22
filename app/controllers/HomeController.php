@@ -24,9 +24,16 @@ class HomeController extends BaseController {
 	{
 		return View::make('home');
 	}
+
+
 	public function raw_material()
 	{
 		return View::make('raw_material');
+	}
+
+	public function cutting()
+	{
+		return View::make('cutting');
 	}
 
 }

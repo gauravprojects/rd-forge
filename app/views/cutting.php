@@ -44,92 +44,55 @@
             <div class="card">
                 <div class="row text-center">
                     <div class="heading">
-                        <span>Raw Material Entry</span>
+                        <span>Cutting Entry</span>
                     </div>
                 </div>
 
                 <div class="row">
                     <form>
-                        <!-- For recipt number of the material coming from outside -->
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Receipt Code</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Receipt Number">
-                        </div>
-
                         <!-- For the date of entry of raw materail
                             This date will be picket up using date() function from the machine -->
 
-                        <!-- For the size of the coming raw material -->
+                        <!-- For the size of the coming raw material.. here size means raw material size -->
                         <div class="form-group">
                             <label for="exampleInputEmail1">Size</label>
                             <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Size">
                         </div>
 
-                        <!-- Wieght, weight of the incmomh material -->
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Weight</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Weight">
-                        </div>
 
-                        <!-- Manufacturer's name -->
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Manufacturer</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Manufacturer">
-                        </div>
                         <!-- Heat no, Every incoming raw material has a unique heat no -->
                         <div class="form-group">
                             <label for="exampleInputEmail1">Heat no</label>
                             <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Heat no">
                         </div>
 
-                        <!-- Purchase order no -->
+                        <!-- qunanity.. this is the quantity of the cutted material -->
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Purchase Order Number</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Purchase order no">
+                            <label for="exampleInputEmail1">Qunatity</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Qunatity">
                         </div>
 
-                        <!-- Purchase order date -->
+                        <!-- Wieght per piece,, weight per piece of the cutted material -->
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Purchase Order Date</label>
-                            <input type="date" class="form-control" id="exampleInputEmail1" placeholder="Purcahse Order date">
+                            <label for="exampleInputEmail1">Weight per piece</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Weight per piece">
                         </div>
 
-                        <!-- Invoice Number -->
+                        <!-- total weight to be calculated by itself
+                            total weight= quantity * Weight per piece -->
+
+                        <!-- cutting item description  -->
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Invoice no</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="invoice no">
+                            <label for="exampleInputEmail1">Cutting item discription</label>
+                            <input class="form-control input-lg" id="inputlg" type="text" placeholder="Cutting item description">
                         </div>
 
-                        <!-- Inovice date -->
+                        <!-- cutting remarks.. optional if user has some additional thing then he can mention it here -->
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Invoice date</label>
-                            <input type="date" class="form-control" id="exampleInputEmail1" placeholder="Inoice date">
+                            <label for="exampleInputEmail1">Cutting item remarks</label>
+                            <input class="form-control input-lg" id="inputlg" type="text" placeholder="Cutting item remarks">
                         </div>
 
-                        <!-- Material grade, this will be prementioned, using dropdowm they will be shown
-                        waiting for sample data to work further on this -->
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Material Grade</label>
-                            <select class="form-control">
-                                <option>Grade 1</option>
-                                <option>Grade 2</option>
-                                <option>Grade 3</option>
-                                <option>Grade 4</option>
-                                <option>Grade 5</option>
-                            </select>
-                        </div>
-
-                        <!-- raw material type, these sample types will be provided.. to be implemented using dropdown -->
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Material Type</label>
-                            <select class="form-control">
-                                <option>Type 1</option>
-                                <option>Type 2</option>
-                                <option>Type 3</option>
-                                <option>Type 4</option>
-                                <option>Type 5</option>
-                            </select>
-                        </div>
 
 
                         <a class="waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button">Submit</a>

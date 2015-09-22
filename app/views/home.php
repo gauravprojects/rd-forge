@@ -45,7 +45,8 @@
                 <div class="row text-center">
                     <!-- for the links present inside the div -->
                     <ul id="nav-mobile">
-                        <li><a href="<?php echo action('HomeController@raw_material'); ?> " class="link">Raw Material</a></li>
+                        <li><a href="<?php echo action('HomeController@raw_material'); ?> " class="link">Raw Material</a></li><br><br>
+                        <li><a href="<?php echo action('HomeController@cutting'); ?> " class="link">Cutting </a></li><br><br><br><br><br>
                     </ul>
 
                 </div>
