@@ -16,11 +16,11 @@
 
 */
 //route for the home page
-Route::get('/','HomeController@home');
+Route::get('/','homePageController@index');
 
 //route to get to the raw material form page
-Route::get('/raw','HomeController@raw_material');
+Route::get('/raw','rawMaterialController@index');
 
 //route to get to cutting materials form page
-Route::get('/cutting','HomeController@cutting');
+Route::get('/cutting','cuttingPageController@index');
 
