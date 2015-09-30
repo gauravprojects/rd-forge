@@ -13,11 +13,12 @@
                     </div>
 
                     <div class="row">
-                       {{ Form::open(array('route'=> '')) }}
+                       {{ Form::open(array('action'=> 'rawMaterialController@store')) }}
                             <!-- For recipt number of the material coming from outside -->
+
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Receipt Code</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Receipt Number">
+                                {{ Form::label('exampleInputEmail1','Receipt Code') }}
+                                {{ Form::text('receiptCode',null,array('class'=>'form-control','placeholder'=>'Receipt Number','id'=>'exampleInputEnail1')) }}
                             </div>
 
                             <!-- For the date of entry of raw materail
@@ -25,54 +26,59 @@
 
                             <!-- For the size of the coming raw material -->
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Size</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Size">
+                                {{ Form::label('exampleInputEmail1','Size') }}
+                                {{ Form::text('size',null,array('class'=>'form-control','placeholder'=>'size','id'=>'justAnything')) }}
                             </div>
 
                             <!-- Wieght, weight of the incmomh material -->
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Weight</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Weight">
+                                {{ Form::label('exampleInputEmail1','Weight') }}
+                                {{ Form::text('weight',null,array('class'=>'form-control','placeholder'=>'Weight','id'=>'Justesehe')) }}
                             </div>
+
 
                             <!-- Manufacturer's name -->
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Manufacturer</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Manufacturer">
+                                {{ Form::label('exampleInputEmail','Manufacturer') }}
+                                {{ Form::text('Manufacturer',null,array('class'=>'form-control','placeholder'=>'Manufacturer Name','id'=>'JustAnything2')) }}
                             </div>
                             <!-- Heat no, Every incoming raw material has a unique heat no -->
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Heat no</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Heat no">
+                                {{ Form::label('exampleInputEmail','Heat Number') }}
+                                {{ Form::text('heatNo',null,array('class'=>'form-control','placeholder'=>'Weight','id'=>'JustAnything')) }}
                             </div>
 
                             <!-- Purchase order no -->
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Purchase Order Number</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Purchase order no">
+                                {{ Form::label('exampleInputEmail','Purchase Order Number') }}
+                                {{ Form::text('purchaseNo',null,array('class'=>'form-control','placeholder'=>'Purchase Order No','id'=>'JustAnything')) }}
                             </div>
 
                             <!-- Purchase order date -->
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Purchase Order Date</label>
-                                <input type="date" class="form-control" id="exampleInputEmail1" placeholder="Purcahse Order date">
+                                {{ Form::label('exampleInputEmail','Purchase Order Date') }}
+                                {{ Form::text('purchaseNo',null,array('class'=>'form-control','placeholder'=>'Purchase Order Date','id'=>'JustAnything')) }}
                             </div>
 
                             <!-- Invoice Number -->
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Invoice no</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="invoice no">
+                                {{ Form::label('exampleInputEmail','Invoice Number') }}
+                                {{ Form::text('invoiceNo',null,array('class'=>'form-control','placeholder'=>'Invoice Number','id'=>'JustAnything')) }}
                             </div>
 
                             <!-- Inovice date -->
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Invoice date</label>
-                                <input type="date" class="form-control" id="exampleInputEmail1" placeholder="Inoice date">
+                                {{ Form::label('exampleInputEmail','Invoice Date') }}
+                                {{ Form::text('invoiceDate',null,array('class'=>'form-control','placeholder'=>'Invoice Date','id'=>'JustAnything')) }}
                             </div>
 
                             <!-- Material grade, this will be prementioned, using dropdowm they will be shown
                             waiting for sample data to work further on this -->
                             <div class="form-group">
+                                <!-- PROBLEM THIS form::select() NOT WORKING.. PLEASE CHECK IT OUT -->
+
+                                {{ Form::label('exampleInputPassword','Material Grade') }}
+                                {{ Form::select('age',['Grade 1','Grade 2','Grade 3','Grade 4','Grade 5'],array('class'=>'form-control','id'=>'kuchbhi')) }}
                                 <label for="exampleInputPassword1">Material Grade</label>
                                 <select class="form-control">
                                     <option>Grade 1</option>
@@ -97,7 +103,7 @@
 
 
                             <a class="waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button">Submit</a>
-                        </form>
+                        {{ Form::close() }}
                     </div>		<!-- row conatining form ends here -->
                 </div>		<!-- card ends here -->
             </div>		<!-- wrapper ends here -->

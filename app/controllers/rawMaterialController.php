@@ -31,7 +31,8 @@ class rawMaterialController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$data= Input::all();
+		dd($data);
 	}
 
 

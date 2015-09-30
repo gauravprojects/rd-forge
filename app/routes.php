@@ -24,3 +24,5 @@ Route::get('/raw','rawMaterialController@index');
 //route to get to cutting materials form page
 Route::get('/cutting','cuttingPageController@index');
 
+Route::resource('raw','rawMaterialController');
+

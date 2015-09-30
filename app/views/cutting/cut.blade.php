@@ -13,33 +13,33 @@
                     </div>
 
                     <div class="row">
-                        <form>
+                        {{ Form::open(array('action'=>'cuttingPageController@index')) }}
                             <!-- For the date of entry of raw materail
                                 This date will be picket up using date() function from the machine -->
 
                             <!-- For the size of the coming raw material.. here size means raw material size -->
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Size</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Size">
+                                {{ Form::label('exampleInputEmail','Size') }}
+                                {{ Form::text('size',null,array('class'=>'form-control','placeholder'=>'Size','id'=>'JustAnything')) }}
                             </div>
 
 
                             <!-- Heat no, Every incoming raw material has a unique heat no -->
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Heat no</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Heat no">
+                                {{ Form::label('exampleInputEmail','Heat no') }}
+                                {{ Form::text('heatNo',null,array('class'=>'form-control','placeholder'=>'Heat Number','id'=>'JustAnything')) }}
                             </div>
 
                             <!-- qunanity.. this is the quantity of the cutted material -->
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Qunatity</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Qunatity">
+                                {{ Form::label('exampleInputEmail','Qunatity') }}
+                                {{ Form::text('quantity',null,array('class'=>'form-control','placeholder'=>'Quantity','id'=>'JustAnything')) }}
                             </div>
 
                             <!-- Wieght per piece,, weight per piece of the cutted material -->
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Weight per piece</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Weight per piece">
+                                {{ Form::label('exampleInputEmail1','Weight per Pice') }}
+                                {{ Form::text('wpp',null,array('class'=>'form-control','placeholder'=>'Weight per piece')) }}
                             </div>
 
                             <!-- total weight to be calculated by itself
@@ -47,20 +47,20 @@
 
                             <!-- cutting item description  -->
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Cutting item discription</label>
-                                <input class="form-control input-lg" id="inputlg" type="text" placeholder="Cutting item description">
+                                {{ Form::label('exampleInputEmail','Cutting Item Discription') }}
+                                {{ Form::text('CutDes',null,array('class'=>'form-control','placeholder'=>'Cutting item Discription','id'=>'JustAnything')) }}
                             </div>
 
                             <!-- cutting remarks.. optional if user has some additional thing then he can mention it here -->
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Cutting item remarks</label>
-                                <input class="form-control input-lg" id="inputlg" type="text" placeholder="Cutting item remarks">
+                                {{ Form::label('exampleInputEmail','Cutting item remarks') }}
+                                {{ Form::text('cutRem',null,array('class'=>'form-control','placeholder'=>'Cutting item remarks','id'=>'JustAnything')) }}
                             </div>
 
 
 
                             <a class="waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button">Submit</a>
-                        </form>
+                        {{ Form::close() }}
                     </div>		<!-- row conatining form ends here -->
                 </div>		<!-- card ends here -->
             </div>		<!-- wrapper ends here -->
