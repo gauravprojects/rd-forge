@@ -55,7 +55,8 @@
                             <!-- Purchase order date -->
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail','Purchase Order Date') }}
-                                {{ Form::text('purchaseDate',null,array('class'=>'form-control','placeholder'=>'Purchase Order Date','id'=>'JustAnything')) }}
+                                {{ Form::input('date','purchaseDate',null,array('class'=>'form-control','placeholder'=>'Purchase Order Date','id'=>'JustAnything')) }}
+                                
                             </div>
 
                             <!-- Invoice Number -->

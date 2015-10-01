@@ -31,10 +31,11 @@ class rawMaterialController extends \BaseController {
 	 */
 	public function store()
 	{
+		$date=date("Y-m-d");
 		$data= Input::all();
 		$data_array=array(
 			'receipt_code' => $data['receiptCode'],
-			'date'=>'21/09/1994',
+			'date'=>$date,
 			'size'=>$data['size'],
 			'manufacturer'=>$data['Manufacturer'],
 			'heat_no'=>$data['heatNo'],
@@ -47,7 +48,15 @@ class rawMaterialController extends \BaseController {
 			'raw_material_type'=>$data['materialType']
 		);
 		$data_insert=DB::table('raw_material')->insert($data_array);
-		dd($data_insert);
+
+		if($data_insert=='true')
+		{
+			$confirmation="Data entered successfully with following detials..";
+			return View::make('rawMaterial.confirm')->with('confirmation',$data_array);
+		}
+
+		else
+			dd("you failed");
 	}
 
 
