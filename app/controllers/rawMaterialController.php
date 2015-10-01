@@ -32,7 +32,22 @@ class rawMaterialController extends \BaseController {
 	public function store()
 	{
 		$data= Input::all();
-		dd($data);
+		$data_array=array(
+			'receipt_code' => $data['receiptCode'],
+			'date'=>'21/09/1994',
+			'size'=>$data['size'],
+			'manufacturer'=>$data['Manufacturer'],
+			'heat_no'=>$data['heatNo'],
+			'weight' => $data['weight'],
+			'pur_order_no'=>$data['purchaseNo'],
+			'pur_order_date'=>$data['purchaseDate'],
+			'invoice_no'=>$data['invoiceNo'],
+			'invoice_date'=>'21/09/1994',
+			'material_grade'=>$data['materialGrade'],
+			'raw_material_type'=>$data['materialType']
+		);
+		$data_insert=DB::table('raw_material')->insert($data_array);
+		dd($data_insert);
 	}
 
 

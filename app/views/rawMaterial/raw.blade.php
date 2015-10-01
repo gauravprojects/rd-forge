@@ -1,7 +1,6 @@
 @extends('layouts.master')
 
 @section('links_data')
-
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <div class="row">
             <div class="wrapper">
@@ -30,22 +29,21 @@
                                 {{ Form::text('size',null,array('class'=>'form-control','placeholder'=>'size','id'=>'justAnything')) }}
                             </div>
 
-                            <!-- Wieght, weight of the incmomh material -->
-                            <div class="form-group">
-                                {{ Form::label('exampleInputEmail1','Weight') }}
-                                {{ Form::text('weight',null,array('class'=>'form-control','placeholder'=>'Weight','id'=>'Justesehe')) }}
-                            </div>
-
-
                             <!-- Manufacturer's name -->
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail','Manufacturer') }}
                                 {{ Form::text('Manufacturer',null,array('class'=>'form-control','placeholder'=>'Manufacturer Name','id'=>'JustAnything2')) }}
                             </div>
-                            <!-- Heat no, Every incoming raw material has a unique heat no -->
+
+                            <!-- Heat no, unique number for every order -->
                             <div class="form-group">
-                                {{ Form::label('exampleInputEmail','Heat Number') }}
-                                {{ Form::text('heatNo',null,array('class'=>'form-control','placeholder'=>'Weight','id'=>'JustAnything')) }}
+                                {{ Form::label('exampleInputEmail1','Heat Number') }}
+                                {{ Form::text('heatNo',null,array('class'=>'form-control','placeholder'=>'Heat Number','id'=>'Justesehe')) }}
+                            </div>
+                            <!-- Wieght, weight of the incmomh material -->
+                            <div class="form-group">
+                                {{ Form::label('exampleInputEmail1','Weight') }}
+                                {{ Form::text('weight',null,array('class'=>'form-control','placeholder'=>'Weight','id'=>'Justesehe')) }}
                             </div>
 
                             <!-- Purchase order no -->
@@ -57,7 +55,7 @@
                             <!-- Purchase order date -->
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail','Purchase Order Date') }}
-                                {{ Form::text('purchaseNo',null,array('class'=>'form-control','placeholder'=>'Purchase Order Date','id'=>'JustAnything')) }}
+                                {{ Form::text('purchaseDate',null,array('class'=>'form-control','placeholder'=>'Purchase Order Date','id'=>'JustAnything')) }}
                             </div>
 
                             <!-- Invoice Number -->
@@ -78,9 +76,9 @@
                                 <!-- PROBLEM THIS form::select() NOT WORKING.. PLEASE CHECK IT OUT -->
 
                                 {{ Form::label('exampleInputPassword','Material Grade') }}
-                                {{ Form::select('age',['Grade 1','Grade 2','Grade 3','Grade 4','Grade 5'],array('class'=>'form-control','id'=>'kuchbhi')) }}
-                                <label for="exampleInputPassword1">Material Grade</label>
-                                <select class="form-control">
+
+
+                                <select class="form-control" name="materialGrade">
                                     <option>Grade 1</option>
                                     <option>Grade 2</option>
                                     <option>Grade 3</option>
@@ -92,7 +90,7 @@
                             <!-- raw material type, these sample types will be provided.. to be implemented using dropdown -->
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Material Type</label>
-                                <select class="form-control">
+                                <select class="form-control" name="materialType">
                                     <option>Type 1</option>
                                     <option>Type 2</option>
                                     <option>Type 3</option>
@@ -101,8 +99,10 @@
                                 </select>
                             </div>
 
-
-                            <a class="waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button">Submit</a>
+                        {{ Form::submit('Submit',array('class'=>'waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button')) }}
+                                <!-- Given by pranav
+                            <a class="waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button">Submit</a> -->
+                            
                         {{ Form::close() }}
                     </div>		<!-- row conatining form ends here -->
                 </div>		<!-- card ends here -->
