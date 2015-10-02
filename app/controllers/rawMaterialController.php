@@ -66,9 +66,10 @@ class rawMaterialController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show()
 	{
-		//
+		$raw= DB::table('raw_material')->select()->get();
+		return View::make('rawMaterial.raw_report')->with('raw',$raw);
 	}
 
 
