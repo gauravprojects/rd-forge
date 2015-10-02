@@ -11,11 +11,14 @@
                             <span>Raw Material Entry report</span>
                         </div>
                     </div>
-                {{  dd($raw); }}
+
+
+                
 
                     <div class="row">
                         <table>
                             <tr class="heading">
+                                <th>Id</th>
                                 <th>Recipet Code</th>
                                 <th>Date</th>
                                 <th>Size</th>
@@ -26,17 +29,25 @@
                                 <th>Material Grade</th>
                                 <th>Internal No</th>
                             </tr>
-                            <tr>
-                                <td>{{ $raw['receipt_code']; }}</td>
-                                <td>{{ $raw['date']; }}</td>
-                                <td>{{ $raw['size']; }}</td>
-                                <td>{{ $raw['manufacturer']; }}</td>
-                                <td>{{ $raw['heat_no']; }}</td>
-                                <td>{{ $raw['weight']; }}</td>
-                                <td>{{ $raw['material_grade']; }}</td>
-                                <td>{{ $raw['raw_material_type']; }}</td>
-                                <td>Auto Gen.</td>
-                            </tr>
+
+                            @foreach($raw as $raw_data)
+                                <tr>
+                                    <td>{{{ $raw_data->id }}}</td>
+                                    <td>{{{ $raw_data->receipt_code }}}</td>
+                                    <td>{{{ $raw_data->date }}}</td>
+                                    <td>{{{ $raw_data->size }}}</td>
+                                    <td>{{{ $raw_data->manufacturer }}}</td>
+                                    <td>{{{ $raw_data->heat_no }}}</td>
+                                    <td>{{{ $raw_data->weight }}}</td>
+                                    <td>{{{ $raw_data->material_grade }}}</td>
+                                    <td>{{{ $raw_data->raw_material_type }}}</td>
+                                    <td>Auto gen</td>
+                                </tr>
+
+
+                            @endforeach
+
+
                         </table>
 
                     </div>		<!-- row conatining form ends here -->
