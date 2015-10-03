@@ -15,8 +15,8 @@
                     <ul id="nav-mobile">
 
 
-                        <li><a href="<?php  echo action('rawMaterialController@index'); ?> " class="link">Raw Material</a></li><br><br>
-                        <li><a href="<?php  echo action('rawMaterialController@show'); ?> " class="link">Raw Material Report</a></li><br><br>
+                        <li><a href="<?php  echo action('rawMaterialController@index'); ?> " class="link">Raw Material</a></li>
+                        <a href="<?php  echo action('rawMaterialController@show'); ?> " class="link">Raw Material Report</a><br><br>
 
                         <li><a href="<?php echo action('cuttingPageController@index'); ?> " class="link">Cutting </a></li><br><br><br><br><br>
                     </ul>

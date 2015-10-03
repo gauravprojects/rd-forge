@@ -55,8 +55,7 @@
                             <!-- Purchase order date -->
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail','Purchase Order Date') }}
-                                {{ Form::input('date','purchaseDate',null,array('class'=>'form-control','placeholder'=>'Purchase Order Date','id'=>'JustAnything')) }}
-
+                                {{ Form::input('date', 'purchaseDate') }}
                             </div>
 
                             <!-- Invoice Number -->
@@ -68,7 +67,7 @@
                             <!-- Inovice date -->
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail','Invoice Date') }}
-                                {{ Form::text('invoiceDate',null,array('class'=>'form-control','placeholder'=>'Invoice Date','id'=>'JustAnything')) }}
+                                {{ Form::input('date', 'invoiceDate') }}
                             </div>
 
                             <!-- Material grade, this will be prementioned, using dropdowm they will be shown
@@ -99,6 +98,9 @@
                                     <option>Type 5</option>
                                 </select>
                             </div>
+
+
+
 
                         {{ Form::submit('Submit',array('class'=>'waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button')) }}
                                 <!-- Given by pranav

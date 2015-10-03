@@ -43,10 +43,11 @@ class rawMaterialController extends \BaseController {
 			'pur_order_no'=>$data['purchaseNo'],
 			'pur_order_date'=>$data['purchaseDate'],
 			'invoice_no'=>$data['invoiceNo'],
-			'invoice_date'=>'21/09/1994',
+			'invoice_date'=>$data['invoiceDate'],
 			'material_grade'=>$data['materialGrade'],
 			'raw_material_type'=>$data['materialType']
 		);
+
 		$data_insert=DB::table('raw_material')->insert($data_array);
 
 		if($data_insert=='true')
