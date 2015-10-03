@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.7.1
+-- version 4.4.3
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Oct 03, 2015 at 04:09 PM
--- Server version: 5.6.20
--- PHP Version: 5.5.15
+-- Host: localhost
+-- Generation Time: Oct 03, 2015 at 04:36 PM
+-- Server version: 5.6.24
+-- PHP Version: 5.6.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -54,9 +54,9 @@ CREATE TABLE IF NOT EXISTS `cutting_records` (
 --
 
 CREATE TABLE IF NOT EXISTS `cutting_remarks` (
-`cutting_id` int(11) NOT NULL,
+  `cutting_id` int(11) NOT NULL,
   `remarks` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `cutting_remarks` (
 --
 
 CREATE TABLE IF NOT EXISTS `drilling_records` (
-`drilling_id` int(10) NOT NULL,
+  `drilling_id` int(10) NOT NULL,
   `work_order_no` int(10) NOT NULL,
   `date` date NOT NULL,
   `item` varchar(25) NOT NULL,
@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `drilling_records` (
   `machine_name` varchar(25) NOT NULL,
   `employee_name` varchar(25) NOT NULL,
   `grade` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -94,14 +94,14 @@ CREATE TABLE IF NOT EXISTS `drilling_remarks` (
 --
 
 CREATE TABLE IF NOT EXISTS `entry_of_records` (
-`work_order_no` int(10) NOT NULL,
+  `work_order_no` int(10) NOT NULL,
   `date_of_issue` date NOT NULL,
   `cus_name` varchar(25) NOT NULL,
   `pur_order_no` text NOT NULL,
   `pur_order_date` date NOT NULL,
   `req_dil_date` date NOT NULL,
   `quation_no` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -126,9 +126,9 @@ CREATE TABLE IF NOT EXISTS `forging_records` (
 --
 
 CREATE TABLE IF NOT EXISTS `forging_remarks` (
-`forging_id` int(11) NOT NULL,
+  `forging_id` int(11) NOT NULL,
   `remarks` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -189,7 +189,7 @@ CREATE TABLE IF NOT EXISTS `packing_instructions` (
 --
 
 CREATE TABLE IF NOT EXISTS `raw_material` (
-`id` int(10) NOT NULL COMMENT 'primary key here',
+  `id` int(10) NOT NULL COMMENT 'primary key here',
   `receipt_code` text NOT NULL,
   `date` date NOT NULL,
   `size` int(10) NOT NULL,
@@ -202,7 +202,7 @@ CREATE TABLE IF NOT EXISTS `raw_material` (
   `invoice_date` date NOT NULL,
   `material_grade` text NOT NULL,
   `raw_material_type` varchar(25) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `raw_material`
@@ -233,7 +233,7 @@ CREATE TABLE IF NOT EXISTS `remarks` (
 --
 
 CREATE TABLE IF NOT EXISTS `seration_records` (
-`seration_id` int(10) NOT NULL,
+  `seration_id` int(10) NOT NULL,
   `work_order_no` varchar(25) NOT NULL,
   `item` varchar(25) NOT NULL,
   `heat_no` varchar(25) NOT NULL,
@@ -242,7 +242,7 @@ CREATE TABLE IF NOT EXISTS `seration_records` (
   `employee_name` varchar(25) NOT NULL,
   `grade` varchar(10) NOT NULL,
   `weight` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -273,17 +273,17 @@ CREATE TABLE IF NOT EXISTS `testing_instructions` (
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
-`id` int(7) NOT NULL,
+  `id` int(7) NOT NULL,
   `username` varchar(20) NOT NULL,
   `password` varchar(64) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `password`) VALUES
-(1, 'gaurav123', 'b4205fd5ea157a319e9f1b134c972e0a'),
+(1, 'gaurav123', '$2a$10$CuHKyEbvKAt06kAgITp9IegTq/kMePhbDS56eZiKmOe.p9vMam.HK'),
 (2, 'india123', 'india123.'),
 (3, 'gaurav1188', '1234');
 
@@ -295,13 +295,13 @@ INSERT INTO `users` (`id`, `username`, `password`) VALUES
 
 CREATE TABLE IF NOT EXISTS `work_order_details` (
   `work_order_no` int(10) NOT NULL,
-`item_no` int(3) NOT NULL COMMENT 'composite primary key',
+  `item_no` int(3) NOT NULL COMMENT 'composite primary key',
   `material_grade` varchar(25) NOT NULL,
   `quantity` int(5) NOT NULL,
   `dispatched_quantity` int(5) NOT NULL,
   `weight` int(5) NOT NULL,
   `remarks` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables
@@ -311,61 +311,62 @@ CREATE TABLE IF NOT EXISTS `work_order_details` (
 -- Indexes for table `cutting_remarks`
 --
 ALTER TABLE `cutting_remarks`
- ADD PRIMARY KEY (`cutting_id`);
+  ADD PRIMARY KEY (`cutting_id`);
 
 --
 -- Indexes for table `drilling_records`
 --
 ALTER TABLE `drilling_records`
- ADD PRIMARY KEY (`drilling_id`);
+  ADD PRIMARY KEY (`drilling_id`);
 
 --
 -- Indexes for table `drilling_remarks`
 --
 ALTER TABLE `drilling_remarks`
- ADD PRIMARY KEY (`drilling_id`);
+  ADD PRIMARY KEY (`drilling_id`);
 
 --
 -- Indexes for table `entry_of_records`
 --
 ALTER TABLE `entry_of_records`
- ADD PRIMARY KEY (`work_order_no`);
+  ADD PRIMARY KEY (`work_order_no`);
 
 --
 -- Indexes for table `forging_remarks`
 --
 ALTER TABLE `forging_remarks`
- ADD PRIMARY KEY (`forging_id`);
+  ADD PRIMARY KEY (`forging_id`);
 
 --
 -- Indexes for table `mach_remarks`
 --
 ALTER TABLE `mach_remarks`
- ADD PRIMARY KEY (`mach_id`);
+  ADD PRIMARY KEY (`mach_id`);
 
 --
 -- Indexes for table `raw_material`
 --
 ALTER TABLE `raw_material`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `seration_records`
 --
 ALTER TABLE `seration_records`
- ADD PRIMARY KEY (`seration_id`);
+  ADD PRIMARY KEY (`seration_id`);
 
 --
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `work_order_details`
 --
 ALTER TABLE `work_order_details`
- ADD PRIMARY KEY (`item_no`), ADD UNIQUE KEY `work_order_no` (`work_order_no`);
+  ADD PRIMARY KEY (`item_no`),
+  ADD UNIQUE KEY `work_order_no` (`work_order_no`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -375,42 +376,42 @@ ALTER TABLE `work_order_details`
 -- AUTO_INCREMENT for table `cutting_remarks`
 --
 ALTER TABLE `cutting_remarks`
-MODIFY `cutting_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cutting_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `drilling_records`
 --
 ALTER TABLE `drilling_records`
-MODIFY `drilling_id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `drilling_id` int(10) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `entry_of_records`
 --
 ALTER TABLE `entry_of_records`
-MODIFY `work_order_no` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `work_order_no` int(10) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `forging_remarks`
 --
 ALTER TABLE `forging_remarks`
-MODIFY `forging_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `forging_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `raw_material`
 --
 ALTER TABLE `raw_material`
-MODIFY `id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'primary key here',AUTO_INCREMENT=6;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'primary key here',AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `seration_records`
 --
 ALTER TABLE `seration_records`
-MODIFY `seration_id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `seration_id` int(10) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-MODIFY `id` int(7) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id` int(7) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `work_order_details`
 --
 ALTER TABLE `work_order_details`
-MODIFY `item_no` int(3) NOT NULL AUTO_INCREMENT COMMENT 'composite primary key';
+  MODIFY `item_no` int(3) NOT NULL AUTO_INCREMENT COMMENT 'composite primary key';
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
