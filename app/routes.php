@@ -18,7 +18,7 @@
 
 Route::get('/','loginPageController@create');
 //route for the home page
-Route::get('/home','homePageController@index');
+Route::get('/home',array('uses'=>'homePageController@index'));
 
 //route to get to the raw material form page
 Route::get('/raw','rawMaterialController@index');

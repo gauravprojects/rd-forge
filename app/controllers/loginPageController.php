@@ -38,13 +38,15 @@ class LoginPageController extends \BaseController {
 			'password' => $input['password']
 		);
 		if(Auth::attempt($credentials))
-			dd("successful");
-		else dd("falied");
+			return Redirect::intended('home');
+
+		else
+
+			return Redirect::to('login')->with('message','Invalid Credentials, Please login again');
 
 
 
 		// Error $attempt is always returning FALSE
-		dd($attempt);
 	}
 
 	/**
@@ -90,9 +92,14 @@ class LoginPageController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy()
 	{
-		//
+
+
+//		//Auth Logout
+//		Auth::logout();
+//		//Redirect to
+//		return Redirect::to('login')->with('message', 'You have successfully logged out');
 	}
 
 }

@@ -36,7 +36,8 @@
     <div class="nav-wrapper">
         <a href="<?php echo action('homePageController@index'); ?>" class="brand-logo">RD FORGE</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="collapsible.html" class="link">Logout</a></li>
+
+            <li><a href="#" class="link">Logout</a></li>
         </ul>
     </div>
 </nav>

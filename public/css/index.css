@@ -2,11 +2,7 @@ body
 {
 	background-color: #e4e4e4;
 }
-table,tr,th,td
-{
-	border: 0.5px solid #009688;
-	text-align: center;
-}
+
 
 .card
 {
@@ -94,4 +90,8 @@ div>select
 {
 	margin-top: 2%;
 }
-
+table,tr,th,td
+{
+	border: 0.5px solid #009688;
+	text-align: center;
+}
