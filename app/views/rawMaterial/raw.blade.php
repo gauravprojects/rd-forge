@@ -100,12 +100,10 @@
                             </div>
 
 
-
+                            <div class="loginButton">
 
                         {{ Form::submit('Submit',array('class'=>'waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button')) }}
-                                <!-- Given by pranav
-                            <a class="waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button">Submit</a> -->
-                            
+                            </div>
                         {{ Form::close() }}
                     </div>		<!-- row conatining form ends here -->
                 </div>		<!-- card ends here -->

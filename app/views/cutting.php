@@ -55,7 +55,7 @@
                         </div>
 
 
-
+                        
                         <a class="waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button">Submit</a>
                     </form>
                 </div>		<!-- row conatining form ends here -->

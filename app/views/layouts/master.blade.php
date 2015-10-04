@@ -26,6 +26,8 @@
             <!-- fontawesome -->
     {{ HTML::style('https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css') }}
 
+            <!-- font -->
+     {{ HTML::style('https://fonts.googleapis.com/css?family=PT+Sans') }}
             <!-- my css -->
     {{ HTML::style('css/index.css') }}
 
@@ -49,7 +51,7 @@
 
 <!-- CUSTOMIZED DATA ENDS HERE... rest everything in this page will remain same..   -->
 
-<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12  margin-fix text-center">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12  margin-fix text-center footerWrap">
     <div class="row-fluid">
         <div class="footer">
             &copy; Forge Metal Corp.
