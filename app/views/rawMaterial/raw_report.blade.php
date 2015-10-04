@@ -11,8 +11,11 @@
                             <span>Raw Material Entry report</span>
                         </div>
                     </div>
-
-
+                    <div class="span9 btn-block">
+                        <button class="btn btn-large btn-block btn-primary" type="button" id="excel_button">
+                            <a href="http://localhost/rdforge/public/raw/excel" class="link" >Generate Report in Excel</a>
+                        </button>
+                    </div>
 
 
                     <div class="row">

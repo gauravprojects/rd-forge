@@ -109,5 +109,13 @@ class rawMaterialController extends \BaseController {
 		//
 	}
 
+	public function excel()
+	{
+		$raw= DB::table('raw_material')->select()->get();
+		return View::make('rawMaterial.raw_report_excel')->with('raw',$raw);
+
+
+	}
+
 
 }
