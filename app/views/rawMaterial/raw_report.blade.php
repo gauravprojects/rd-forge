@@ -30,29 +30,28 @@
                         </tr>
 
                         @foreach($raw as $raw_data)
-                        <tr>
-                            <td>{{{ $raw_data->id }}}</td>
-                            <td>{{{ $raw_data->receipt_code }}}</td>
-                            <td>{{{ $raw_data->date }}}</td>
-                            <td>{{{ $raw_data->size }}}</td>
-                            <td>{{{ $raw_data->manufacturer }}}</td>
-                            <td>{{{ $raw_data->heat_no }}}</td>
-                            <td>{{{ $raw_data->weight }}}</td>
-                            <td>{{{ $raw_data->material_grade }}}</td>
-                            <td>{{{ $raw_data->raw_material_type }}}</td>
-                            <td>Auto gen</td>
-                        </tr>
+                            <tr>
+                                <td>{{{ $raw_data->id }}}</td>
+                                <td>{{{ $raw_data->receipt_code }}}</td>
+                                <td>{{{ $raw_data->date }}}</td>
+                                <td>{{{ $raw_data->size }}}</td>
+                                <td>{{{ $raw_data->manufacturer }}}</td>
+                                <td>{{{ $raw_data->heat_no }}}</td>
+                                <td>{{{ $raw_data->weight }}}</td>
+                                <td>{{{ $raw_data->material_grade }}}</td>
+                                <td>{{{ $raw_data->raw_material_type }}}</td>
+                                <td>Auto gen</td>
+                            </tr>
 
 
                         @endforeach
 
 
-
-
                     </table>
+
                     <div class="span9 btn-block excelPrint">
                         <button class="btn btn-small btn-block" type="button" id="excel_button">
-                            <a href="http://localhost/rdforge/public/raw/excel" class="link" >Generate Report in Excel</a>
+                            <a href="<?php echo  route('raw.excel'); ?>" class="link" >Generate Report in Excel</a>
                         </button>
                     </div>
                 </div>		<!-- row conatining form ends here -->

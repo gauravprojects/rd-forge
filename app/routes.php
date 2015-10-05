@@ -23,14 +23,14 @@ Route::get('/home',array('uses'=>'homePageController@index'));
 //route to get to the raw material form page
 Route::get('/raw','rawMaterialController@index');
 
-Route::get('/raw/report','rawMaterialController@show');
+Route::get('/admin/reports/raw',array('uses'=>'rawMaterialController@show','as'=>'raw.report'));
 
 Route::post('/raw','rawMaterialController@store');
 
 //route to get to cutting materials form page
 Route::get('/cutting','cuttingPageController@index');
 
-
+Route::get('/admin/reports','adminPageController@show_reports');
 
 Route::get('/raw/excel',array('uses'=>'rawMaterialController@excel','as'=>'raw.excel'));
 
@@ -43,3 +43,4 @@ Route::get('logout','loginPageController@destroy');
 
 //route to control all the process of the login page
 
+Route::get('/admin',array('uses'=>'adminPageController@index','as'=>'admin.page'));
