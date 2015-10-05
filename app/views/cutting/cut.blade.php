@@ -13,7 +13,7 @@
                     </div>
 
                     <div class="row">
-                        {{ Form::open(array('action'=>'cuttingPageController@index')) }}
+                        {{ Form::open(array('action'=>'cuttingPageController@store')) }}
                             <!-- For the date of entry of raw materail
                                 This date will be picket up using date() function from the machine -->
 

@@ -34,6 +34,8 @@ Route::get('/admin/reports','adminPageController@show_reports');
 
 Route::get('/raw/excel',array('uses'=>'rawMaterialController@excel','as'=>'raw.excel'));
 
+Route::post('/cutting',array('uses'=>'cuttingPageController@store','as'=>'cutting.store'));
+
 Route::get('login',array('uses'=>'loginPageController@create','as'=>'login.create'));
 
 Route::post('login',array('uses'=>'loginPageController@store','as'=>'login.store'));
