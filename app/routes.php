@@ -54,6 +54,10 @@ Route::get('/admin/reports/raw',array('uses'=>'rawMaterialController@show','as'=
 // route for cutting material reports..
 Route::get('/admin/reports/cutting',array('uses'=>'cuttingPageController@show','as'=>'cutting.report'));
 
+// route for forging material reports..
+Route::get('/admin/reports/forging',array('uses'=>'forgingController@show','as'=>'forging.report'));
+
+
 
 
 
@@ -65,3 +69,7 @@ Route::get('/admin/reports/cutting',array('uses'=>'cuttingPageController@show','
 Route::get('/forging',array('uses'=>'forgingController@index','as'=>'forging.index'));
 
 Route::post('/forging',array('uses'=>'forgingController@store','as'=>'forging.store'));
+
+Route::get('/forging/confirm',array('uses'=>'forgingController@show','as'=>'forging.show'));
+
+Route::get('/forging/excel',array('uses'=>'forgingController@excel','as'=>'forging.excel'));

@@ -13,9 +13,7 @@
 
                     <div class="row">
 
-                        <a href="<?php echo action('forgingController@store'); ?>" >Go to this link</a>
-
-                        {{ Form::open(array('action'=> 'forgingController@store')) }}
+                        {{ Form::open(array('action'=>'forgingController@store')) }}
                                 <!-- For recipt number of the material coming from outside -->
                         <!-- Description for forged item -->
                         <div class="form-group">
@@ -51,15 +49,15 @@
                             {{ Form::label('exampleInputEmail','Forging Remarks') }}
                             {{ Form::text('remarks',null,array('class'=>'form-control','placeholder'=>'Remarks for forging Material','id'=>'JustAnything')) }}
                         </div>
-                        </div>
+
 
 
 
                         <div class="loginButton">
-
                             {{ Form::submit('Submit',array('class'=>'waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button')) }}
                         </div>
-                        {{ Form::close() }}
+                    {{ Form::close() }}
+
                     </div>		<!-- row conatining form ends here -->
                 </div>		<!-- card ends here -->
             </div>		<!-- wrapper ends here -->
