@@ -37,9 +37,11 @@ Route::post('/cutting',array('uses'=>'cuttingPageController@store','as'=>'cuttin
 
                 //ROUTES FOR ADMIN PAGE
 
-Route::get('/admin',array('uses'=>'adminPageController@index','as'=>'admin.page'));
+
 
 Route::get('/admin',array('uses'=>'adminPageController@index','as'=>'admin.page'));
+
+Route::get('/admin/log',array('uses'=>'adminPageController@logBook','as'=>'admin.log'));
 
 
 

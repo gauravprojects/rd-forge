@@ -10,8 +10,10 @@
                             <span>Admin Pannel</span>
                         </div>
                     </div>
-                    <a href="<?php  echo action('adminPageController@show_reports'); ?> " class="col-xs-12 col-sm-12 col-md-12 col-lg-4 waves-effect waves-light btn link">Reports</a><br><br>
-
+                    <ul>
+                    <li><a href="<?php  echo action('adminPageController@show_reports'); ?> " class="col-xs-12 col-sm-12 col-md-12 col-lg-4 waves-effect waves-light btn link">Reports</a></li>
+                    <li><a href="<?php  echo action('adminPageController@logBook'); ?> " class="col-xs-12 col-sm-12 col-md-12 col-lg-4 waves-effect waves-light btn link">Log Book</a></li>
+                    </ul>
                     <div class="row">
 
                     </div>		<!-- row conatining form ends here -->

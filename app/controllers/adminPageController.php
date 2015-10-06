@@ -93,4 +93,9 @@ class AdminPageController extends \BaseController {
 		//
 	}
 
+	public function logBook()
+	{
+		return View::make('logBook.log');
+	}
+
 }
