@@ -1,34 +1,24 @@
 <?php
 
-class AdminPageController extends \BaseController {
+class ForgingController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
-	 * GET /adminpage
+	 * GET /forging
 	 *
 	 * @return Response
 	 */
 	public function index()
 	{
-
-		// returns home page for admin pannel
-		return View::make('adminPanel.admin');
+		return View::make('forging.forge');
 	}
 
 	/**
 	 * Show the form for creating a new resource.
-	 * GET /adminpage/create
+	 * GET /forging/create
 	 *
 	 * @return Response
 	 */
-	public function show_reports()
-	{
-
-		//returns the home page where all the reports are being shown
-		// home page for all retuns
-		return View::make('adminPanel.reportsHome');
-	}
-
 	public function create()
 	{
 		//
@@ -36,18 +26,20 @@ class AdminPageController extends \BaseController {
 
 	/**
 	 * Store a newly created resource in storage.
-	 * POST /adminpage
+	 * POST /forging
 	 *
 	 * @return Response
 	 */
 	public function store()
 	{
-		//
+		dd("Iam clled");
+		$forging_input= Input::all();
+		dd($forging_input);
 	}
 
 	/**
 	 * Display the specified resource.
-	 * GET /adminpage/{id}
+	 * GET /forging/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -59,7 +51,7 @@ class AdminPageController extends \BaseController {
 
 	/**
 	 * Show the form for editing the specified resource.
-	 * GET /adminpage/{id}/edit
+	 * GET /forging/{id}/edit
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -71,7 +63,7 @@ class AdminPageController extends \BaseController {
 
 	/**
 	 * Update the specified resource in storage.
-	 * PUT /adminpage/{id}
+	 * PUT /forging/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -83,7 +75,7 @@ class AdminPageController extends \BaseController {
 
 	/**
 	 * Remove the specified resource from storage.
-	 * DELETE /adminpage/{id}
+	 * DELETE /forging/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response

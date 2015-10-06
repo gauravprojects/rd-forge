@@ -12,7 +12,8 @@
                     <ul id="nav-mobile">
                         <li><a href="<?php  echo action('rawMaterialController@index'); ?> " class="col-xs-12 col-sm-12 col-md-12 col-lg-12 waves-effect waves-light btn link">Raw Material</a></li>
 
-                        <li><a href="<?php echo action('cuttingPageController@index'); ?> " class="col-xs-12 col-sm-12 col-md-12 col-lg-12 waves-effect waves-light btn link">Cutting </a></li><br><br><br><br><br>
+                        <li><a href="<?php echo action('cuttingPageController@index'); ?> " class="col-xs-12 col-sm-12 col-md-12 col-lg-12 waves-effect waves-light btn link">Cutting </a></li>
+                        <li><a href="<?php echo action('forgingController@index'); ?> " class="col-xs-12 col-sm-12 col-md-12 col-lg-12 waves-effect waves-light btn link">Forging</a></li>
                     </ul>
                 </div>
                 <div class="row">

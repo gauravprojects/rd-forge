@@ -9,6 +9,8 @@ class cuttingPageController extends \BaseController {
 	 */
 	public function index()
 	{
+		// returns cutting form page
+
 		return View::make('cutting.cut');
 	}
 
@@ -31,28 +33,50 @@ class cuttingPageController extends \BaseController {
 	 */
 	public function store()
 	{
+		// stores data coming from cutting form
+
 		$cutting= Input::all();
+
+		// date from machine
 		$date=date("Y-m-d");
+
+		// calculating required total weight
 		$total_weight= $cutting['quantity'] * $cutting['wpp'];
 
 
-
-//		array(7) { ["_token"]=> string(40) "QYrZlT1pUtzQRmeSHq3rscKOuXGjd2qcAixzvAPl" ["size"]=> string(3) "100"
-//		["heatNo"]=> string(0) "" ["quantity"]=> string(0) ""
-//		["wpp"]=> string(0) "" ["CutDes"]=> string(0) "" ["cutRem"]=> string(0) "" }
-
+		// array for table cutting records
 		$input_array=array(	'date'=>$date,
-							'raw_mat_size'=>$cutting['size'],
-							'heat_no'=>$cutting['heatNo'],
-							'quantity'=>$cutting['quantity'],
-							'weight_per_piece'=>$cutting['wpp'],
-							'total_weight'=>$total_weight,
-							);
+			'raw_mat_size'=>$cutting['size'],
+			'heat_no'=>$cutting['heatNo'],
+			'quantity'=>$cutting['quantity'],
+			'weight_per_piece'=>$cutting['wpp'],
+			'total_weight'=>$total_weight,
+		);
+
+		// getting the cutting id of the record entered
+		//	this will serve as primary key for other tables for cutting records
+
 
 		$input_table1= DB::table('cutting_records')->insert($input_array);
+		$last_record=DB::table('cutting_records')->orderBy('cutting_id', 'desc')->first();
 
-		dd($input_response);
-		dd($input_array);
+		//array for cutting item description
+
+		$input_array2= array( 'cutting_id' => $last_record->cutting_id,
+			'item_des'   => $cutting['CutDes'] );
+
+
+		// array for cutting remarks table
+
+		$input_array3= array( 'cutting_id' => $last_record->cutting_id,
+			'remarks'   => $cutting['cutRem'] );
+
+		$input_table2= DB::table('cutting_item_des')->insert($input_array2);
+		$input_table3= DB::table('cutting_remarks')->insert($input_array3);
+
+
+
+		return View::make('cutting.confirm')->with('last_record',$last_record);
 
 	}
 
@@ -63,9 +87,13 @@ class cuttingPageController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show()
 	{
-		//
+		// showing report for cutting material
+		// can be found inside admin pannel
+
+		$last_record=DB::table('cutting_records')->select()->get();
+		return View::make('cutting.cutting_report')->with('last_record',$last_record);
 	}
 
 
@@ -102,6 +130,24 @@ class cuttingPageController extends \BaseController {
 	public function destroy($id)
 	{
 		//
+	}
+
+	public function excel()
+	{
+		// sending full data for excel
+		// using joins.....
+
+		//	 PROBLEM LIES HERE
+
+		$data= DB::table('cutting_records')
+			->leftjoin('cutting_item_des', 'cutting_records.cutting_id', '=', 'cutting_item_des.cutting_id')
+			->leftjoin('cutting_remarks', 'cutting_records.cutting_id', '=', 'cutting_remarks.cutting_id')
+			->select()
+			->get();
+
+
+		return View::make('cutting.cutting_report_excel')->with('cutting',$data);
+
 	}
 
 
