@@ -61,9 +61,6 @@ Route::get('/admin/reports/forging',array('uses'=>'forgingController@show','as'=
 
 
 
-
-
-
         //ROUTES FOR FORGING DATA
 
 
@@ -75,3 +72,12 @@ Route::post('/forging',array('uses'=>'forgingController@store','as'=>'forging.st
 Route::get('/forging/confirm',array('uses'=>'forgingController@show','as'=>'forging.show'));
 
 Route::get('/forging/excel',array('uses'=>'forgingController@excel','as'=>'forging.excel'));
+
+
+        //ROUTES FOR WORK ORDER ENTRY
+
+//form1 for index
+Route::get('/workOrder',array('uses'=>'workOrderController@index','as'=>'work.index'));
+
+//for saving work order data
+Route::post('/workOrder',array('uses'=>'workOrderController@store','as'=>'work.store'));

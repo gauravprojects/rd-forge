@@ -40,6 +40,7 @@ class rawMaterialController extends \BaseController {
 			'manufacturer'=>$data['Manufacturer'],
 			'heat_no'=>$data['heatNo'],
 			'weight' => $data['weight'],
+			'left_over_weight'=>$data['left_over_weight'],
 			'pur_order_no'=>$data['purchaseNo'],
 			'pur_order_date'=>$data['purchaseDate'],
 			'invoice_no'=>$data['invoiceNo'],
