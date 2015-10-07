@@ -48,6 +48,18 @@ class rawMaterialController extends \BaseController {
 			'raw_material_type'=>$data['materialType']
 		);
 
+		// making details for the log book
+		$details= 'Manufacturer: '.$data['Manufacturer'].'  Heat no: '.$data['heatNo'].'  Material Grade: '.
+			$data['materialGrade'].' Material Type: '.$data['materialType'].' Size: '.$data['size'];
+		// making an array for logbook table
+		$log_array=array(
+					'date'=>date("Y-m-d"),
+					'time'=>date('h:i:s'),
+					'category'=>'Raw Material',
+					'details'=>$details
+					);
+		$data_insert_logbook= DB::table('logbook')->insert($log_array);
+
 		$data_insert=DB::table('raw_material')->insert($data_array);
 
 		if($data_insert=='true')

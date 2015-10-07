@@ -53,6 +53,21 @@ class cuttingPageController extends \BaseController {
 			'total_weight'=>$total_weight,
 		);
 
+		//recods for log book
+
+		//details
+		$details='Heat no: '.$cutting['heatNo'].' Quantity: '.$cutting['quantity'].' Weight per piece: '.$cutting['wpp'].
+			' Total '.$total_weight;
+
+		$log_array= array(
+					'date' => date("Y-m-d"),
+					'time' => date("h:i:s"),
+					'category'=>'Cutting',
+					'details'=>$details,
+		);
+
+		$input_table_logbook= DB::table('logbook')->insert($log_array);
+
 		// getting the cutting id of the record entered
 		//	this will serve as primary key for other tables for cutting records
 

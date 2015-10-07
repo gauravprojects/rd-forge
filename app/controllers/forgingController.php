@@ -48,6 +48,21 @@ class ForgingController extends \BaseController {
 		);
 		$input_response= DB::table('forging_records')->insert($forging_array);
 
+		//data for log book
+
+		$details='Forging Description: '.$forging_input['forged_des'].' Heat no '.$forging_input['heat_no'].' Weight per piece '.
+			$forging_input['weight_per_peice'].' Quantity : '.$forging_input['quantity'].' Total Weight '.$total_weight;
+
+		$log_array= array(
+			'date' => date("Y-m-d"),
+			'time' => date("h:i:s"),
+			'category'=>'Forging',
+			'details'=>$details,
+		);
+
+		$input_table_logbook= DB::table('logbook')->insert($log_array);
+
+
 		// now getting the last record for getting forging_id
 		$last_record=DB::table('forging_records')->orderBy('forging_id', 'desc')->first();
 

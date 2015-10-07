@@ -1,31 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component name="dataSourceStorage">
-  <data-source name="MySQL - rd_forge@localhost" uuid="8eb9795e-9431-4145-837b-9172a02423e8">
-    <database-info product="MySQL" version="5.6.16" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+  <data-source name="MySQL - rdforge@localhost" uuid="c37e9de7-93c4-4d5c-a81d-1a8461b5f122">
+    <database-info product="MySQL" version="5.6.20" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
       <extra-name-characters>#@</extra-name-characters>
       <identifier-quote-string>`</identifier-quote-string>
     </database-info>
     <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
-    <schema name="" catalog="rd_forge"/>
-    <table name="cutting_item_des" schema="" catalog="rd_forge" type="TABLE">
+    <schema name="" catalog="rdforge"/>
+    <table name="cutting_item_des" schema="" catalog="rdforge" type="TABLE">
       <column name="cutting_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="item_des" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
     </table>
-    <table name="cutting_records" schema="" catalog="rd_forge" type="TABLE">
-      <column name="cutting_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+    <table name="cutting_records" schema="" catalog="rdforge" type="TABLE">
+      <column name="cutting_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="date" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
       <column name="raw_mat_size" sqlType="VARCHAR" precision="25" scale="0" nullable="false" jdbcType="12"/>
       <column name="heat_no" sqlType="VARCHAR" precision="25" scale="0" nullable="false" jdbcType="12"/>
       <column name="quantity" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="weight_per_piece" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="total_weight" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="cutting_id"/>
     </table>
-    <table name="cutting_remarks" schema="" catalog="rd_forge" type="TABLE">
+    <table name="cutting_remarks" schema="" catalog="rdforge" type="TABLE">
       <column name="cutting_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="remarks" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
       <primary-key name="PRIMARY" columns="cutting_id"/>
     </table>
-    <table name="drilling_records" schema="" catalog="rd_forge" type="TABLE">
+    <table name="drilling_records" schema="" catalog="rdforge" type="TABLE">
       <column name="drilling_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="work_order_no" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="date" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
@@ -37,12 +38,12 @@
       <column name="grade" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="drilling_id"/>
     </table>
-    <table name="drilling_remarks" schema="" catalog="rd_forge" type="TABLE">
+    <table name="drilling_remarks" schema="" catalog="rdforge" type="TABLE">
       <column name="drilling_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="remarks" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
       <primary-key name="PRIMARY" columns="drilling_id"/>
     </table>
-    <table name="entry_of_records" schema="" catalog="rd_forge" type="TABLE">
+    <table name="entry_of_records" schema="" catalog="rdforge" type="TABLE">
       <column name="work_order_no" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="date_of_issue" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
       <column name="cus_name" sqlType="VARCHAR" precision="25" scale="0" nullable="false" jdbcType="12"/>
@@ -52,30 +53,39 @@
       <column name="quation_no" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
       <primary-key name="PRIMARY" columns="work_order_no"/>
     </table>
-    <table name="forging_records" schema="" catalog="rd_forge" type="TABLE">
-      <column name="forging_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+    <table name="forging_records" schema="" catalog="rdforge" type="TABLE">
+      <column name="forging_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="date" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
       <column name="forged_des" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
       <column name="weight_per_piece" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="heat_no" sqlType="VARCHAR" precision="25" scale="0" nullable="false" jdbcType="12"/>
       <column name="quantity" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="total_weight" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="forging_id"/>
     </table>
-    <table name="forging_remarks" schema="" catalog="rd_forge" type="TABLE">
+    <table name="forging_remarks" schema="" catalog="rdforge" type="TABLE">
       <column name="forging_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="remarks" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
       <primary-key name="PRIMARY" columns="forging_id"/>
     </table>
-    <table name="inspection_details" schema="" catalog="rd_forge" type="TABLE">
+    <table name="inspection_details" schema="" catalog="rdforge" type="TABLE">
       <column name="work_order_no" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="inspection" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
     </table>
-    <table name="mach_remarks" schema="" catalog="rd_forge" type="TABLE">
+    <table name="logbook" schema="" catalog="rdforge" type="TABLE">
+      <column name="log_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="date" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="time" sqlType="TIME" precision="8" scale="0" nullable="false" jdbcType="92"/>
+      <column name="category" sqlType="VARCHAR" precision="15" scale="0" nullable="false" jdbcType="12"/>
+      <column name="details" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <primary-key name="PRIMARY" columns="log_id"/>
+    </table>
+    <table name="mach_remarks" schema="" catalog="rdforge" type="TABLE">
       <column name="mach_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="remarks" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
       <primary-key name="PRIMARY" columns="mach_id"/>
     </table>
-    <table name="machining_records" schema="" catalog="rd_forge" type="TABLE">
+    <table name="machining_records" schema="" catalog="rdforge" type="TABLE">
       <column name="mach_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="date" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
       <column name="work_order_no" sqlType="VARCHAR" precision="25" scale="0" nullable="false" jdbcType="12"/>
@@ -87,11 +97,11 @@
       <column name="grade" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
       <column name="weight" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
     </table>
-    <table name="packing_instructions" schema="" catalog="rd_forge" type="TABLE">
+    <table name="packing_instructions" schema="" catalog="rdforge" type="TABLE">
       <column name="work_order_no" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="pac_ins" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
     </table>
-    <table name="raw_material" schema="" catalog="rd_forge" type="TABLE">
+    <table name="raw_material" schema="" catalog="rdforge" type="TABLE">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" remarks="cHJpbWFyeSBrZXkgaGVyZQ==" autoIncrement="true"/>
       <column name="receipt_code" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
       <column name="date" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
@@ -105,14 +115,13 @@
       <column name="invoice_date" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
       <column name="material_grade" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
       <column name="raw_material_type" sqlType="VARCHAR" precision="25" scale="0" nullable="false" jdbcType="12"/>
-      <column name="internal_no" sqlType="VARCHAR" precision="7" scale="0" nullable="false" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="id"/>
     </table>
-    <table name="remarks" schema="" catalog="rd_forge" type="TABLE">
+    <table name="remarks" schema="" catalog="rdforge" type="TABLE">
       <column name="work_order_no" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="remarks" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
     </table>
-    <table name="seration_records" schema="" catalog="rd_forge" type="TABLE">
+    <table name="seration_records" schema="" catalog="rdforge" type="TABLE">
       <column name="seration_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="work_order_no" sqlType="VARCHAR" precision="25" scale="0" nullable="false" jdbcType="12"/>
       <column name="item" sqlType="VARCHAR" precision="25" scale="0" nullable="false" jdbcType="12"/>
@@ -124,15 +133,21 @@
       <column name="weight" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="seration_id"/>
     </table>
-    <table name="seration_remarks" schema="" catalog="rd_forge" type="TABLE">
+    <table name="seration_remarks" schema="" catalog="rdforge" type="TABLE">
       <column name="seration_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="remarks" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
     </table>
-    <table name="testing_instructions" schema="" catalog="rd_forge" type="TABLE">
+    <table name="testing_instructions" schema="" catalog="rdforge" type="TABLE">
       <column name="work_order_no" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="testing_ins" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
     </table>
-    <table name="work_order_details" schema="" catalog="rd_forge" type="TABLE">
+    <table name="users" schema="" catalog="rdforge" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="username" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="work_order_details" schema="" catalog="rdforge" type="TABLE">
       <column name="work_order_no" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="item_no" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" remarks="Y29tcG9zaXRlIHByaW1hcnkga2V5" autoIncrement="true"/>
       <column name="material_grade" sqlType="VARCHAR" precision="25" scale="0" nullable="false" jdbcType="12"/>

@@ -95,7 +95,8 @@ class AdminPageController extends \BaseController {
 
 	public function logBook()
 	{
-		return View::make('logBook.log');
+		$data= DB::table('logbook')->select()->get();
+		return View::make('logBook.log')->with('data',$data);
 	}
 
 }
