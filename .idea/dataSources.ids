@@ -43,16 +43,6 @@
       <column name="remarks" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
       <primary-key name="PRIMARY" columns="drilling_id"/>
     </table>
-    <table name="entry_of_records" schema="" catalog="rdforge" type="TABLE">
-      <column name="work_order_no" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
-      <column name="date_of_issue" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
-      <column name="cus_name" sqlType="VARCHAR" precision="25" scale="0" nullable="false" jdbcType="12"/>
-      <column name="pur_order_no" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
-      <column name="pur_order_date" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
-      <column name="req_dil_date" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
-      <column name="quation_no" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
-      <primary-key name="PRIMARY" columns="work_order_no"/>
-    </table>
     <table name="forging_records" schema="" catalog="rdforge" type="TABLE">
       <column name="forging_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="date" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
@@ -109,6 +99,7 @@
       <column name="manufacturer" sqlType="VARCHAR" precision="25" scale="0" nullable="false" jdbcType="12"/>
       <column name="heat_no" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
       <column name="weight" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="left_over_weight" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
       <column name="pur_order_no" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
       <column name="pur_order_date" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
       <column name="invoice_no" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
@@ -148,15 +139,26 @@
       <primary-key name="PRIMARY" columns="id"/>
     </table>
     <table name="work_order_details" schema="" catalog="rdforge" type="TABLE">
-      <column name="work_order_no" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <column name="item_no" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" remarks="Y29tcG9zaXRlIHByaW1hcnkga2V5" autoIncrement="true"/>
-      <column name="material_grade" sqlType="VARCHAR" precision="25" scale="0" nullable="false" jdbcType="12"/>
+      <column name="work_order_no" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="purchase_order_no" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
+      <column name="customer_name" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="purchase_order_date" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="required_delivery_date" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="inspection" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12"/>
+      <column name="packing_instruction" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12"/>
+      <column name="testing_instruction" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12"/>
+      <column name="quatation_no" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="remarks" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="work_order_no"/>
+    </table>
+    <table name="work_order_material_details" schema="" catalog="rdforge" type="TABLE">
+      <column name="work_order_no" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="description" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12"/>
+      <column name="material_grade" sqlType="VARCHAR" precision="5" scale="0" nullable="false" jdbcType="12"/>
       <column name="quantity" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <column name="dispatched_quantity" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="weight" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <column name="remarks" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
-      <primary-key name="PRIMARY" columns="item_no"/>
-      <index name="work_order_no" unique="true" columns="work_order_no"/>
+      <column name="remarks" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <index name="unique_work_order_no" unique="true" columns="work_order_no"/>
     </table>
   </data-source>
 </component>

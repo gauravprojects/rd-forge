@@ -157,6 +157,7 @@ class cuttingPageController extends \BaseController {
 		$data= DB::table('cutting_records')
 			->leftjoin('cutting_item_des', 'cutting_records.cutting_id', '=', 'cutting_item_des.cutting_id')
 			->leftjoin('cutting_remarks', 'cutting_records.cutting_id', '=', 'cutting_remarks.cutting_id')
+			//->whereNULL('cutting_remarks.cutting_id')
 			->select()
 			->get();
 

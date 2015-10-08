@@ -81,3 +81,6 @@ Route::get('/workOrder',array('uses'=>'workOrderController@index','as'=>'work.in
 
 //for saving work order data
 Route::post('/workOrder',array('uses'=>'workOrderController@store','as'=>'work.store'));
+
+Route::post('/workOrder/details',array('uses'=>'workOrderController@store_more','as'=>'work.store_more'));
+

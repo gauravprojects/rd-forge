@@ -131,13 +131,12 @@ class ForgingController extends \BaseController {
 
 	public function excel()
 	{
-		$data= DB::table('forging_records')
-			->leftjoin('forging_remarks', 'forging_records.forging_id', '=', 'forging_remarks.forging_id')
-			->select()
-			->get();
 
 
-		return View::make('forging.forging_report_excel')->with('forging_data',$data);
+		$users =DB::select(DB::raw("SELECT *,'' AS 'tingu','' AS 'records' FROM forging_records p WHERE NOT EXISTS (SELECT * FROM forging_remarks WHERE p.forging_id = forging_remarks.forging_id) AND NOT EXISTS (SELECT * FROM forging_remarks WHERE forging_remarks.forging_id IS NULL) union (select * from `forging_records` left join `forging_remarks` on `forging_records`.`forging_id` = `forging_remarks`.`forging_id` where `forging_remarks`.`forging_id` is not null) order by(forging_id)")
+		);
+	//dd($users);
+		return View::make('forging.forging_report_excel')->with('forging_data',$users);
 	}
 
 }

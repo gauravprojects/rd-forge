@@ -17,6 +17,7 @@
         <th>Heat no</th>
         <th>Quantity</th>
         <th>Total Weight</th>
+        <th>Remarks</th>
     </tr>
 
     @foreach($forging_data as $confirmation)
@@ -28,6 +29,7 @@
             <td>{{ $confirmation->heat_no }}</td>
             <td>{{ $confirmation->quantity }}</td>
             <td>{{ $confirmation->total_weight }}</td>
+            <td>{{ $confirmation->records }}</td>
         </tr>
     @endforeach
 </table>
