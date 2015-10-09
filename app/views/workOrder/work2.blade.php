@@ -18,14 +18,14 @@
 
                         <table class="table table-bordered table-condensed">
                             <tbody>
-                            <tr>
-                                <th class="heading" style="text-align:center;">Work Order No</th>
-                                <th class="heading" style="text-align:center;">Description</th>
-                                <th class="heading" style="text-align:center;">Material Grade</th>
-                                <th class="heading" style="text-align:center;">Quantity</th>
-                                <th class="heading" style="text-align:center;">Weight</th>
-                                <th class="heading" style="text-align:center;">Remarks</th>
-                            </tr>
+                                <tr>
+                                    <th class="heading" style="text-align:center;">Work Order No</th>
+                                    <th class="heading" style="text-align:center;">Description</th>
+                                    <th class="heading" style="text-align:center;">Material Grade</th>
+                                    <th class="heading" style="text-align:center;">Quantity</th>
+                                    <th class="heading" style="text-align:center;">Weight</th>
+                                    <th class="heading" style="text-align:center;">Remarks</th>
+                                </tr>
 
                             <tr>
                                 <td>

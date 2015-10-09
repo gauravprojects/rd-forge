@@ -89,21 +89,31 @@ class WorkOrderController extends \BaseController {
 			$input_response2= DB::table('work_order_material_details')->insert($input_array2);
 		}
 
-		if(!($input_data['quantity3']== null) )
-		{
-			$input_array3= array(
-				'work_order_no'=>$input_data['work_order_no3'],
-				'description'=>$input_data['description3'],
-				'material_grade'=>$input_data['material_grade3'],
-				'quantity' =>$input_data['quantity3'],
+		if(!($input_data['quantity3']== null) ) {
+			$input_array3 = array(
+				'work_order_no' => $input_data['work_order_no3'],
+				'description' => $input_data['description3'],
+				'material_grade' => $input_data['material_grade3'],
+				'quantity' => $input_data['quantity3'],
 				'weight' => $input_data['weight3'],
 				'remarks' => $input_data['remarks3']
 			);
-
 			$input_response3= DB::table('work_order_material_details')->insert($input_array3);
-			dd("your work order registered");
 		}
-		dd();
+
+
+
+// PROBLEM STARTS FROM HERE
+		$last_record=DB::table('work_order_details')->orderBy('work_order_no', 'desc')->first();
+//
+//
+//			$last_record_details= DB::select(DB::raw("SELECT * from work_order_material_details where work_order_no LIKE '%".$last_record->work_order_no."%'"));
+//
+//			$mixed_array=array($last_record,$last_record_details);
+
+
+			return View::make('workOrder.confirm')->with('data',$last_record);
+
 
 	}
 
