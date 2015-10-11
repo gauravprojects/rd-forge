@@ -1,86 +1,168 @@
 <?php
 
-                //ROUTES FOR LOGIN AND LOGOUT
+                    //ROUTES FOR LOGIN AND LOGOUT
 
-Route::get('/','loginPageController@create');
-Route::get('login',array('uses'=>'loginPageController@create','as'=>'login.create'));
+	Route::get('/','loginPageController@create');
+	Route::get('login',array(
 
-Route::post('login',array('uses'=>'loginPageController@store','as'=>'login.store'));
+	'as'=>'login.create',
+	'uses'=>'loginPageController@create',
 
-Route::get('logout','loginPageController@destroy');
+	));
 
-                //ROUTES FOR HOME PAGE
-Route::get('/home',array('uses'=>'homePageController@index'));
+	Route::post('login',array(
 
+	'as'=>'login.store',
+	'uses'=>'loginPageController@store'
 
-                //ROUTES FOR RAW MATERIAL DATA
+	));
 
-//route to get to the raw material form page
-Route::get('/raw','rawMaterialController@index');
+	Route::get('logout','loginPageController@destroy');
 
-//route for storing data from storing data from raw material
-Route::post('/raw','rawMaterialController@store');
+	                //ROUTES FOR HOME PAGE
 
-//route to transfer raw material data to excel sheet
-Route::get('/raw/excel',array('uses'=>'rawMaterialController@excel','as'=>'raw.excel'));
-
-                //ROUTES TO STORE CUTTING DATA MATERIAL
-
-//route to get to cutting materials form page
-Route::get('/cutting','cuttingPageController@index');
-
-//route to send data from storing cutting data to excel
-Route::get('/cutting/excel',array('uses'=>'cuttingPageController@excel','as'=>'cutting.excel'));
-
-//route to store cutting form data
-Route::post('/cutting',array('uses'=>'cuttingPageController@store','as'=>'cutting.store'));
-
-                //ROUTES FOR ADMIN PAGE
+	Route::get('/home',array('uses'=>'homePageController@index'));
 
 
+	                //ROUTES FOR RAW MATERIAL DATA
 
-Route::get('/admin',array('uses'=>'adminPageController@index','as'=>'admin.page'));
+	//route to get to the raw material form page
+	Route::get('/raw','rawMaterialController@index');
 
-Route::get('/admin/log',array('uses'=>'adminPageController@logBook','as'=>'admin.log'));
+	//route for storing data from storing data from raw material
+	Route::post('/raw','rawMaterialController@store');
+
+	//route to transfer raw material data to excel sheet
+	Route::get('/raw/excel',array(
+
+	'as'=>'raw.excel',
+	'uses'=>'rawMaterialController@excel'
+
+	));
+
+	                //ROUTES TO STORE CUTTING DATA MATERIAL
+
+	//route to get to cutting materials form page
+	Route::get('/cutting','cuttingPageController@index');
+
+	//route to send data from storing cutting data to excel
+	Route::get('/cutting/excel',array(
+
+	'as'=>'cutting.excel',
+	'uses'=>'cuttingPageController@excel'
+
+	));
+
+	//route to store cutting form data
+	Route::post('/cutting',array(
+
+	'as'=>'cutting.store',
+	'uses'=>'cuttingPageController@store'
+
+	));
+
+     				//ROUTES FOR ADMIN PAGE
+
+	Route::get('/admin',array(
+
+	'as'=>'admin.page',
+	'uses'=>'adminPageController@index'
+
+	));
+
+	Route::get('/admin/log',array(
+
+	'as'=>'admin.log',
+	'uses'=>'adminPageController@logBook'
+
+	));
 
 
+					//  ROUTES FOR REPORTS
 
-                //  ROUTES FOR REPORTS
+	// route for reports home page inside admin pannel
+	Route::get('/admin/reports','adminPageController@show_reports');
 
-// route for reports home page inside admin pannel
-Route::get('/admin/reports','adminPageController@show_reports');
+	// route for raw material reports.. can pe opened form admin pannel
+	Route::get('/admin/reports/raw',array(
 
-// route for raw material reports.. can pe opened form admin pannel
-Route::get('/admin/reports/raw',array('uses'=>'rawMaterialController@show','as'=>'raw.report'));
+	'as'=>'raw.report',
+	'uses'=>'rawMaterialController@show'
 
-// route for cutting material reports..
-Route::get('/admin/reports/cutting',array('uses'=>'cuttingPageController@show','as'=>'cutting.report'));
+	));
 
-// route for forging material reports..
-Route::get('/admin/reports/forging',array('uses'=>'forgingController@show','as'=>'forging.report'));
+	// route for cutting material reports..
+	Route::get('/admin/reports/cutting',array(
 
+	'as'=>'cutting.report',
+	'uses'=>'cuttingPageController@show'
 
+	));
 
-        //ROUTES FOR FORGING DATA
+	// route for forging material reports..
+	Route::get('/admin/reports/forging',array(
 
+	'as'=>'forging.report',
+	'uses'=>'forgingController@show'
 
-// form for forging data
-Route::get('/forging',array('uses'=>'forgingController@index','as'=>'forging.index'));
-
-Route::post('/forging',array('uses'=>'forgingController@store','as'=>'forging.store'));
-
-Route::get('/forging/confirm',array('uses'=>'forgingController@show','as'=>'forging.show'));
-
-Route::get('/forging/excel',array('uses'=>'forgingController@excel','as'=>'forging.excel'));
+	));
 
 
-        //ROUTES FOR WORK ORDER ENTRY
+					//ROUTES FOR FORGING DATA
 
-//form1 for index
-Route::get('/workOrder',array('uses'=>'workOrderController@index','as'=>'work.index'));
 
-//for saving work order data
-Route::post('/workOrder',array('uses'=>'workOrderController@store','as'=>'work.store'));
+	// form for forging data
+	Route::get('/forging',array(
 
-Route::post('/workOrder/details',array('uses'=>'workOrderController@store_more','as'=>'work.store_more'));
+	'as'=>'forging.index',
+	'uses'=>'forgingController@index'
+
+	));
+
+	Route::post('/forging',array(
+
+	'as'=>'forging.store',
+	'uses'=>'forgingController@store'
+
+	));
+
+	Route::get('/forging/confirm',array(
+
+	'as'=>'forging.show',
+	'uses'=>'forgingController@show'
+
+	));
+
+	Route::get('/forging/excel',array(
+
+	'as'=>'forging.excel',
+	'uses'=>'forgingController@excel'
+
+	));
+
+
+	    				//ROUTES FOR WORK ORDER ENTRY
+
+	//form1 for index
+	Route::get('/workOrder',array(
+
+	'as'=>'work.index',
+	'uses'=>'workOrderController@index'
+
+	));
+
+	//for saving work order data
+	Route::post('/workOrder',array(
+
+	'as'=>'work.store',
+	'uses'=>'workOrderController@store'
+
+	));
+
+	Route::post('/workOrder/details',array(
+
+	'as'=>'work.store_more',
+	'uses'=>'workOrderController@store_more'
+
+	));
 

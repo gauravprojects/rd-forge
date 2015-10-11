@@ -20,12 +20,6 @@
                     ["material_grade"]=> string(7) "Grade 1" ["raw_material_type"]=> string(6) "Type 1" }
                     -->
 
-
-
-
-
-
-
                     <div class="row">
                         <table>
                             <tr class="heading">

@@ -16,8 +16,6 @@
                                 <!-- For recipt number of the material coming from outside -->
 
 
-
-
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Customer Number') }}
                             {{ Form::text('customer_name',null,array('class'=>'form-control','placeholder'=>'Customer Number','id'=>'exampleInputEnail1')) }}
@@ -25,7 +23,7 @@
 
 
                         <div class="form-group">
-                            {{ Form::label('exampleInputEmail1','Purcahse Order no') }}
+                            {{ Form::label('exampleInputEmail1','Purcahse Order Number') }}
                             {{ Form::text('purchase_order_no',null,array('class'=>'form-control','placeholder'=>'Purchase Order Number','id'=>'exampleInputEnail1')) }}
                         </div>
 
@@ -45,7 +43,6 @@
                             {{ Form::text('inspection',null,array('class'=>'form-control','placeholder'=>'Inspection','id'=>'Justesehe')) }}
                         </div>
 
-
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Packing Instruction') }}
                             {{ Form::text('packing_instruction',null,array('class'=>'form-control','placeholder'=>'Packing Instruction','id'=>'Justesehe')) }}
@@ -54,7 +51,7 @@
                         <!-- testing Instruction -->
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Testing Instruction') }}
-                            {{ Form::text('testing_instruction',null,array('class'=>'form-control','placeholder'=>'Packing Instruction','id'=>'Justesehe')) }}
+                            {{ Form::text('testing_instruction',null,array('class'=>'form-control','placeholder'=>'Testing Instruction','id'=>'Justesehe')) }}
                         </div>
                         <!-- Quotation Number -->
                         <div class="form-group">
@@ -65,9 +62,8 @@
                         <!-- Remarks -->
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Remarks') }}
-                            {{ Form::text('remarks',null,array('class'=>'form-control','placeholder'=>'remarks','id'=>'Justesehe')) }}
+                            {{ Form::text('remarks',null,array('class'=>'form-control','placeholder'=>'Remarks','id'=>'Justesehe')) }}
                         </div>
-
 
                         <div class="loginButton">
 

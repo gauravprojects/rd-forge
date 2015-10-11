@@ -1,6 +1,6 @@
 <?php
 
-class WorkOrderController extends \BaseController {
+class WorkOrderController extends BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -35,22 +35,21 @@ class WorkOrderController extends \BaseController {
 		$data_input=Input::all();
 
 		$data_array= array(
-			'customer_name' =>$data_input['customer_name'],
-			'purchase_order_no'=>$data_input['purchase_order_no'],
-			'purchase_order_date'=>$data_input['purchase_order_date'],
-			'required_delivery_date'=>$data_input['required_delivery_date'],
-			'inspection'=>$data_input['inspection'],
-			'packing_instruction'=>$data_input['packing_instruction'],
-			'testing_instruction'=>$data_input['testing_instruction'],
-			'quatation_no'=>$data_input['quatation_no'],
-			'remarks'=>$data_input['remarks']
-
+			'customer_name' => $data_input['customer_name'],
+			'purchase_order_no' => $data_input['purchase_order_no'],
+			'purchase_order_date' => $data_input['purchase_order_date'],
+			'required_delivery_date' => $data_input['required_delivery_date'],
+			'inspection' => $data_input['inspection'],
+			'packing_instruction' => $data_input['packing_instruction'],
+			'testing_instruction' => $data_input['testing_instruction'],
+			'quatation_no' => $data_input['quatation_no'],
+			'remarks' => $data_input['remarks']
 		);
 
-		$input_response= DB::table('work_order_details')->insert($data_array);
+		WorkOrder::insertData($data_array);
 
 		//now fetch dis data to return to the array
-		$last_input= DB::table('work_order_details')->orderBy('work_order_no','desc')->first();
+		$last_input = WorkOrder::getLastRecord();
 
 		return View::make('workOrder.work2')->with('data',$last_input);
 

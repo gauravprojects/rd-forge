@@ -26,7 +26,7 @@
                             <!-- For the size of the coming raw material -->
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Size') }}
-                                {{ Form::text('size',null,array('class'=>'form-control','placeholder'=>'size','id'=>'justAnything')) }}
+                                {{ Form::text('size',null,array('class'=>'form-control','placeholder'=>'Size','id'=>'justAnything')) }}
                             </div>
 
                             <!-- Manufacturer's name -->
@@ -47,12 +47,10 @@
                             </div>
 
                             <!-- left over weight -->
-                        <div class="form-group">
-                            {{ Form::label('exampleInputEmail1','Left over weight') }}
-                            {{ Form::text('left_over_weight',null,array('class'=>'form-control','placeholder'=>'Left over weight','id'=>'Justesehe')) }}
-                        </div>
-
-
+                            <div class="form-group">
+                                {{ Form::label('exampleInputEmail1','Left over weight') }}
+                                {{ Form::text('left_over_weight',null,array('class'=>'form-control','placeholder'=>'Left over weight','id'=>'Justesehe')) }}
+                            </div>
 
                             <!-- Purchase order no -->
                             <div class="form-group">
@@ -85,7 +83,6 @@
 
                                 {{ Form::label('exampleInputPassword','Material Grade') }}
 
-
                                 <select class="form-control" name="materialGrade">
                                     <option>Grade 1</option>
                                     <option>Grade 2</option>
@@ -93,6 +90,7 @@
                                     <option>Grade 4</option>
                                     <option>Grade 5</option>
                                 </select>
+
                             </div>
 
                             <!-- raw material type, these sample types will be provided.. to be implemented using dropdown -->
@@ -106,7 +104,6 @@
                                     <option>Type 5</option>
                                 </select>
                             </div>
-
 
                             <div class="loginButton">
 

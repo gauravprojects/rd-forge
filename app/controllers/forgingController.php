@@ -1,6 +1,6 @@
 <?php
 
-class ForgingController extends \BaseController {
+class ForgingController extends BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -46,7 +46,8 @@ class ForgingController extends \BaseController {
 						'quantity'		=> $forging_input['quantity'],
 						'total_weight'	=> $total_weight
 		);
-		$input_response= DB::table('forging_records')->insert($forging_array);
+		
+		Forging::insertData($forging_array);
 
 		//data for log book
 
@@ -56,23 +57,23 @@ class ForgingController extends \BaseController {
 		$log_array= array(
 			'date' => date("Y-m-d"),
 			'time' => date("h:i:s"),
-			'category'=>'Forging',
-			'details'=>$details,
+			'category' => 'Forging',
+			'details' => $details,
 		);
 
-		$input_table_logbook= DB::table('logbook')->insert($log_array);
+		Logbook::insertData($log_array);
 
 
 		// now getting the last record for getting forging_id
-		$last_record=DB::table('forging_records')->orderBy('forging_id', 'desc')->first();
+		$last_record = Forging::getLastRecord();
 
 		//now array for the other table
-		$forging_array2= array(
+		$forging_array2 = array(
 			'forging_id' => $last_record->forging_id,
 			'remarks'	=> $forging_input['remarks']
 		);
 
-		$input_response2= DB::table('forging_remarks')->insert($forging_array2);
+		ForgingRem::insertData($forging_array2);
 
 		//returning view for confirmation
 		return View::make('forging.confirm')->with('confirmation',$last_record);

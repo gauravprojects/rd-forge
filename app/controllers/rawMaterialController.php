@@ -1,6 +1,6 @@
 <?php
 
-class rawMaterialController extends \BaseController {
+class rawMaterialController extends BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -31,46 +31,48 @@ class rawMaterialController extends \BaseController {
 	 */
 	public function store()
 	{
-		$date=date("Y-m-d");
-		$data= Input::all();
-		$data_array=array(
+		$date = date("Y-m-d");
+		$data = Input::all();
+
+		$data_array = array(
 			'receipt_code' => $data['receiptCode'],
-			'date'=>$date,
-			'size'=>$data['size'],
-			'manufacturer'=>$data['Manufacturer'],
-			'heat_no'=>$data['heatNo'],
+			'date' => $date,
+			'size' => $data['size'],
+			'manufacturer' => $data['Manufacturer'],
+			'heat_no' => $data['heatNo'],
 			'weight' => $data['weight'],
-			'left_over_weight'=>$data['left_over_weight'],
-			'pur_order_no'=>$data['purchaseNo'],
-			'pur_order_date'=>$data['purchaseDate'],
-			'invoice_no'=>$data['invoiceNo'],
-			'invoice_date'=>$data['invoiceDate'],
-			'material_grade'=>$data['materialGrade'],
-			'raw_material_type'=>$data['materialType']
+			'pur_order_no' => $data['purchaseNo'],
+			'pur_order_date' => $data['purchaseDate'],
+			'invoice_no' => $data['invoiceNo'],
+			'invoice_date' => $data['invoiceDate'],
+			'material_grade' => $data['materialGrade'],
+			'raw_material_type' => $data['materialType']
 		);
 
 		// making details for the log book
-		$details= 'Manufacturer: '.$data['Manufacturer'].'  Heat no: '.$data['heatNo'].'  Material Grade: '.
+		$details = 'Manufacturer: '.$data['Manufacturer'].'  Heat no: '.$data['heatNo'].'  Material Grade: '.
 			$data['materialGrade'].' Material Type: '.$data['materialType'].' Size: '.$data['size'];
+			
 		// making an array for logbook table
-		$log_array=array(
+		$log_array = array(
 					'date'=>date("Y-m-d"),
 					'time'=>date('h:i:s'),
 					'category'=>'Raw Material',
 					'details'=>$details
 					);
-		$data_insert_logbook= DB::table('logbook')->insert($log_array);
 
-		$data_insert=DB::table('raw_material')->insert($data_array);
+		Logbook::insertData($log_array);
 
-		if($data_insert=='true')
-		{
-			$confirmation="Data entered successfully with following detials..";
-			return View::make('rawMaterial.confirm')->with('confirmation',$data_array);
-		}
+		RawMaterial::insertData($data_array);
 
-		else
-			dd("you failed");
+		// if($data_insert == 'true')
+		// {
+		// 	$confirmation = "Data entered successfully with following detials..";
+		// 	return View::make('rawMaterial.confirm')->with('confirmation',$data_array);
+		// }
+
+		// else
+		// 	dd("you failed");
 	}
 
 

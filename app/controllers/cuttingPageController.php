@@ -1,6 +1,6 @@
 <?php
 
-class cuttingPageController extends \BaseController {
+class cuttingPageController extends BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -45,12 +45,13 @@ class cuttingPageController extends \BaseController {
 
 
 		// array for table cutting records
-		$input_array=array(	'date'=>$date,
-			'raw_mat_size'=>$cutting['size'],
-			'heat_no'=>$cutting['heatNo'],
-			'quantity'=>$cutting['quantity'],
-			'weight_per_piece'=>$cutting['wpp'],
-			'total_weight'=>$total_weight,
+		$input_array=array(	
+			'date' => $date,
+			'raw_mat_size' => $cutting['size'],
+			'heat_no' => $cutting['heatNo'],
+			'quantity' => $cutting['quantity'],
+			'weight_per_piece' => $cutting['wpp'],
+			'total_weight' => $total_weight,
 		);
 
 		//recods for log book
@@ -60,35 +61,32 @@ class cuttingPageController extends \BaseController {
 			' Total '.$total_weight;
 
 		$log_array= array(
-					'date' => date("Y-m-d"),
-					'time' => date("h:i:s"),
-					'category'=>'Cutting',
-					'details'=>$details,
-		);
+			'date' => date("Y-m-d"),
+			'time' => date("h:i:s"),
+			'category'=>'Cutting',
+			'details'=>$details,
+			);
 
-		$input_table_logbook= DB::table('logbook')->insert($log_array);
+		Logbook::insertData($log_array);
 
 		// getting the cutting id of the record entered
 		//	this will serve as primary key for other tables for cutting records
 
 
-		$input_table1= DB::table('cutting_records')->insert($input_array);
-		$last_record=DB::table('cutting_records')->orderBy('cutting_id', 'desc')->first();
+		Cutting::insertData($input_array);
+		$last_record = Cutting::getLastRecord();
 
 		//array for cutting item description
 
-		$input_array2= array( 'cutting_id' => $last_record->cutting_id,
-			'item_des'   => $cutting['CutDes'] );
-
-
+		$cutting_des_array = array( 'cutting_id' => $last_record->cutting_id, 'item_des' => $cutting['CutDes'] );
 		// array for cutting remarks table
 
-		$input_array3= array( 'cutting_id' => $last_record->cutting_id,
-			'remarks'   => $cutting['cutRem'] );
+		$cutting_rem_array = array( 'cutting_id' => $last_record->cutting_id, 'remarks' => $cutting['cutRem'] );
 
-		$input_table2= DB::table('cutting_item_des')->insert($input_array2);
-		$input_table3= DB::table('cutting_remarks')->insert($input_array3);
-
+		//Separate models
+		
+		CuttingDes::insertData($cutting_des_array);
+		CuttingRem::insertData($cutting_rem_array);
 
 
 		return View::make('cutting.confirm')->with('last_record',$last_record);
