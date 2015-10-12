@@ -105,7 +105,7 @@ class cuttingPageController extends BaseController {
 		// showing report for cutting material
 		// can be found inside admin pannel
 
-		$last_record=DB::table('cutting_records')->select()->get();
+		$last_record=Cutting::getLastRecord();
 		return View::make('cutting.cutting_report')->with('last_record',$last_record);
 	}
 

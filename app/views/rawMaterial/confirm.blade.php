@@ -35,15 +35,15 @@
                                 <th>Internal No</th>
                             </tr>
                             <tr>
-                                <td>{{ $confirmation['receipt_code']; }}</td>
-                                <td>{{ $confirmation['date']; }}</td>
-                                <td>{{ $confirmation['size']; }}</td>
-                                <td>{{ $confirmation['manufacturer']; }}</td>
-                                <td>{{ $confirmation['heat_no']; }}</td>
-                                <td>{{ $confirmation['weight']; }}</td>
-                                <td>{{ $confirmation['left_over_weight']; }}</td>
-                                <td>{{ $confirmation['material_grade']; }}</td>
-                                <td>{{ $confirmation['raw_material_type']; }}</td>
+                                <td>{{ $confirmation->receipt_code }}</td>
+                                <td>{{ $confirmation->date }}</td>
+                                <td>{{ $confirmation->size }}</td>
+                                <td>{{ $confirmation->manufacturer }}</td>
+                                <td>{{ $confirmation->heat_no }}</td>
+                                <td>{{ $confirmation->weight }}</td>
+                                <td>{{ $confirmation->left_over_weight }}</td>
+                                <td>{{ $confirmation->material_grade }}</td>
+                                <td>{{ $confirmation->raw_material_type }}</td>
                                 <td>Auto Gen.</td>
                             </tr>
                         </table>

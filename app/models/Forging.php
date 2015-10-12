@@ -11,4 +11,9 @@ class Forging extends Eloquent
 	{
 		return DB::table('forging_records')->orderBy('forging_id', 'desc')->first();
 	}
+
+	public static function getAllRecords()
+	{
+		return DB::table('forging_records')->select()->get();
+	}
 }

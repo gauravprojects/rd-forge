@@ -65,6 +65,14 @@ class rawMaterialController extends BaseController {
 
 		RawMaterial::insertData($data_array);
 
+		//get the last entry in raw material table and pass it to confirm blade
+
+		$last_record= RawMaterial::getLastRecord();
+
+
+		return View::make('rawMaterial.confirm')->with('confirmation',$last_record);
+
+
 
 	}
 
@@ -77,7 +85,7 @@ class rawMaterialController extends BaseController {
 	 */
 	public function show()
 	{
-		$raw= DB::table('raw_material')->select()->get();
+		$raw= RawMaterial::getAllData();
 		return View::make('rawMaterial.raw_report')->with('raw',$raw);
 	}
 

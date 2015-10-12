@@ -68,12 +68,12 @@ class ForgingController extends BaseController {
 		$last_record = Forging::getLastRecord();
 
 		//now array for the other table
-		$forging_array2 = array(
+		$forging_remarks_array = array(
 			'forging_id' => $last_record->forging_id,
 			'remarks'	=> $forging_input['remarks']
 		);
 
-		ForgingRem::insertData($forging_array2);
+		ForgingRem::insertData($forging_remarks_array);
 
 		//returning view for confirmation
 		return View::make('forging.confirm')->with('confirmation',$last_record);
@@ -90,7 +90,7 @@ class ForgingController extends BaseController {
 	 */
 	public function show()
 	{
-		$forging_data= DB::table('forging_records')->select()->get();
+		$forging_data= Forging::getAllRecords();
 		return View::make('forging.forging_report')->with('forging_data',$forging_data);
 	}
 
