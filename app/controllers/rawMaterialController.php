@@ -65,14 +65,7 @@ class rawMaterialController extends BaseController {
 
 		RawMaterial::insertData($data_array);
 
-		// if($data_insert == 'true')
-		// {
-		// 	$confirmation = "Data entered successfully with following detials..";
-		// 	return View::make('rawMaterial.confirm')->with('confirmation',$data_array);
-		// }
 
-		// else
-		// 	dd("you failed");
 	}
 
 
@@ -126,7 +119,7 @@ class rawMaterialController extends BaseController {
 
 	public function excel()
 	{
-		$raw= DB::table('raw_material')->select()->get();
+		$raw= RawMaterial::getExcelData();
 		return View::make('rawMaterial.raw_report_excel')->with('raw',$raw);
 
 
