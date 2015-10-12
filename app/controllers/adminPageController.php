@@ -95,8 +95,21 @@ class AdminPageController extends BaseController {
 
 	public function logBook()
 	{
-		$data= DB::table('logbook')->select()->get();
-		return View::make('logBook.log')->with('data',$data);
+		$raw=RawMaterial::getDateData();
+		$cutting= Cutting::getDatedata();
+		$forging= Forging::getDatedata();
+
+		$data_for_log_view = array(
+			'raw' => $raw,
+			'cutting'=>$cutting,
+			'forging'=>$forging
+		);
+
+
+
+
+		//$data= DB::table('logbook')->select()->get();
+		return View::make('logBook.log')->with('data',$data_for_log_view);
 	}
 
 }

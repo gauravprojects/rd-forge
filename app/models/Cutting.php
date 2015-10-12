@@ -11,4 +11,10 @@ class Cutting extends Eloquent
 	{
 		return DB::table('cutting_records')->orderBy('cutting_id', 'desc')->first();
 	}
+
+	public static function getDatedata()
+	{
+		$date=date("Y-m-d");
+		return DB::table('cutting_records')->select()->where('date','=',$date);
+	}
 }

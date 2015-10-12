@@ -10,7 +10,7 @@
         <body>
         <table>
             <tr class="heading">
-                <th>Id</th>
+                <th>Internal no</th>
                 <th>Recipet Code</th>
                 <th>Date</th>
                 <th>Size</th>
@@ -29,7 +29,7 @@
 
             @foreach($raw as $raw_data)
                 <tr>
-                    <td>{{{ $raw_data->id }}}</td>
+                    <td>{{{ $raw_data->internal_no }}}</td>
                     <td>{{{ $raw_data->receipt_code }}}</td>
                     <td>{{{ $raw_data->date }}}</td>
                     <td>{{{ $raw_data->size }}}</td>

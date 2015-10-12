@@ -17,9 +17,15 @@ class RawMaterial extends Eloquent
 		return DB::table('raw_material')->select()->get();
 	}
 
+	public static function getDateData()
+	{
+		$date=date("Y-m-d");
+		return DB::table('raw_material')->select()->where('date','=',$date)->get();
+	}
+
 
 	public static function getLastRecord()
 	{
-		return DB::table('raw_material')->orderBy('id', 'desc')->first();
+		return DB::table('raw_material')->orderBy('internal_no', 'desc')->first();
 	}
 }

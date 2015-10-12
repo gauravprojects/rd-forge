@@ -17,7 +17,7 @@
                 <div class="row">
                     <table>
                         <tr class="heading">
-                            <th>Id</th>
+                            <th>Internal No</th>
                             <th>Recipet Code</th>
                             <th>Date</th>
                             <th>Size</th>
@@ -27,12 +27,12 @@
                             <th>Left Over Weight</th>
                             <th>Material Type</th>
                             <th>Material Grade</th>
-                            <th>Internal No</th>
+
                         </tr>
 
                         @foreach($raw as $raw_data)
                             <tr>
-                                <td>{{{ $raw_data->id }}}</td>
+                                <td>{{{ $raw_data->internal_no }}}</td>
                                 <td>{{{ $raw_data->receipt_code }}}</td>
                                 <td>{{{ $raw_data->date }}}</td>
                                 <td>{{{ $raw_data->size }}}</td>
@@ -42,7 +42,6 @@
                                 <td>{{{ $raw_data->left_over_weight }}}</td>
                                 <td>{{{ $raw_data->material_grade }}}</td>
                                 <td>{{{ $raw_data->raw_material_type }}}</td>
-                                <td>Auto gen</td>
                             </tr>
 
 

@@ -16,4 +16,10 @@ class Forging extends Eloquent
 	{
 		return DB::table('forging_records')->select()->get();
 	}
+
+	public static function getDatedata()
+	{
+		$date=date("Y-m-d");
+		return DB::table('forging_records')->select()->where('date','=',$date);
+	}
 }
