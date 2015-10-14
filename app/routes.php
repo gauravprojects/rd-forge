@@ -166,3 +166,11 @@
 
 	));
 
+
+	// ROUTES FOR MACHINGING DATA
+
+	//for going to maching form
+	Route::get('/machining',array('uses'=>'machiningController@index','as'=>'machining'));
+
+	//store data from maching form
+	Route::post('/machining',array('uses'=>'machiningController@store','as'=>'machining.store'));

@@ -17,6 +17,8 @@
                         <li><a href="{{action('cuttingPageController@index')}}" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 waves-effect waves-light btn link">Cutting </a></li>
                         
                         <li><a href="{{action('forgingController@index')}}" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 waves-effect waves-light btn link">Forging</a></li>
+
+                        <li><a href="{{action('machiningController@index')}}" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 waves-effect waves-light btn link">Machining</a></li>
                     </ul>
                 </div>
                 <div class="row">

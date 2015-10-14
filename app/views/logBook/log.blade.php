@@ -224,9 +224,10 @@
                                         <th>Remarks</th>
                                     </tr>
 
+                                <!-- Work order log book to setted up here -->
+                                    <!-- See and try and use joins here tomake the process better -->
 
 
-                                    
 
                                 </table>
 
@@ -241,6 +242,7 @@
     <!-- content container ends -->
 </div>
 <!-- container ends -->
+
 <script type="text/javascript">
     // tab
 
