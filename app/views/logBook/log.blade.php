@@ -24,32 +24,6 @@
     {{ HTML::style('css/indexLog.css') }}
     {{ HTML::style('css/logMod.css') }}
 </head>
-
-
-<table>
-</tr>
-
-@foreach($data as $raw => $raw_data)
-    @foreach($raw_data as $indivisual)
-
-
-        <tr>
-            <td>{{ $indivisual->internal_no }}</td>
-            <td>{{ $indivisual->receipt_code }}</td>
-            <td>{{ $indivisual->size }}</td>
-            <td>{{ $indivisual->manufacturer }}</td>
-            <td>{{ $indivisual->heat_no }}</td>
-            <td>{{ $indivisual->weight }}</td>
-            <td>{{ $indivisual->left_over_weight }}</td>
-            <td>{{ $indivisual->material_grade }}</td>
-            <td>{{ $indivisual->raw_material_type }}</td>
-            {{ dd() }}
-        </tr>
-
-    @endforeach
-@endforeach
-</table>
-
 <body>
 
 <!-- container starts -->
@@ -96,27 +70,25 @@
                                             <th>Material Grade</th>
 
                                         </tr>
-                                        @foreach($data as $raw => $raw_data)
-                                            @foreach($raw_data as $indivisual)
+                                        <?php $raw= DB::table('raw_material')->select()
+                                                ->where('date','=',date("Y-m-d"))
+                                                ->get(); ?>
 
 
-                                                <tr>
-                                                    <td>{{ $indivisual->internal_no }}</td>
-                                                    <td>{{ $indivisual->receipt_code }}</td>
-                                                    <td>{{ $indivisual->size }}</td>
-                                                    <td>{{ $indivisual->manufacturer }}</td>
-                                                    <td>{{ $indivisual->heat_no }}</td>
-                                                    <td>{{ $indivisual->weight }}</td>
-                                                    <td>{{ $indivisual->left_over_weight }}</td>
-                                                    <td>{{ $indivisual->material_grade }}</td>
-                                                    <td>{{ $indivisual->raw_material_type }}</td>
-                                                    {{ dd() }}
-                                                </tr>
+                                        @foreach($raw as $raw_data)
+                                            <tr>
+                                                <td>{{ $raw_data->internal_no }}</td>
+                                                <td>{{ $raw_data->receipt_code }}</td>
+                                                <td>{{ $raw_data->size }}</td>
+                                                <td>{{ $raw_data->manufacturer }}</td>
+                                                <td>{{ $raw_data->heat_no }}</td>
+                                                <td>{{ $raw_data->weight }}</td>
+                                                <td>{{ $raw_data->left_over_weight }}</td>
+                                                <td>{{ $raw_data->raw_material_type }}</td>
+                                                <td>{{ $raw_data->material_grade }}</td>
+                                            </tr>
 
-                                            @endforeach
                                         @endforeach
-
-
 
                                     </table>
 
@@ -137,63 +109,45 @@
                         <div class="card">
                             <div class="row text-center">
                                 <div class="heading">
-                                    <span>Lorem Ipsum Doler</span>
+                                    <span>Cutting records log</span><br>
+                                    <span>Date: {{ date("Y-m-d") }}</span>
                                 </div>
                             </div>
 
                             <div class="row">
-                                <form>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Name of material</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Steel">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Choose Material</label>
-                                        <select class="form-control">
-                                            <option>opt.1</option>
-                                            <option>opt.2</option>
-                                            <option>opt.3</option>
-                                            <option>opt.4</option>
-                                            <option>opt.5</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Choose weight</label>
-                                        <select class="form-control">
-                                            <option>opt.1</option>
-                                            <option>opt.2</option>
-                                            <option>opt.3</option>
-                                            <option>opt.4</option>
-                                            <option>opt.5</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Choose Quantitiy</label>
-                                        <select class="form-control">
-                                            <option>opt.1</option>
-                                            <option>opt.2</option>
-                                            <option>opt.3</option>
-                                            <option>opt.4</option>
-                                            <option>opt.5</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Choose Something</label>
-                                        <select class="form-control">
-                                            <option>opt.1</option>
-                                            <option>opt.2</option>
-                                            <option>opt.3</option>
-                                            <option>opt.4</option>
-                                            <option>opt.5</option>
-                                        </select>
-                                    </div>
 
 
-                                    <a class="waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button">Submit</a>
-                                </form>
+                                    <table>
+                                        <tr class="heading">
+                                            <th>Cutting Id</th>
+                                            <th>Date</th>
+                                            <th>Size</th>
+                                            <th>Heat No</th>
+                                            <th>Quantity</th>
+                                            <th>Weight per piece</th>
+                                            <th>Total Weight</th>
+                                        </tr>
+                                        <?php $cutting=DB::table('cutting_records')->select()
+                                              ->where('date','=',date("Y-m-d"))
+                                                ->get(); ?>
+
+                                        @foreach($cutting as $cutting_data)
+                                        <tr>
+
+                                                <td>{{{ $cutting_data->cutting_id }}}</td>
+                                                <td>{{{ $cutting_data->date }}}</td>
+                                                <td>{{{ $cutting_data->raw_mat_size }}}</td>
+                                                <td>{{{ $cutting_data->heat_no  }}}</td>
+                                                <td>{{{ $cutting_data->quantity }}}</td>
+                                                <td>{{{ $cutting_data->weight_per_piece }}}</td>
+                                                <td>{{{ $cutting_data->total_weight }}}</td>
+                                        </tr>
+                                        @endforeach
+
+
+
+                                    </table>
+
                             </div>		<!-- row conatining form ends here -->
                         </div>		<!-- card ends here -->
                     </div>		<!-- wrapper ends here -->
@@ -208,63 +162,38 @@
                         <div class="card">
                             <div class="row text-center">
                                 <div class="heading">
-                                    <span>Lorem Ipsum Doler</span>
+                                    <span>Forging Records log</span><br>
+                                    <span>Date: {{ date("Y-m-d") }}</span>
                                 </div>
                             </div>
 
+
                             <div class="row">
-                                <form>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Name of material</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Steel">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Choose Material</label>
-                                        <select class="form-control">
-                                            <option>opt.1</option>
-                                            <option>opt.2</option>
-                                            <option>opt.3</option>
-                                            <option>opt.4</option>
-                                            <option>opt.5</option>
-                                        </select>
-                                    </div>
+                                <table>
+                                    <tr class="heading">
+                                        <th>Forging ID</th>
+                                        <th>Date</th>
+                                        <th>Forging Description</th>
+                                        <th>Weight per peice</th>
+                                        <th>Heat no</th>
+                                        <th>Quantity</th>
+                                        <th>Total Weight</th>
+                                    </tr>
+                                  <?php $forging= DB::table('forging_records')->select()->where('date','=',date("Y-m-d"))
+                                        ->get(); ?>
+                                    @foreach($forging as $forging_data)
+                                        <tr>
+                                            <td>{{ $forging_data->forging_id }}</td>
+                                            <td>{{ $forging_data->date }}</td>
+                                            <td>{{ $forging_data->forged_des }}</td>
+                                            <td>{{ $forging_data->weight_per_piece }}</td>
+                                            <td>{{ $forging_data->heat_no }}</td>
+                                            <td>{{ $forging_data->quantity }}</td>
+                                            <td>{{ $forging_data->total_weight }}</td>
+                                        </tr>
+                                    @endforeach
+                                </table>
 
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Choose weight</label>
-                                        <select class="form-control">
-                                            <option>opt.1</option>
-                                            <option>opt.2</option>
-                                            <option>opt.3</option>
-                                            <option>opt.4</option>
-                                            <option>opt.5</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Choose Quantitiy</label>
-                                        <select class="form-control">
-                                            <option>opt.1</option>
-                                            <option>opt.2</option>
-                                            <option>opt.3</option>
-                                            <option>opt.4</option>
-                                            <option>opt.5</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Choose Something</label>
-                                        <select class="form-control">
-                                            <option>opt.1</option>
-                                            <option>opt.2</option>
-                                            <option>opt.3</option>
-                                            <option>opt.4</option>
-                                            <option>opt.5</option>
-                                        </select>
-                                    </div>
-
-
-                                    <a class="waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button">Submit</a>
-                                </form>
                             </div>		<!-- row conatining form ends here -->
                         </div>		<!-- card ends here -->
                     </div>		<!-- wrapper ends here -->
@@ -278,63 +207,30 @@
                         <div class="card">
                             <div class="row text-center">
                                 <div class="heading">
-                                    <span>Lorem Ipsum Doler</span>
+                                    <span>Work Order log</span><br>
+                                    <span>Date: {{ date("Y-m-d") }}</span>
                                 </div>
                             </div>
 
                             <div class="row">
-                                <form>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Name of material</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Steel">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Choose Material</label>
-                                        <select class="form-control">
-                                            <option>opt.1</option>
-                                            <option>opt.2</option>
-                                            <option>opt.3</option>
-                                            <option>opt.4</option>
-                                            <option>opt.5</option>
-                                        </select>
-                                    </div>
+                                <table>
 
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Choose weight</label>
-                                        <select class="form-control">
-                                            <option>opt.1</option>
-                                            <option>opt.2</option>
-                                            <option>opt.3</option>
-                                            <option>opt.4</option>
-                                            <option>opt.5</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Choose Quantitiy</label>
-                                        <select class="form-control">
-                                            <option>opt.1</option>
-                                            <option>opt.2</option>
-                                            <option>opt.3</option>
-                                            <option>opt.4</option>
-                                            <option>opt.5</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Choose Something</label>
-                                        <select class="form-control">
-                                            <option>opt.1</option>
-                                            <option>opt.2</option>
-                                            <option>opt.3</option>
-                                            <option>opt.4</option>
-                                            <option>opt.5</option>
-                                        </select>
-                                    </div>
+                                    <tr>
+                                        <th>Work Order No</th>
+                                        <th>Description</th>
+                                        <th>Material Grade</th>
+                                        <th>Quantity</th>
+                                        <th>Weight</th>
+                                        <th>Remarks</th>
+                                    </tr>
 
 
-                                    <a class="waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button">Submit</a>
-                                </form>
+
+                                    
+
+                                </table>
+
+
                             </div>		<!-- row conatining form ends here -->
                         </div>		<!-- card ends here -->
                     </div>		<!-- wrapper ends here -->
