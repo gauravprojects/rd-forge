@@ -88,6 +88,7 @@ class DrillingController extends \BaseController {
 
 	public function excel()
 	{
+		
 		$all_data= Drilling::getAllData();
 		return View::make('drilling.drilling_report_excel')->with('data',$all_data);
 	}

@@ -47,7 +47,7 @@
 
                         <div class="span9 btn-block excelPrint">
                             <button class="btn btn-small btn-block" type="button" id="excel_button">
-                                <a href="<?php echo  route('raw.excel'); ?>" class="link" >Generate Report in Excel</a>
+                                <a href="<?php echo  route('drilling.excel'); ?>" class="link" >Generate Report in Excel</a>
                             </button>
                         </div>
                     </div>		<!-- row conatining form ends here -->
