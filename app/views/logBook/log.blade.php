@@ -240,6 +240,55 @@
         </div> 		<!-- tab4 card ends -->
     </div>
     <!-- content container ends -->
+
+
+    <div id="tab3" class="content">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="row">
+                <div class="wrapper">
+                    <div class="card">
+                        <div class="row text-center">
+                            <div class="heading">
+                                <span>Forging Records log</span><br>
+                                <span>Date: {{ date("Y-m-d") }}</span>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <table>
+                                <tr class="heading">
+                                    <th>Forging ID</th>
+                                    <th>Date</th>
+                                    <th>Forging Description</th>
+                                    <th>Weight per peice</th>
+                                    <th>Heat no</th>
+                                    <th>Quantity</th>
+                                    <th>Total Weight</th>
+                                </tr>
+                                <?php $forging= DB::table('forging_records')->select()->where('date','=',date("Y-m-d"))
+                                        ->get(); ?>
+                                @foreach($forging as $forging_data)
+                                    <tr>
+                                        <td>{{ $forging_data->forging_id }}</td>
+                                        <td>{{ $forging_data->date }}</td>
+                                        <td>{{ $forging_data->forged_des }}</td>
+                                        <td>{{ $forging_data->weight_per_piece }}</td>
+                                        <td>{{ $forging_data->heat_no }}</td>
+                                        <td>{{ $forging_data->quantity }}</td>
+                                        <td>{{ $forging_data->total_weight }}</td>
+                                    </tr>
+                                @endforeach
+                            </table>
+
+                        </div>		<!-- row conatining form ends here -->
+                    </div>		<!-- card ends here -->
+                </div>		<!-- wrapper ends here -->
+            </div>		<!-- row ends here -->
+        </div> 		<!-- col-12 ends here -->
+    </div> 		<!-- tab3 card ends -->
+
+
 </div>
 <!-- container ends -->
 

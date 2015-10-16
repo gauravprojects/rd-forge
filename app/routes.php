@@ -170,7 +170,58 @@
 	// ROUTES FOR MACHINGING DATA
 
 	//for going to maching form
-	Route::get('/machining',array('uses'=>'machiningController@index','as'=>'machining'));
+	Route::get('/machining',array(
+		'uses'=>'machiningController@index',
+		'as'=>'machining'
+	));
 
 	//store data from maching form
-	Route::post('/machining',array('uses'=>'machiningController@store','as'=>'machining.store'));
+	Route::post('/machining',array(
+
+		'uses'=>'machiningController@store',
+		'as'=>'machining.store'
+	));
+
+	// to show reports for machining entries
+
+	Route::get('machining/reports',array(
+		'uses'=>'machiningController@show',
+		'as'=>'machining.report'
+	));
+
+	// to move data to the excel sheets
+
+	Route::get('machining/reports/excel',array(
+		'as' =>	'machining.excel',
+		'uses'=> 'machiningController@excel'
+
+	));
+
+
+//ROUTES FOR DRILLING PAGE
+
+
+//route to get to the drilling page
+Route::get('/drilling',array(
+	'as' => 'drilling',
+	'uses'=>'drillingController@index'
+));
+
+
+//route ot get to store the drillig page information
+Route::post('/drilling',array(
+	'as' => 'drilling.store',
+	'uses' => 'drillingController@store'
+));
+
+//route to show report for drilling page
+Route::get('drilling/report',array(
+	'as' => 'drilling.report',
+	'uses' => 'drillingController@show'
+));
+
+//route to show reports in excel
+Route::get('drilling/report/excel',array(
+	'as'=>'drilling.excel',
+	'uses'=>'drillingController@excel'
+));

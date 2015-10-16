@@ -33,7 +33,7 @@ class machiningController extends \BaseController {
 	{
 		$input_data= Input::all();
 
-		$input_array= array(
+		$input_array_machining_table= array(
 				'date' => date("Y-m-d"),
 				'work_order_no' => $input_data['work_order_no'] ,
 				'item'  	=> $input_data['item'],
@@ -45,11 +45,26 @@ class machiningController extends \BaseController {
 				'weight'	=> $input_data['weight']
 		);
 
-		$input_response= Machining::insertData($input_array);
+
+
+		$input_response_machining_table= Machining::insertData($input_array_machining_table);
+
+
+
 
 		//get last record
 
 		$last_record= Machining::getLastRecord();
+
+		// now insert remarks data using the mach_id obtained form last record
+
+		$input_array_machining_remarks= array(
+			'mach_id' => $last_record->mach_id,
+			'remarks' => $input_data['remarks']
+		);
+
+		$input_response_machining_remarks= Machining::insertRemarks($input_array_machining_remarks);
+
 		return View::make('machining.confirm')->with('data',$last_record);
 
 	}
@@ -61,11 +76,18 @@ class machiningController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show()
 	{
-		//
+		$all_data= Machining::getAllData();
+		return View::make('machining.machining_report')->with('data',$all_data);
 	}
 
+	public function excel()
+	{
+
+		$all_data=Machining::getAllData();
+		return View::make('machining.machining_report_excel')->with('data',$all_data);
+	}
 
 	/**
 	 * Show the form for editing the specified resource.

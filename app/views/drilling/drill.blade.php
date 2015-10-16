@@ -7,12 +7,12 @@
                 <div class="card">
                     <div class="row text-center">
                         <div class="heading">
-                            <span>Machining Entry</span>
+                            <span>Drilling Entry</span>
                         </div>
                     </div>
 
                     <div class="row">
-                        {{ Form::open(array('action'=> 'machiningController@store')) }}
+                        {{ Form::open(array('action'=> 'drillingController@store')) }}
                                 <!-- For recipt number of the material coming from outside -->
 
                         <!-- For WORK ORDER NUMBER -->
