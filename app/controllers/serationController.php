@@ -1,21 +1,21 @@
 <?php
 
-class DrillingController extends \BaseController {
+class SerationController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
-	 * GET /drilling
+	 * GET /seration
 	 *
 	 * @return Response
 	 */
 	public function index()
 	{
-		return View::make('drilling.drill');
+		return View::make('seration.seration');
 	}
 
 	/**
 	 * Show the form for creating a new resource.
-	 * GET /drilling/create
+	 * GET /seration/create
 	 *
 	 * @return Response
 	 */
@@ -26,7 +26,7 @@ class DrillingController extends \BaseController {
 
 	/**
 	 * Store a newly created resource in storage.
-	 * POST /drilling
+	 * POST /seration
 	 *
 	 * @return Response
 	 */
@@ -34,7 +34,7 @@ class DrillingController extends \BaseController {
 	{
 		$input_data= Input::all();
 
-		$input_array_drilling_table= array(
+		$input_array_seration_table= array(
 			'date' => date("Y-m-d"),
 			'work_order_no' => $input_data['work_order_no'] ,
 			'item'  	=> $input_data['item'],
@@ -45,54 +45,51 @@ class DrillingController extends \BaseController {
 			'grade' => $input_data['grade']
 		);
 
-
-		$input_response_drilling_table=Drilling::insertData($input_array_drilling_table);
+		$input_response_seration_table=Seration::insertData($input_array_seration_table);
 
 		//get last record
 
-		$last_record= Drilling::getLastRecord();
+		$last_record=Seration::getLastRecord();
 
 		// now insert remarks data using the mach_id obtained form last record
 
-		$input_array_drilling_remarks= array(
-			'drilling_id' => $last_record->drilling_id,
+		$input_array_seration_remarks= array(
+			'seration_id' => $last_record->seration_id,
 			'remarks' => $input_data['remarks']
 		);
 
-		$input_response_drilling_remarks= Drilling::getLastRecord();
+		$input_response_seration_remarks= Seration::insertRemarks($input_array_seration_remarks);
 
-		return View::make('drilling.confirm')->with('data',$last_record);
-
+		return View::make('seration.confirm')->with('data',$last_record);
 	}
 
 	/**
 	 * Display the specified resource.
-	 * GET /drilling/{id}
+	 * GET /seration/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function show()
 	{
-		$all_data= Drilling::getAllData();
-		return View::make('drilling.drilling_report')->with('data',$all_data);
+		$all_data=Seration::getAllData();
+		return View::make('seration.seration_report')->with('data',$all_data);
+	}
+
+	public function excel()
+	{
+		$all_data=Seration::getAllData();
+		return View::make('seration.seration_report_excel')->with('data',$all_data);
+
 	}
 
 	/**
 	 * Show the form for editing the specified resource.
-	 * GET /drilling/{id}/edit
+	 * GET /seration/{id}/edit
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
-
-	public function excel()
-	{
-
-		$all_data= Drilling::getAllData();
-		return View::make('drilling.drilling_report_excel')->with('data',$all_data);
-	}
-
 	public function edit($id)
 	{
 		//
@@ -100,7 +97,7 @@ class DrillingController extends \BaseController {
 
 	/**
 	 * Update the specified resource in storage.
-	 * PUT /drilling/{id}
+	 * PUT /seration/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -112,7 +109,7 @@ class DrillingController extends \BaseController {
 
 	/**
 	 * Remove the specified resource from storage.
-	 * DELETE /drilling/{id}
+	 * DELETE /seration/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response

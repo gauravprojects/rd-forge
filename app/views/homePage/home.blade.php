@@ -20,6 +20,7 @@
 
                         <li><a href="{{action('machiningController@index')}}" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 waves-effect waves-light btn link">Machining</a></li>
                         <li><a href="{{action('drillingController@index')}}" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 waves-effect waves-light btn link">Drilling</a></li>
+                        <li><a href="{{action('serationController@index')}}" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 waves-effect waves-light btn link">Seration</a></li>
                     </ul>
                 </div>
                 <div class="row">

@@ -225,3 +225,32 @@ Route::get('drilling/report/excel',array(
 	'as'=>'drilling.excel',
 	'uses'=>'drillingController@excel'
 ));
+
+// ROUTES FOR SERATION PAGE
+
+//route to get to the drilling page
+Route::get('/seration',array(
+	'as' => 'seration',
+	'uses'=>'serationController@index'
+));
+
+
+//route ot get to store the drillig page information
+Route::post('/seration',array(
+	'as' => 'seration.store',
+	'uses' => 'serationController@store'
+));
+
+//route to show report for drilling page
+Route::get('seration/report',array(
+	'as' => 'seration.report',
+	'uses' => 'serationController@show'
+));
+
+//route to show reports in excel
+Route::get('seration/report/excel',array(
+	'as'=>'seration.excel',
+	'uses'=>'serationController@excel'
+));
+
+
