@@ -40,6 +40,18 @@
 
 	));
 
+	// to update if any wrong record is entered
+	Route::get('/raw/update/{id}',array(
+		'as' => 'raw.update',
+		'uses'=> 'rawMaterialController@update'
+	));
+
+	//to store the updated data
+	Route::post('/raw/update/{id}',array(
+		'as' => 'raw.update_store',
+		'uses'=>'rawMaterialController@update_store'
+));
+
 	                //ROUTES TO STORE CUTTING DATA MATERIAL
 
 	//route to get to cutting materials form page

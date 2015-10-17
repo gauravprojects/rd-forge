@@ -48,6 +48,12 @@
                                 <td>{{ $confirmation->raw_material_type }}</td>
                             </tr>
                         </table>
+
+                        <div class="span9 btn-block excelPrint">
+                            <button class="btn btn-small btn-block" type="button" id="excel_button">
+                                <a href="{{ action('rawMaterialController@update',array('id'=>$confirmation->internal_no))}}" class="link" >Update</a>
+                            </button>
+                        </div>
                         <br><br><br><br>
                     </div>		<!-- row conatining form ends here -->
                 </div>		<!-- card ends here -->

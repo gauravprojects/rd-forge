@@ -28,4 +28,9 @@ class RawMaterial extends Eloquent
 	{
 		return DB::table('raw_material')->orderBy('internal_no', 'desc')->first();
 	}
+
+	public static function getRecord($id)
+	{
+		return DB::table('raw_material')->select()->where('internal_no','=',$id)->get();
+	}
 }
