@@ -73,22 +73,41 @@ class cuttingPageController extends BaseController {
 		//	this will serve as primary key for other tables for cutting records
 
 
-		Cutting::insertData($input_array);
-		$last_record = Cutting::getLastRecord();
 
-		//array for cutting item description
+		DB::beginTransaction();
+		try {
 
-		$cutting_des_array = array( 'cutting_id' => $last_record->cutting_id, 'item_des' => $cutting['CutDes'] );
-		// array for cutting remarks table
+			$cutting_response=Cutting::insertData($input_array);
+			$last_record = Cutting::getLastRecord();
 
-		$cutting_rem_array = array( 'cutting_id' => $last_record->cutting_id, 'remarks' => $cutting['cutRem'] );
+			//array for cutting item description
 
-		//Separate models
-		
-		CuttingDes::insertData($cutting_des_array);
-		CuttingRem::insertData($cutting_rem_array);
+			$cutting_des_array = array('cutting_id' => $last_record->cutting_id, 'item_des' => $cutting['CutDes']);
+			// array for cutting remarks table
 
+			$cutting_rem_array = array('cutting_id' => $last_record->cutting_id, 'remarks' => $cutting['cutRem']);
 
+			//Separate models
+
+			$cutting_des_response=CuttingDes::insertData($cutting_des_array);
+
+			$cutting_rem_response=CuttingRem::insertData($cutting_rem_array);
+
+			if( $cutting_des_response && $cutting_rem_response && $cutting_response)
+			{
+
+				//successful
+				DB::commit();
+			}
+
+		}
+		catch(\Exception $e)
+		{
+			DB::rollback();
+			return Redirect::to('/cutting')
+				->withErrors($e ->getErrors())
+				->withInput();
+		}
 		return View::make('cutting.confirm')->with('last_record',$last_record);
 
 	}
