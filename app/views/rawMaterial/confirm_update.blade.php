@@ -35,7 +35,7 @@
                                 <th>Material Grade</th>
 
                             </tr>
-
+                            @foreach($confirmations as $confirmation)
                             <tr>
                                 <td>{{ $confirmation->internal_no }}</td>
                                 <td>{{ $confirmation->receipt_code }}</td>
@@ -48,17 +48,15 @@
                                 <td>{{ $confirmation->material_grade }}</td>
                                 <td>{{ $confirmation->raw_material_type }}</td>
                             </tr>
+                            @endforeach
+
+
 
                         </table>
 
                         <div class="span9 btn-block excelPrint">
                             <button class="btn btn-small btn-block" type="button" id="excel_button">
                                 <a href="{{ action('rawMaterialController@update',array('id'=>$confirmation->internal_no))}}" class="link" >Update</a>
-                            </button>
-                        </div>
-                        <div class="span9 btn-block excelPrint">
-                            <button class="btn btn-small btn-block" type="button" id="excel_button">
-                                <a href="{{ action('rawMaterialController@index')  }}" class="link" >New Raw Material Entry</a>
                             </button>
                         </div>
                         <br><br><br><br>
