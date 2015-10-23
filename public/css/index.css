@@ -208,3 +208,17 @@ input:hover{
 .wrapperHome{
 	padding: 7% 20% 0 20%;
 }
+
+#left-col
+{
+	width:400px;
+	float: left;
+}
+#right-col
+{
+
+	margin-left: 100px;
+	width: 200px;
+	float: left;
+
+}

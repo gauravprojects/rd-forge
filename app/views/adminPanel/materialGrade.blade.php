@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="row text-center">
                         <div class="heading">
-                            <span>Manufacturers</span>
+                            <span>Material Grades</span>
                         </div>
                     </div>
 
@@ -16,20 +16,18 @@
                         <table>
                             <tr class="heading">
                                 <th>No</th>
-                                <th>Manufacturer's Name</th>
-                                <th>Item</th>
+                                <th>Grades</th>
                                 <th>Action</th>
                             </tr>
                             <?php $count=0; ?>
-                            @foreach($data as $manufac_data)
+                            @foreach($data as $grades_data)
                                 <tr>
                                     <td>{{ ++$count; }}</td>
-                                    <td>{{ $manufac_data->manufacturer_name }}</td>
-                                    <td>{{ $manufac_data->item }}</td>
+                                    <td>{{ $grades_data->grade_name }}</td>
                                     <td>
                                         <div class="span9 btn-block excelPrint">
                                             <button class="btn btn-small btn-block" type="button" id="excel_button">
-                                                <a href="{{ action('masterController@deleteManufacturer',array('id'=>$manufac_data->id));}}" class="link" >Delete</a>
+                                                <a href="{{ action('masterController@deleteGrades',array('id'=>$grades_data->id));}}" class="link" >Delete</a>
                                             </button>
                                         </div>
 
@@ -41,32 +39,19 @@
                     </div>		<!-- row conatining form ends here -->
                     <div class="row" id="right-col">
 
-                        <p class="heading">Add Manufacturer's here</p>
-                        {{ Form::open(array('action'=> 'masterController@storeManufacturers')) }}
+                        <p class="heading">Add Grade here</p>
+                        {{ Form::open(array('action'=> 'masterController@storeGrades')) }}
                                 <!-- For recipt number of the material coming from outside -->
 
 
                         <div class="form-group">
-                            {{ Form::label('exampleInputEmail1','Manufacturer Name') }}
-                            {{ Form::text('manufacturer_name',null,array('class'=>'form-control','placeholder'=>'Manufacturer name','id'=>'anything')) }}
-                        </div>
-
-                        <div class="form-group">
-                        {{ Form::label('exampleInputPassword','Item') }}
-
-                        <select class="form-control" name="item">
-
-                            <option value="Ingot">Ingot</option>
-                            <option value="F.O.">F.O.</option>
-                            <option value="Blooms">Blooms</option>
-                            <option value="Die Forging">Die Forging</option>
-                            <option value="Shaft">Shaft</option>
-                        </select>
+                            {{ Form::label('exampleInputEmail1','Grade Name') }}
+                            {{ Form::text('grade_name',null,array('class'=>'form-control','placeholder'=>'Material Grade name','id'=>'anything')) }}
                         </div>
 
                         <div class="loginButton">
 
-                            {{ Form::submit('Add Manufactures',array('class'=>'waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button')) }}
+                            {{ Form::submit('Add Grades',array('class'=>'waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button')) }}
                         </div>
                         {{ Form::close() }}
                     </div>

@@ -284,3 +284,19 @@ Route::get('admin/manufacturers/{id}',array(
 	'as' => 'manufacturer.delete',
 	'uses' => 'masterController@deleteManufacturer'
 ));
+
+
+Route::get('admin/grades',array(
+	'as' => 'materialGrade.show',
+	'uses' => 'masterController@showGrades'
+));
+
+Route::post('admin/grades',array(
+	'as' => 'materialGrade.store',
+	'uses'=> 'masterController@storeGrades'
+));
+
+Route::get('admin/grades/{id}',array(
+	'as' => 'materialGrade.delete',
+	'uses' => 'masterController@deleteGrades'
+));

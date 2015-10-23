@@ -32,8 +32,44 @@ class MasterController extends \BaseController {
 	{
 		$delete_response=Manufactures::deleteManufacturer($id);
 		$data= Manufactures::getManufactures();
-		return View::make('adminPanel.manufactures')->with('data',$data);
+		return View::make('adminPanel.materialGrade')->with('data',$data);
 
 	}
+
+
+
+	public function showGrades()
+	{
+		$data= Grades::getGrades();
+		return View::make('adminPanel.materialGrade')->with('data',$data);
+	}
+
+	public function storeGrades()
+	{
+		//to store the manufacturer data
+		$input_array= Input::all();
+
+
+		$input= array(
+			'grade_name'=>$input_array['grade_name']
+		);
+
+		$input_response= Grades::insertGrades($input);
+
+		$data= Grades::getGrades();
+		return View::make('adminPanel.materialGrade')->with('data',$data);
+
+	}
+
+
+	public function deleteGrades($id)
+	{
+		$delete_response=Grades::deleteGrades($id);
+		$data= Grades::getGrades();
+		return View::make('adminPanel.materialGrade')->with('data',$data);
+
+
+	}
+
 
 }

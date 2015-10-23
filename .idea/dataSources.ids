@@ -88,6 +88,11 @@
       <column name="weight" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="mach_id"/>
     </table>
+    <table name="master_grades" schema="" catalog="rdforge" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="grade_name" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
     <table name="master_manufacturers" schema="" catalog="rdforge" type="TABLE">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="manufacturer_name" sqlType="VARCHAR" precision="25" scale="0" nullable="false" jdbcType="12"/>
