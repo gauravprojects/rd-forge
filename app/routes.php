@@ -300,3 +300,22 @@ Route::get('admin/grades/{id}',array(
 	'as' => 'materialGrade.delete',
 	'uses' => 'masterController@deleteGrades'
 ));
+
+
+
+
+
+Route::get('admin/sizes',array(
+	'as' => 'sizes.show',
+	'uses' => 'masterController@showSizes'
+));
+
+Route::post('admin/sizes',array(
+	'as' => 'sizes.store',
+	'uses'=> 'masterController@storeSizes'
+));
+
+Route::get('admin/sizes/{id}',array(
+	'as' => 'sizes.delete',
+	'uses' => 'masterController@deleteSizes'
+));

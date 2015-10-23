@@ -72,4 +72,40 @@ class MasterController extends \BaseController {
 	}
 
 
+
+	public function showSizes()
+	{
+		$data= Sizes::getSizes();
+		return View::make('adminPanel.sizes')->with('data',$data);
+	}
+
+	public function storeSizes()
+	{
+		//to store the manufacturer data
+		$input_array= Input::all();
+
+
+		$input= array(
+			'size'=>$input_array['size']
+		);
+
+		$input_response= Sizes::insertSizes($input);
+		$data= Sizes::getSizes();
+		return View::make('adminPanel.sizes')->with('data',$data);
+
+
+	}
+
+
+	public function deleteSizes($id)
+	{
+		$delete_response=Sizes::deleteSizes($id);
+		$data= Sizes::getSizes();
+		return View::make('adminPanel.sizes')->with('data',$data);
+
+
+	}
+
+
+
 }

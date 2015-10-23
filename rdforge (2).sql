@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 23, 2015 at 03:14 PM
+-- Generation Time: Oct 23, 2015 at 05:49 PM
 -- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -340,6 +340,26 @@ INSERT INTO `mach_remarks` (`mach_id`, `remarks`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `master_grades`
+--
+
+CREATE TABLE IF NOT EXISTS `master_grades` (
+`id` int(7) NOT NULL,
+  `grade_name` varchar(30) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `master_grades`
+--
+
+INSERT INTO `master_grades` (`id`, `grade_name`) VALUES
+(3, 'SA 105'),
+(4, 'SA 266 GR-2'),
+(5, 'SA 266 GR-4');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `master_manufacturers`
 --
 
@@ -347,15 +367,25 @@ CREATE TABLE IF NOT EXISTS `master_manufacturers` (
 `id` int(7) NOT NULL,
   `manufacturer_name` varchar(25) NOT NULL,
   `item` varchar(20) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `master_manufacturers`
 --
 
 INSERT INTO `master_manufacturers` (`id`, `manufacturer_name`, `item`) VALUES
-(6, 'gaurav', 'Ingot'),
-(7, 'royal steel', 'Die Forging');
+(9, 'india', 'Ingot');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `master_sizes`
+--
+
+CREATE TABLE IF NOT EXISTS `master_sizes` (
+`id` int(7) NOT NULL,
+  `size` varchar(20) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 -- --------------------------------------------------------
 
@@ -748,9 +778,21 @@ ALTER TABLE `mach_remarks`
  ADD PRIMARY KEY (`mach_id`);
 
 --
+-- Indexes for table `master_grades`
+--
+ALTER TABLE `master_grades`
+ ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `master_manufacturers`
 --
 ALTER TABLE `master_manufacturers`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `master_sizes`
+--
+ALTER TABLE `master_sizes`
  ADD PRIMARY KEY (`id`);
 
 --
@@ -823,10 +865,20 @@ MODIFY `log_id` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=68;
 ALTER TABLE `machining_records`
 MODIFY `mach_id` int(7) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
+-- AUTO_INCREMENT for table `master_grades`
+--
+ALTER TABLE `master_grades`
+MODIFY `id` int(7) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
 -- AUTO_INCREMENT for table `master_manufacturers`
 --
 ALTER TABLE `master_manufacturers`
-MODIFY `id` int(7) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+MODIFY `id` int(7) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `master_sizes`
+--
+ALTER TABLE `master_sizes`
+MODIFY `id` int(7) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `raw_material`
 --
