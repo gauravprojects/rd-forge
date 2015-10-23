@@ -11,8 +11,10 @@
                         </div>
                     </div>
                     <ul>
-                    <li><a href="<?php  echo action('adminPageController@show_reports'); ?> " class="col-xs-12 col-sm-12 col-md-12 col-lg-4 waves-effect waves-light btn link">Reports</a></li>
-                    <li><a href="<?php  echo action('adminPageController@logBook'); ?> " class="col-xs-12 col-sm-12 col-md-12 col-lg-4 waves-effect waves-light btn link">Log Book</a></li>
+                    <li><a href="{{  action('adminPageController@show_reports');}} " class="col-xs-12 col-sm-12 col-md-12 col-lg-4 waves-effect waves-light btn link">Reports</a></li>
+                    <li><a href="{{ action('adminPageController@logBook'); }}" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 waves-effect waves-light btn link">Log Book</a></li>
+                        <li><a href="{{ action('masterController@showManufactures'); }}" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 waves-effect waves-light btn link">Manufacturers</a></li>
+
                     </ul>
                     <div class="row">
 

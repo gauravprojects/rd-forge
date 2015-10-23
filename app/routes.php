@@ -266,3 +266,21 @@ Route::get('seration/report/excel',array(
 ));
 
 
+	// Routes for master Data
+
+	//Routes for manufacture
+
+Route::get('admin/manufacturers',array(
+	'as' => 'manufacturers.show',
+	'uses' => 'masterController@showManufactures'
+));
+
+Route::post('admin/manufacturers',array(
+	'as' => 'manufactures.store',
+	'uses'=> 'masterController@storeManufacturers'
+));
+
+Route::get('admin/manufacturers/{id}',array(
+	'as' => 'manufacturer.delete',
+	'uses' => 'masterController@deleteManufacturer'
+));
