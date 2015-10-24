@@ -7,6 +7,11 @@ class WorkOrder extends Eloquent
 		return DB::table('work_order_details')->insert($records_array);
 	}
 
+	public static function getRecord($work_id)
+	{
+		return DB::table('work_order_material_details')->select()->where('work_id','=',$work_id);
+	}
+
 	public static function getLastRecord()
 	{
 		return DB::table('work_order_details')->orderBy('work_order_no','desc')->first();

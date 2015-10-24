@@ -319,3 +319,18 @@ Route::get('admin/sizes/{id}',array(
 	'as' => 'sizes.delete',
 	'uses' => 'masterController@deleteSizes'
 ));
+
+
+
+// TESTING ROUTES
+
+Route::get('/testing',array(
+	'as' => 'testing',
+	'uses' => 'testingController@show'
+));
+
+Route::post('/testing',array(
+	'as' => 'testing.store',
+	'uses' => 'testingController@store'
+));
+
