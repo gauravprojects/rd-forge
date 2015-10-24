@@ -24,4 +24,20 @@ class TestingController extends \BaseController {
 		dd($arr_json);
 	}
 
+
+	public function auto()
+	{
+		return View::make('testing.auto');
+	}
+
+	public function autoStore()
+	{
+		$data=Input::all();
+		dd($data);
+		if(empty($data))
+			dd("empty");
+		else
+			dd("not empty");
+	}
+
 }

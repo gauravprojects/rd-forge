@@ -334,3 +334,17 @@ Route::post('/testing',array(
 	'uses' => 'testingController@store'
 ));
 
+
+
+
+Route::get('/auto',array(
+	'as' => 'auto',
+	'uses' => 'testingController@auto'
+));
+
+Route::post('/auto',array(
+	'as' => 'auto.store',
+	'uses'=>'testingController@autoStore'
+));
+
+
