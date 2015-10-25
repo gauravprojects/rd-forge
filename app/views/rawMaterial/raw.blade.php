@@ -21,14 +21,24 @@
                                 {{ Form::text('receiptCode',null,array('class'=>'form-control','placeholder'=>'Receipt Number','id'=>'exampleInputEnail1')) }}
                             </div>
 
+                        <div class="form-group">
+                            {{ Form::label('exampleInputEmail1','Date') }}
+                            {{ Form::input('date', 'date') }}
+                        </div>
+
                             <!-- For the date of entry of raw materail
                                 This date will be picket up using date() function from the machine -->
 
-                            <!-- For the size of the coming raw material -->
-                            <div class="form-group">
-                                {{ Form::label('exampleInputEmail1','Size') }}
-                                {{ Form::text('size',null,array('class'=>'form-control','placeholder'=>'Size','id'=>'justAnything')) }}
-                            </div>
+
+                        <div class="form-group">
+                            {{ Form::label('exampleInputEmail1','Size') }}
+
+                            <select class="form-control" name="size">
+                                @foreach($sizes as $size_element)
+                                    <option value="{{ $size_element->size }}">{{$size_element->size}}</option>
+                                @endforeach
+                            </select>
+                         </div>
 
                             <!-- Manufacturer's name -->
                             <div class="form-group">
@@ -79,30 +89,27 @@
 
                             <!-- Material grade, this will be prementioned, using dropdowm they will be shown
                             waiting for sample data to work further on this -->
-                            <div class="form-group">
-                                <!-- PROBLEM THIS form::select() NOT WORKING.. PLEASE CHECK IT OUT -->
 
-                                {{ Form::label('exampleInputPassword','Material Grade') }}
+                                <div class="form-group">
+                                    {{ Form::label('exampleInputEmail1','Grades') }}
 
-                                <select class="form-control" name="materialGrade">
-                                    <option>Grade 1</option>
-                                    <option>Grade 2</option>
-                                    <option>Grade 3</option>
-                                    <option>Grade 4</option>
-                                    <option>Grade 5</option>
-                                </select>
+                                    <select class="form-control" name="materialGrade">
+                                        @foreach($grades as $grade_element)
+                                            <option value="{{ $grade_element->grade_name }}">{{$grade_element->grade_name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
 
-                            </div>
+
+
 
                             <!-- raw material type, these sample types will be provided.. to be implemented using dropdown -->
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Material Type</label>
                                 <select class="form-control" name="materialType">
-                                    <option>Type 1</option>
-                                    <option>Type 2</option>
-                                    <option>Type 3</option>
-                                    <option>Type 4</option>
-                                    <option>Type 5</option>
+                                    <option value="Ingot">Ingot</option>
+                                    <option value="Round">Round</option>
+                                    <option value="Bloom">Bloom</option>
                                 </select>
                             </div>
 

@@ -37,8 +37,13 @@
 
 	'as'=>'raw.excel',
 	'uses'=>'rawMaterialController@excel'
-
 	));
+
+	Route::get('/raw/available',array(
+		'as' => 'raw.available',
+		'uses' => 'rawMaterialController@available'
+	));
+
 
 	// to update if any wrong record is entered
 	Route::get('/raw/update/{id}',array(
@@ -308,6 +313,13 @@ Route::get('admin/grades/{id}',array(
 Route::get('admin/sizes',array(
 	'as' => 'sizes.show',
 	'uses' => 'masterController@showSizes'
+));
+
+//for the json request from the raw material page form
+
+Route::get('admin/sizes/load',array(
+	'as' => 'sizes.load',
+	'uses' => 'masterController@loadSizes'
 ));
 
 Route::post('admin/sizes',array(

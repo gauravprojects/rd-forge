@@ -33,4 +33,33 @@ class RawMaterial extends Eloquent
 	{
 		return DB::table('raw_material')->select()->where('internal_no','=',$id)->get();
 	}
+
+	public static function returnAvailableWeight($heat_no)
+	{
+		return DB::table('raw_material')->select('available_weight')->where('heat_no','=',$heat_no)->get();
+	}
+
+	public static function updateAvailableWeight($heat_no,$available_weight)
+	{
+
+		return DB::table('raw_material')
+			->where('heat_no','=',$heat_no)
+			->update(array('available_weight' => $available_weight));
+	}
+
+	public static function getHeatNo()
+	{
+		return DB::table('raw_material')
+			->select()
+			->where('available_weight','>',0)
+			->get();
+	}
+
+	public static function availableWeight()
+	{
+		return DB::table('raw_material')
+			->select()
+			->where('available_weight','>',0)
+			->get();
+	}
 }

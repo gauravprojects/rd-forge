@@ -9,7 +9,11 @@ class rawMaterialController extends BaseController {
 	 */
 	public function index()
 	{
-		return View::make('rawMaterial.raw');
+		$sizes= Sizes::getSizes();
+		$grades=Grades::getGrades();
+		return View::make('rawMaterial.raw')
+			->with('sizes',$sizes)
+			->with('grades',$grades);
 	}
 
 
@@ -31,12 +35,11 @@ class rawMaterialController extends BaseController {
 	 */
 	public function store()
 	{
-		$date = date("Y-m-d");
 		$data = Input::all();
 
 		$data_array = array(
 			'receipt_code' => $data['receiptCode'],
-			'date' => $date,
+			'date' => $data['date'],
 			'size' => $data['size'],
 			'manufacturer' => $data['Manufacturer'],
 			'heat_no' => $data['heatNo'],
@@ -47,7 +50,8 @@ class rawMaterialController extends BaseController {
 			'left_over_weight'=>$data['left_over_weight'],
 			'invoice_date' => $data['invoiceDate'],
 			'material_grade' => $data['materialGrade'],
-			'raw_material_type' => $data['materialType']
+			'raw_material_type' => $data['materialType'],
+			'available_weight' => $data['weight']
 		);
 
 		// making details for the log book
@@ -89,24 +93,12 @@ class rawMaterialController extends BaseController {
 	}
 
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
+	public function available()
 	{
-		//
+		$data= RawMaterial::availableWeight();
+		return View::make('rawMaterial.available')
+			->with('data',$data);
 	}
-
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
 
 	public function update($id)
 	{

@@ -17,18 +17,27 @@
                             <!-- For the date of entry of raw materail
                                 This date will be picket up using date() function from the machine -->
 
-                            <!-- For the size of the coming raw material.. here size means raw material size -->
-                            <div class="form-group">
-                                {{ Form::label('exampleInputEmail','Size') }}
-                                {{ Form::text('size',null,array('class'=>'form-control','placeholder'=>'Size','id'=>'JustAnything')) }}
-                            </div>
 
+                        <div class="form-group">
+                            {{ Form::label('exampleInputEmail1','Size') }}
 
-                            <!-- Heat no, Every incoming raw material has a unique heat no -->
-                            <div class="form-group">
-                                {{ Form::label('exampleInputEmail','Heat no') }}
-                                {{ Form::text('heatNo',null,array('class'=>'form-control','placeholder'=>'Heat Number','id'=>'JustAnything')) }}
-                            </div>
+                            <select class="form-control" name="size">
+                                @foreach($sizes as $size_element)
+                                    <option value="{{ $size_element->size }}">{{$size_element->size}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            {{ Form::label('exampleInputEmail1','Heat Number') }}
+
+                            <select class="form-control" name="heatNo">
+                                @foreach($heat_no as $heat_no_element)
+                                    <option value="{{ $heat_no_element->heat_no }}">{{$heat_no_element->heat_no}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
 
                             <!-- qunanity.. this is the quantity of the cutted material -->
                             <div class="form-group">

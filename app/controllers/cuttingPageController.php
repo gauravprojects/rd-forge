@@ -10,8 +10,11 @@ class cuttingPageController extends BaseController {
 	public function index()
 	{
 		// returns cutting form page
-
-		return View::make('cutting.cut');
+		$sizes= Sizes::getSizes();
+		$heat_no= RawMaterial::getHeatNo();
+		return View::make('cutting.cut')
+			->with('sizes',$sizes)
+			->with('heat_no',$heat_no);
 	}
 
 
@@ -67,12 +70,12 @@ class cuttingPageController extends BaseController {
 			'details'=>$details,
 			);
 
-		Logbook::insertData($log_array);
+		$data=RawMaterial::returnAvailableWeight($cutting['heatNo']);
+		$available_weight=$data[0]->available_weight;
 
-		// getting the cutting id of the record entered
-		//	this will serve as primary key for other tables for cutting records
-
-
+		$available_weight= $available_weight- $total_weight;
+		//$available_weight_array= array('available_weight' => $available_weight );
+		$available_weight_response=RawMaterial::updateAvailableWeight($cutting['heatNo'],$available_weight);
 
 		DB::beginTransaction();
 		try {

@@ -16,6 +16,7 @@
                         <li><a href="{{ action('masterController@showManufactures'); }}" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 waves-effect waves-light btn link">Manufacturers</a></li>
                         <li><a href="{{ action('masterController@showGrades'); }}" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 waves-effect waves-light btn link">Material Grades</a></li>
                         <li><a href="{{ action('masterController@showSizes'); }}" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 waves-effect waves-light btn link">Sizes</a></li>
+                        <li><a href="{{ action('rawMaterialController@available'); }}" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 waves-effect waves-light btn link">Available Raw Material</a></li>
 
                     </ul>
                     <div class="row">
