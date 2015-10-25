@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="row text-center">
                         <div class="heading">
-                            <span>Standard Sizes</span>
+                            <span>Standard Pressure Values</span>
                         </div>
                     </div>
 
@@ -16,18 +16,18 @@
                         <table>
                             <tr class="heading">
                                 <th>No</th>
-                                <th>Size(Inches)</th>
+                                <th>Pressure</th>
                                 <th>Action</th>
                             </tr>
                             <?php $count=0; ?>
-                            @foreach($data as $size_data)
+                            @foreach($data as $pressure_data)
                                 <tr>
                                     <td>{{ ++$count; }}</td>
-                                    <td>{{ $size_data->size }}</td>
+                                    <td>{{ $pressure_data->pressure }}</td>
                                     <td>
                                         <div class="span9 btn-block excelPrint">
                                             <button class="btn btn-small btn-block" type="button" id="excel_button">
-                                                <a href="{{ action('masterController@deleteSizes',array('id'=>$size_data->id));}}" class="link" >Delete</a>
+                                                <a href="{{ action('masterController@deletePressure',array('id'=>$pressure_data->id));}}" class="link" >Delete</a>
                                             </button>
                                         </div>
 
@@ -40,18 +40,18 @@
                     <div class="row" id="right-col">
 
                         <p class="heading">Add Sizes here</p>
-                        {{ Form::open(array('action'=> 'masterController@storeSizes')) }}
+                        {{ Form::open(array('action'=> 'masterController@storePressure')) }}
                                 <!-- For recipt number of the material coming from outside -->
 
 
                         <div class="form-group">
-                            {{ Form::label('exampleInputEmail1','Grade Name') }}
-                            {{ Form::text('size',null,array('class'=>'form-control','placeholder'=>'Material Grade name','id'=>'anything')) }}
+                            {{ Form::label('exampleInputEmail1','Pressure') }}
+                            {{ Form::text('pressure',null,array('class'=>'form-control','placeholder'=>'Pressure value','id'=>'anything')) }}
                         </div>
 
                         <div class="loginButton">
 
-                            {{ Form::submit('Add Sizes',array('class'=>'waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button')) }}
+                            {{ Form::submit('Add Pressure',array('class'=>'waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button')) }}
                         </div>
                         {{ Form::close() }}
                     </div>

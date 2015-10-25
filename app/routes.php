@@ -308,19 +308,13 @@ Route::get('admin/grades/{id}',array(
 
 
 
-
+// ROUTES FOR SIZES
 
 Route::get('admin/sizes',array(
 	'as' => 'sizes.show',
 	'uses' => 'masterController@showSizes'
 ));
 
-//for the json request from the raw material page form
-
-Route::get('admin/sizes/load',array(
-	'as' => 'sizes.load',
-	'uses' => 'masterController@loadSizes'
-));
 
 Route::post('admin/sizes',array(
 	'as' => 'sizes.store',
@@ -331,6 +325,42 @@ Route::get('admin/sizes/{id}',array(
 	'as' => 'sizes.delete',
 	'uses' => 'masterController@deleteSizes'
 ));
+
+// ROUTES FOR Pressures
+
+Route::get('admin/pressure',array(
+	'as' => 'pressure.show',
+	'uses' => 'masterController@showPressure'
+));
+
+
+Route::post('admin/pressure',array(
+	'as' => 'pressure.store',
+	'uses'=> 'masterController@storePressure'
+));
+
+Route::get('admin/pressure/{id}',array(
+	'as' => 'pressure.delete',
+	'uses' => 'masterController@deletePressure'
+));
+
+// ROUTES FOR STANDARD SIZES
+
+			 Route::get('admin/standard',array(
+				 'as' => 'sizesStandard.show',
+				 'uses' => 'masterController@showStandardSizes'
+			 ));
+
+
+			 Route::post('admin/standard',array(
+				 'as' => 'sizesStandard.store',
+				 'uses'=> 'masterController@storeStandardSizes'
+			 ));
+
+			Route::get('admin/standard/{id}',array(
+				'as' => 'sizesStandard.delete',
+				'uses' => 'masterController@deleteStandardSizes'
+			));
 
 
 

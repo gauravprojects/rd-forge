@@ -12,7 +12,6 @@
                     </div>
 
                     <div class="row" id="left-col">
-
                         <table>
                             <tr class="heading">
                                 <th>No</th>
@@ -23,11 +22,11 @@
                             @foreach($data as $size_data)
                                 <tr>
                                     <td>{{ ++$count; }}</td>
-                                    <td>{{ $size_data->size }}</td>
+                                    <td>{{ $size_data->std_size }}</td>
                                     <td>
                                         <div class="span9 btn-block excelPrint">
                                             <button class="btn btn-small btn-block" type="button" id="excel_button">
-                                                <a href="{{ action('masterController@deleteSizes',array('id'=>$size_data->id));}}" class="link" >Delete</a>
+                                                <a href="{{ action('masterController@deleteStandardSizes',array('id'=>$size_data->id));}}" class="link" >Delete</a>
                                             </button>
                                         </div>
 
@@ -39,14 +38,14 @@
                     </div>		<!-- row conatining form ends here -->
                     <div class="row" id="right-col">
 
-                        <p class="heading">Add Sizes here</p>
-                        {{ Form::open(array('action'=> 'masterController@storeSizes')) }}
+                        <p class="heading">Add Standard Sizes here</p>
+                        {{ Form::open(array('action'=> 'masterController@storeStandardSizes')) }}
                                 <!-- For recipt number of the material coming from outside -->
 
 
                         <div class="form-group">
-                            {{ Form::label('exampleInputEmail1','Grade Name') }}
-                            {{ Form::text('size',null,array('class'=>'form-control','placeholder'=>'Material Grade name','id'=>'anything')) }}
+                            {{ Form::label('exampleInputEmail1','Standard Size') }}
+                            {{ Form::text('size',null,array('class'=>'form-control','placeholder'=>'Standard size','id'=>'anything')) }}
                         </div>
 
                         <div class="loginButton">

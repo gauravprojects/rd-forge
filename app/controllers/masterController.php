@@ -73,16 +73,11 @@ class MasterController extends \BaseController
 
 	public function showSizes()
 	{
+
 		$data = Sizes::getSizes();
 		return View::make('adminPanel.sizes')->with('data', $data);
 	}
 
-	// for loading sizes data to the jquery request
-	public function loadSizes()
-	{
-		$data = Sizes::getSizes();
-		dd($data);
-	}
 
 	public function storeSizes()
 	{
@@ -110,6 +105,77 @@ class MasterController extends \BaseController
 
 
 	}
+
+
+			// functions for standard sizes
+
+
+	public function showStandardSizes()
+	{
+		//get standard sizes here
+		$data=StandardSizes::getStandardSizes();
+		return View::make('adminPanel.std_size')->with('data', $data);
+	}
+
+
+	public function storeStandardSizes()
+	{
+		//to store the manufacturer data
+		$input_array= Input::all();
+
+		$input= array(
+			'std_size'=>$input_array['size']
+		);
+
+		$input_response= StandardSizes::insertStandardSizes($input);
+		$data=StandardSizes::getStandardSizes();
+		return View::make('adminPanel.std_size')->with('data', $data);
+	}
+
+
+	public function deleteStandardSizes($id)
+	{
+		$delete_response=StandardSizes::deleteStandardSizes($id);
+		$data=StandardSizes::getStandardSizes();
+		return View::make('adminPanel.std_size')->with('data', $data);
+	}
+
+				// functions for pressure
+
+	public function showPressure()
+	{
+		//get standard sizes here
+		$data=Pressure::getPressure();
+		return View::make('adminPanel.pressure')->with('data', $data);
+	}
+
+
+	public function storePressure()
+	{
+		//to store the manufacturer data
+		$input_array= Input::all();
+
+		$input= array(
+			'pressure'=>$input_array['pressure']
+		);
+
+		$input_response= Pressure::insertPressure($input);
+		$data=Pressure::getPressure();
+		return View::make('adminPanel.pressure')->with('data', $data);
+
+	}
+
+
+	public function deletePressure($id)
+	{
+		$delete_response=Pressure::deletePressure($id);
+		$data=Pressure::getPressure();
+		return View::make('adminPanel.pressure')->with('data', $data);
+
+	}
+
+
+
 
 
 
