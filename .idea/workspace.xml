@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="11f2871e-3378-42bd-b5a5-bc87373f93a3" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/cutting/confirm.blade.php" afterPath="$PROJECT_DIR$/app/views/cutting/confirm.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/cutting/cut.blade.php" afterPath="$PROJECT_DIR$/app/views/cutting/cut.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/cuttingPageController.php" afterPath="$PROJECT_DIR$/app/controllers/cuttingPageController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/forging/confirm.blade.php" afterPath="$PROJECT_DIR$/app/views/forging/confirm.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/forging/forge.blade.php" afterPath="$PROJECT_DIR$/app/views/forging/forge.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/forgingController.php" afterPath="$PROJECT_DIR$/app/controllers/forgingController.php" />
     </list>
     <ignored path="rd-forge.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -80,8 +77,8 @@
       <file leaf-file-name="cuttingPageController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/cuttingPageController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.2452831">
-              <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+            <state vertical-scroll-proportion="-5.773585">
+              <caret line="45" column="47" selection-start-line="42" selection-start-column="12" selection-end-line="45" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -91,27 +88,39 @@
         <entry file="file://$PROJECT_DIR$/app/views/cutting/cut.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-13.730769">
-              <caret line="84" column="71" selection-start-line="84" selection-start-column="71" selection-end-line="84" selection-end-column="71" />
+              <caret line="21" column="30" selection-start-line="18" selection-start-column="24" selection-end-line="21" selection-end-column="30" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="forge.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/forging/forge.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-13.076923">
+              <caret line="20" column="30" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="forgingController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/forgingController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-1.2830188">
+              <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+              <folding>
+                <marker date="1445880135743" expanded="true" signature="2626:3077" placeholder="SELECT *,'' ..." />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="confirm.blade.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/views/cutting/confirm.blade.php">
+        <entry file="file://$PROJECT_DIR$/app/views/forging/confirm.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5700389">
-              <caret line="24" column="44" selection-start-line="24" selection-start-column="44" selection-end-line="24" selection-end-column="44" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="raw.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/rawMaterial/raw.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-17.0">
-              <caret line="26" column="30" selection-start-line="23" selection-start-column="24" selection-end-line="26" selection-end-column="30" />
+            <state vertical-scroll-proportion="0.93385214">
+              <caret line="38" column="60" selection-start-line="38" selection-start-column="60" selection-end-line="38" selection-end-column="60" />
               <folding />
             </state>
           </provider>
@@ -158,6 +167,9 @@
         <option value="$PROJECT_DIR$/app/controllers/cuttingPageController.php" />
         <option value="$PROJECT_DIR$/app/views/cutting/cut.blade.php" />
         <option value="$PROJECT_DIR$/app/views/cutting/confirm.blade.php" />
+        <option value="$PROJECT_DIR$/app/views/forging/forge.blade.php" />
+        <option value="$PROJECT_DIR$/app/controllers/forgingController.php" />
+        <option value="$PROJECT_DIR$/app/views/forging/confirm.blade.php" />
       </list>
     </option>
   </component>
@@ -335,6 +347,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="forging" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rd-forge" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rd-forge" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="cutting" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -407,7 +441,7 @@
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="FullScreen" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="admin&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/views/adminPanel/admin.blade.php&#10;ro&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/routes.php&#10;ma&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/controllers/masterController.php&#10;rou&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/routes.php&#10;routes&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/routes.php&#10;press&#9;null&#9;null&#10;master&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/controllers/masterController.php&#10;raw&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/controllers/rawMaterialController.php&#10;testing&#9;null&#9;null&#10;mas&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/controllers/masterController.php&#10;index.css&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/public/css/index.css&#10;manu&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/models/Manufactures.php&#10;routes.php&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/routes.php" />
+    <property name="SearchEverywhereHistoryKey" value="cu&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/controllers/cuttingPageController.php&#10;cut&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/views/cutting/cut.blade.php&#10;admin&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/views/adminPanel/admin.blade.php&#10;ro&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/routes.php&#10;ma&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/controllers/masterController.php&#10;rou&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/routes.php&#10;routes&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/routes.php&#10;press&#9;null&#9;null&#10;master&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/controllers/masterController.php&#10;raw&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/controllers/rawMaterialController.php&#10;testing&#9;null&#9;null&#10;mas&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/controllers/masterController.php&#10;index.css&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/public/css/index.css&#10;manu&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/models/Manufactures.php&#10;routes.php&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/routes.php" />
     <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RunManager">
@@ -541,6 +575,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="18" column="5" selection-start-line="15" selection-start-column="4" selection-end-line="18" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -698,6 +733,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.377358">
           <caret line="62" column="20" selection-start-line="62" selection-start-column="20" selection-end-line="62" selection-end-column="20" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -726,6 +762,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.59417474">
           <caret line="18" column="5" selection-start-line="5" selection-start-column="4" selection-end-line="18" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -797,10 +834,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/cuttingPageController.php">
+    <entry file="file://$PROJECT_DIR$/app/views/cutting/confirm.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.2452831">
-          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.5700389">
+          <caret line="24" column="44" selection-start-line="24" selection-start-column="44" selection-end-line="24" selection-end-column="44" />
           <folding />
         </state>
       </provider>
@@ -808,15 +845,41 @@
     <entry file="file://$PROJECT_DIR$/app/views/cutting/cut.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-13.730769">
-          <caret line="84" column="71" selection-start-line="84" selection-start-column="71" selection-end-line="84" selection-end-column="71" />
+          <caret line="21" column="30" selection-start-line="18" selection-start-column="24" selection-end-line="21" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/cutting/confirm.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/views/forging/forge.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5700389">
-          <caret line="24" column="44" selection-start-line="24" selection-start-column="44" selection-end-line="24" selection-end-column="44" />
+        <state vertical-scroll-proportion="-13.076923">
+          <caret line="20" column="30" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/cuttingPageController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.773585">
+          <caret line="45" column="47" selection-start-line="42" selection-start-column="12" selection-end-line="45" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/forgingController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.2830188">
+          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding>
+            <marker date="1445880135743" expanded="true" signature="2626:3077" placeholder="SELECT *,'' ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/forging/confirm.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.93385214">
+          <caret line="38" column="60" selection-start-line="38" selection-start-column="60" selection-end-line="38" selection-end-column="60" />
           <folding />
         </state>
       </provider>

@@ -21,6 +21,10 @@
                                 <th>Forging Description</th>
                                 <th>Weight per peice</th>
                                 <th>Heat no</th>
+                                <th>Standard Size</th>
+                                <th>Pressure</th>
+                                <th>Type</th>
+                                <th>Schedule</th>
                                 <th>Quantity</th>
                                 <th>Total Weight</th>
                             <tr>
@@ -29,6 +33,10 @@
                                 <td>{{ $confirmation->forged_des }}</td>
                                 <td>{{ $confirmation->weight_per_piece }}</td>
                                 <td>{{ $confirmation->heat_no }}</td>
+                                <td> {{ $confirmation->size }}</td>
+                                <td>{{ $confirmation->pressure }}</td>
+                                <td>{{ $confirmation->type }}</td>
+                                <td> {{ $confirmation->schedule }}</td>
                                 <td>{{ $confirmation->quantity }}</td>
                                 <td>{{ $confirmation->total_weight }}</td>
                             </tr>

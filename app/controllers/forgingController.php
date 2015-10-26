@@ -10,59 +10,42 @@ class ForgingController extends BaseController {
 	 */
 	public function index()
 	{
-		return View::make('forging.forge');
+		$sizes= Sizes::getSizes();
+		$heat_no= RawMaterial::getHeatNo();
+		$standard_sizes= StandardSizes::getStandardSizes();
+		$pressure= Pressure::getPressure();
+		$schedule= Schedule::getSchedule();
+		$type= DescriptionType::getType();
+		return View::make('forging.forge')
+			->with('sizes',$sizes)
+			->with('heat_no',$heat_no)
+			->with('standard_size',$standard_sizes)
+			->with('pressure',$pressure)
+			->with('schedule',$schedule)
+			->with('type',$type);
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 * GET /forging/create
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
-
-	/**
-	 * Store a newly created resource in storage.
-	 * POST /forging
-	 *
-	 * @return Response
-	 */
 	public function store()
 	{
 		$forging_input= Input::all();
 
-		//calculation for total wieght= weight per peice * quantity
 		$total_weight= $forging_input['weight_per_peice']*$forging_input['quantity'];
 
 		// forging array for input
 		$forging_array= array(
-						'date'		=> date("Y-m-d"),
+						'date'		=> $forging_input['date'],
 						'forged_des'=> $forging_input['forged_des'],
 						'weight_per_piece'=>$forging_input['weight_per_peice'],
-						'heat_no'		=> $forging_input['heat_no'],
+						'heat_no'		=> $forging_input['heatNo'],
+						'size' =>$forging_input['standard_size'],
+						'pressure' => $forging_input['pressure'],
+						'type' => $forging_input['type'],
+						'schedule' => $forging_input['schedule'],
 						'quantity'		=> $forging_input['quantity'],
 						'total_weight'	=> $total_weight
 		);
 		
 		Forging::insertData($forging_array);
-
-		//data for log book
-
-		$details='Forging Description: '.$forging_input['forged_des'].' Heat no '.$forging_input['heat_no'].' Weight per piece '.
-			$forging_input['weight_per_peice'].' Quantity : '.$forging_input['quantity'].' Total Weight '.$total_weight;
-
-		$log_array= array(
-			'date' => date("Y-m-d"),
-			'time' => date("h:i:s"),
-			'category' => 'Forging',
-			'details' => $details,
-		);
-
-		Logbook::insertData($log_array);
-
 
 		// now getting the last record for getting forging_id
 		$last_record = Forging::getLastRecord();
