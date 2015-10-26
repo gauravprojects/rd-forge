@@ -363,6 +363,48 @@ Route::get('admin/pressure/{id}',array(
 			));
 
 
+// ROUTES FOR STANDARD SCHEDULES
+
+			 Route::get('admin/schedule',array(
+				 'as' => 'schedule.show',
+				 'uses' => 'masterController@showSchedule'
+			 ));
+
+
+			 Route::post('admin/schedule',array(
+				 'as' => 'schedule.store',
+				 'uses'=> 'masterController@storeSchedule'
+			 ));
+
+			Route::get('admin/schedule/{id}',array(
+				'as' => 'schedule.delete',
+				'uses' => 'masterController@deleteSchedule'
+			));
+
+
+
+// ROUTES FOR TYPES IN DESCRIPTION DATA
+
+Route::get('admin/type',array(
+	'as' => 'type.show',
+	'uses' => 'masterController@showType'
+));
+
+
+Route::post('admin/type',array(
+	'as' => 'type.store',
+	'uses'=> 'masterController@storeType'
+));
+
+Route::get('admin/type/{id}',array(
+	'as' => 'type.delete',
+	'uses' => 'masterController@deleteType'
+));
+
+
+
+
+
 
 // TESTING ROUTES
 

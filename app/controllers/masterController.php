@@ -175,6 +175,78 @@ class MasterController extends \BaseController
 	}
 
 
+// ------------------------------------FUNCTIONS FOR SCHEDULE------------
+
+	public function showSchedule()
+	{
+
+		$data=Schedule::getSchedule();
+		return View::make('adminPanel.Schedule')->with('data', $data);
+	}
+
+
+	public function storeSchedule()
+	{
+
+		$input_array= Input::all();
+
+		$input= array(
+			'Schedule'=>$input_array['schedule']
+		);
+
+		$input_response=Schedule::insertSchedule($input);
+		$data=Schedule::getSchedule();
+		return View::make('adminPanel.Schedule')->with('data', $data);
+
+	}
+
+
+	public function deleteSchedule($id)
+	{
+		$delete_response=Schedule::deleteSchedule($id);
+		$data=Schedule::getSchedule();
+		return View::make('adminPanel.Schedule')->with('data', $data);
+
+
+	}
+
+
+	// ------------------------- FUNCTIONS FOR TYPE IN DESCRIPTION DATA --------------------
+
+
+	public function showType()
+	{
+
+		$data=DescriptionType::getType();
+		return View::make('adminPanel.descriptionType')->with('data', $data);
+	}
+
+
+	public function storeType()
+	{
+
+		$input_array= Input::all();
+
+		$input= array(
+			'type'=>$input_array['type']
+		);
+
+		$input_response=DescriptionType::insertType($input);
+		$data=DescriptionType::getType();
+		return View::make('adminPanel.descriptionType')->with('data', $data);
+	}
+
+
+	public function deleteType($id)
+	{
+		$delete_response=DescriptionType::deleteType($id);
+		$data=DescriptionType::getType();
+		return View::make('adminPanel.descriptionType')->with('data', $data);
+
+
+	}
+
+
 
 
 
