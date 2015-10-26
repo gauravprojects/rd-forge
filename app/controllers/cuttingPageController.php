@@ -12,36 +12,24 @@ class cuttingPageController extends BaseController {
 		// returns cutting form page
 		$sizes= Sizes::getSizes();
 		$heat_no= RawMaterial::getHeatNo();
+		$standard_sizes= StandardSizes::getStandardSizes();
+		$pressure= Pressure::getPressure();
+		$schedule= Schedule::getSchedule();
+		$type= DescriptionType::getType();
 		return View::make('cutting.cut')
 			->with('sizes',$sizes)
-			->with('heat_no',$heat_no);
+			->with('heat_no',$heat_no)
+			->with('standard_size',$standard_sizes)
+			->with('pressure',$pressure)
+			->with('schedule',$schedule)
+			->with('type',$type);
 	}
 
-
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
-
-
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
 	public function store()
 	{
 		// stores data coming from cutting form
 
 		$cutting= Input::all();
-
-		// date from machine
-		$date=date("Y-m-d");
 
 		// calculating required total weight
 		$total_weight= $cutting['quantity'] * $cutting['wpp'];
@@ -49,9 +37,13 @@ class cuttingPageController extends BaseController {
 
 		// array for table cutting records
 		$input_array=array(	
-			'date' => $date,
+			'date' => $cutting['date'],
 			'raw_mat_size' => $cutting['size'],
 			'heat_no' => $cutting['heatNo'],
+			'size' =>$cutting['standard_size'],
+			'pressure' => $cutting['pressure'],
+			'type' => $cutting['type'],
+			'schedule' => $cutting['schedule'],
 			'quantity' => $cutting['quantity'],
 			'weight_per_piece' => $cutting['wpp'],
 			'total_weight' => $total_weight,

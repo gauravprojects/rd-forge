@@ -19,6 +19,10 @@
                                 <th>Cutting Id</th>
                                 <th>Date</th>
                                 <th>Size</th>
+                                <th>Standard size</th>
+                                <th>Pressure</th>
+                                <th>Type</th>
+                                <th>Schedule</th>
                                 <th>Heat No</th>
                                 <th>Quantity</th>
                                 <th>Weight per piece</th>
@@ -28,7 +32,10 @@
                                 <td>{{$last_record->cutting_id }}</td>
                                 <td>{{$last_record->date }}</td>
                                 <td>{{$last_record->raw_mat_size}}</td>
-                                <td>{{$last_record->heat_no}}</td>
+                                <td>{{ $last_record->size}}</td>
+                                <td>{{ $last_record->pressure }}</td>
+                                <td>{{ $last_record->type }}</td>
+                                <td>{{$last_record->schedule}}</td>
                                 <td>{{$last_record->quantity}}</td>
                                 <td>{{$last_record->weight_per_piece}}</td>
                                 <td>{{$last_record->total_weight}}</td>
