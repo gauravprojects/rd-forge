@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.7.1
+-- version 4.1.12
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 23, 2015 at 05:49 PM
--- Server version: 5.6.20
--- PHP Version: 5.5.15
+-- Generation Time: Oct 26, 2015 at 09:26 AM
+-- Server version: 5.6.16
+-- PHP Version: 5.5.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -42,7 +42,9 @@ INSERT INTO `cutting_item_des` (`cutting_id`, `item_des`) VALUES
 (17, 'its good'),
 (18, 'its good'),
 (24, ''),
-(25, '');
+(25, ''),
+(26, ''),
+(27, '');
 
 -- --------------------------------------------------------
 
@@ -51,14 +53,15 @@ INSERT INTO `cutting_item_des` (`cutting_id`, `item_des`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `cutting_records` (
-`cutting_id` int(7) NOT NULL,
+  `cutting_id` int(7) NOT NULL AUTO_INCREMENT,
   `date` date NOT NULL,
   `raw_mat_size` varchar(25) NOT NULL,
   `heat_no` varchar(25) NOT NULL,
   `quantity` int(10) NOT NULL,
   `weight_per_piece` int(10) NOT NULL,
-  `total_weight` int(10) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
+  `total_weight` int(10) NOT NULL,
+  PRIMARY KEY (`cutting_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=28 ;
 
 --
 -- Dumping data for table `cutting_records`
@@ -71,7 +74,9 @@ INSERT INTO `cutting_records` (`cutting_id`, `date`, `raw_mat_size`, `heat_no`, 
 (17, '2015-10-21', '12456', '123', 100, 15, 1500),
 (18, '2015-10-21', '12456', '123', 100, 15, 1500),
 (24, '2015-10-21', '', '', 0, 0, 0),
-(25, '2015-10-21', '', '', 0, 0, 0);
+(25, '2015-10-21', '', '', 0, 0, 0),
+(26, '2015-10-25', '4 by 5', '124589', 16, 15, 240),
+(27, '2015-10-25', '10 by 16', '124589', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -80,9 +85,10 @@ INSERT INTO `cutting_records` (`cutting_id`, `date`, `raw_mat_size`, `heat_no`, 
 --
 
 CREATE TABLE IF NOT EXISTS `cutting_remarks` (
-`cutting_id` int(11) NOT NULL,
-  `remarks` text NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
+  `cutting_id` int(11) NOT NULL AUTO_INCREMENT,
+  `remarks` text NOT NULL,
+  PRIMARY KEY (`cutting_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=28 ;
 
 --
 -- Dumping data for table `cutting_remarks`
@@ -94,7 +100,9 @@ INSERT INTO `cutting_remarks` (`cutting_id`, `remarks`) VALUES
 (14, 'its very good'),
 (17, 'its very good'),
 (24, ''),
-(25, '');
+(25, ''),
+(26, ''),
+(27, '');
 
 -- --------------------------------------------------------
 
@@ -103,7 +111,7 @@ INSERT INTO `cutting_remarks` (`cutting_id`, `remarks`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `drilling_records` (
-`drilling_id` int(10) NOT NULL,
+  `drilling_id` int(10) NOT NULL AUTO_INCREMENT,
   `work_order_no` int(10) NOT NULL,
   `date` date NOT NULL,
   `item` varchar(25) NOT NULL,
@@ -111,7 +119,8 @@ CREATE TABLE IF NOT EXISTS `drilling_records` (
   `quantity` varchar(25) NOT NULL,
   `machine_name` varchar(25) NOT NULL,
   `employee_name` varchar(25) NOT NULL,
-  `grade` varchar(10) NOT NULL
+  `grade` varchar(10) NOT NULL,
+  PRIMARY KEY (`drilling_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
@@ -132,7 +141,8 @@ INSERT INTO `drilling_records` (`drilling_id`, `work_order_no`, `date`, `item`, 
 
 CREATE TABLE IF NOT EXISTS `drilling_remarks` (
   `drilling_id` int(10) NOT NULL,
-  `remarks` text NOT NULL
+  `remarks` text NOT NULL,
+  PRIMARY KEY (`drilling_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -142,13 +152,14 @@ CREATE TABLE IF NOT EXISTS `drilling_remarks` (
 --
 
 CREATE TABLE IF NOT EXISTS `forging_records` (
-`forging_id` int(7) NOT NULL,
+  `forging_id` int(7) NOT NULL AUTO_INCREMENT,
   `date` date NOT NULL,
   `forged_des` varchar(30) NOT NULL,
   `weight_per_piece` int(10) NOT NULL,
   `heat_no` varchar(25) NOT NULL,
   `quantity` int(10) NOT NULL,
-  `total_weight` int(10) NOT NULL
+  `total_weight` int(10) NOT NULL,
+  PRIMARY KEY (`forging_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
@@ -175,8 +186,9 @@ INSERT INTO `forging_records` (`forging_id`, `date`, `forged_des`, `weight_per_p
 --
 
 CREATE TABLE IF NOT EXISTS `forging_remarks` (
-`forging_id` int(11) NOT NULL,
-  `remarks` text NOT NULL
+  `forging_id` int(11) NOT NULL AUTO_INCREMENT,
+  `remarks` text NOT NULL,
+  PRIMARY KEY (`forging_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
@@ -210,12 +222,13 @@ CREATE TABLE IF NOT EXISTS `inspection_details` (
 --
 
 CREATE TABLE IF NOT EXISTS `logbook` (
-`log_id` int(8) NOT NULL,
+  `log_id` int(8) NOT NULL AUTO_INCREMENT,
   `date` date NOT NULL,
   `time` time NOT NULL,
   `category` varchar(15) NOT NULL,
-  `details` text NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=68 ;
+  `details` text NOT NULL,
+  PRIMARY KEY (`log_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=79 ;
 
 --
 -- Dumping data for table `logbook`
@@ -288,7 +301,18 @@ INSERT INTO `logbook` (`log_id`, `date`, `time`, `category`, `details`) VALUES
 (64, '2015-10-21', '05:01:36', 'Raw Material', 'Manufacturer:   Heat no:   Material Grade: Grade 1 Material Type: Type 1 Size: '),
 (65, '2015-10-23', '08:46:44', 'Raw Material', 'Manufacturer: adf  Heat no: 125  Material Grade: Grade 1 Material Type: Type 1 Size: 100'),
 (66, '2015-10-23', '08:57:41', 'Raw Material', 'Manufacturer:   Heat no:   Material Grade: Grade 1 Material Type: Type 1 Size: '),
-(67, '2015-10-23', '09:55:09', 'Raw Material', 'Manufacturer:   Heat no:   Material Grade: Grade 1 Material Type: Type 1 Size: ');
+(67, '2015-10-23', '09:55:09', 'Raw Material', 'Manufacturer:   Heat no:   Material Grade: Grade 1 Material Type: Type 1 Size: '),
+(68, '2015-10-25', '07:41:05', 'Raw Material', 'Manufacturer: gaurav arora  Heat no: 123456  Material Grade: SA 266 GR-4 Material Type: Type 4 Size: 10 by 16'),
+(69, '2015-10-25', '07:42:20', 'Raw Material', 'Manufacturer: gaurav arora  Heat no: 123456  Material Grade: SA 266 GR-4 Material Type: Type 4 Size: 10 by 16'),
+(70, '2015-10-25', '07:42:44', 'Raw Material', 'Manufacturer: gaurav arora  Heat no: 123456  Material Grade: SA 266 GR-4 Material Type: Type 4 Size: 10 by 16'),
+(71, '2015-10-25', '07:45:23', 'Raw Material', 'Manufacturer:   Heat no:   Material Grade: SA 105 Material Type: Bloom Size: 4 by 5'),
+(72, '2015-10-25', '07:46:05', 'Raw Material', 'Manufacturer:   Heat no:   Material Grade: SA 105 Material Type: Round Size: 4 by 5'),
+(73, '2015-10-25', '07:48:04', 'Raw Material', 'Manufacturer:   Heat no:   Material Grade: SA 105 Material Type: Ingot Size: 4 by 5'),
+(74, '2015-10-25', '07:48:48', 'Raw Material', 'Manufacturer:   Heat no:   Material Grade: SA 105 Material Type: Ingot Size: 4 by 5'),
+(75, '2015-10-25', '08:07:05', 'Raw Material', 'Manufacturer:   Heat no:   Material Grade: SA 105 Material Type: Ingot Size: 4 by 5'),
+(76, '2015-10-25', '08:07:36', 'Raw Material', 'Manufacturer:   Heat no:   Material Grade: SA 105 Material Type: Ingot Size: 4 by 5'),
+(77, '2015-10-25', '08:12:22', 'Raw Material', 'Manufacturer:   Heat no: 123  Material Grade: SA 105 Material Type: Ingot Size: 4 by 5'),
+(78, '2015-10-25', '08:59:24', 'Raw Material', 'Manufacturer: gaurav  Heat no: 124589  Material Grade: SA 266 GR-2 Material Type: Round Size: 4 by 5');
 
 -- --------------------------------------------------------
 
@@ -297,7 +321,7 @@ INSERT INTO `logbook` (`log_id`, `date`, `time`, `category`, `details`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `machining_records` (
-`mach_id` int(7) NOT NULL,
+  `mach_id` int(7) NOT NULL AUTO_INCREMENT,
   `date` date NOT NULL,
   `work_order_no` varchar(25) NOT NULL,
   `item` varchar(25) NOT NULL,
@@ -306,7 +330,8 @@ CREATE TABLE IF NOT EXISTS `machining_records` (
   `machine_name` varchar(25) NOT NULL,
   `employee_name` varchar(25) NOT NULL,
   `grade` varchar(10) NOT NULL,
-  `weight` int(10) NOT NULL
+  `weight` int(10) NOT NULL,
+  PRIMARY KEY (`mach_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
@@ -326,7 +351,8 @@ INSERT INTO `machining_records` (`mach_id`, `date`, `work_order_no`, `item`, `he
 
 CREATE TABLE IF NOT EXISTS `mach_remarks` (
   `mach_id` int(10) NOT NULL,
-  `remarks` text NOT NULL
+  `remarks` text NOT NULL,
+  PRIMARY KEY (`mach_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -344,8 +370,9 @@ INSERT INTO `mach_remarks` (`mach_id`, `remarks`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `master_grades` (
-`id` int(7) NOT NULL,
-  `grade_name` varchar(30) NOT NULL
+  `id` int(7) NOT NULL AUTO_INCREMENT,
+  `grade_name` varchar(30) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
@@ -364,10 +391,11 @@ INSERT INTO `master_grades` (`id`, `grade_name`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `master_manufacturers` (
-`id` int(7) NOT NULL,
+  `id` int(7) NOT NULL AUTO_INCREMENT,
   `manufacturer_name` varchar(25) NOT NULL,
-  `item` varchar(20) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+  `item` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `master_manufacturers`
@@ -379,13 +407,56 @@ INSERT INTO `master_manufacturers` (`id`, `manufacturer_name`, `item`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `master_pressure`
+--
+
+CREATE TABLE IF NOT EXISTS `master_pressure` (
+  `id` int(3) NOT NULL AUTO_INCREMENT,
+  `pressure` varchar(25) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `master_pressure`
+--
+
+INSERT INTO `master_pressure` (`id`, `pressure`) VALUES
+(5, '200pa'),
+(6, '600pa');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `master_sizes`
 --
 
 CREATE TABLE IF NOT EXISTS `master_sizes` (
-`id` int(7) NOT NULL,
-  `size` varchar(20) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+  `id` int(7) NOT NULL AUTO_INCREMENT,
+  `size` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+
+--
+-- Dumping data for table `master_sizes`
+--
+
+INSERT INTO `master_sizes` (`id`, `size`) VALUES
+(4, '4 by 5'),
+(5, '10 by 16'),
+(6, '2 by 2'),
+(7, '16 by 10');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `master_std_size`
+--
+
+CREATE TABLE IF NOT EXISTS `master_std_size` (
+  `id` int(7) NOT NULL AUTO_INCREMENT,
+  `std_size` varchar(10) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -405,10 +476,10 @@ CREATE TABLE IF NOT EXISTS `packing_instructions` (
 --
 
 CREATE TABLE IF NOT EXISTS `raw_material` (
-`internal_no` int(10) NOT NULL,
+  `internal_no` int(10) NOT NULL AUTO_INCREMENT,
   `receipt_code` text NOT NULL,
   `date` date NOT NULL,
-  `size` int(10) NOT NULL,
+  `size` varchar(10) NOT NULL,
   `manufacturer` varchar(25) NOT NULL,
   `heat_no` text NOT NULL,
   `weight` int(10) NOT NULL,
@@ -418,62 +489,22 @@ CREATE TABLE IF NOT EXISTS `raw_material` (
   `invoice_no` text NOT NULL,
   `invoice_date` date NOT NULL,
   `material_grade` text NOT NULL,
-  `raw_material_type` varchar(25) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=49 ;
+  `raw_material_type` varchar(25) NOT NULL,
+  `available_weight` int(10) NOT NULL,
+  PRIMARY KEY (`internal_no`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10006 ;
 
 --
 -- Dumping data for table `raw_material`
 --
 
-INSERT INTO `raw_material` (`internal_no`, `receipt_code`, `date`, `size`, `manufacturer`, `heat_no`, `weight`, `left_over_weight`, `pur_order_no`, `pur_order_date`, `invoice_no`, `invoice_date`, `material_grade`, `raw_material_type`) VALUES
-(1, '12345', '2015-10-01', 0, '', '', 0, '', '', '0000-00-00', '', '0000-00-00', 'Grade 1', 'Type 1'),
-(2, '1234567', '2015-10-01', 45, 'Software Incubator', '123AC2', 125, '', '4636', '0000-00-00', '656135', '0000-00-00', 'Grade 1', 'Type 1'),
-(3, '12345', '2015-10-02', 0, 'arora', '4656', 656, '', '565656', '0000-00-00', '', '0000-00-00', 'Grade 1', 'Type 1'),
-(4, '1', '2015-10-02', 0, 'pata nahi', '1234', 100, '', '146', '0000-00-00', '656', '0000-00-00', 'Grade 1', 'Type 1'),
-(5, '12345', '2015-10-03', 100, 'gaurav arora', '4436', 6653, '', '4656', '2015-10-04', '46565', '2015-10-23', 'Grade 3', 'Type 4'),
-(6, '12345', '2015-10-17', 100, 'swapnil developers', '4335', 323, '', '234656', '0000-00-00', '', '0000-00-00', 'Grade 1', 'Type 1'),
-(7, '100', '2015-10-04', 0, '', '', 0, '', '', '0000-00-00', '', '0000-00-00', 'Grade 1', 'Type 1'),
-(8, '1123', '2015-10-04', 0, '', '', 0, '', '', '0000-00-00', '', '0000-00-00', 'Grade 1', 'Type 1'),
-(9, '1', '2015-10-05', 100, 'Akgec developers', '14ABC', 100, '', '1ABC', '2015-10-17', '4656', '2015-10-24', 'Grade 1', 'Type 1'),
-(10, '100', '2015-10-06', 0, '', '', 0, '', '', '0000-00-00', '', '0000-00-00', 'Grade 1', 'Type 1'),
-(11, '100', '2015-10-06', 65, 'nfslkjsdlk', '4656', 0, '', '', '0000-00-00', '', '0000-00-00', 'Grade 1', 'Type 1'),
-(12, '1656', '2015-10-06', 5465, '5656', '56', 65, '', '656', '2015-10-24', '', '2015-10-24', 'Grade 1', 'Type 1'),
-(13, '1323', '2015-10-07', 100, 'gaurav', '135358', 100, '', '453535', '2015-10-17', '43569', '2015-10-16', 'Grade 1', 'Type 1'),
-(14, '132356', '2015-10-07', 100, 'gaurav', '6533', 100, '10', '6532', '2015-10-23', '', '0000-00-00', 'Grade 1', 'Type 1'),
-(15, '123', '2015-10-12', 100, 'Gaurav', '123', 100, '', '1456', '2015-10-24', '63', '2015-10-23', 'Grade 1', 'Type 1'),
-(16, '', '2015-10-12', 0, '', '', 0, '', '', '0000-00-00', '', '0000-00-00', 'Grade 1', 'Type 1'),
-(17, '4353', '2015-10-12', 0, '', '', 0, '', '', '0000-00-00', '', '0000-00-00', 'Grade 1', 'Type 1'),
-(18, '463', '2015-10-12', 0, '', '', 0, '', '', '0000-00-00', '', '0000-00-00', 'Grade 1', 'Type 1'),
-(19, '323', '2015-10-12', 0, '', '', 0, '', '', '0000-00-00', '', '0000-00-00', 'Grade 1', 'Type 1'),
-(20, '12432', '2015-10-12', 0, '', '', 0, '', '', '0000-00-00', '', '0000-00-00', 'Grade 1', 'Type 1'),
-(21, '123', '2015-10-12', 100, 'gaurav', '123', 100, '', '15', '2015-10-14', '', '0000-00-00', 'Grade 1', 'Type 1'),
-(22, '123', '2015-10-12', 0, '', '', 0, '', '', '0000-00-00', '', '0000-00-00', 'Grade 1', 'Type 1'),
-(23, '12345', '2015-10-14', 0, '', '', 0, '', '', '0000-00-00', '', '0000-00-00', 'Grade 1', 'Type 1'),
-(24, '1234', '2015-10-14', 100, 'gaurav arora', '100', 10, '', '56352', '2015-10-14', '', '2015-10-14', 'Grade 1', 'Type 1'),
-(25, '12345', '2015-10-16', 0, '', '', 0, '', '', '0000-00-00', '', '0000-00-00', 'Grade 1', 'Type 1'),
-(26, '123', '2015-10-16', 0, '', '', 0, '', '', '0000-00-00', '', '0000-00-00', 'Grade 1', 'Type 1'),
-(27, '12345', '2015-10-16', 0, '', '', 0, '', '', '0000-00-00', '', '0000-00-00', 'Grade 1', 'Type 1'),
-(28, '123', '2015-10-16', 0, '', '', 0, '', '', '0000-00-00', '', '0000-00-00', 'Grade 1', 'Type 1'),
-(29, '123456', '2015-10-16', 0, '', '', 0, '', '', '0000-00-00', '', '0000-00-00', 'Grade 1', 'Type 1'),
-(30, '1', '2015-10-16', 0, '', '', 0, '', '', '0000-00-00', '', '0000-00-00', 'Grade 1', 'Type 1'),
-(31, '12345', '2015-10-17', 100, 'arora developers', '4335', 323, '', '234656', '0000-00-00', '', '0000-00-00', 'Grade 1', 'Type 1'),
-(32, '12345', '2015-10-17', 100, 'arora developers', '4335', 323, '', '234656', '0000-00-00', '', '0000-00-00', 'Grade 1', 'Type 1'),
-(33, '123456', '2015-10-17', 0, '', '', 0, '', '', '0000-00-00', '', '0000-00-00', 'Grade 1', 'Type 1'),
-(34, '12345', '2015-10-17', 0, '', '', 0, '', '', '0000-00-00', '', '0000-00-00', 'Grade 1', 'Type 1'),
-(35, '12345', '2015-10-17', 0, '', '', 0, '', '', '0000-00-00', '', '0000-00-00', 'Grade 1', 'Type 1'),
-(36, '12456', '2015-10-17', 0, '', '', 0, '', '', '0000-00-00', '', '0000-00-00', 'Grade 1', 'Type 1'),
-(37, '1234', '2015-10-17', 0, '', '', 0, '', '', '0000-00-00', '', '0000-00-00', 'Grade 1', 'Type 1'),
-(38, '12345', '2015-10-17', 0, '', '', 0, '', '', '0000-00-00', '', '0000-00-00', 'Grade 1', 'Type 1'),
-(39, '12345', '2015-10-17', 0, '', '', 0, '', '', '0000-00-00', '', '0000-00-00', 'Grade 1', 'Type 1'),
-(40, '123', '2015-10-17', 0, '', '', 0, '', '', '0000-00-00', '', '0000-00-00', 'Grade 1', 'Type 1'),
-(41, '12456', '2015-10-17', 0, '', '', 0, '', '', '0000-00-00', '', '0000-00-00', 'Grade 1', 'Type 1'),
-(42, '123456', '2015-10-17', 0, '', '', 0, '', '', '0000-00-00', '', '0000-00-00', 'Grade 1', 'Type 1'),
-(43, '1245678', '2015-10-17', 100, 'manju developers', '12345', 100, '10', '125', '0000-00-00', '1245', '0000-00-00', 'Grade 1', 'Type 1'),
-(44, '12345', '2015-10-21', 0, '', '', 0, '', '', '0000-00-00', '', '0000-00-00', 'Grade 1', 'Type 1'),
-(45, '', '2015-10-21', 0, '', '', 0, '', '', '0000-00-00', '', '0000-00-00', 'Grade 1', 'Type 1'),
-(46, '123', '2015-10-23', 100, 'adf', '125', 100, '', '', '2015-10-17', '', '0000-00-00', 'Grade 1', 'Type 1'),
-(47, '', '2015-10-23', 0, 'JGCaq', '', 0, '', '', '0000-00-00', '', '0000-00-00', 'Grade 1', 'Type 1'),
-(48, 'cgh', '2015-10-23', 0, '', '', 0, '', '', '0000-00-00', '', '0000-00-00', 'Grade 1', 'Type 1');
+INSERT INTO `raw_material` (`internal_no`, `receipt_code`, `date`, `size`, `manufacturer`, `heat_no`, `weight`, `left_over_weight`, `pur_order_no`, `pur_order_date`, `invoice_no`, `invoice_date`, `material_grade`, `raw_material_type`, `available_weight`) VALUES
+(1001, '', '0000-00-00', '4 by 5', '', '', 0, '', '', '0000-00-00', '', '0000-00-00', 'SA 105', 'Ingot', 0),
+(10001, '', '0000-00-00', '4 by 5', '', '', 0, '', '', '0000-00-00', '', '0000-00-00', 'SA 105', 'Ingot', 0),
+(10002, '100', '0000-00-00', '4 by 5', '', '', 100, '', '', '0000-00-00', '', '0000-00-00', 'SA 105', 'Ingot', 100),
+(10003, '', '0000-00-00', '4 by 5', '', '123', 1000, '', '', '0000-00-00', '', '0000-00-00', 'SA 105', 'Ingot', 900),
+(10004, '', '0000-00-00', '', '', '', 0, '', '', '0000-00-00', '', '0000-00-00', '', '', 900),
+(10005, '123456', '2015-10-16', '4 by 5', 'gaurav', '124589', 1589, '145', '', '0000-00-00', '', '0000-00-00', 'SA 266 GR-2', 'Round', 1109);
 
 -- --------------------------------------------------------
 
@@ -493,7 +524,7 @@ CREATE TABLE IF NOT EXISTS `remarks` (
 --
 
 CREATE TABLE IF NOT EXISTS `seration_records` (
-`seration_id` int(10) NOT NULL,
+  `seration_id` int(10) NOT NULL AUTO_INCREMENT,
   `work_order_no` varchar(25) NOT NULL,
   `item` varchar(25) NOT NULL,
   `heat_no` varchar(25) NOT NULL,
@@ -501,7 +532,8 @@ CREATE TABLE IF NOT EXISTS `seration_records` (
   `machine_name` varchar(25) NOT NULL,
   `employee_name` varchar(25) NOT NULL,
   `grade` varchar(10) NOT NULL,
-  `weight` int(10) NOT NULL
+  `weight` int(10) NOT NULL,
+  PRIMARY KEY (`seration_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -533,9 +565,10 @@ CREATE TABLE IF NOT EXISTS `testing_instructions` (
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
-`id` int(7) NOT NULL,
+  `id` int(7) NOT NULL AUTO_INCREMENT,
   `username` varchar(20) NOT NULL,
-  `password` varchar(64) NOT NULL
+  `password` varchar(64) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
@@ -554,7 +587,7 @@ INSERT INTO `users` (`id`, `username`, `password`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `work_order_details` (
-`work_order_no` int(7) NOT NULL,
+  `work_order_no` int(7) NOT NULL AUTO_INCREMENT,
   `purchase_order_no` varchar(40) DEFAULT NULL,
   `customer_name` varchar(20) NOT NULL,
   `purchase_order_date` date NOT NULL,
@@ -563,8 +596,9 @@ CREATE TABLE IF NOT EXISTS `work_order_details` (
   `packing_instruction` varchar(40) NOT NULL,
   `testing_instruction` varchar(40) NOT NULL,
   `quatation_no` varchar(20) NOT NULL,
-  `remarks` varchar(40) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=57 ;
+  `remarks` varchar(40) NOT NULL,
+  PRIMARY KEY (`work_order_no`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=59 ;
 
 --
 -- Dumping data for table `work_order_details`
@@ -626,7 +660,9 @@ INSERT INTO `work_order_details` (`work_order_no`, `purchase_order_no`, `custome
 (53, '123', 'Gaurav Arora', '2015-10-18', '0000-00-00', '', '', '', '', ''),
 (54, '', '4656', '0000-00-00', '0000-00-00', '', '', '', '', ''),
 (55, '123', 'gaurav', '2015-10-10', '0000-00-00', '', '', '', '', ''),
-(56, '', 'Gaurav Arora', '0000-00-00', '0000-00-00', '', '', '', '', '');
+(56, '', 'Gaurav Arora', '0000-00-00', '0000-00-00', '', '', '', '', ''),
+(57, '123456', 'Gaurav arora', '0000-00-00', '0000-00-00', '', '', '', '', ''),
+(58, '', '', '0000-00-00', '0000-00-00', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -635,14 +671,16 @@ INSERT INTO `work_order_details` (`work_order_no`, `purchase_order_no`, `custome
 --
 
 CREATE TABLE IF NOT EXISTS `work_order_material_details` (
-`work_id` int(5) NOT NULL,
+  `work_id` int(5) NOT NULL AUTO_INCREMENT,
   `work_order_no` varchar(10) NOT NULL,
   `description` varchar(40) NOT NULL,
   `material_grade` varchar(5) NOT NULL,
   `quantity` int(5) NOT NULL,
   `weight` int(5) NOT NULL,
-  `remarks` varchar(20) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=71 ;
+  `remarks` varchar(20) NOT NULL,
+  PRIMARY KEY (`work_id`),
+  UNIQUE KEY `unique_work_order_no` (`work_order_no`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=72 ;
 
 --
 -- Dumping data for table `work_order_material_details`
@@ -717,193 +755,9 @@ INSERT INTO `work_order_material_details` (`work_id`, `work_order_no`, `descript
 (67, '52/3', 'vahgk', 'Grade', 0, 10, 'jjs,k'),
 (68, '54/1', '', 'Grade', 0, 0, ''),
 (69, '55/1', 'DTGH', 'Grade', 45, 1, 'FTU'),
-(70, '56/1', 'fdgdc', 'Grade', 0, 0, '');
+(70, '56/1', 'fdgdc', 'Grade', 0, 0, ''),
+(71, '57/1', '', 'Grade', 0, 0, '');
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `cutting_records`
---
-ALTER TABLE `cutting_records`
- ADD PRIMARY KEY (`cutting_id`);
-
---
--- Indexes for table `cutting_remarks`
---
-ALTER TABLE `cutting_remarks`
- ADD PRIMARY KEY (`cutting_id`);
-
---
--- Indexes for table `drilling_records`
---
-ALTER TABLE `drilling_records`
- ADD PRIMARY KEY (`drilling_id`);
-
---
--- Indexes for table `drilling_remarks`
---
-ALTER TABLE `drilling_remarks`
- ADD PRIMARY KEY (`drilling_id`);
-
---
--- Indexes for table `forging_records`
---
-ALTER TABLE `forging_records`
- ADD PRIMARY KEY (`forging_id`);
-
---
--- Indexes for table `forging_remarks`
---
-ALTER TABLE `forging_remarks`
- ADD PRIMARY KEY (`forging_id`);
-
---
--- Indexes for table `logbook`
---
-ALTER TABLE `logbook`
- ADD PRIMARY KEY (`log_id`);
-
---
--- Indexes for table `machining_records`
---
-ALTER TABLE `machining_records`
- ADD PRIMARY KEY (`mach_id`);
-
---
--- Indexes for table `mach_remarks`
---
-ALTER TABLE `mach_remarks`
- ADD PRIMARY KEY (`mach_id`);
-
---
--- Indexes for table `master_grades`
---
-ALTER TABLE `master_grades`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `master_manufacturers`
---
-ALTER TABLE `master_manufacturers`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `master_sizes`
---
-ALTER TABLE `master_sizes`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `raw_material`
---
-ALTER TABLE `raw_material`
- ADD PRIMARY KEY (`internal_no`);
-
---
--- Indexes for table `seration_records`
---
-ALTER TABLE `seration_records`
- ADD PRIMARY KEY (`seration_id`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `work_order_details`
---
-ALTER TABLE `work_order_details`
- ADD PRIMARY KEY (`work_order_no`);
-
---
--- Indexes for table `work_order_material_details`
---
-ALTER TABLE `work_order_material_details`
- ADD PRIMARY KEY (`work_id`), ADD UNIQUE KEY `unique_work_order_no` (`work_order_no`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `cutting_records`
---
-ALTER TABLE `cutting_records`
-MODIFY `cutting_id` int(7) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=26;
---
--- AUTO_INCREMENT for table `cutting_remarks`
---
-ALTER TABLE `cutting_remarks`
-MODIFY `cutting_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=26;
---
--- AUTO_INCREMENT for table `drilling_records`
---
-ALTER TABLE `drilling_records`
-MODIFY `drilling_id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT for table `forging_records`
---
-ALTER TABLE `forging_records`
-MODIFY `forging_id` int(7) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
---
--- AUTO_INCREMENT for table `forging_remarks`
---
-ALTER TABLE `forging_remarks`
-MODIFY `forging_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
---
--- AUTO_INCREMENT for table `logbook`
---
-ALTER TABLE `logbook`
-MODIFY `log_id` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=68;
---
--- AUTO_INCREMENT for table `machining_records`
---
-ALTER TABLE `machining_records`
-MODIFY `mach_id` int(7) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `master_grades`
---
-ALTER TABLE `master_grades`
-MODIFY `id` int(7) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT for table `master_manufacturers`
---
-ALTER TABLE `master_manufacturers`
-MODIFY `id` int(7) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
---
--- AUTO_INCREMENT for table `master_sizes`
---
-ALTER TABLE `master_sizes`
-MODIFY `id` int(7) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `raw_material`
---
-ALTER TABLE `raw_material`
-MODIFY `internal_no` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=49;
---
--- AUTO_INCREMENT for table `seration_records`
---
-ALTER TABLE `seration_records`
-MODIFY `seration_id` int(10) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-MODIFY `id` int(7) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `work_order_details`
---
-ALTER TABLE `work_order_details`
-MODIFY `work_order_no` int(7) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=57;
---
--- AUTO_INCREMENT for table `work_order_material_details`
---
-ALTER TABLE `work_order_material_details`
-MODIFY `work_id` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=71;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
