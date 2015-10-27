@@ -2,14 +2,19 @@
 
 class cuttingPageController extends BaseController {
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
+	/* ---------------    FUNCTIONS USED     ---------------------------------
+    FUNCTION NAME					DESCRIPTION				 				RETURNING DATA
+
+    index()					shows home page for cutting					blade- cutting material form
+    store()					stores data coming from cutting form		blade- confirm page
+    show()					shows all entries in cutting table			blade- cutting_report
+   	excel()					gives all cutting data to an 				blade- cutting_report_excel
+                            excel file
+                                                                                            */
 	public function index()
 	{
 		// returns cutting form page
+		//all data form master table is taken and fed to the  cutting form
 		$sizes= Sizes::getSizes();
 		$heat_no= RawMaterial::getHeatNo();
 		$standard_sizes= StandardSizes::getStandardSizes();
@@ -49,18 +54,6 @@ class cuttingPageController extends BaseController {
 			'total_weight' => $total_weight,
 		);
 
-		//recods for log book
-
-		//details
-		$details='Heat no: '.$cutting['heatNo'].' Quantity: '.$cutting['quantity'].' Weight per piece: '.$cutting['wpp'].
-			' Total '.$total_weight;
-
-		$log_array= array(
-			'date' => date("Y-m-d"),
-			'time' => date("h:i:s"),
-			'category'=>'Cutting',
-			'details'=>$details,
-			);
 
 		$data=RawMaterial::returnAvailableWeight($cutting['heatNo']);
 		$available_weight=$data[0]->available_weight;
@@ -107,13 +100,6 @@ class cuttingPageController extends BaseController {
 
 	}
 
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
 	public function show()
 	{
 		// showing report for cutting material
@@ -123,42 +109,7 @@ class cuttingPageController extends BaseController {
 		return View::make('cutting.cutting_report')->with('last_record',$last_record);
 	}
 
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
-
+	
 	public function excel()
 	{
 		// sending full data for excel

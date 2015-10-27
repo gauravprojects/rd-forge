@@ -1,12 +1,22 @@
 <?php
 
+		/* ---------------    FUNCTIONS USED     ---------------------------------
+		FUNCTION NAME					DESCRIPTION				 				RETURNING DATA
+
+		index()					shows home page for raw material			blade- raw material form
+		store()					stores data coming from raw form			blade- confirm page
+		show()					shows all entries in raw mat table			blade- raw_report
+		available()				shows all available raw materials			blade- available
+								which are still uncut
+		update()				updates entered record						blade- raw_update
+		excel()					gives all raw material data to an 			blade- raw_report_excel
+								excel file
+																								*/
+
 class rawMaterialController extends BaseController {
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
+	// index() function is used to raw material form with master sizes and master grades
+	// This is the home page for raw material entry
 	public function index()
 	{
 		$sizes= Sizes::getSizes();
@@ -17,25 +27,11 @@ class rawMaterialController extends BaseController {
 	}
 
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
-
-
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
+	// store function stores data coming from raw material form
+	// view confirm shows tha last entered entry in ra material table
 	public function store()
 	{
-		$data = Input::all();
+		$data = Input::all(); // returns array form raw material entry form
 
 		$data_array = array(
 			'receipt_code' => $data['receiptCode'],
@@ -54,38 +50,16 @@ class rawMaterialController extends BaseController {
 			'available_weight' => $data['weight']
 		);
 
-		// making details for the log book
-		$details = 'Manufacturer: '.$data['Manufacturer'].'  Heat no: '.$data['heatNo'].'  Material Grade: '.
-			$data['materialGrade'].' Material Type: '.$data['materialType'].' Size: '.$data['size'];
-			
-		// making an array for logbook table
-		$log_array = array(
-					'date'=>date("Y-m-d"),
-					'time'=>date('h:i:s'),
-					'category'=>'Raw Material',
-					'details'=>$details
-					);
-
-		Logbook::insertData($log_array);
-
 		RawMaterial::insertData($data_array);
 
 		//get the last entry in raw material table and pass it to confirm blade
 
 		$last_record= RawMaterial::getLastRecord();
+		//returns the view to the confirmation page that shows last entered raw material entry
 		return View::make('rawMaterial.confirm')->with('confirmation',$last_record);
-
-
-
 	}
 
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
+	// shows all data present in raw material
 	public function show()
 	{
 		$raw= RawMaterial::getAllData();
@@ -132,36 +106,6 @@ class rawMaterialController extends BaseController {
 							->where('internal_no',$data['internal_no'])
 							->update($data_array_update);
 
-//
-////		array(1) { [0]=> object(stdClass)#242 (14) { ["internal_no"]=> int(5) ["receipt_code"]=> string(5) "12345"
-////		# ["date"]=> string(10) "2015-10-17" ["size"]=> int(100) ["manufacturer"]=> string(12) "gaurav arora"
-////		# ["heat_no"]=> string(4) "4436" ["weight"]=> int(6653) ["left_over_weight"]=> string(0) ""
-////		# ["pur_order_no"]=> string(4) "4656" ["pur_order_date"]=> string(10) "0000-00-00" ["invoice_no"]=> string(5) "46565"
-////		# ["invoice_date"]=> string(10) "0000-00-00" ["material_grade"]=> string(7)
-////		# "Grade 1" ["raw_material_type"]=> string(6) "Type 1" } }
-//
-//
-//
-//
-//		$get_record_array= RawMaterial::getRecord($data['internal_no']);
-//		dd($get_record_array['internal_no']);
-//
-//			$to_be_sent= new stdClass();
-//			$to_be_sent->receipt_code= $get_record->receiptCode;
-//			$to_be_sent->size = $get_record->size;
-//			$to_be_sent->manufacturer= $get_record->Manufacturer;
-//			$to_be_sent->heat_no=$get_record->heatNo;
-//			$to_be_sent->weight=$get_record->weight;
-//			$to_be_sent->pur_order_no=$get_record->purchaseNo;
-//			$to_be_sent->pur_order_date=$get_record->purchaseDate;
-//			$to_be_sent->invoice_no=$get_record->invoiceNo;
-//			$to_be_sent->left_over_material=$get_record->left_over_weight;
-//			$to_be_sent->invoice_date=$get_record->invoiceDate;
-//			$to_be_sent->material_grade=$get_record->materialGrade;
-//			$to_be_sent->raw_material_type= $get_record->materialType;
-//
-//
-//		//problem in fetching results
 
 		$get_record_array= RawMaterial::getRecord($data['internal_no']);
 		return View::make('rawMaterial.confirm_update')->with('confirmations',$get_record_array);
@@ -169,18 +113,6 @@ class rawMaterialController extends BaseController {
 
 	}
 
-
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
 
 	public function excel()
 	{

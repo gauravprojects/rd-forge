@@ -3,6 +3,9 @@
 class Drilling extends \Eloquent {
 	protected $fillable = [];
 
+	/* --------------------------------- DRILLING MODULE -------------------------------
+									TABLE NAME:  drilling records					*/
+
 	public static function insertData($input_array)
 	{
 		return DB::table('drilling_records')->insert($input_array);
