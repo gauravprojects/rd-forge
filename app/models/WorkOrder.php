@@ -16,4 +16,10 @@ class WorkOrder extends Eloquent
 	{
 		return DB::table('work_order_details')->orderBy('work_order_no','desc')->first();
 	}
+
+
+	public static function getWorkOrderDetails($work_order_no)
+	{
+	return DB::table('work_order_material_details')->select()->where('work_order_no','=',$work_order_no);
+	}
 }

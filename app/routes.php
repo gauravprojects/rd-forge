@@ -1,434 +1,447 @@
-<?php
+	<?php
 
-                    //ROUTES FOR LOGIN AND LOGOUT
+						//ROUTES FOR LOGIN AND LOGOUT
 
-	Route::get('/','loginPageController@create');
-	Route::get('login',array(
+		Route::get('/','loginPageController@create');
+		Route::get('login',array(
 
-	'as'=>'login.create',
-	'uses'=>'loginPageController@create',
+		'as'=>'login.create',
+		'uses'=>'loginPageController@create',
 
+		));
+
+		Route::post('login',array(
+
+		'as'=>'login.store',
+		'uses'=>'loginPageController@store'
+
+		));
+
+		Route::get('logout','loginPageController@destroy');
+
+						//ROUTES FOR HOME PAGE
+
+		Route::get('/home',array('uses'=>'homePageController@index'));
+
+
+						//ROUTES FOR RAW MATERIAL DATA
+
+		//route to get to the raw material form page
+		Route::get('/raw','rawMaterialController@index');
+
+		//route for storing data from storing data from raw material
+		Route::post('/raw','rawMaterialController@store');
+
+		//route to transfer raw material data to excel sheet
+		Route::get('/raw/excel',array(
+
+		'as'=>'raw.excel',
+		'uses'=>'rawMaterialController@excel'
+		));
+
+		Route::get('/raw/available',array(
+			'as' => 'raw.available',
+			'uses' => 'rawMaterialController@available'
+		));
+
+
+		// to update if any wrong record is entered
+		Route::get('/raw/update/{id}',array(
+			'as' => 'raw.update',
+			'uses'=> 'rawMaterialController@update'
+		));
+
+		//to store the updated data
+		Route::post('/raw/update/{id}',array(
+			'as' => 'raw.update_store',
+			'uses'=>'rawMaterialController@update_store'
 	));
 
-	Route::post('login',array(
+						//ROUTES TO STORE CUTTING DATA MATERIAL
 
-	'as'=>'login.store',
-	'uses'=>'loginPageController@store'
+		//route to get to cutting materials form page
+		Route::get('/cutting','cuttingPageController@index');
 
-	));
+		//route to send data from storing cutting data to excel
+		Route::get('/cutting/excel',array(
 
-	Route::get('logout','loginPageController@destroy');
+		'as'=>'cutting.excel',
+		'uses'=>'cuttingPageController@excel'
 
-	                //ROUTES FOR HOME PAGE
+		));
 
-	Route::get('/home',array('uses'=>'homePageController@index'));
+		//route to store cutting form data
+		Route::post('/cutting',array(
 
+		'as'=>'cutting.store',
+		'uses'=>'cuttingPageController@store'
 
-	                //ROUTES FOR RAW MATERIAL DATA
+		));
 
-	//route to get to the raw material form page
-	Route::get('/raw','rawMaterialController@index');
+						//ROUTES FOR ADMIN PAGE
 
-	//route for storing data from storing data from raw material
-	Route::post('/raw','rawMaterialController@store');
+		Route::get('/admin',array(
 
-	//route to transfer raw material data to excel sheet
-	Route::get('/raw/excel',array(
+		'as'=>'admin.page',
+		'uses'=>'adminPageController@index'
 
-	'as'=>'raw.excel',
-	'uses'=>'rawMaterialController@excel'
-	));
+		));
 
-	Route::get('/raw/available',array(
-		'as' => 'raw.available',
-		'uses' => 'rawMaterialController@available'
-	));
+		Route::get('/admin/log',array(
 
+		'as'=>'admin.log',
+		'uses'=>'adminPageController@logBook'
 
-	// to update if any wrong record is entered
-	Route::get('/raw/update/{id}',array(
-		'as' => 'raw.update',
-		'uses'=> 'rawMaterialController@update'
-	));
+		));
 
-	//to store the updated data
-	Route::post('/raw/update/{id}',array(
-		'as' => 'raw.update_store',
-		'uses'=>'rawMaterialController@update_store'
-));
 
-	                //ROUTES TO STORE CUTTING DATA MATERIAL
+						//  ROUTES FOR REPORTS
 
-	//route to get to cutting materials form page
-	Route::get('/cutting','cuttingPageController@index');
+		// route for reports home page inside admin pannel
+		Route::get('/admin/reports','adminPageController@show_reports');
 
-	//route to send data from storing cutting data to excel
-	Route::get('/cutting/excel',array(
+		// route for raw material reports.. can pe opened form admin pannel
+		Route::get('/admin/reports/raw',array(
 
-	'as'=>'cutting.excel',
-	'uses'=>'cuttingPageController@excel'
+		'as'=>'raw.report',
+		'uses'=>'rawMaterialController@show'
 
-	));
+		));
 
-	//route to store cutting form data
-	Route::post('/cutting',array(
+		// route for cutting material reports..
+		Route::get('/admin/reports/cutting',array(
 
-	'as'=>'cutting.store',
-	'uses'=>'cuttingPageController@store'
+		'as'=>'cutting.report',
+		'uses'=>'cuttingPageController@show'
 
-	));
+		));
 
-     				//ROUTES FOR ADMIN PAGE
+		// route for forging material reports..
+		Route::get('/admin/reports/forging',array(
 
-	Route::get('/admin',array(
+		'as'=>'forging.report',
+		'uses'=>'forgingController@show'
 
-	'as'=>'admin.page',
-	'uses'=>'adminPageController@index'
+		));
 
-	));
 
-	Route::get('/admin/log',array(
+						//ROUTES FOR FORGING DATA
 
-	'as'=>'admin.log',
-	'uses'=>'adminPageController@logBook'
 
-	));
+		// form for forging data
+		Route::get('/forging',array(
 
+		'as'=>'forging.index',
+		'uses'=>'forgingController@index'
 
-					//  ROUTES FOR REPORTS
+		));
 
-	// route for reports home page inside admin pannel
-	Route::get('/admin/reports','adminPageController@show_reports');
+		Route::post('/forging',array(
 
-	// route for raw material reports.. can pe opened form admin pannel
-	Route::get('/admin/reports/raw',array(
+		'as'=>'forging.store',
+		'uses'=>'forgingController@store'
 
-	'as'=>'raw.report',
-	'uses'=>'rawMaterialController@show'
+		));
 
-	));
+		Route::get('/forging/confirm',array(
 
-	// route for cutting material reports..
-	Route::get('/admin/reports/cutting',array(
+		'as'=>'forging.show',
+		'uses'=>'forgingController@show'
 
-	'as'=>'cutting.report',
-	'uses'=>'cuttingPageController@show'
+		));
 
-	));
+		Route::get('/forging/excel',array(
 
-	// route for forging material reports..
-	Route::get('/admin/reports/forging',array(
+		'as'=>'forging.excel',
+		'uses'=>'forgingController@excel'
 
-	'as'=>'forging.report',
-	'uses'=>'forgingController@show'
+		));
 
-	));
 
+							//ROUTES FOR WORK ORDER ENTRY
 
-					//ROUTES FOR FORGING DATA
+		//form1 for index
+		Route::get('/workOrder',array(
 
+		'as'=>'work.index',
+		'uses'=>'workOrderController@index'
 
-	// form for forging data
-	Route::get('/forging',array(
+		));
 
-	'as'=>'forging.index',
-	'uses'=>'forgingController@index'
+		//for saving work order data
+		Route::post('/workOrder',array(
 
-	));
+		'as'=>'work.store',
+		'uses'=>'workOrderController@store'
 
-	Route::post('/forging',array(
+		));
 
-	'as'=>'forging.store',
-	'uses'=>'forgingController@store'
 
-	));
+		// to add another entry in work order
+		Route::post('/workOrder/details/add/{id}',array(
+			'as'=>'work.details_add',
+			'uses'=>'workOrderController@details_add'
+		));
 
-	Route::get('/forging/confirm',array(
+		// to modify any previuosly entered work order detail
+		Route::post('/workOrder/details/modify/{id}',array(
+			'as' => 'work.details_modify',
+			'uses' => 'workOrderController@details_modify'
+		));
 
-	'as'=>'forging.show',
-	'uses'=>'forgingController@show'
+		// to delete any false entered data in the work order details
+		Route::post('workOrder/details/delete/{id}',array(
+			'as' => 'work.details_delete',
+			'uses'=> 'workOrderController@details_delete'
+		));
 
-	));
 
-	Route::get('/forging/excel',array(
 
-	'as'=>'forging.excel',
-	'uses'=>'forgingController@excel'
+		// ROUTES FOR MACHINGING DATA
 
-	));
+		//for going to maching form
+		Route::get('/machining',array(
+			'uses'=>'machiningController@index',
+			'as'=>'machining'
+		));
 
+		//store data from maching form
+		Route::post('/machining',array(
 
-	    				//ROUTES FOR WORK ORDER ENTRY
+			'uses'=>'machiningController@store',
+			'as'=>'machining.store'
+		));
 
-	//form1 for index
-	Route::get('/workOrder',array(
+		// to show reports for machining entries
 
-	'as'=>'work.index',
-	'uses'=>'workOrderController@index'
+		Route::get('machining/reports',array(
+			'uses'=>'machiningController@show',
+			'as'=>'machining.report'
+		));
 
-	));
+		// to move data to the excel sheets
 
-	//for saving work order data
-	Route::post('/workOrder',array(
+		Route::get('machining/reports/excel',array(
+			'as' =>	'machining.excel',
+			'uses'=> 'machiningController@excel'
 
-	'as'=>'work.store',
-	'uses'=>'workOrderController@store'
+		));
 
-	));
 
-	Route::post('/workOrder/details',array(
+	//ROUTES FOR DRILLING PAGE
 
-	'as'=>'work.store_more',
-	'uses'=>'workOrderController@store_more'
 
-	));
-
-
-	// ROUTES FOR MACHINGING DATA
-
-	//for going to maching form
-	Route::get('/machining',array(
-		'uses'=>'machiningController@index',
-		'as'=>'machining'
-	));
-
-	//store data from maching form
-	Route::post('/machining',array(
-
-		'uses'=>'machiningController@store',
-		'as'=>'machining.store'
-	));
-
-	// to show reports for machining entries
-
-	Route::get('machining/reports',array(
-		'uses'=>'machiningController@show',
-		'as'=>'machining.report'
-	));
-
-	// to move data to the excel sheets
-
-	Route::get('machining/reports/excel',array(
-		'as' =>	'machining.excel',
-		'uses'=> 'machiningController@excel'
-
+	//route to get to the drilling page
+	Route::get('/drilling',array(
+		'as' => 'drilling',
+		'uses'=>'drillingController@index'
 	));
 
 
-//ROUTES FOR DRILLING PAGE
+	//route ot get to store the drillig page information
+	Route::post('/drilling',array(
+		'as' => 'drilling.store',
+		'uses' => 'drillingController@store'
+	));
 
+	//route to show report for drilling page
+	Route::get('drilling/report',array(
+		'as' => 'drilling.report',
+		'uses' => 'drillingController@show'
+	));
 
-//route to get to the drilling page
-Route::get('/drilling',array(
-	'as' => 'drilling',
-	'uses'=>'drillingController@index'
-));
+	//route to show reports in excel
+	Route::get('drilling/report/excel',array(
+		'as'=>'drilling.excel',
+		'uses'=>'drillingController@excel'
+	));
 
+	// ROUTES FOR SERATION PAGE
 
-//route ot get to store the drillig page information
-Route::post('/drilling',array(
-	'as' => 'drilling.store',
-	'uses' => 'drillingController@store'
-));
+	//route to get to the drilling page
+	Route::get('/seration',array(
+		'as' => 'seration',
+		'uses'=>'serationController@index'
+	));
 
-//route to show report for drilling page
-Route::get('drilling/report',array(
-	'as' => 'drilling.report',
-	'uses' => 'drillingController@show'
-));
 
-//route to show reports in excel
-Route::get('drilling/report/excel',array(
-	'as'=>'drilling.excel',
-	'uses'=>'drillingController@excel'
-));
+	//route ot get to store the drillig page information
+	Route::post('/seration',array(
+		'as' => 'seration.store',
+		'uses' => 'serationController@store'
+	));
 
-// ROUTES FOR SERATION PAGE
+	//route to show report for drilling page
+	Route::get('seration/report',array(
+		'as' => 'seration.report',
+		'uses' => 'serationController@show'
+	));
 
-//route to get to the drilling page
-Route::get('/seration',array(
-	'as' => 'seration',
-	'uses'=>'serationController@index'
-));
+	//route to show reports in excel
+	Route::get('seration/report/excel',array(
+		'as'=>'seration.excel',
+		'uses'=>'serationController@excel'
+	));
 
 
-//route ot get to store the drillig page information
-Route::post('/seration',array(
-	'as' => 'seration.store',
-	'uses' => 'serationController@store'
-));
+		// Routes for master Data
 
-//route to show report for drilling page
-Route::get('seration/report',array(
-	'as' => 'seration.report',
-	'uses' => 'serationController@show'
-));
+		//Routes for manufacture
 
-//route to show reports in excel
-Route::get('seration/report/excel',array(
-	'as'=>'seration.excel',
-	'uses'=>'serationController@excel'
-));
+	Route::get('admin/manufacturers',array(
+		'as' => 'manufacturers.show',
+		'uses' => 'masterController@showManufactures'
+	));
 
+	Route::post('admin/manufacturers',array(
+		'as' => 'manufactures.store',
+		'uses'=> 'masterController@storeManufacturers'
+	));
 
-	// Routes for master Data
+	Route::get('admin/manufacturers/{id}',array(
+		'as' => 'manufacturer.delete',
+		'uses' => 'masterController@deleteManufacturer'
+	));
 
-	//Routes for manufacture
 
-Route::get('admin/manufacturers',array(
-	'as' => 'manufacturers.show',
-	'uses' => 'masterController@showManufactures'
-));
+	Route::get('admin/grades',array(
+		'as' => 'materialGrade.show',
+		'uses' => 'masterController@showGrades'
+	));
 
-Route::post('admin/manufacturers',array(
-	'as' => 'manufactures.store',
-	'uses'=> 'masterController@storeManufacturers'
-));
+	Route::post('admin/grades',array(
+		'as' => 'materialGrade.store',
+		'uses'=> 'masterController@storeGrades'
+	));
 
-Route::get('admin/manufacturers/{id}',array(
-	'as' => 'manufacturer.delete',
-	'uses' => 'masterController@deleteManufacturer'
-));
+	Route::get('admin/grades/{id}',array(
+		'as' => 'materialGrade.delete',
+		'uses' => 'masterController@deleteGrades'
+	));
 
 
-Route::get('admin/grades',array(
-	'as' => 'materialGrade.show',
-	'uses' => 'masterController@showGrades'
-));
 
-Route::post('admin/grades',array(
-	'as' => 'materialGrade.store',
-	'uses'=> 'masterController@storeGrades'
-));
+	// ROUTES FOR SIZES
 
-Route::get('admin/grades/{id}',array(
-	'as' => 'materialGrade.delete',
-	'uses' => 'masterController@deleteGrades'
-));
+	Route::get('admin/sizes',array(
+		'as' => 'sizes.show',
+		'uses' => 'masterController@showSizes'
+	));
 
 
+	Route::post('admin/sizes',array(
+		'as' => 'sizes.store',
+		'uses'=> 'masterController@storeSizes'
+	));
 
-// ROUTES FOR SIZES
+	Route::get('admin/sizes/{id}',array(
+		'as' => 'sizes.delete',
+		'uses' => 'masterController@deleteSizes'
+	));
 
-Route::get('admin/sizes',array(
-	'as' => 'sizes.show',
-	'uses' => 'masterController@showSizes'
-));
+	// ROUTES FOR Pressures
 
+	Route::get('admin/pressure',array(
+		'as' => 'pressure.show',
+		'uses' => 'masterController@showPressure'
+	));
 
-Route::post('admin/sizes',array(
-	'as' => 'sizes.store',
-	'uses'=> 'masterController@storeSizes'
-));
 
-Route::get('admin/sizes/{id}',array(
-	'as' => 'sizes.delete',
-	'uses' => 'masterController@deleteSizes'
-));
+	Route::post('admin/pressure',array(
+		'as' => 'pressure.store',
+		'uses'=> 'masterController@storePressure'
+	));
 
-// ROUTES FOR Pressures
+	Route::get('admin/pressure/{id}',array(
+		'as' => 'pressure.delete',
+		'uses' => 'masterController@deletePressure'
+	));
 
-Route::get('admin/pressure',array(
-	'as' => 'pressure.show',
-	'uses' => 'masterController@showPressure'
-));
+	// ROUTES FOR STANDARD SIZES
 
+				 Route::get('admin/standard',array(
+					 'as' => 'sizesStandard.show',
+					 'uses' => 'masterController@showStandardSizes'
+				 ));
 
-Route::post('admin/pressure',array(
-	'as' => 'pressure.store',
-	'uses'=> 'masterController@storePressure'
-));
 
-Route::get('admin/pressure/{id}',array(
-	'as' => 'pressure.delete',
-	'uses' => 'masterController@deletePressure'
-));
+				 Route::post('admin/standard',array(
+					 'as' => 'sizesStandard.store',
+					 'uses'=> 'masterController@storeStandardSizes'
+				 ));
 
-// ROUTES FOR STANDARD SIZES
+				Route::get('admin/standard/{id}',array(
+					'as' => 'sizesStandard.delete',
+					'uses' => 'masterController@deleteStandardSizes'
+				));
 
-			 Route::get('admin/standard',array(
-				 'as' => 'sizesStandard.show',
-				 'uses' => 'masterController@showStandardSizes'
-			 ));
 
+	// ROUTES FOR STANDARD SCHEDULES
 
-			 Route::post('admin/standard',array(
-				 'as' => 'sizesStandard.store',
-				 'uses'=> 'masterController@storeStandardSizes'
-			 ));
+				 Route::get('admin/schedule',array(
+					 'as' => 'schedule.show',
+					 'uses' => 'masterController@showSchedule'
+				 ));
 
-			Route::get('admin/standard/{id}',array(
-				'as' => 'sizesStandard.delete',
-				'uses' => 'masterController@deleteStandardSizes'
-			));
 
+				 Route::post('admin/schedule',array(
+					 'as' => 'schedule.store',
+					 'uses'=> 'masterController@storeSchedule'
+				 ));
 
-// ROUTES FOR STANDARD SCHEDULES
+				Route::get('admin/schedule/{id}',array(
+					'as' => 'schedule.delete',
+					'uses' => 'masterController@deleteSchedule'
+				));
 
-			 Route::get('admin/schedule',array(
-				 'as' => 'schedule.show',
-				 'uses' => 'masterController@showSchedule'
-			 ));
 
 
-			 Route::post('admin/schedule',array(
-				 'as' => 'schedule.store',
-				 'uses'=> 'masterController@storeSchedule'
-			 ));
+	// ROUTES FOR TYPES IN DESCRIPTION DATA
 
-			Route::get('admin/schedule/{id}',array(
-				'as' => 'schedule.delete',
-				'uses' => 'masterController@deleteSchedule'
-			));
+	Route::get('admin/type',array(
+		'as' => 'type.show',
+		'uses' => 'masterController@showType'
+	));
 
 
+	Route::post('admin/type',array(
+		'as' => 'type.store',
+		'uses'=> 'masterController@storeType'
+	));
 
-// ROUTES FOR TYPES IN DESCRIPTION DATA
+	Route::get('admin/type/{id}',array(
+		'as' => 'type.delete',
+		'uses' => 'masterController@deleteType'
+	));
 
-Route::get('admin/type',array(
-	'as' => 'type.show',
-	'uses' => 'masterController@showType'
-));
 
 
-Route::post('admin/type',array(
-	'as' => 'type.store',
-	'uses'=> 'masterController@storeType'
-));
 
-Route::get('admin/type/{id}',array(
-	'as' => 'type.delete',
-	'uses' => 'masterController@deleteType'
-));
 
 
+	// TESTING ROUTES
 
+	Route::get('/testing',array(
+		'as' => 'testing',
+		'uses' => 'testingController@show'
+	));
 
+	Route::post('/testing',array(
+		'as' => 'testing.store',
+		'uses' => 'testingController@store'
+	));
 
 
-// TESTING ROUTES
 
-Route::get('/testing',array(
-	'as' => 'testing',
-	'uses' => 'testingController@show'
-));
 
-Route::post('/testing',array(
-	'as' => 'testing.store',
-	'uses' => 'testingController@store'
-));
+	Route::get('/auto',array(
+		'as' => 'auto',
+		'uses' => 'testingController@auto'
+	));
 
-
-
-
-Route::get('/auto',array(
-	'as' => 'auto',
-	'uses' => 'testingController@auto'
-));
-
-Route::post('/auto',array(
-	'as' => 'auto.store',
-	'uses'=>'testingController@autoStore'
-));
+	Route::post('/auto',array(
+		'as' => 'auto.store',
+		'uses'=>'testingController@autoStore'
+	));
 
 

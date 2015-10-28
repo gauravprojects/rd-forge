@@ -2,34 +2,11 @@
 
 class WorkOrderController extends BaseController {
 
-	/**
-	 * Display a listing of the resource.
-	 * GET /workorder
-	 *
-	 * @return Response
-	 */
 	public function index()
 	{
 		return View::make('workOrder.work');
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 * GET /workorder/create
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
-
-	/**
-	 * Store a newly created resource in storage.
-	 * POST /workorder
-	 *
-	 * @return Response
-	 */
 	public function store()
 	{
 		$data_input=Input::all();
@@ -51,90 +28,40 @@ class WorkOrderController extends BaseController {
 		//now fetch dis data to return to the array
 		$last_input = WorkOrder::getLastRecord();
 
-		return View::make('workOrder.work2')->with('data',$last_input);
+		$grades= Grades::getGrades();
+		$work_order_details= WorkOrder::getWorkOrderDetails($last_input->work_order_no);
+
+		return View::make('workOrder.work2')
+			->with('data',$last_input)
+			->with('grades',$grades)
+			->with('work_order_details',$work_order_details);
 
 
 	}
 
-	public function store_more()
+
+
+	public function details_add()
 	{
-		$input_data=Input::all();
-		//dd($input_array);
+		$data= Input::all();
 
-
-		$input_array1= array(
-					'work_order_no'=>$input_data['work_order_no1'],
-					'description'=>$input_data['description1'],
-					'material_grade'=>$input_data['material_grade1'],
-					'quantity' =>$input_data['quantity1'],
-					'weight' => $input_data['weight1'],
-					'remarks' => $input_data['remarks1']
+		$data_array= array(
+			'work_order_no'=>$data['work_order_no'],
+			'item_no' => $data['item_no'],
+			'description'=>$data['description'],
+			'material_grade'=>$data['grade'],
+			'quantity' =>$data['quantity'],
+			'weight' => $data['weight'],
+			'remarks' => $data['remarks']
 		);
+        $input_response= DB::table('work_order_material_details')->insert($data_array);
 
-		$input_response1= DB::table('work_order_material_details')->insert($input_array1);
-		//dd($input_response1);
-
-		if(!($input_data['quantity2']== null) )
-		{
-			$input_array2= array(
-				'work_order_no'=>$input_data['work_order_no2'],
-				'description'=>$input_data['description2'],
-				'material_grade'=>$input_data['material_grade2'],
-				'quantity' =>$input_data['quantity2'],
-				'weight' => $input_data['weight2'],
-				'remarks' => $input_data['remarks2']
-			);
-
-			$input_response2= DB::table('work_order_material_details')->insert($input_array2);
-		}
-
-		if(!($input_data['quantity3']== null) ) {
-			$input_array3 = array(
-				'work_order_no' => $input_data['work_order_no3'],
-				'description' => $input_data['description3'],
-				'material_grade' => $input_data['material_grade3'],
-				'quantity' => $input_data['quantity3'],
-				'weight' => $input_data['weight3'],
-				'remarks' => $input_data['remarks3']
-			);
-			$input_response3= DB::table('work_order_material_details')->insert($input_array3);
-		}
-
-
-
-// PROBLEM STARTS FROM HERE
-		$last_record=DB::table('work_order_details')->orderBy('work_order_no', 'desc')->first();
-//
-//
-//			$last_record_details= DB::select(DB::raw("SELECT * from work_order_material_details where work_order_no LIKE '%".$last_record->work_order_no."%'"));
-//
-//			$mixed_array=array($last_record,$last_record_details);
-
-
-			return View::make('workOrder.confirm')->with('data',$last_record);
-
+        $last_record=DB::table('work_order_details')->orderBy('work_order_no', 'desc')->first();
+        return View::make('workOrder.confirm')->with('data',$last_record);
 
 	}
 
-	/**
-	 * Display the specified resource.
-	 * GET /workorder/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
 
-	/**
-	 * Show the form for editing the specified resource.
-	 * GET /workorder/{id}/edit
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
 	public function edit($id)
 	{
 		//
