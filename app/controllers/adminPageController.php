@@ -2,12 +2,13 @@
 
 class AdminPageController extends BaseController {
 
-	/**
-	 * Display a listing of the resource.
-	 * GET /adminpage
-	 *
-	 * @return Response
-	 */
+	/* ---------------------------- FUNCTION USED ---------------------------------------------
+		FUNCTIONS 							DESCRIPTION							RETURNED VALUE
+
+		index()					used to show admin panel page					blade- admin blade
+		show_reports()			show reports									blade- show_report blade
+																									*/
+
 	public function index()
 	{
 
@@ -15,87 +16,12 @@ class AdminPageController extends BaseController {
 		return View::make('adminPanel.admin');
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 * GET /adminpage/create
-	 *
-	 * @return Response
-	 */
 	public function show_reports()
 	{
 
 		//returns the home page where all the reports are being shown
 		// home page for all retuns
 		return View::make('adminPanel.reportsHome');
-	}
-
-	public function create()
-	{
-		//
-	}
-
-	/**
-	 * Store a newly created resource in storage.
-	 * POST /adminpage
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
-	}
-
-	/**
-	 * Display the specified resource.
-	 * GET /adminpage/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 * GET /adminpage/{id}/edit
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 * PUT /adminpage/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 * DELETE /adminpage/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
-
-	public function logBook()
-	{
-		return View::make('logBook.log');
 	}
 
 }

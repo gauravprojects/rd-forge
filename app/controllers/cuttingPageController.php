@@ -2,8 +2,9 @@
 
 class cuttingPageController extends BaseController {
 
-	/* ---------------    FUNCTIONS USED     ---------------------------------
-    FUNCTION NAME					DESCRIPTION				 				RETURNING DATA
+	/* ---------------    FUNCTIONS USED IN CUTTING CONTROLLER    ---------------------------------
+
+	FUNCTION NAME					DESCRIPTION				 				RETURNING DATA
 
     index()					shows home page for cutting					blade- cutting material form
     store()					stores data coming from cutting form		blade- confirm page
@@ -109,7 +110,7 @@ class cuttingPageController extends BaseController {
 		return View::make('cutting.cutting_report')->with('last_record',$last_record);
 	}
 
-	
+
 	public function excel()
 	{
 		// sending full data for excel
