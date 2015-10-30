@@ -1,13 +1,23 @@
 <?php
 
 class ForgingController extends BaseController {
+/*   ----------------------------------- FUNCTIONS USED ------------------------------------------------
 
-	/**
-	 * Display a listing of the resource.
-	 * GET /forging
-	 *
-	 * @return Response
-	 */
+		Models-> 1- Forging.php -> table forging_records
+				2- ForgingRem.php -> table forging_remarks
+
+Note-> 1- forging is the process done after cutting and before machining.. there is no need of work order in this process
+	2- This form requires heat no data from raw material table.
+	3- Standard size, pressure, type and schedule data from master data which have seperate tables each.
+
+	NAME								USED FOR 									Blade used
+
+	index()						to show forging form with required data			forge.blade.php
+	store()						to store data coming form forge form			return confirm.blade.php
+	show()						to store all forging data in forging report		forging_report.blade.php
+	excel()						generates excel file of all the previously		forging_report_excel.php
+								entered data
+*/
 	public function index()
 	{
 		$sizes= Sizes::getSizes();
@@ -29,6 +39,7 @@ class ForgingController extends BaseController {
 	{
 		$forging_input= Input::all();
 
+		// calculating total_weight
 		$total_weight= $forging_input['weight_per_peice']*$forging_input['quantity'];
 
 		// forging array for input
@@ -64,53 +75,10 @@ class ForgingController extends BaseController {
 
 	}
 
-	/**
-	 * Display the specified resource.
-	 * GET /forging/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
 	public function show()
 	{
 		$forging_data= Forging::getAllRecords();
 		return View::make('forging.forging_report')->with('forging_data',$forging_data);
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 * GET /forging/{id}/edit
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 * PUT /forging/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 * DELETE /forging/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
 	}
 
 	public function excel()

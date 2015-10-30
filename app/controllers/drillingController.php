@@ -2,34 +2,18 @@
 
 class DrillingController extends \BaseController {
 
-	/**
-	 * Display a listing of the resource.
-	 * GET /drilling
-	 *
-	 * @return Response
-	 */
+	/*  ----------------------------------- FUNCTIONS USED ------------------------------------
+
+		 
+
+	*/
+
+
+
 	public function index()
 	{
 		return View::make('drilling.drill');
 	}
-
-	/**
-	 * Show the form for creating a new resource.
-	 * GET /drilling/create
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
-
-	/**
-	 * Store a newly created resource in storage.
-	 * POST /drilling
-	 *
-	 * @return Response
-	 */
 	public function store()
 	{
 		$input_data= Input::all();
@@ -65,61 +49,16 @@ class DrillingController extends \BaseController {
 
 	}
 
-	/**
-	 * Display the specified resource.
-	 * GET /drilling/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
 	public function show()
 	{
 		$all_data= Drilling::getAllData();
 		return View::make('drilling.drilling_report')->with('data',$all_data);
 	}
 
-	/**
-	 * Show the form for editing the specified resource.
-	 * GET /drilling/{id}/edit
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
 
 	public function excel()
 	{
-
 		$all_data= Drilling::getAllData();
 		return View::make('drilling.drilling_report_excel')->with('data',$all_data);
 	}
-
-	public function edit($id)
-	{
-		//
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 * PUT /drilling/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 * DELETE /drilling/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
-
 }
