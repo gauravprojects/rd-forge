@@ -3,6 +3,9 @@ body
 	background-color: #e4e4e4;
 }
 
+button:focus{
+  background-color: transparent;
+}
 
 .card
 {
@@ -13,6 +16,7 @@ body
 .wrapper
 {
 	padding: 50px 150px 20px 150px;
+	min-height: 79%;
 	height: auto;
 }
 
@@ -101,3 +105,19 @@ table,tr,th,td
 	background-color: #00695c;
 	color: #00695c;
 }
+
+.form-container{
+	padding: 1% 5% 1% 22%;
+	display: none;
+}
+
+
+.cardFloat{
+	float: left;
+	width: 48%;
+}
+
+.cardMargin{
+	margin-right: 4%;
+}
+
