@@ -2,13 +2,98 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="11f2871e-3378-42bd-b5a5-bc87373f93a3" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/workOrder/confirm.blade.php" afterPath="$PROJECT_DIR$/app/views/workOrder/confirm.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/cuttingPageController.php" afterPath="$PROJECT_DIR$/app/controllers/cuttingPageController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/report.gif" afterPath="$PROJECT_DIR$/public/css/report.gif" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/favicon.ico" afterPath="$PROJECT_DIR$/public/favicon.ico" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/logo.jpg" afterPath="$PROJECT_DIR$/public/logo.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/packages/.gitkeep" afterPath="$PROJECT_DIR$/public/packages/.gitkeep" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitattributes" afterPath="$PROJECT_DIR$/.gitattributes" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.name" afterPath="$PROJECT_DIR$/.idea/.name" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/blade.xml" afterPath="$PROJECT_DIR$/.idea/blade.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/rd-forge.iml" afterPath="$PROJECT_DIR$/.idea/rd-forge.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CONTRIBUTING.md" afterPath="$PROJECT_DIR$/CONTRIBUTING.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/adminPageController.php" afterPath="$PROJECT_DIR$/app/controllers/adminPageController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/drillingController.php" afterPath="$PROJECT_DIR$/app/controllers/drillingController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/forgingController.php" afterPath="$PROJECT_DIR$/app/controllers/forgingController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/rd-forge.iml" afterPath="$PROJECT_DIR$/.idea/rd-forge.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/machiningController.php" afterPath="$PROJECT_DIR$/app/controllers/machiningController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/masterController.php" afterPath="$PROJECT_DIR$/app/controllers/masterController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/serationController.php" afterPath="$PROJECT_DIR$/app/controllers/serationController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/testingController.php" afterPath="$PROJECT_DIR$/app/controllers/testingController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/workOrderController.php" afterPath="$PROJECT_DIR$/app/controllers/workOrderController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/Cutting.php" afterPath="$PROJECT_DIR$/app/models/Cutting.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/CuttingDes.php" afterPath="$PROJECT_DIR$/app/models/CuttingDes.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/CuttingRem.php" afterPath="$PROJECT_DIR$/app/models/CuttingRem.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/DescriptionType.php" afterPath="$PROJECT_DIR$/app/models/DescriptionType.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/Drilling.php" afterPath="$PROJECT_DIR$/app/models/Drilling.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/Forging.php" afterPath="$PROJECT_DIR$/app/models/Forging.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/ForgingRem.php" afterPath="$PROJECT_DIR$/app/models/ForgingRem.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/Grades.php" afterPath="$PROJECT_DIR$/app/models/Grades.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/Machining.php" afterPath="$PROJECT_DIR$/app/models/Machining.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/Manufactures.php" afterPath="$PROJECT_DIR$/app/models/Manufactures.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/Pressure.php" afterPath="$PROJECT_DIR$/app/models/Pressure.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/RawMaterial.php" afterPath="$PROJECT_DIR$/app/models/RawMaterial.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/Schedule.php" afterPath="$PROJECT_DIR$/app/models/Schedule.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/Seration.php" afterPath="$PROJECT_DIR$/app/models/Seration.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/Sizes.php" afterPath="$PROJECT_DIR$/app/models/Sizes.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/StandardSizes.php" afterPath="$PROJECT_DIR$/app/models/StandardSizes.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/WorkOrder.php" afterPath="$PROJECT_DIR$/app/models/WorkOrder.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/adminPanel/admin.blade.php" afterPath="$PROJECT_DIR$/app/views/adminPanel/admin.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/adminPanel/descriptionType.blade.php" afterPath="$PROJECT_DIR$/app/views/adminPanel/descriptionType.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/adminPanel/manufactures.blade.php" afterPath="$PROJECT_DIR$/app/views/adminPanel/manufactures.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/adminPanel/materialGrade.blade.php" afterPath="$PROJECT_DIR$/app/views/adminPanel/materialGrade.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/adminPanel/pressure.blade.php" afterPath="$PROJECT_DIR$/app/views/adminPanel/pressure.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/adminPanel/reportsHome.blade.php" afterPath="$PROJECT_DIR$/app/views/adminPanel/reportsHome.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/adminPanel/schedule.blade.php" afterPath="$PROJECT_DIR$/app/views/adminPanel/schedule.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/adminPanel/sizes.blade.php" afterPath="$PROJECT_DIR$/app/views/adminPanel/sizes.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/adminPanel/std_size.blade.php" afterPath="$PROJECT_DIR$/app/views/adminPanel/std_size.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/cutting/confirm.blade.php" afterPath="$PROJECT_DIR$/app/views/cutting/confirm.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/cutting/cutting_report.blade.php" afterPath="$PROJECT_DIR$/app/views/cutting/cutting_report.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/cutting/cutting_report_excel.blade.php" afterPath="$PROJECT_DIR$/app/views/cutting/cutting_report_excel.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/drilling/confirm.blade.php" afterPath="$PROJECT_DIR$/app/views/drilling/confirm.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/drilling/drill.blade.php" afterPath="$PROJECT_DIR$/app/views/drilling/drill.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/drilling/drilling_report.blade.php" afterPath="$PROJECT_DIR$/app/views/drilling/drilling_report.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/drilling/drilling_report_excel.blade.php" afterPath="$PROJECT_DIR$/app/views/drilling/drilling_report_excel.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/forging/confirm.blade.php" afterPath="$PROJECT_DIR$/app/views/forging/confirm.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/forging/forge.blade.php" afterPath="$PROJECT_DIR$/app/views/forging/forge.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/forging/forging_report.blade.php" afterPath="$PROJECT_DIR$/app/views/forging/forging_report.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/forging/forging_report_excel.blade.php" afterPath="$PROJECT_DIR$/app/views/forging/forging_report_excel.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/logBook/log.blade.php" afterPath="$PROJECT_DIR$/app/views/logBook/log.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/machining/confirm.blade.php" afterPath="$PROJECT_DIR$/app/views/machining/confirm.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/machining/machine.blade.php" afterPath="$PROJECT_DIR$/app/views/machining/machine.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/machining/machining_report.blade.php" afterPath="$PROJECT_DIR$/app/views/machining/machining_report.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/machining/machining_report_excel.blade.php" afterPath="$PROJECT_DIR$/app/views/machining/machining_report_excel.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/rawMaterial/available.blade.php" afterPath="$PROJECT_DIR$/app/views/rawMaterial/available.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/rawMaterial/confirm_update.blade.php" afterPath="$PROJECT_DIR$/app/views/rawMaterial/confirm_update.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/rawMaterial/raw_report_excel.blade.php" afterPath="$PROJECT_DIR$/app/views/rawMaterial/raw_report_excel.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/rawMaterial/raw_update.blade.php" afterPath="$PROJECT_DIR$/app/views/rawMaterial/raw_update.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/seration/confirm.blade.php" afterPath="$PROJECT_DIR$/app/views/seration/confirm.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/seration/seration.blade.php" afterPath="$PROJECT_DIR$/app/views/seration/seration.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/seration/seration_report.blade.php" afterPath="$PROJECT_DIR$/app/views/seration/seration_report.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/seration/seration_report_excel.blade.php" afterPath="$PROJECT_DIR$/app/views/seration/seration_report_excel.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/testing/auto.blade.php" afterPath="$PROJECT_DIR$/app/views/testing/auto.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/testing/one.blade.php" afterPath="$PROJECT_DIR$/app/views/testing/one.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/workOrder/confirm.blade.php" afterPath="$PROJECT_DIR$/app/views/workOrder/confirm.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/workOrder/work.blade.php" afterPath="$PROJECT_DIR$/app/views/workOrder/work.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/workOrder/work2.blade.php" afterPath="$PROJECT_DIR$/app/views/workOrder/work2.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/artisan" afterPath="$PROJECT_DIR$/artisan" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.json" afterPath="$PROJECT_DIR$/composer.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/phpunit.xml" afterPath="$PROJECT_DIR$/phpunit.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/.htaccess" afterPath="$PROJECT_DIR$/public/.htaccess" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/index.css" afterPath="$PROJECT_DIR$/public/css/index.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/indexLog.css" afterPath="$PROJECT_DIR$/public/css/indexLog.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/logMod.css" afterPath="$PROJECT_DIR$/public/css/logMod.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.php" afterPath="$PROJECT_DIR$/public/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/robots.txt" afterPath="$PROJECT_DIR$/public/robots.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rdforge (2).sql" afterPath="$PROJECT_DIR$/rdforge (2).sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/readme.md" afterPath="$PROJECT_DIR$/readme.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server.php" afterPath="$PROJECT_DIR$/server.php" />
     </list>
     <ignored path="rd-forge.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,22 +110,15 @@
     <option name="PATCH_PATH" value="" />
   </component>
   <component name="DatabaseView">
-    <option name="FLATTEN" value="false" />
-    <option name="GROUP_BY_TYPE" value="true" />
-    <option name="SORT_CHILDREN" value="false" />
-    <option name="SHOW_TABLE_CONSTRAINTS" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_TABLE_DETAILS" value="true" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
     <PATH>
       <PATH_ELEMENT>
         <option name="myItemId" />
-        <option name="myItemType" value="com.intellij.database.view.DbRootNodeDescriptor" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="MySQL - rdforge@localhost" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="rdforge" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
       </PATH_ELEMENT>
     </PATH>
   </component>
@@ -49,11 +127,11 @@
     <favorites_list name="rd-forge" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="adminPageController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/adminPageController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.3846154">
+            <state vertical-scroll-proportion="0.0">
               <caret line="10" column="0" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="6" />
               <folding />
             </state>
@@ -63,7 +141,7 @@
       <file leaf-file-name="Forging.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/Forging.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
+            <state vertical-scroll-proportion="0.0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
@@ -73,8 +151,8 @@
       <file leaf-file-name="drillingController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/drillingController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.19844358">
-              <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+            <state vertical-scroll-proportion="0.121753246">
+              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -83,7 +161,7 @@
       <file leaf-file-name="workOrderController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/workOrderController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.65384614">
+            <state vertical-scroll-proportion="0.0">
               <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
               <folding />
             </state>
@@ -93,7 +171,7 @@
       <file leaf-file-name="CuttingRem.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/CuttingRem.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.5384617">
+            <state vertical-scroll-proportion="0.0">
               <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding />
             </state>
@@ -103,7 +181,7 @@
       <file leaf-file-name="DescriptionType.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/DescriptionType.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
+            <state vertical-scroll-proportion="0.0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
@@ -113,7 +191,7 @@
       <file leaf-file-name="RawMaterial.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/RawMaterial.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.65384614">
+            <state vertical-scroll-proportion="0.0">
               <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
               <folding />
             </state>
@@ -123,7 +201,7 @@
       <file leaf-file-name="cuttingPageController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/cuttingPageController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.0384617">
+            <state vertical-scroll-proportion="0.0">
               <caret line="122" column="32" selection-start-line="122" selection-start-column="32" selection-end-line="122" selection-end-column="32" />
               <folding />
             </state>
@@ -133,7 +211,7 @@
       <file leaf-file-name="CuttingDes.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/CuttingDes.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.5384617">
+            <state vertical-scroll-proportion="0.0">
               <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding />
             </state>
@@ -143,7 +221,7 @@
       <file leaf-file-name="Cutting.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/Cutting.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-16.192308">
+            <state vertical-scroll-proportion="0.0">
               <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
               <folding />
             </state>
@@ -208,21 +286,19 @@
     </option>
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" />
+  <component name="JsBuildToolPackageJson" detection-done="true" />
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
-  </component>
-  <component name="NamedScopeManager">
-    <order />
   </component>
   <component name="PhpServers">
     <servers />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="1" />
-    <option name="y" value="1" />
-    <option name="width" value="1364" />
-    <option name="height" value="726" />
+    <option name="x" value="65" />
+    <option name="y" value="-4" />
+    <option name="width" value="1301" />
+    <option name="height" value="772" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -245,8 +321,11 @@
       <autoscrollToSource />
       <autoscrollFromSource />
       <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -490,13 +569,11 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="FullScreen" value="false" />
     <property name="SearchEverywhereHistoryKey" value="route&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/routes.php&#10;cu&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/controllers/cuttingPageController.php&#10;cut&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/views/cutting/cut.blade.php&#10;admin&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/views/adminPanel/admin.blade.php&#10;ro&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/routes.php&#10;ma&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/controllers/masterController.php&#10;rou&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/routes.php&#10;routes&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/routes.php&#10;press&#9;null&#9;null&#10;master&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/controllers/masterController.php&#10;raw&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/controllers/rawMaterialController.php&#10;testing&#9;null&#9;null&#10;mas&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/controllers/masterController.php&#10;index.css&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/public/css/index.css&#10;manu&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/models/Manufactures.php&#10;routes.php&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/routes.php" />
     <property name="dynamic.classpath" value="false" />
   </component>
@@ -542,28 +619,28 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1" y="1" width="1364" height="726" extended-state="0" />
-    <editor active="true" />
+    <frame x="65" y="-4" width="1301" height="772" extended-state="6" />
+    <editor active="false" />
     <layout>
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19785276" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13113497" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32843137" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="1.0" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32922536" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19754036" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1829362" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="1.0" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32922536" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -789,7 +866,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -804,7 +880,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="178" column="0" selection-start-line="178" selection-start-column="0" selection-end-line="178" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -812,7 +887,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -820,7 +894,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -828,7 +901,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="66" column="37" selection-start-line="66" selection-start-column="37" selection-end-line="66" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -836,7 +908,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="49" column="37" selection-start-line="46" selection-start-column="24" selection-end-line="49" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -844,9 +915,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-14.115385">
           <caret line="83" column="0" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
-          <folding>
-            <marker date="1446129642871" expanded="true" signature="-1:-1" placeholder="SELECT * fro..work_order_material_details..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -854,7 +922,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.65384614">
           <caret line="46" column="4" selection-start-line="46" selection-start-column="4" selection-end-line="46" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -862,7 +929,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.3076923">
           <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -870,9 +936,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.09434">
           <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
-          <folding>
-            <marker date="1446185764852" expanded="true" signature="-1:-1" placeholder="SELECT *,'' ..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -880,7 +943,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -894,7 +956,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/Cutting.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.192308">
+        <state vertical-scroll-proportion="0.0">
           <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
           <folding />
         </state>
@@ -902,7 +964,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/CuttingDes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.5384617">
+        <state vertical-scroll-proportion="0.0">
           <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding />
         </state>
@@ -910,7 +972,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/CuttingRem.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.5384617">
+        <state vertical-scroll-proportion="0.0">
           <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding />
         </state>
@@ -926,7 +988,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/RawMaterial.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.65384614">
+        <state vertical-scroll-proportion="0.0">
           <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
           <folding />
         </state>
@@ -934,7 +996,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/cuttingPageController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.0384617">
+        <state vertical-scroll-proportion="0.0">
           <caret line="122" column="32" selection-start-line="122" selection-start-column="32" selection-end-line="122" selection-end-column="32" />
           <folding />
         </state>
@@ -942,7 +1004,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/adminPageController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.3846154">
+        <state vertical-scroll-proportion="0.0">
           <caret line="10" column="0" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="6" />
           <folding />
         </state>
@@ -950,7 +1012,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/workOrderController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.65384614">
+        <state vertical-scroll-proportion="0.0">
           <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
           <folding />
         </state>
@@ -958,8 +1020,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/drillingController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19844358">
-          <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+        <state vertical-scroll-proportion="0.121753246">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding />
         </state>
       </provider>
