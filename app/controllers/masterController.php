@@ -181,7 +181,7 @@ class MasterController extends \BaseController
 	{
 
 		$data=Schedule::getSchedule();
-		return View::make('adminPanel.Schedule')->with('data', $data);
+		return View::make('adminPanel.schedule')->with('data', $data);
 	}
 
 
@@ -196,7 +196,7 @@ class MasterController extends \BaseController
 
 		$input_response=Schedule::insertSchedule($input);
 		$data=Schedule::getSchedule();
-		return View::make('adminPanel.Schedule')->with('data', $data);
+		return View::make('adminPanel.schedule')->with('data', $data);
 
 	}
 
@@ -205,11 +205,10 @@ class MasterController extends \BaseController
 	{
 		$delete_response=Schedule::deleteSchedule($id);
 		$data=Schedule::getSchedule();
-		return View::make('adminPanel.Schedule')->with('data', $data);
+		return View::make('adminPanel.schedule')->with('data', $data);
 
 
 	}
-
 
 	// ------------------------- FUNCTIONS FOR TYPE IN DESCRIPTION DATA --------------------
 

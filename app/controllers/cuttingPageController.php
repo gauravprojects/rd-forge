@@ -21,6 +21,9 @@
 																								*/
 		public function index()
 		{
+
+			
+
 			// returns cutting form page
 			//all data form master table is taken and fed to the  cutting form
 			$sizes= Sizes::getSizes();
@@ -40,6 +43,8 @@
 
 		public function store()
 		{
+
+
 			// stores data coming from cutting form
 
 			$cutting= Input::all();

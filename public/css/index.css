@@ -5,6 +5,13 @@ body
 	/*position: relative;*/
 }
 
+<<<<<<< HEAD
+=======
+button:focus{
+  background-color: transparent;
+}
+
+>>>>>>> 6a5bb9dea13d962ee3127601d87712ddd6840220
 .card
 {
 	padding: 40px;
@@ -17,7 +24,12 @@ body
 
 .wrapper
 {
+<<<<<<< HEAD
 	padding: 7% 150px 20px 150px;
+=======
+	padding: 50px 150px 20px 150px;
+	min-height: 79%;
+>>>>>>> 6a5bb9dea13d962ee3127601d87712ddd6840220
 	height: auto;
 }
 
@@ -141,6 +153,7 @@ table,tr,th,td
 	color: #00695c;
 }
 
+<<<<<<< HEAD
 .brand-logo{
 	font-size: 26px !important;
 }
@@ -222,3 +235,20 @@ input:hover{
 	float: left;
 
 }
+=======
+.form-container{
+	padding: 1% 5% 1% 22%;
+	display: none;
+}
+
+
+.cardFloat{
+	float: left;
+	width: 48%;
+}
+
+.cardMargin{
+	margin-right: 4%;
+}
+
+>>>>>>> 6a5bb9dea13d962ee3127601d87712ddd6840220

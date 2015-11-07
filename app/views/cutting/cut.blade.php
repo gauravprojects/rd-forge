@@ -42,6 +42,8 @@
                         </div>
 
 
+
+
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Cutting Description') }}
                             <hr>
