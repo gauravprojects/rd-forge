@@ -18,11 +18,13 @@
 		show()					shows all entries in cutting table			blade- cutting_report
 		excel()					gives all cutting data to an 				blade- cutting_report_excel
 								excel file
-																								*/
+		update()				update records that are previously			blade- cutting blade form
+								entered
+																														*/
 		public function index()
 		{
-
-			
+			//testing for empty array
+			$dataArray= Cutting::returnNullData();
 
 			// returns cutting form page
 			//all data form master table is taken and fed to the  cutting form
@@ -34,6 +36,7 @@
 			$type= DescriptionType::getType();
 			return View::make('cutting.cut')
 				->with('sizes',$sizes)
+				->with('dataArray',$dataArray)
 				->with('heat_no',$heat_no)
 				->with('standard_size',$standard_sizes)
 				->with('pressure',$pressure)
@@ -41,10 +44,9 @@
 				->with('type',$type);
 		}
 
+
 		public function store()
 		{
-
-
 			// stores data coming from cutting form
 
 			$cutting= Input::all();
@@ -139,6 +141,37 @@
 
 
 			return View::make('cutting.cutting_report_excel')->with('cutting',$data);
+
+		}
+
+
+		public function update($id)
+		{
+			//get all cutting details of the given id in a variable
+
+			//------------ PROBLEM-------------------------------
+			// Here the issue is that, $dataArray is able to return data to the cut blade for update
+			// but in select html tags I am not able to give "selected" attribute.. so instead it is showing all values
+
+			$dataArray= Cutting::getUpdateData($id);
+			$dataArray= (array)$dataArray[0];
+
+			//upate function
+			// route is /cutting/update
+			$sizes= Sizes::getSizes();
+			$heat_no= RawMaterial::getHeatNo();
+			$standard_sizes= StandardSizes::getStandardSizes();
+			$pressure= Pressure::getPressure();
+			$schedule= Schedule::getSchedule();
+			$type= DescriptionType::getType();
+			return View::make('cutting.cut')
+					->with('sizes',$sizes)
+					->with('heat_no',$heat_no)
+					->with('standard_size',$standard_sizes)
+					->with('pressure',$pressure)
+					->with('schedule',$schedule)
+					->with('type',$type)
+					->with('dataArray',$dataArray);
 
 		}
 

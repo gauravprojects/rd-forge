@@ -15,7 +15,6 @@
                     <div class="row">
                         {{ Form::open(array('action'=>'cuttingPageController@store')) }}
 
-
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Date') }}
                             {{ Form::input('date', 'date') }}
@@ -97,17 +96,17 @@
                         <!-- qunanity.. this is the quantity of the cutted material -->
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail','Qunatity') }}
-                                {{ Form::text('quantity',null,array('class'=>'form-control','placeholder'=>'Quantity','id'=>'JustAnything')) }}
+                                {{ Form::text('quantity',$dataArray['quantity'],array('class'=>'form-control','placeholder'=>'Quantity','id'=>'JustAnything')) }}
                             </div>
 
                             <!-- Wieght per piece,, weight per piece of the cutted material -->
                             <div class="form-group">
-                                {{ Form::label('exampleInputEmail1','Weight per Pice') }}
-                                {{ Form::text('wpp',null,array('class'=>'form-control','placeholder'=>'Weight per piece')) }}
+                                {{ Form::label('exampleInputEmail1','Weight per Piece') }}
+                                {{ Form::text('wpp',$dataArray['weight_per_piece'],array('class'=>'form-control','placeholder'=>'Weight per piece')) }}
                             </div>
 
                             <!-- total weight to be calculated by itself
-                                total weight= quantity * Weight per piece -->
+                                    total weight= quantity * Weight per piece -->
 
                             <!-- cutting item description  -->
                             <div class="form-group">

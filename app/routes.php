@@ -78,6 +78,13 @@
 
 		));
 
+		//route to update cutting form data
+		Route::get('/cutting/update/{id}',array(
+			'as' => 'cutting.update',
+			'uses' => 'cuttingPageController@update'
+		));
+
+
 						//ROUTES FOR ADMIN PAGE
 
 		Route::get('/admin',array(
