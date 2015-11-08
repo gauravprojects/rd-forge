@@ -150,6 +150,11 @@
 
 		));
 
+		Route::get('/forging/update/{id}',array(
+			'as' => 'forging.update',
+			'uses' => 'forgingController@update'
+		));
+
 		Route::get('/forging/confirm',array(
 
 		'as'=>'forging.show',

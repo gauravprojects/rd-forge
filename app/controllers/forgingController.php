@@ -8,7 +8,7 @@ class ForgingController extends BaseController {
 
 Note-> 1- forging is the process done after cutting and before machining.. there is no need of work order in this process
 	2- This form requires heat no data from raw material table.
-	3- Standard size, pressure, type and schedule data from master data which have seperate tables each.
+	3- Standard size, pressure, type and schedule data from master data which have separate tables each.
 
 	NAME								USED FOR 									Blade used
 
@@ -20,6 +20,10 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 */
 	public function index()
 	{
+		//getting null array
+		$dataArray= Forging::getNullArray();
+
+		//getting standard master values from respective models
 		$sizes= Sizes::getSizes();
 		$heat_no= RawMaterial::getHeatNo();
 		$standard_sizes= StandardSizes::getStandardSizes();
@@ -27,6 +31,7 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 		$schedule= Schedule::getSchedule();
 		$type= DescriptionType::getType();
 		return View::make('forging.forge')
+			->with('dataArray',$dataArray)
 			->with('sizes',$sizes)
 			->with('heat_no',$heat_no)
 			->with('standard_size',$standard_sizes)
@@ -45,7 +50,6 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 		// forging array for input
 		$forging_array= array(
 						'date'		=> $forging_input['date'],
-						'forged_des'=> $forging_input['forged_des'],
 						'weight_per_piece'=>$forging_input['weight_per_peice'],
 						'heat_no'		=> $forging_input['heatNo'],
 						'size' =>$forging_input['standard_size'],
@@ -72,6 +76,28 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 		//returning view for confirmation
 		return View::make('forging.confirm')->with('confirmation',$last_record);
 
+
+	}
+
+	public function update($id)
+	{
+		$dataArray= Forging::getData($id);
+		$dataArray= (array)$dataArray[0];
+		//getting standard master values from respective models
+		$sizes= Sizes::getSizes();
+		$heat_no= RawMaterial::getHeatNo();
+		$standard_sizes= StandardSizes::getStandardSizes();
+		$pressure= Pressure::getPressure();
+		$schedule= Schedule::getSchedule();
+		$type= DescriptionType::getType();
+		return View::make('forging.forge')
+				->with('dataArray',$dataArray)
+				->with('sizes',$sizes)
+				->with('heat_no',$heat_no)
+				->with('standard_size',$standard_sizes)
+				->with('pressure',$pressure)
+				->with('schedule',$schedule)
+				->with('type',$type);
 
 	}
 

@@ -18,7 +18,6 @@
                             <tr class="heading">
                                 <th>Forging ID</th>
                                 <th>Date</th>
-                                <th>Forging Description</th>
                                 <th>Weight per peice</th>
                                 <th>Heat no</th>
                                 <th>Standard Size</th>
@@ -30,7 +29,6 @@
                             <tr>
                                 <td>{{ $confirmation->forging_id }}</td>
                                 <td>{{ $confirmation->date }}</td>
-                                <td>{{ $confirmation->forged_des }}</td>
                                 <td>{{ $confirmation->weight_per_piece }}</td>
                                 <td>{{ $confirmation->heat_no }}</td>
                                 <td> {{ $confirmation->size }}</td>
@@ -41,7 +39,11 @@
                                 <td>{{ $confirmation->total_weight }}</td>
                             </tr>
                         </table>
-                        <br><br><br><br>
+                        <div class="span9 btn-block excelPrint">
+                            <button class="btn btn-small btn-block" type="button" id="excel_button">
+                                <a href="{{ action('forgingController@update',array('id'=>$confirmation->forging_id))}}" class="link" >Update</a>
+                            </button>
+                        </div>
                     </div>		<!-- row conatining form ends here -->
                 </div>		<!-- card ends here -->
             </div>		<!-- wrapper ends here -->

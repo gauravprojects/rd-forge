@@ -10,7 +10,6 @@
                             <span>Forging Material Entry</span>
                         </div>
                     </div>
-
                     <div class="row">
 
                         {{ Form::open(array('action'=>'forgingController@store')) }}
@@ -21,17 +20,10 @@
                         </div>
 
 
-                        <!-- Description for forged item -->
-                        <div class="form-group">
-                            {{ Form::label('exampleInputEmail1','Forged Item Description') }}
-                            {{ Form::text('forged_des',null,array('class'=>'form-control','placeholder'=>'forged Item description','id'=>'exampleInputEnail1')) }}
-                        </div>
-
-
                         <!-- Weight per peice for forged item -->
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Weight Per Piece') }}
-                            {{ Form::text('weight_per_peice',null,array('class'=>'form-control','placeholder'=>'Weight per peice','id'=>'justAnything')) }}
+                            {{ Form::text('weight_per_peice',$dataArray['weight_per_piece'],array('class'=>'form-control','placeholder'=>'Weight per peice','id'=>'justAnything')) }}
                         </div>
 
                         <div class="form-group">
@@ -103,7 +95,7 @@
                         <!-- Quantity -->
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail','Quantity') }}
-                            {{ Form::text('quantity',null,array('class'=>'form-control','placeholder'=>'Quantity of material','id'=>'JustAnything')) }}
+                            {{ Form::text('quantity',$dataArray['quantity'],array('class'=>'form-control','placeholder'=>'Quantity of material','id'=>'JustAnything')) }}
                         </div>
 
                         <!-- TOTAL TO BE CALCULATED THE SYSTEM -->
