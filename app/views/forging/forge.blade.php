@@ -84,14 +84,6 @@
                             </select>
                         </div>
 
-
-
-
-
-
-
-
-
                         <!-- Quantity -->
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail','Quantity') }}

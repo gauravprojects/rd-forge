@@ -5,23 +5,29 @@ class Machining extends \Eloquent {
 
 	public static function insertData($input_array)
 	{
-		return DB::table('machining_records')->insert($input_array);
+		return DB::table('machining_records')
+				->insert($input_array);
 	}
 
 
 
 	public static function insertRemarks($input_array)
 	{
-		return DB::table('mach_remarks')->insert($input_array);
+		return DB::table('mach_remarks')
+				->insert($input_array);
 	}
 
 	public static function getLastRecord()
 	{
-		return DB::table('machining_records')->orderBy('mach_id', 'desc')->first();
+		return DB::table('machining_records')
+				->orderBy('mach_id', 'desc')
+				->first();
 	}
 
 	public static function getAllData()
 	{
-		return DB::table('machining_records')->select()->get();
+		return DB::table('machining_records')
+				->select()
+				->get();
 	}
 }

@@ -84,8 +84,20 @@
 			'uses' => 'cuttingPageController@update'
 		));
 
+		//route to check weather the weight being cutted is vailable for that heat no
+		Route::post('cutting/availableTotalWeight',array(
+			'as' => 'cutting.availableTotalWeight',
+			'uses' => 'cuttingPageController@availableTotalWeight'
+		));
 
-						//ROUTES FOR ADMIN PAGE
+
+		Route::get('/cutting/availableWeight/{id}',array(
+			'as' => 'cutting.availableWeight',
+			'uses' => 'cuttingPageController@availableWeight'
+		));
+
+
+						//ROUTES FOR ADMIN PAGE$data
 
 		Route::get('/admin',array(
 
@@ -100,6 +112,8 @@
 		'uses'=>'adminPageController@logBook'
 
 		));
+
+
 
 
 						//  ROUTES FOR REPORTS

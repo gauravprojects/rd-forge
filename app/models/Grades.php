@@ -5,17 +5,22 @@ class Grades extends \Eloquent {
 
 	public static function getGrades()
 	{
-		return DB::table('master_grades')->select()->get();
+		return DB::table('master_grades')
+				->select()
+				->get();
 	}
 
 	public static function insertGrades($input_data)
 	{
-		return DB::table('master_grades')->insert($input_data);
+		return DB::table('master_grades')
+				->insert($input_data);
 	}
 
 	public static function deleteGrades($id)
 	{
-		return DB::table('master_grades')->where('id','=',$id)->delete();
+		return DB::table('master_grades')
+				->where('id','=',$id)
+				->delete();
 	}
 
 }

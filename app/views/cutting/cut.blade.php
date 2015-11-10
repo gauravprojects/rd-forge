@@ -2,6 +2,44 @@
 
 @section('links_data')
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <script type="application/javascript">
+        // getting the values of both quantity and wpp in the javascrip
+        // next task, take heat no
+        // make a json and send it to check weather the weight is avialbale or not
+
+        $(document).ready(function(){
+                $('#wpp').blur(function(){
+                 var wpp= $(this).val();
+                 var quantity= $('#quantity').val();
+                 var heat_no=$('#heat_no').val();
+                    var textData= {
+                        'wpp' : wpp,
+                        'quantity': quantity,
+                        'heat_no': heat_no
+                    }
+                   console.log(textData);
+
+                    $.ajax({
+                        url:'cutting/availableTotalWeight',
+                        method: 'POST',
+                        data : textData,
+                        dataType:"json",
+                        success: function(response)
+                        {
+                           if(response== 0)
+                           {
+                               alert("wrong input");
+                               return;
+                           }
+                        }
+                    });
+              });
+            });
+
+    </script>
+
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <div class="row">
             <div class="wrapper">
@@ -33,7 +71,7 @@
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Heat Number') }}
 
-                            <select class="form-control" name="heatNo">
+                            <select class="form-control" name="heatNo" id="heat_no">
                                 @foreach($heat_no as $heat_no_element)
                                     <option value="{{ $heat_no_element->heat_no }}">{{$heat_no_element->heat_no}}</option>
                                 @endforeach
@@ -96,13 +134,13 @@
                         <!-- qunanity.. this is the quantity of the cutted material -->
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail','Qunatity') }}
-                                {{ Form::text('quantity',$dataArray['quantity'],array('class'=>'form-control','placeholder'=>'Quantity','id'=>'JustAnything')) }}
+                                {{ Form::text('quantity',$dataArray['quantity'],array('class'=>'form-control','placeholder'=>'Quantity','id'=>'quantity')) }}
                             </div>
 
                             <!-- Wieght per piece,, weight per piece of the cutted material -->
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Weight per Piece') }}
-                                {{ Form::text('wpp',$dataArray['weight_per_piece'],array('class'=>'form-control','placeholder'=>'Weight per piece')) }}
+                                {{ Form::text('wpp',$dataArray['weight_per_piece'],array('class'=>'form-control','placeholder'=>'Weight per piece','id'=>'wpp')) }}
                             </div>
 
                             <!-- total weight to be calculated by itself

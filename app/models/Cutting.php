@@ -59,4 +59,13 @@ class Cutting extends Eloquent
 
 	}
 
+	public static function availabeWeight($heat_no)
+	{
+		$available_weight_object= DB::table('raw_material')
+				->select('available_weight')
+				->where('heat_no','=',$heat_no)
+				->get();
+		return $available_weight_object;
+	}
+
 }

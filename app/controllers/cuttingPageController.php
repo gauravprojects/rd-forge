@@ -1,6 +1,7 @@
 	<?php
 
-	class cuttingPageController extends BaseController {
+	class cuttingPageController extends BaseController
+	{
 
 		/* ---------------    FUNCTIONS USED IN CUTTING CONTROLLER    ---------------------------------
 
@@ -24,24 +25,24 @@
 		public function index()
 		{
 			//testing for empty array
-			$dataArray= Cutting::returnNullData();
+			$dataArray = Cutting::returnNullData();
 
 			// returns cutting form page
 			//all data form master table is taken and fed to the  cutting form
-			$sizes= Sizes::getSizes();
-			$heat_no= RawMaterial::getHeatNo();
-			$standard_sizes= StandardSizes::getStandardSizes();
-			$pressure= Pressure::getPressure();
-			$schedule= Schedule::getSchedule();
-			$type= DescriptionType::getType();
+			$sizes = Sizes::getSizes();
+			$heat_no = RawMaterial::getHeatNo();
+			$standard_sizes = StandardSizes::getStandardSizes();
+			$pressure = Pressure::getPressure();
+			$schedule = Schedule::getSchedule();
+			$type = DescriptionType::getType();
 			return View::make('cutting.cut')
-				->with('sizes',$sizes)
-				->with('dataArray',$dataArray)
-				->with('heat_no',$heat_no)
-				->with('standard_size',$standard_sizes)
-				->with('pressure',$pressure)
-				->with('schedule',$schedule)
-				->with('type',$type);
+					->with('sizes', $sizes)
+					->with('dataArray', $dataArray)
+					->with('heat_no', $heat_no)
+					->with('standard_size', $standard_sizes)
+					->with('pressure', $pressure)
+					->with('schedule', $schedule)
+					->with('type', $type);
 		}
 
 
@@ -49,38 +50,38 @@
 		{
 			// stores data coming from cutting form
 
-			$cutting= Input::all();
+			$cutting = Input::all();
 
 			// calculating required total weight
-			$total_weight= $cutting['quantity'] * $cutting['wpp'];
+			$total_weight = $cutting['quantity'] * $cutting['wpp'];
 
 
 			// array for table cutting records
-			$input_array=array(
-				'date' => $cutting['date'],
-				'raw_mat_size' => $cutting['size'],
-				'heat_no' => $cutting['heatNo'],
-				'size' =>$cutting['standard_size'],
-				'pressure' => $cutting['pressure'],
-				'type' => $cutting['type'],
-				'schedule' => $cutting['schedule'],
-				'quantity' => $cutting['quantity'],
-				'weight_per_piece' => $cutting['wpp'],
-				'total_weight' => $total_weight,
+			$input_array = array(
+					'date' => $cutting['date'],
+					'raw_mat_size' => $cutting['size'],
+					'heat_no' => $cutting['heatNo'],
+					'size' => $cutting['standard_size'],
+					'pressure' => $cutting['pressure'],
+					'type' => $cutting['type'],
+					'schedule' => $cutting['schedule'],
+					'quantity' => $cutting['quantity'],
+					'weight_per_piece' => $cutting['wpp'],
+					'total_weight' => $total_weight,
 			);
 
 
-			$data=RawMaterial::returnAvailableWeight($cutting['heatNo']);
-			$available_weight=$data[0]->available_weight;
+			$data = RawMaterial::returnAvailableWeight($cutting['heatNo']);
+			$available_weight = $data[0]->available_weight;
 
-			$available_weight= $available_weight- $total_weight;
+			$available_weight = $available_weight - $total_weight;
 			//$available_weight_array= array('available_weight' => $available_weight );
-			$available_weight_response=RawMaterial::updateAvailableWeight($cutting['heatNo'],$available_weight);
+			$available_weight_response = RawMaterial::updateAvailableWeight($cutting['heatNo'], $available_weight);
 
 			DB::beginTransaction();
 			try {
 
-				$cutting_response=Cutting::insertData($input_array);
+				$cutting_response = Cutting::insertData($input_array);
 				$last_record = Cutting::getLastRecord();
 
 				//array for cutting item description
@@ -92,26 +93,23 @@
 
 				//Separate models
 
-				$cutting_des_response=CuttingDes::insertData($cutting_des_array);
+				$cutting_des_response = CuttingDes::insertData($cutting_des_array);
 
-				$cutting_rem_response=CuttingRem::insertData($cutting_rem_array);
+				$cutting_rem_response = CuttingRem::insertData($cutting_rem_array);
 
-				if( $cutting_des_response && $cutting_rem_response && $cutting_response)
-				{
+				if ($cutting_des_response && $cutting_rem_response && $cutting_response) {
 
 					//successful
 					DB::commit();
 				}
 
-			}
-			catch(\Exception $e)
-			{
+			} catch (\Exception $e) {
 				DB::rollback();
 				return Redirect::to('/cutting')
-					->withErrors($e ->getErrors())
-					->withInput();
+						->withErrors($e->getErrors())
+						->withInput();
 			}
-			return View::make('cutting.confirm')->with('last_record',$last_record);
+			return View::make('cutting.confirm')->with('last_record', $last_record);
 
 		}
 
@@ -120,8 +118,8 @@
 			// showing report for cutting material
 			// can be found inside admin pannel
 
-			$last_record=Cutting::getLastRecord();
-			return View::make('cutting.cutting_report')->with('last_record',$last_record);
+			$last_record = Cutting::getLastRecord();
+			return View::make('cutting.cutting_report')->with('last_record', $last_record);
 		}
 
 
@@ -132,15 +130,15 @@
 
 			//	 PROBLEM LIES HERE
 
-			$data= DB::table('cutting_records')
-				->leftjoin('cutting_item_des', 'cutting_records.cutting_id', '=', 'cutting_item_des.cutting_id')
-				->leftjoin('cutting_remarks', 'cutting_records.cutting_id', '=', 'cutting_remarks.cutting_id')
-				//->whereNULL('cutting_remarks.cutting_id')
-				->select()
-				->get();
+			$data = DB::table('cutting_records')
+					->leftjoin('cutting_item_des', 'cutting_records.cutting_id', '=', 'cutting_item_des.cutting_id')
+					->leftjoin('cutting_remarks', 'cutting_records.cutting_id', '=', 'cutting_remarks.cutting_id')
+					//->whereNULL('cutting_remarks.cutting_id')
+					->select()
+					->get();
 
 
-			return View::make('cutting.cutting_report_excel')->with('cutting',$data);
+			return View::make('cutting.cutting_report_excel')->with('cutting', $data);
 
 		}
 
@@ -153,27 +151,50 @@
 			// Here the issue is that, $dataArray is able to return data to the cut blade for update
 			// but in select html tags I am not able to give "selected" attribute.. so instead it is showing all values
 
-			$dataArray= Cutting::getUpdateData($id);
-			$dataArray= (array)$dataArray[0];
+			$dataArray = Cutting::getUpdateData($id);
+			$dataArray = (array)$dataArray[0];
 
 			//upate function
 			// route is /cutting/update
-			$sizes= Sizes::getSizes();
-			$heat_no= RawMaterial::getHeatNo();
-			$standard_sizes= StandardSizes::getStandardSizes();
-			$pressure= Pressure::getPressure();
-			$schedule= Schedule::getSchedule();
-			$type= DescriptionType::getType();
+			$sizes = Sizes::getSizes();
+			$heat_no = RawMaterial::getHeatNo();
+			$standard_sizes = StandardSizes::getStandardSizes();
+			$pressure = Pressure::getPressure();
+			$schedule = Schedule::getSchedule();
+			$type = DescriptionType::getType();
 			return View::make('cutting.cut')
-					->with('sizes',$sizes)
-					->with('heat_no',$heat_no)
-					->with('standard_size',$standard_sizes)
-					->with('pressure',$pressure)
-					->with('schedule',$schedule)
-					->with('type',$type)
-					->with('dataArray',$dataArray);
+					->with('sizes', $sizes)
+					->with('heat_no', $heat_no)
+					->with('standard_size', $standard_sizes)
+					->with('pressure', $pressure)
+					->with('schedule', $schedule)
+					->with('type', $type)
+					->with('dataArray', $dataArray);
 
 		}
 
+		public function availableWeight($heat_no)
+		{
+			$response = Cutting::availabeWeight($heat_no);
+			$response = (array)$response[0];
+			$data = $response['available_weight'];
+			dd($data);
 
+		}
+
+		public function availableTotalWeight()
+		{
+			$wpp = Input::get('wpp');
+			$heat_no = Input::get('heat_no');
+			$quantity = Input::get('quantity');
+
+			$response = Cutting::availabeWeight($heat_no);
+			$response = (array)$response[0];
+			$available_weight = $response['available_weight'];
+			$total_weight = $wpp * $quantity;
+			if ($total_weight > $available_weight)
+				return 0;
+			if ($total_weight < $available_weight)
+				return 1;
+		}
 	}
