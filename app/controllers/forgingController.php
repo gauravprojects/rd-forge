@@ -67,6 +67,13 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 		// now we have to subtract this forged item total weight from cutting_records available_weight_cutting
 		//   	TO BE DONE HERE ---------------------------------------------------------------
 
+			$available_weight_cutting= Forging::getAvailableWeight($forging_input['heatNo']);
+			$available_weight_cutting= (array) $available_weight_cutting[0];
+			$available_weight_cutting= $available_weight_cutting['available_weight_cutting'];
+
+			$available_weight_cutting= $available_weight_cutting- $total_weight;
+			Forging::updateCuttingWeight($forging_input['heatNo'],$available_weight_cutting);
+
 		// now getting the last record for getting forging_id
 		$last_record = Forging::getLastRecord();
 

@@ -65,4 +65,18 @@
 					->where('available_weight_cutting','>',0)
 					->get();
 		}
+
+		public static function getAvailableWeight($heat_no)
+		{
+			return DB::table('cutting_records')
+					->select('available_weight_cutting')
+					->where('heat_no','=',$heat_no)
+					->get();
+		}
+		public static function updateCuttingWeight($heat_no,$available_weight_cutting)
+		{
+			return DB::table('cutting_records')
+					->where('heat_no','=',$heat_no)
+					->update(array('available_weight_cutting'=>$available_weight_cutting));
+		}
 	}
