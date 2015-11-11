@@ -189,4 +189,12 @@
 			if ($total_weight < $available_weight)
 				return 1;
 		}
+
+
+		public function available()
+		{
+			$data= Cutting::availableCutting();
+			return View::make('cutting.available')
+					->with('data',$data);
+		}
 	}

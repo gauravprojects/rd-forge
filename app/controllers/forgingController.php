@@ -79,11 +79,13 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 
 	public function update($id)
 	{
+		// this function takes the data of a particular id form database and sends it to forge blade
+		// for updataion
 		$dataArray= Forging::getData($id);
 		$dataArray= (array)$dataArray[0];
 		//getting standard master values from respective models
 		$sizes= Sizes::getSizes();
-		$heat_no= RawMaterial::getHeatNo();
+		$heat_no= Forging::availableHeatNo();
 		$standard_sizes= StandardSizes::getStandardSizes();
 		$pressure= Pressure::getPressure();
 		$schedule= Schedule::getSchedule();
@@ -101,6 +103,7 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 
 	public function show()
 	{
+		//this functions shows all forging records for forging reports
 		$forging_data= Forging::getAllRecords();
 		return View::make('forging.forging_report')->with('forging_data',$forging_data);
 	}

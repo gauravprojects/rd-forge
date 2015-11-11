@@ -85,9 +85,15 @@
 		));
 
 		//route to check weather the weight being cutted is vailable for that heat no
-		Route::post('cutting/availableTotalWeight',array(
+		Route::post('/cutting/availableTotalWeight',array(
 			'as' => 'cutting.availableTotalWeight',
 			'uses' => 'cuttingPageController@availableTotalWeight'
+		));
+
+		// route to admin pannel option which stores the cutted material avaialble for forging
+		Route::get('/cutting/available',array(
+			'as' => 'cutting.available',
+			'uses' => 'cuttingPageController@available'
 		));
 
 
@@ -175,6 +181,11 @@
 		'as'=>'forging.excel',
 		'uses'=>'forgingController@excel'
 
+		));
+
+		Route::get('/forging/availableTotalWeight/{id}',array(
+			'as' => 'forging.availableTotalWeight',
+			'uses' => 'forgingController@availableTotalWeight'
 		));
 
 

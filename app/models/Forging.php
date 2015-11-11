@@ -4,12 +4,18 @@
 	{
 		public static function insertData($records_array)
 		{
+			// inserts data in forging_records table
+
 			return DB::table('forging_records')
 					->insert($records_array);
 		}
 
 		public static function getLastRecord()
 		{
+			// returns the last record entered in the forging_records table
+			// returns the records of highested entered forging_id, as they are auto incremented
+			// so highest one will be the last entered one
+
 			return DB::table('forging_records')
 					->orderBy('forging_id', 'desc')
 					->first();
@@ -17,29 +23,20 @@
 
 		public static function getAllRecords()
 		{
+
+			// returns all records for forging reports
+
 			return DB::table('forging_records')
 					->select()
 					->get();
 		}
 
-		public static function getDatedata()
-		{
-			$date=date("Y-m-d");
-			return DB::table('forging_records')
-					->select()
-					->where('date','=',$date);
-		}
-
-		public static function getData($id)
-		{
-			return DB::table('forging_records')
-					->select()
-					->where('forging_id','=',$id)
-					->get();
-		}
 
 		public static function getNullArray()
 		{
+			//returns null array to facilitate update without using an extra blade
+			// $dataArray returns all the value of the record to be updated to the forge blade
+
 			$dataArray= array(
 				'forging_id'=>null,
 				'date' => null,
@@ -59,6 +56,10 @@
 
 		public static function availableHeatNo()
 		{
+
+			// this stores material value avialable for forging process
+			// available_weight_cutting is the amount of material which has been cutted and is ready for forging
+
 			return DB::table('cutting_records')
 					->select('heat_no')
 					->where('available_weight_cutting','>',0)

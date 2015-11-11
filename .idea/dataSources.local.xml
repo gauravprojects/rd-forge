@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="MySQL - rdforge@localhost" uuid="b5640999-3d99-4947-a9dc-d09ed2eaebeb">
+    <data-source name="MySQL - rdforge@localhost" uuid="421dcd27-7c49-43f4-a054-0fe14acbfc4b">
       <secret-storage>master_key</secret-storage>
+      <first-sync>true</first-sync>
       <user-name>root</user-name>
-      <schema-pattern>rdforge.*</schema-pattern>
-      <default-schemas>rdforge.*</default-schemas>
     </data-source>
   </component>
 </project>

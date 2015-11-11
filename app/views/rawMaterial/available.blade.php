@@ -8,7 +8,7 @@
                     <div class="row text-center">
                         <div class="heading">
                             <br><br>
-                            <span>Raw material Weights available are</span>
+                            <span>Available Raw material in inventory </span>
                             <br><br>
                         </div>
                     </div>

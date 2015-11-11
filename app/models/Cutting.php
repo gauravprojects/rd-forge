@@ -54,6 +54,17 @@ class Cutting extends Eloquent
 
 	}
 
+	public static function availableCutting()
+	{
+		// returns all data of cutted material available for forging
+		// used in admin pannel "AVAILABLE CUTTING MATERIAL" option
+
+		return DB::table('cutting_records')
+				->select()
+				->where('available_weight_cutting','>',0)
+				->get();
+	}
+
 
 
 	public static function availabeWeight($heat_no)
