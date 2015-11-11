@@ -43,7 +43,7 @@
 			$dataArray= array(
 				'forging_id'=>null,
 				'date' => null,
-				'weight_per_peice' => null,
+				'weight_per_piece' => null,
 				'heatNo' => null,
 				'standard_size' => null,
 				'pressure' => null,
@@ -54,5 +54,14 @@
 			);
 
 			return $dataArray;
+		}
+
+
+		public static function availableHeatNo()
+		{
+			return DB::table('cutting_records')
+					->select('heat_no')
+					->where('available_weight_cutting','>',0)
+					->get();
 		}
 	}

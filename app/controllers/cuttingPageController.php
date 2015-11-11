@@ -68,6 +68,7 @@
 					'quantity' => $cutting['quantity'],
 					'weight_per_piece' => $cutting['wpp'],
 					'total_weight' => $total_weight,
+					'available_weight_cutting' =>$total_weight
 			);
 
 
@@ -170,15 +171,6 @@
 					->with('schedule', $schedule)
 					->with('type', $type)
 					->with('dataArray', $dataArray);
-
-		}
-
-		public function availableWeight($heat_no)
-		{
-			$response = Cutting::availabeWeight($heat_no);
-			$response = (array)$response[0];
-			$data = $response['available_weight'];
-			dd($data);
 
 		}
 

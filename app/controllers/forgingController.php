@@ -25,7 +25,7 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 
 		//getting standard master values from respective models
 		$sizes= Sizes::getSizes();
-		$heat_no= RawMaterial::getHeatNo();
+		$heat_no= Forging::availableHeatNo();
 		$standard_sizes= StandardSizes::getStandardSizes();
 		$pressure= Pressure::getPressure();
 		$schedule= Schedule::getSchedule();
@@ -57,21 +57,19 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 						'type' => $forging_input['type'],
 						'schedule' => $forging_input['schedule'],
 						'quantity'		=> $forging_input['quantity'],
-						'total_weight'	=> $total_weight
+						'total_weight'	=> $total_weight,
+						'remarks'     => $forging_input['remarks']
 		);
 		
 		Forging::insertData($forging_array);
 
+
+		// now we have to subtract this forged item total weight from cutting_records available_weight_cutting
+		//   	TO BE DONE HERE ---------------------------------------------------------------
+
 		// now getting the last record for getting forging_id
 		$last_record = Forging::getLastRecord();
 
-		//now array for the other table
-		$forging_remarks_array = array(
-			'forging_id' => $last_record->forging_id,
-			'remarks'	=> $forging_input['remarks']
-		);
-
-		ForgingRem::insertData($forging_remarks_array);
 
 		//returning view for confirmation
 		return View::make('forging.confirm')->with('confirmation',$last_record);

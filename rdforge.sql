@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 08, 2015 at 05:50 PM
+-- Generation Time: Nov 11, 2015 at 07:28 AM
 -- Server version: 10.0.17-MariaDB
 -- PHP Version: 5.6.14
 
@@ -69,7 +69,9 @@ INSERT INTO `cutting_item_des` (`cutting_id`, `item_des`) VALUES
 (1, ''),
 (2, ''),
 (4, ''),
-(5, '');
+(5, ''),
+(6, ''),
+(7, '');
 
 -- --------------------------------------------------------
 
@@ -88,18 +90,21 @@ CREATE TABLE `cutting_records` (
   `size` varchar(25) NOT NULL,
   `pressure` varchar(25) NOT NULL,
   `type` varchar(25) NOT NULL,
-  `schedule` varchar(25) NOT NULL
+  `schedule` varchar(25) NOT NULL,
+  `available_weight_cutting` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `cutting_records`
 --
 
-INSERT INTO `cutting_records` (`cutting_id`, `date`, `raw_mat_size`, `heat_no`, `quantity`, `weight_per_piece`, `total_weight`, `size`, `pressure`, `type`, `schedule`) VALUES
-(1, '0000-00-00', '4 by 5', '12345', 0, 0, 0, '10''''x6''''', '200pa', 'great', 'SCH 10'),
-(2, '0000-00-00', '4 by 5', '12345', 0, 0, 0, '10''''x6''''', '200pa', 'great', 'SCH 10'),
-(4, '0000-00-00', '10''''x6''''', '12345', 0, 0, 0, '10''''x6''''', '600pa', 'great', 'SCH 10'),
-(5, '0000-00-00', '2 by 2', '12345', 0, 0, 0, '10''''x6''''', '200pa', 'great', 'SCH 10');
+INSERT INTO `cutting_records` (`cutting_id`, `date`, `raw_mat_size`, `heat_no`, `quantity`, `weight_per_piece`, `total_weight`, `size`, `pressure`, `type`, `schedule`, `available_weight_cutting`) VALUES
+(1, '0000-00-00', '4 by 5', '12345', 0, 0, 0, '10''''x6''''', '200pa', 'great', 'SCH 10', 0),
+(2, '0000-00-00', '4 by 5', '12345', 0, 0, 0, '10''''x6''''', '200pa', 'great', 'SCH 10', 0),
+(4, '0000-00-00', '10''''x6''''', '12345', 0, 0, 0, '10''''x6''''', '600pa', 'great', 'SCH 10', 0),
+(5, '0000-00-00', '2 by 2', '12345', 0, 0, 0, '10''''x6''''', '200pa', 'great', 'SCH 10', 0),
+(6, '2015-11-18', '4 by 5', '12345', 100, 1000, 100000, '10''''x6''''', '200pa', 'great', 'SCH 10', 0),
+(7, '2015-11-12', '4 by 5', '111', 10, 100, 1000, '10''''x6''''', '200pa', 'great', 'SCH 10', 1000);
 
 -- --------------------------------------------------------
 
@@ -122,6 +127,8 @@ INSERT INTO `cutting_remarks` (`cutting_id`, `remarks`) VALUES
 (3, 'its very good'),
 (4, ''),
 (5, ''),
+(6, ''),
+(7, ''),
 (13, 'its very good'),
 (14, 'its very good'),
 (17, 'its very good'),
@@ -198,16 +205,15 @@ CREATE TABLE `drilling_remarks` (
 
 CREATE TABLE `forging_records` (
   `forging_id` int(7) NOT NULL,
-  `date` date NOT NULL,
-  `forged_des` varchar(30) NOT NULL,
-  `weight_per_piece` int(10) NOT NULL,
-  `heat_no` varchar(25) NOT NULL,
+  `heat_no` varchar(20) NOT NULL,
   `quantity` int(10) NOT NULL,
-  `total_weight` int(10) NOT NULL,
-  `size` varchar(25) NOT NULL,
-  `pressure` varchar(25) NOT NULL,
-  `type` varchar(25) NOT NULL,
-  `schedule` varchar(25) NOT NULL,
+  `date` date NOT NULL,
+  `weight_per_piece` int(10) NOT NULL,
+  `size` varchar(20) NOT NULL,
+  `pressure` varchar(20) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `schedule` varchar(20) NOT NULL,
+  `total_weight` int(15) NOT NULL,
   `remarks` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -215,52 +221,9 @@ CREATE TABLE `forging_records` (
 -- Dumping data for table `forging_records`
 --
 
-INSERT INTO `forging_records` (`forging_id`, `date`, `forged_des`, `weight_per_piece`, `heat_no`, `quantity`, `total_weight`, `size`, `pressure`, `type`, `schedule`, `remarks`) VALUES
-(1, '2015-10-06', '100', 100, '100', 100, 10000, '', '', '', '', ''),
-(2, '2015-10-06', 'gcskaj', 1, '1', 1, 1, '', '', '', '', ''),
-(3, '2015-10-06', 'shlbjk', 11, '1', 1, 11, '', '', '', '', ''),
-(4, '2015-10-06', 'bcsl', 1, '1', 1, 1, '', '', '', '', ''),
-(5, '2015-10-06', 'gdahlk', 100, '100', 100, 10000, '', '', '', '', ''),
-(6, '2015-10-06', '100', 0, '', 0, 0, '', '', '', '', ''),
-(7, '2015-10-06', '100', 0, '', 0, 0, '', '', '', '', ''),
-(8, '2015-10-06', '100', 0, '', 0, 0, '', '', '', '', ''),
-(9, '2015-10-07', 'dslhsdlkj', 5353, '', 0, 0, '', '', '', '', ''),
-(10, '2015-10-08', '', 0, '', 0, 0, '', '', '', '', ''),
-(11, '2015-10-12', '', 0, '', 0, 0, '', '', '', '', ''),
-(12, '0000-00-00', '', 0, '12345', 0, 0, '10''''x6''''', '200pa', 'great', 'SCH 10', ''),
-(13, '2015-11-13', '', 124, '12345', 0, 0, '10''''x6''''', '200pa', 'great', 'SCH 10', ''),
-(14, '0000-00-00', '', 0, '12345', 0, 0, '10''''x6''''', '200pa', 'great', 'SCH 10', ''),
-(15, '0000-00-00', '', 0, '12345', 0, 0, '10''''x6''''', '200pa', 'great', 'SCH 10', ''),
-(16, '0000-00-00', '', 0, '12345', 100, 0, '10''''x6''''', '200pa', 'great', 'SCH 10', '');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `forging_remarks`
---
-
-CREATE TABLE `forging_remarks` (
-  `forging_id` int(11) NOT NULL,
-  `remarks` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `forging_remarks`
---
-
-INSERT INTO `forging_remarks` (`forging_id`, `remarks`) VALUES
-(4, 'sanakm;a'),
-(5, ''),
-(6, ''),
-(7, ''),
-(8, ''),
-(10, ''),
-(11, ''),
-(12, ''),
-(13, ''),
-(14, ''),
-(15, ''),
-(16, '');
+INSERT INTO `forging_records` (`forging_id`, `heat_no`, `quantity`, `date`, `weight_per_piece`, `size`, `pressure`, `type`, `schedule`, `total_weight`, `remarks`) VALUES
+(1, '12345', 0, '0000-00-00', 0, '10''''x6''''', '200pa', 'great', 'SCH 10', 0, ''),
+(2, '111', 100, '2015-11-12', 12, '10''''x6''''', '200pa', 'great', 'SCH 10', 1200, 'bahut badiya');
 
 -- --------------------------------------------------------
 
@@ -596,7 +559,8 @@ INSERT INTO `raw_material` (`internal_no`, `receipt_code`, `date`, `size`, `manu
 (10004, '', '0000-00-00', '', '', '', 0, '', '', '0000-00-00', '', '0000-00-00', '', '', 0),
 (10005, '123456', '2015-10-16', '4 by 5', 'gaurav', '124589', 1589, '145', '', '0000-00-00', '', '0000-00-00', 'SA 266 GR-2', 'Round', -19891),
 (10006, '123456789', '2015-11-07', '4 by 5', 'Gupta developers', '9044968', 100, '150', '1623', '0000-00-00', '12456', '0000-00-00', 'Grade 1', 'Type 1', -900),
-(10007, '12345', '2015-11-21', '4 by 5', 'gaurav', '12345', 10000000, '100', '', '0000-00-00', '', '0000-00-00', 'SA 105', 'Ingot', 10000000);
+(10007, '12345', '2015-11-21', '4 by 5', 'gaurav', '12345', 10000000, '100', '', '0000-00-00', '', '0000-00-00', 'SA 105', 'Ingot', 9900000),
+(10008, '123456', '2015-11-12', '4 by 5', 'Arora developers', '111', 10000, '100', '1465', '2015-11-13', '', '0000-00-00', 'SA 105', 'Bloom', 9000);
 
 -- --------------------------------------------------------
 
@@ -769,12 +733,6 @@ ALTER TABLE `forging_records`
   ADD PRIMARY KEY (`forging_id`);
 
 --
--- Indexes for table `forging_remarks`
---
-ALTER TABLE `forging_remarks`
-  ADD PRIMARY KEY (`forging_id`);
-
---
 -- Indexes for table `logbook`
 --
 ALTER TABLE `logbook`
@@ -873,7 +831,7 @@ ALTER TABLE `work_order_material_details`
 -- AUTO_INCREMENT for table `cutting_records`
 --
 ALTER TABLE `cutting_records`
-  MODIFY `cutting_id` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `cutting_id` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `cutting_remarks`
 --
@@ -888,12 +846,7 @@ ALTER TABLE `drilling_records`
 -- AUTO_INCREMENT for table `forging_records`
 --
 ALTER TABLE `forging_records`
-  MODIFY `forging_id` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
---
--- AUTO_INCREMENT for table `forging_remarks`
---
-ALTER TABLE `forging_remarks`
-  MODIFY `forging_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `forging_id` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `logbook`
 --
@@ -933,7 +886,7 @@ ALTER TABLE `master_schedule`
 -- AUTO_INCREMENT for table `master_sizes`
 --
 ALTER TABLE `master_sizes`
-  MODIFY `id` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `master_std_size`
 --
@@ -943,7 +896,7 @@ ALTER TABLE `master_std_size`
 -- AUTO_INCREMENT for table `raw_material`
 --
 ALTER TABLE `raw_material`
-  MODIFY `internal_no` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10008;
+  MODIFY `internal_no` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10009;
 --
 -- AUTO_INCREMENT for table `seration_records`
 --

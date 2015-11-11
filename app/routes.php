@@ -91,12 +91,6 @@
 		));
 
 
-		Route::get('/cutting/availableWeight/{id}',array(
-			'as' => 'cutting.availableWeight',
-			'uses' => 'cuttingPageController@availableWeight'
-		));
-
-
 						//ROUTES FOR ADMIN PAGE$data
 
 		Route::get('/admin',array(

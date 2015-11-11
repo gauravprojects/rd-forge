@@ -5,7 +5,8 @@ class Cutting extends Eloquent
 	public static function insertData($records_array)
 	{
 
-		// to get the records of the cutting entries
+		// inserts data in cutting_records table
+		// store function on cuttingPageController
 		return DB::table('cutting_records')
 			->insert($records_array);
 	}
@@ -18,18 +19,11 @@ class Cutting extends Eloquent
 			->first();
 	}
 
-	public static function getDatedata()
-	{
-		//to get the data for any particular date
-		$date=date("Y-m-d");
-		return DB::table('cutting_records')
-			->select()
-			->where('date','=',$date);
-	}
 
 	public static function getUpdateData($id)
 	{
 		//to get data of all the data which is to be updated
+		//update($id) function on cuttingPageController
 		return DB::table('cutting_records')
 				->select()
 				->where('cutting_id','=',$id)
@@ -39,7 +33,8 @@ class Cutting extends Eloquent
 	public static function returnNullData()
 	{
 		// to send null data while entering form data
-		//this is being done to enforce update on the same view
+		// on cutting blade, $dataArray[] has been used to show the data which is to be updated,
+		// but intially while filling entries they are supposed to to empty, so for this $nullArray has been used
 
 		$nullArray= array(
 				'cutting_id'=> null,
@@ -59,8 +54,13 @@ class Cutting extends Eloquent
 
 	}
 
+
+
 	public static function availabeWeight($heat_no)
 	{
+		// cutting is the process done after raw_material entry
+		// this function returns all those heat no which have available_weight in raw_material table
+		// in the dropdown on cutting blade only these heat_no are displayed
 		$available_weight_object= DB::table('raw_material')
 				->select('available_weight')
 				->where('heat_no','=',$heat_no)
