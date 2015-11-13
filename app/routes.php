@@ -476,3 +476,15 @@
 	));
 
 
+	// ------------------------- ROUTES FOR SEARCH PANEL ------------------------------------------
+
+	Route::get('/search',array(
+		'as' => 'search.index',
+			'uses' => 'searchController@index'
+	));
+
+
+	Route::post('/search/category/{id}',array(
+		'as' => 'search.category',
+		'uses' => 'searchController@returnOptions'
+	));

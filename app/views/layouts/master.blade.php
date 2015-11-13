@@ -38,7 +38,8 @@
     <div class="nav-wrapper">
         <a href="<?php echo action('homePageController@index'); ?>" class="brand-logo">RD FORGE</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="<?php echo route('admin.page'); ?>">Admin Pannel</a> </li>
+            <li><a href="{{ route('search.index'); }}" >Search Panel</a> </li>
+            <li><a href="{{ route('admin.page'); }}">Admin Panel</a> </li>
             <li><a href="#" class="link">Logout</a></li>
         </ul>
     </div>
