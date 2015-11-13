@@ -10,13 +10,6 @@ class Machining extends \Eloquent {
 	}
 
 
-
-	public static function insertRemarks($input_array)
-	{
-		return DB::table('mach_remarks')
-				->insert($input_array);
-	}
-
 	public static function getLastRecord()
 	{
 		return DB::table('machining_records')

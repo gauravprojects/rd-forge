@@ -28,6 +28,11 @@
                         </div>
 
                         <!-- FOR ITEM TYPE -->
+                        <!-- These items will be of that particular work order above mentioned
+                                   ------- AJAX REQUIRED HERE----------------
+                                   input -> work_order_no
+                                   required-> work_order_details to be autofilled on this page
+                        -->
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Item') }}
                             {{ Form::text('item',null,array('class'=>'form-control','placeholder'=>'Item','id'=>'exampleInputEnail1')) }}
@@ -44,34 +49,41 @@
                             {{ Form::text('size',null,array('class'=>'form-control','placeholder'=>'Quantity','id'=>'justAnything')) }}
                         </div>
 
+
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Machine Name') }}
                             {{ Form::text('machine_name',null,array('class'=>'form-control','placeholder'=>'Machine Name','id'=>'exampleInputEnail1')) }}
                         </div>
 
-                        <div class="form-group">
-                            {{ Form::label('exampleInputEmail1','Employee Name') }}
-                            {{ Form::text('employee_name',null,array('class'=>'form-control','placeholder'=>'employee name','id'=>'exampleInputEnail1')) }}
-                        </div>
+                        <!-- Employee name removed after new review from the client  -->
 
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','quantity') }}
                             {{ Form::text('quantity',null,array('class'=>'form-control','placeholder'=>'Quantity','id'=>'exampleInputEnail1')) }}
                         </div>
 
-                        <div class="form-group">
-                            {{ Form::label('exampleInputEmail1','Grade') }}
-                            {{ Form::text('grade',null,array('class'=>'form-control','placeholder'=>'Grade','id'=>'exampleInputEnail1')) }}
-                        </div>
-
+                        <!-- DOUBT HERE, which weight is this, refer doubts -->
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Weight') }}
                             {{ Form::text('weight',null,array('class'=>'form-control','placeholder'=>'Weight','id'=>'exampleInputEnail1')) }}
                         </div>
 
+                        <!-- to be fetched from master grades -->
+
+                        <div class="form-group">
+                            {{ Form::label('exampleInputEmail1','Grade') }}
+                            <select name="grade" class="form-control">
+                                @foreach($grades as $grade)
+                                    <option value="{{ $grade->grade_name }}">{{ $grade->grade_name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+
+
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Remarks') }}
-                            {{ Form::text('remarks',null,array('class'=>'form-control','placeholder'=>'weight','id'=>'anything')) }}
+                            {{ Form::text('remarks',null,array('class'=>'form-control','placeholder'=>'Remarks','id'=>'anything')) }}
                         </div>
 
                         <div class="loginButton">

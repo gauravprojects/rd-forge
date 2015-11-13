@@ -1,12 +1,17 @@
 <?php
 
-class machiningController extends \BaseController {
+class machiningController extends \BaseController
+{
+
 
 
 	public function index()
 	{
+		// shows index page for machining form
 		$availableWorkOrder= WorkOrder::availableWorkOrderNo();
+		$grades= Grades::getGrades();
 		return View::make('machining.machine')
+				->with('grades',$grades)
 				->with('availableWorkOrderNo',$availableWorkOrder);
 	}
 
@@ -21,30 +26,16 @@ class machiningController extends \BaseController {
 				'heat_no'	=> $input_data['heat_no'],
 				'quantity'	=>$input_data['quantity'],
 				'machine_name'=>$input_data['machine_name'],
-				'employee_name'=>$input_data['employee_name'],
 				'grade' => $input_data['grade'],
-				'weight'	=> $input_data['weight']
+				'weight'	=> $input_data['weight'],
+				'remarks'=> $input_data['remarks']
 		);
 
-
-
 		$input_response_machining_table= Machining::insertData($input_array_machining_table);
-
-
-
 
 		//get last record
 
 		$last_record= Machining::getLastRecord();
-
-		// now insert remarks data using the mach_id obtained form last record
-
-		$input_array_machining_remarks= array(
-			'mach_id' => $last_record->mach_id,
-			'remarks' => $input_data['remarks']
-		);
-
-		$input_response_machining_remarks= Machining::insertRemarks($input_array_machining_remarks);
 
 		return View::make('machining.confirm')->with('data',$last_record);
 
