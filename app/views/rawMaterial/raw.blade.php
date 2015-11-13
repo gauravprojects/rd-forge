@@ -43,7 +43,12 @@
                             <!-- Manufacturer's name -->
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail','Manufacturer') }}
-                                {{ Form::text('Manufacturer',null,array('class'=>'form-control','placeholder'=>'Manufacturer Name','id'=>'JustAnything2')) }}
+
+                                <select class="form-control" name="Manufacturer">
+                                    @foreach($manufacturers as $manufacturer_element)
+                                        <option value="{{ $manufacturer_element->manufacturer_name }}">{{$manufacturer_element->manufacturer_name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
 
                             <!-- Heat no, unique number for every order -->

@@ -16,9 +16,15 @@
                                 <!-- For recipt number of the material coming from outside -->
 
                         <!-- For WORK ORDER NUMBER -->
+                        <!-- All those workorder will be shown whose status is still incomplete -->
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Work Order Number') }}
-                            {{ Form::text('work_order_no',null,array('class'=>'form-control','placeholder'=>'Work Order Number','id'=>'exampleInputEnail1')) }}
+
+                            <select class="form-control" name="work_order_no">
+                                @foreach($availableWorkOrderNo as $workOrder)
+                                    <option value="{{ $workOrder->work_order_no }}">{{$workOrder->work_order_no}}</option>
+                                @endforeach
+                            </select>
                         </div>
 
                         <!-- FOR ITEM TYPE -->

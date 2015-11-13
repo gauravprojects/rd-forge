@@ -20,7 +20,8 @@ class WorkOrderController extends BaseController {
 			'packing_instruction' => $data_input['packing_instruction'],
 			'testing_instruction' => $data_input['testing_instruction'],
 			'quatation_no' => $data_input['quatation_no'],
-			'remarks' => $data_input['remarks']
+			'remarks' => $data_input['remarks'],
+			'status' => '0'
 		);
 
 		WorkOrder::insertData($data_array);

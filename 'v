@@ -1,0 +1,400 @@
+[33mcommit b73fe79e9a339b75c485cd2ef56d2041a8815ab3[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Thu Nov 12 01:07:40 2015 +0530
+
+    updating available_cutting_material after forging form completion done
+
+[33mcommit 4232dcd3a1b030d41270a44fedd5dc76cf13815f[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Wed Nov 11 19:21:31 2015 +0530
+
+    available cutting material-- Inventory added
+
+[33mcommit 7c63ce080a8e70a573ccc320b4bf22979d10e1a3[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Wed Nov 11 12:01:46 2015 +0530
+
+    forging update setup, avialbale_weight_cutting added in cutting_records, forging_remarks table droped, heat no for forging blade setup according to cutting_records available_weight_cutting
+
+[33mcommit 3453ddd11964ff282ea75bc3812f935c9630c550[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Tue Nov 10 23:11:01 2015 +0530
+
+    total weight available check added in cutting form.. using ajax
+
+[33mcommit 3f5822ee2b5034b018de251eca4b4350343d0dc9[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Sun Nov 8 22:21:54 2015 +0530
+
+    database file updated
+
+[33mcommit eb2cd44d96905f1f618b42668982e4b40c16ecba[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Sun Nov 8 21:01:23 2015 +0530
+
+    update working in forging
+
+[33mcommit 2a08fd2c6a52613b89de9f5c328502326bb004c7[m
+Author: Gaurav Arora <gaurav@Gaurav>
+Date:   Sun Nov 8 20:30:17 2015 +0530
+
+    update working in cutting
+
+[33mcommit 946806811999a3128b2c550e9ecacbb8131e9b45[m
+Merge: 50be4fc 6a5bb9d
+Author: root <root@Gaurav>
+Date:   Sat Nov 7 20:59:23 2015 +0530
+
+    code optimized and working properly uptil now
+
+[33mcommit 50be4fc3dd4d93560aebf817c95e0762ff7d1790[m
+Author: root <root@Gaurav>
+Date:   Fri Nov 6 14:49:39 2015 +0530
+
+    changes, code optomized
+
+[33mcommit 6a5bb9dea13d962ee3127601d87712ddd6840220[m
+Author: Pranav <pranav9196@gmail.com>
+Date:   Thu Nov 5 05:55:51 2015 +0530
+
+    adds sidenav in folder "design"
+
+[33mcommit d4aa08b6956821e1162a201f8d71aebf614e2bc7[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Fri Oct 30 14:09:52 2015 +0530
+
+    commented, code optimized
+
+[33mcommit 9fde8be2ead151c8df36736b22df63230c6218ca[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Wed Oct 28 03:56:54 2015 -0700
+
+    databse file added
+
+[33mcommit e1f5ec56eb6a43d59ce711ef5538ea92941c1bd0[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Wed Oct 28 03:55:21 2015 -0700
+
+    work order changes
+
+[33mcommit 0e6cc5a1691f9fa71489c658fc529f210a507f39[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Wed Oct 28 14:09:05 2015 +0530
+
+    code optimized, commented
+
+[33mcommit f581740b8f2c65dd77233738b84c4dbc6fbe19bd[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Tue Oct 27 08:32:41 2015 +0530
+
+    code optimized
+
+[33mcommit 984f7912c5c10e3e11255f0e702e298b28ced684[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Mon Oct 26 22:55:15 2015 +0530
+
+    forging form updated and new database file added
+
+[33mcommit adc3e9fb5659a013a24249154ff149938fa01942[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Mon Oct 26 22:33:44 2015 +0530
+
+    Cutting form updated according to requirement
+
+[33mcommit 4b9b4ca793e3b292693ea0171d694402879e86e8[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Mon Oct 26 21:39:42 2015 +0530
+
+    schedule and type interface added
+
+[33mcommit 37624bb4a8b18b018ddb5e81e824c11eb3cbc5b8[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Mon Oct 26 01:28:22 2015 -0700
+
+    database added
+
+[33mcommit ddf96185fae32feca18ba9134934620a6e346dc1[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Sun Oct 25 04:21:30 2015 -0700
+
+    pressure interface added
+
+[33mcommit 67e4689c437de76c4b5b97a332bd074ca4b1f6dd[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Sun Oct 25 02:16:24 2015 -0700
+
+    forms corrected, vailable weight made vailable
+    
+    ;
+
+[33mcommit a9a0c8969b09a1d1193a1bd5bd16f8c999d7d5e1[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Sat Oct 24 07:10:42 2015 -0700
+
+    auto complete.. not working properly
+
+[33mcommit 5f94023459c6d9750ef78e3209094d79160b1439[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Sat Oct 24 04:45:06 2015 -0700
+
+    laravel ajax requests.. done under testing module
+
+[33mcommit 6e686718738fe8ef6e65b987102f47cde0bc9bb3[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Fri Oct 23 23:20:45 2015 +0530
+
+    master sizes interface added, databse updated
+
+[33mcommit cc9185cb02de161a8e3a36c6454eae92ddcf7119[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Fri Oct 23 22:58:18 2015 +0530
+
+    material grades interface added
+
+[33mcommit 2c571ebe0fd0358aebfbbfe9ea58f618ef93cf8d[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Fri Oct 23 20:49:41 2015 +0530
+
+    manufacturer module added in admin pannel, databse file updated
+
+[33mcommit 9327b4c101fb3a3bc001881953181816e36e6f64[m
+Merge: eb0d8b5 4eba5e4
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Wed Oct 21 17:47:52 2015 +0530
+
+    abc
+
+[33mcommit eb0d8b537d1a4def8acee64e6e3082b1c358e980[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Wed Oct 21 17:36:07 2015 +0530
+
+    transactions added in cutting
+
+[33mcommit 4eba5e40352e9b8b6e4fd08fcd570f5f2001e5c2[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Sat Oct 17 08:43:59 2015 -0700
+
+    update made proper
+
+[33mcommit c471e9f4ae18395f5892fa511aa2634796a14a6d[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Sat Oct 17 15:10:39 2015 +0530
+
+    raw material update feature added
+
+[33mcommit 673b03a76e3b9db0da6cabbe0b02fddbc3b33854[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Fri Oct 16 11:01:34 2015 -0700
+
+    seration module added
+
+[33mcommit 59dc1e8939af96b91e81082c9a1284335f0d5919[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Fri Oct 16 09:33:11 2015 -0700
+
+    machining excel report generation issues resolved
+
+[33mcommit 564a041f5ac09d55de3b406ec2cae43e4cbe032c[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Fri Oct 16 21:17:42 2015 +0530
+
+    nachining developments
+
+[33mcommit ce70c1c2c86c67a87820917d72e28e6838388ac6[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Wed Oct 14 16:51:08 2015 +0530
+
+    maching developments
+
+[33mcommit 230692cb44ee05ed9bb750acdc45b6fe22c0b650[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Wed Oct 14 12:59:02 2015 +0530
+
+    Log table developments
+
+[33mcommit fba9682cfb1c0acab44a782ed6b5a0e0f0a7272d[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Tue Oct 13 03:25:20 2015 +0530
+
+    Raw material internal number problem resolved, log table developments
+
+[33mcommit a3c6c4ec6e66f00d621ca8ed0e10c2bdb6f8a491[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Mon Oct 12 22:24:54 2015 +0530
+
+    Code optimized
+
+[33mcommit 8264c126a1e9fb6b5a6a7f70fa54ea81979af0b8[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Mon Oct 12 21:33:18 2015 +0530
+
+    Database file updated
+
+[33mcommit 5becff3b27cc1e77eb017c00ce29a13ddd52b6ef[m
+Author: unknown <matahpushpam@gmail.com>
+Date:   Sun Oct 11 17:49:28 2015 +0530
+
+    Models added, some code refinement done
+
+[33mcommit 7278bd580d2a2f119b4b431fe65db2e20faf0ef8[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Fri Oct 9 16:38:49 2015 +0530
+
+    work order confirmation also added
+
+[33mcommit 57fef648a692c63159b9d3d3df6851b9ea373128[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Thu Oct 8 23:15:20 2015 +0530
+
+    Work order developments
+
+[33mcommit 491f796161527b8bd80657dde6894a0f254ee6e4[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Wed Oct 7 19:41:15 2015 +0530
+
+    work order developments
+
+[33mcommit 98651a3d7af15da6eb0af9bf66ba101c8fc05aed[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Wed Oct 7 13:39:51 2015 +0530
+
+    log book developments
+
+[33mcommit f258fd219013101bedc37fe588a3c90718e9f816[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Tue Oct 6 23:52:11 2015 +0530
+
+    developments for log table
+
+[33mcommit 4005b3c24b88561be0168754e928e90e124a4863[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Tue Oct 6 20:51:09 2015 +0530
+
+    developments in forging section, join problem still unsolved
+
+[33mcommit 9c89d1e8f55988eb4b7822e0acbc4cfad6cbb75f[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Tue Oct 6 19:02:06 2015 +0530
+
+    code optimized, forging data added
+
+[33mcommit 434a274524c92b40c1c78ba2541621b540fb3139[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Mon Oct 5 06:04:46 2015 -0700
+
+    added cutting form
+
+[33mcommit d17184d9e227f1e1a7a1e71aab72436a625d2988[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Mon Oct 5 04:40:48 2015 -0700
+
+    admin pannel added, new UI intergrated
+
+[33mcommit 366b5073eaaca67393e2d2a6f134519d36108898[m
+Author: Pranav <pranav9196@gmail.com>
+Date:   Sun Oct 4 21:55:32 2015 +0530
+
+    improved design
+
+[33mcommit a2b823672fa5dd63bef74ff747ed579ac70958be[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Sun Oct 4 16:52:52 2015 +0530
+
+    report generation to excel added
+
+[33mcommit a16b37cf30a9b2d1d8428dba696ac9f04abe9e3c[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Sat Oct 3 21:00:16 2015 +0530
+
+    login page made, databse file added, username- gaurav123 password- ankit
+
+[33mcommit 4e86e459429767b6f71a7c7b6e77249c869962aa[m
+Author: techjunkie007 <connectankityadav@gmail.com>
+Date:   Sat Oct 3 20:08:59 2015 +0530
+
+    Adds new DB
+
+[33mcommit 0000a094296331467fbe59759ca5fcb6f41a6245[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Sat Oct 3 19:43:32 2015 +0530
+
+    login page added, problem in auth function, ankit please check
+
+[33mcommit d8a75d2ab99756fbdf2d3504ac7cedd289186c8f[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Fri Oct 2 19:33:19 2015 +0530
+
+    report page working, next target adding filters
+
+[33mcommit c7a7907b17cee3276d89e4dee1469ed246aa75c0[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Fri Oct 2 18:49:21 2015 +0530
+
+    raw_report.blade.php added for showing reports
+
+[33mcommit 58fb16ad2ebf4fbfcd2222f4b02ff504b2f63d64[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Thu Oct 1 23:06:38 2015 +0530
+
+    confirm.blade.php added, need to put date picker in form..
+
+[33mcommit 93e2386b2aec2de9579bcce5a3c9c5f56f6d9df6[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Thu Oct 1 18:33:04 2015 +0530
+
+    form working,, issues with date function, hardcoded
+
+[33mcommit 0771b80e39b08b63b1d8ea9befccefcbfc06ac17[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Wed Sep 30 22:49:05 2015 +0530
+
+    form fascades added, problem in Form::select
+
+[33mcommit 8ce6b7d15d3c97b46e85b98bd784aaf53446eb32[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Wed Sep 30 10:32:59 2015 +0530
+
+    fascades added, controller added, blades made, code optimized
+
+[33mcommit d15efd26173bf64847d4a5ff531afb90cc1f628e[m
+Author: Ankit Yadav <connectankityadav@gmail.com>
+Date:   Sun Sep 27 16:10:33 2015 +0000
+
+    raw_material.php deleted online with Bitbucket
+
+[33mcommit 274506c69d7a9ba7df0077fd424bee9bf69da902[m
+Author: Ankit Yadav <connectankityadav@gmail.com>
+Date:   Sun Sep 27 16:09:22 2015 +0000
+
+    raw_material.blade.php created online with Bitbucket
+
+[33mcommit 19650a0d5e51d7b370af535ed2b07bf66f4a2552[m
+Merge: bd66015 e862570
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Tue Sep 22 18:06:07 2015 +0530
+
+    files added
+
+[33mcommit bd6601503fd79f18b474577a5559202d37f3a3ca[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Mon Sep 21 21:52:05 2015 +0530
+
+    form added
+
+[33mcommit e862570244f342795ca22f27a48ddaf1bfe14f37[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Sat Sep 19 00:06:03 2015 +0530
+
+    database file rd_forge.sql added in root directory
+
+[33mcommit 9d35069fcb7853b95efbcc09f00da8a358158622[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Fri Sep 18 23:44:59 2015 +0530
+
+    Initial commit with contributors
+
+[33mcommit 054f9825b346214170f53654d77052a22be4a0dc[m
+Author: gaurav_si <reachgauravarora@outlook.com>
+Date:   Fri Sep 18 23:43:38 2015 +0530
+
+    files added

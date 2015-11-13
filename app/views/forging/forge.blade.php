@@ -1,6 +1,55 @@
     @extends('layouts.master')
 
     @section('links_data')
+        <!-- Jquery google cdn to be placed here  -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <!-- Script for handling total weight checking -->
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('#quantity').blur(function () {
+
+                    wpp= $('#wpp').val();
+                    quantity= $('#quantity').val();
+                    heat_no= $('#heat_no').val();
+                    textData= {
+                        'wpp' : wpp,
+                        'quantity' : quantity,
+                        'heat_no' : heat_no
+                    };
+                    console.log(textData);
+
+                    $.ajax({
+                        url: 'forging/availableTotalWeight',
+                        method: 'POST',
+                        data: textData,
+                        dataType: 'json',
+                        success: function(response){
+                            //alert(response);
+                            if(response== 0)
+                            {
+                                alert("data is not valid");
+                                return;
+                            }
+                        }
+                    });
+                });
+                return;
+            });
+        </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class="row">
                 <div class="wrapper">
@@ -12,7 +61,7 @@
                         </div>
                         <div class="row">
 
-                            {{ Form::open(array('action'=>'forgingController@store')) }}
+                            {{ Form::open(array('action'=>'forgingController@store','id'=>'forging_form')) }}
                                     <!-- For recipt number of the material coming from outside -->
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Date') }}
@@ -27,7 +76,7 @@
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Heat Number(available after cutting)') }}
 
-                                <select class="form-control" name="heatNo">
+                                <select class="form-control" name="heatNo" id="heat_no">
                                     @foreach($heat_no as $heat_no_element)
                                         <option value="{{ $heat_no_element->heat_no }}">{{$heat_no_element->heat_no}}</option>
                                     @endforeach
@@ -38,14 +87,14 @@
                             <!-- Weight per peice for forged item -->
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Weight Per Piece') }}
-                                {{ Form::text('weight_per_peice',$dataArray['weight_per_piece'],array('class'=>'form-control','placeholder'=>'Weight per peice','id'=>'justAnything')) }}
+                                {{ Form::text('weight_per_peice',$dataArray['weight_per_piece'],array('class'=>'form-control','placeholder'=>'Weight per peice','id'=>'wpp')) }}
                             </div>
 
 
                             <!-- Quantity -->
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail','Quantity') }}
-                                {{ Form::text('quantity',$dataArray['quantity'],array('class'=>'form-control','placeholder'=>'Quantity of material','id'=>'JustAnything')) }}
+                                {{ Form::text('quantity',$dataArray['quantity'],array('class'=>'form-control','placeholder'=>'Quantity of material','id'=>'quantity')) }}
                             </div>
 
 

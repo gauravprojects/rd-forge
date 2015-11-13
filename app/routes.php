@@ -183,7 +183,7 @@
 
 		));
 
-		Route::get('/forging/availableTotalWeight/{id}',array(
+		Route::post('/forging/availableTotalWeight',array(
 			'as' => 'forging.availableTotalWeight',
 			'uses' => 'forgingController@availableTotalWeight'
 		));

@@ -58,7 +58,8 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 						'schedule' => $forging_input['schedule'],
 						'quantity'		=> $forging_input['quantity'],
 						'total_weight'	=> $total_weight,
-						'remarks'     => $forging_input['remarks']
+						'remarks'     => $forging_input['remarks'],
+						'available_weight_forging' => $total_weight
 		);
 		
 		Forging::insertData($forging_array);
@@ -113,6 +114,27 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 		//this functions shows all forging records for forging reports
 		$forging_data= Forging::getAllRecords();
 		return View::make('forging.forging_report')->with('forging_data',$forging_data);
+	}
+
+	public function availableTotalWeight()
+	{
+
+		$wpp = Input::get('wpp');
+		$heat_no = Input::get('heat_no');
+		$quantity = Input::get('quantity');
+
+		//hence $total_weight
+		$total_weight= $wpp * $quantity;
+
+		//now avialbale weight from cutting table for this heat no
+		$available_weight= Forging::availableWeight($heat_no);
+		$available_weight=(array) $available_weight[0];
+		$available_weight= $available_weight['available_weight_cutting'];
+
+		if($available_weight > $total_weight)
+			return 1;
+		if($available_weight <= $total_weight)
+			return 0;
 	}
 
 	public function excel()

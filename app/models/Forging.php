@@ -21,6 +21,14 @@
 					->first();
 		}
 
+		public static function getData($id)
+		{
+			return DB::table('forging_records')
+					->select()
+					->where('forging_id','=',$id)
+					->get();
+		}
+
 		public static function getAllRecords()
 		{
 
@@ -78,5 +86,15 @@
 			return DB::table('cutting_records')
 					->where('heat_no','=',$heat_no)
 					->update(array('available_weight_cutting'=>$available_weight_cutting));
+		}
+
+
+		public static function availableWeight($heat_no)
+		{
+			//stores weight availbale for forging ie from cutting inventory
+			return DB::table('cutting_records')
+					->select('available_weight_cutting')
+					->where('heat_no','=',$heat_no)
+					->get();
 		}
 	}

@@ -25,8 +25,16 @@ class WorkOrder extends Eloquent
 
 	public static function getWorkOrderDetails($work_order_no)
 	{
-	return DB::table('work_order_material_details')
+		return DB::table('work_order_material_details')
 			->select()
 			->where('work_order_no','=',$work_order_no);
+	}
+
+	public static function availableWorkOrderNo()
+	{
+		return DB::table('work_order_details')
+				->select('work_order_no')
+				->where('status','=','0')
+				->get();
 	}
 }

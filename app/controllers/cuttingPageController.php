@@ -76,40 +76,15 @@
 			$available_weight = $data[0]->available_weight;
 
 			$available_weight = $available_weight - $total_weight;
-			//$available_weight_array= array('available_weight' => $available_weight );
 			$available_weight_response = RawMaterial::updateAvailableWeight($cutting['heatNo'], $available_weight);
 
-			DB::beginTransaction();
-			try {
+
 
 				$cutting_response = Cutting::insertData($input_array);
 				$last_record = Cutting::getLastRecord();
 
-				//array for cutting item description
 
-				$cutting_des_array = array('cutting_id' => $last_record->cutting_id, 'item_des' => $cutting['CutDes']);
-				// array for cutting remarks table
 
-				$cutting_rem_array = array('cutting_id' => $last_record->cutting_id, 'remarks' => $cutting['cutRem']);
-
-				//Separate models
-
-				$cutting_des_response = CuttingDes::insertData($cutting_des_array);
-
-				$cutting_rem_response = CuttingRem::insertData($cutting_rem_array);
-
-				if ($cutting_des_response && $cutting_rem_response && $cutting_response) {
-
-					//successful
-					DB::commit();
-				}
-
-			} catch (\Exception $e) {
-				DB::rollback();
-				return Redirect::to('/cutting')
-						->withErrors($e->getErrors())
-						->withInput();
-			}
 			return View::make('cutting.confirm')->with('last_record', $last_record);
 
 		}

@@ -19,10 +19,13 @@ class rawMaterialController extends BaseController {
 	// This is the home page for raw material entry
 	public function index()
 	{
+		$manufacturers= Manufactures::getManufactures();
+		//dd($manufacturers);
 		$sizes= Sizes::getSizes();
 		$grades=Grades::getGrades();
 		return View::make('rawMaterial.raw')
 			->with('sizes',$sizes)
+			->with('manufacturers',$manufacturers)
 			->with('grades',$grades);
 	}
 
