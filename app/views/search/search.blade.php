@@ -8,6 +8,7 @@
     <script type="application/javascript">
         $(document).ready(function () {
             $('#category').click(function () {
+                var res;
                 var category= $('#category').val();
                 console.log(category);
 
@@ -18,9 +19,11 @@
                     dataType: "json",
                     success: function(response)
                     {
-                        alert(response);
+                        console.log(response);
+                        $('#options').val(response);
                     }
                 });
+
             });
         });
 
