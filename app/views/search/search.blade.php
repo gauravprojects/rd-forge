@@ -19,13 +19,24 @@
                     dataType: "json",
                     success: function(response)
                     {
-                        console.log(response);
-                        $('#options').val(response);
-                    }
-                });
+                        for(i=1;i<6;i++)
+                        {
+                            console.log(response[i]);
+                            if(response[i]== null)
+                                break;
+                            $('#options').append("<option value="+response[i]+">" + response[i] + "<option>");
 
+                        }
+                    }
+                }); // ajax call function ends
+
+            });     // category function ends
+
+            $('#options').click(function () {
+               alert($('#options').val());
+                $('#search_form').append("<input type='text' name='"+$('#options').val()+"' value='' placeholder='Enter "+$('#options').val()+"' >");
             });
-        });
+        });         // document ready function ends
 
 
 
@@ -44,7 +55,7 @@
                     <div class="row">
 
                   <!-- Form open, contains three fields, category, options and particular search field -->
-                        {{ Form::open(array('id'=>'search_form')) }}
+                        {{ Form::open(array('id'=>'search_form','action'=>'searchController@store')) }}
 
 
                   <!-- Category to be searched, category means these processes, like raw material, cutting etc -->
@@ -59,8 +70,10 @@
                   <!-- Options to be selected, to be loaded using ajax form search_selection table -->
                         {{ Form::label('exampleInputEmail1','Options') }}
                         <select class="form-control" name="options" id="options" >
-                            <option><!-- Values to be loaded using ajax --></option>
                         </select>
+
+
+                        {{ Form::submit('Submitt') }}
 
 
 

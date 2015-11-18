@@ -488,3 +488,8 @@
 		'as' => 'search.category',
 		'uses' => 'searchController@returnOptions'
 	));
+
+	Route::post('/search/store',array(
+		'as' => 'search.store',
+			'uses' => 'searchController@store'
+	));

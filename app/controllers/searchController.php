@@ -23,26 +23,15 @@ class searchController extends \BaseController {
 
         foreach($options as $option)
         {
-            //var_dump($option->options);
-            //$array = array_add($array, 'key', 'value');
             $options_array=array_add($options_array,++$count,$option->options);
-            //dd($option->options);
         }
-       // return 0;
         return $options_array;
+    }
 
-        //return $options;
-        // now headache is how to counter this object problem
-
-//        $sample= array(
-//            'name' => 'gaurav',
-//            'class'=> 'EC1',
-//        );
-//        $sample_json= json_encode($sample);
-//        return $sample_json;
-
-        //return $options_json;
-
+    public function store()
+    {
+        $data= Input::get();
+        dd($data);
     }
 
 
