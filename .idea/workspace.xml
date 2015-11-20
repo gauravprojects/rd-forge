@@ -3,14 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="11f2871e-3378-42bd-b5a5-bc87373f93a3" name="Default" comment="">
       <change type="DELETED" beforePath="$PROJECT_DIR$/rdforge (2).sql" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/cuttingPageController.php" afterPath="$PROJECT_DIR$/app/controllers/cuttingPageController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/forgingController.php" afterPath="$PROJECT_DIR$/app/controllers/forgingController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/Cutting.php" afterPath="$PROJECT_DIR$/app/models/Cutting.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/cutting/cutting_report.blade.php" afterPath="$PROJECT_DIR$/app/views/cutting/cutting_report.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/cutting/cutting_report_excel.blade.php" afterPath="$PROJECT_DIR$/app/views/cutting/cutting_report_excel.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/forging/forging_report.blade.php" afterPath="$PROJECT_DIR$/app/views/forging/forging_report.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/forging/forging_report_excel.blade.php" afterPath="$PROJECT_DIR$/app/views/forging/forging_report_excel.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/workOrderController.php" afterPath="$PROJECT_DIR$/app/controllers/workOrderController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/WorkOrder.php" afterPath="$PROJECT_DIR$/app/models/WorkOrder.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/workOrder/confirm.blade.php" afterPath="$PROJECT_DIR$/app/views/workOrder/confirm.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/workOrder/work2.blade.php" afterPath="$PROJECT_DIR$/app/views/workOrder/work2.blade.php" />
     </list>
     <ignored path="rd-forge.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,31 +41,61 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="forgingController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/forgingController.php">
+      <file leaf-file-name="workOrderController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/workOrderController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.528302">
-              <caret line="148" column="92" selection-start-line="148" selection-start-column="92" selection-end-line="148" selection-end-column="92" />
+            <state vertical-scroll-proportion="-3.1132076">
+              <caret line="74" column="60" selection-start-line="74" selection-start-column="60" selection-end-line="74" selection-end-column="60" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="forging_report.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/forging/forging_report.blade.php">
+      <file leaf-file-name="WorkOrder.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/WorkOrder.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-21.291666">
-              <caret line="47" column="32" selection-start-line="17" selection-start-column="24" selection-end-line="47" selection-end-column="32" />
+            <state vertical-scroll-proportion="-7.6792455">
+              <caret line="34" column="35" selection-start-line="34" selection-start-column="35" selection-end-line="34" selection-end-column="35" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="forging_report_excel.blade.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/views/forging/forging_report_excel.blade.php">
+      <file leaf-file-name="confirm.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/workOrder/confirm.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.097402595">
-              <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
+            <state vertical-scroll-proportion="0.5211039">
+              <caret line="61" column="51" selection-start-line="61" selection-start-column="51" selection-end-line="61" selection-end-column="51" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="cuttingPageController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/cuttingPageController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="1.25">
+              <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="work2.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/workOrder/work2.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-15.625">
+              <caret line="25" column="84" selection-start-line="25" selection-start-column="84" selection-end-line="25" selection-end-column="84" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="cut.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/cutting/cut.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-21.916666">
+              <caret line="131" column="41" selection-start-line="127" selection-start-column="32" selection-end-line="131" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -91,8 +117,6 @@
         <option value="$PROJECT_DIR$/app/models/CuttingRem.php" />
         <option value="$PROJECT_DIR$/app/views/adminPanel/sizes.blade.php" />
         <option value="$PROJECT_DIR$/app/controllers/adminPageController.php" />
-        <option value="$PROJECT_DIR$/app/views/workOrder/work2.blade.php" />
-        <option value="$PROJECT_DIR$/app/views/workOrder/confirm.blade.php" />
         <option value="$PROJECT_DIR$/app/controllers/serationController.php" />
         <option value="$PROJECT_DIR$/app/controllers/drillingController.php" />
         <option value="$PROJECT_DIR$/design/sidenav.html" />
@@ -118,8 +142,6 @@
         <option value="$PROJECT_DIR$/app/views/cutting/cut.blade.php" />
         <option value="$PROJECT_DIR$/app/views/forging/forge.blade.php" />
         <option value="$PROJECT_DIR$/app/models/Forging.php" />
-        <option value="$PROJECT_DIR$/app/controllers/workOrderController.php" />
-        <option value="$PROJECT_DIR$/app/models/WorkOrder.php" />
         <option value="$PROJECT_DIR$/app/views/workOrder/work.blade.php" />
         <option value="$PROJECT_DIR$/app/models/manufacturers.php" />
         <option value="$PROJECT_DIR$/app/controllers/rawMaterialController.php" />
@@ -139,6 +161,10 @@
         <option value="$PROJECT_DIR$/app/views/forging/forging_report.blade.php" />
         <option value="$PROJECT_DIR$/app/controllers/forgingController.php" />
         <option value="$PROJECT_DIR$/app/views/forging/forging_report_excel.blade.php" />
+        <option value="$PROJECT_DIR$/app/views/workOrder/work2.blade.php" />
+        <option value="$PROJECT_DIR$/app/models/WorkOrder.php" />
+        <option value="$PROJECT_DIR$/app/controllers/workOrderController.php" />
+        <option value="$PROJECT_DIR$/app/views/workOrder/confirm.blade.php" />
       </list>
     </option>
   </component>
@@ -229,6 +255,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rd-forge" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rd-forge" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="workOrder" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -398,7 +446,7 @@
     <editor active="true" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2705611" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2705611" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3283582" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18216756" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -459,20 +507,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/homePage/home.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5113636">
-          <caret line="21" column="173" selection-start-line="21" selection-start-column="173" selection-end-line="21" selection-end-column="173" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/forging/confirm.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="43" column="115" selection-start-line="43" selection-start-column="115" selection-end-line="43" selection-end-column="115" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/DescriptionType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6643952">
@@ -599,13 +633,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/forging/forge.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.85227275">
-          <caret line="35" column="23" selection-start-line="35" selection-start-column="23" selection-end-line="35" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/Forging.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7553957">
@@ -617,20 +644,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.26785713">
           <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/workOrderController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.024350649">
-          <caret line="23" column="27" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/WorkOrder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.78084415">
-          <caret line="36" column="39" selection-start-line="36" selection-start-column="39" selection-end-line="36" selection-end-column="39" />
         </state>
       </provider>
     </entry>
@@ -701,13 +714,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.17045455">
           <caret line="7" column="43" selection-start-line="7" selection-start-column="43" selection-end-line="7" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/cutting/cut.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9886364">
-          <caret line="176" column="9" selection-start-line="176" selection-start-column="9" selection-end-line="176" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -791,14 +797,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/cuttingPageController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41558442">
-          <caret line="106" column="80" selection-start-line="106" selection-start-column="80" selection-end-line="106" selection-end-column="80" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/cutting/cutting_report.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.53571427">
@@ -825,8 +823,64 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/forging/forging_report_excel.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.097402595">
+        <state vertical-scroll-proportion="-2.5">
           <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/forging/forge.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.53571427">
+          <caret line="35" column="23" selection-start-line="35" selection-start-column="23" selection-end-line="35" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/cutting/cut.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-21.916666">
+          <caret line="131" column="41" selection-start-line="127" selection-start-column="32" selection-end-line="131" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/cuttingPageController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.25">
+          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/workOrder/work2.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.625">
+          <caret line="25" column="84" selection-start-line="25" selection-start-column="84" selection-end-line="25" selection-end-column="84" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/WorkOrder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.6792455">
+          <caret line="34" column="35" selection-start-line="34" selection-start-column="35" selection-end-line="34" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/workOrderController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.1132076">
+          <caret line="74" column="60" selection-start-line="74" selection-start-column="60" selection-end-line="74" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/workOrder/confirm.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5211039">
+          <caret line="61" column="51" selection-start-line="61" selection-start-column="51" selection-end-line="61" selection-end-column="51" />
           <folding />
         </state>
       </provider>

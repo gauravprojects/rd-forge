@@ -15,6 +15,7 @@ class WorkOrder extends Eloquent
 				->where('work_id','=',$work_id);
 	}
 
+
 	public static function getLastRecord()
 	{
 		return DB::table('work_order_details')
@@ -27,8 +28,19 @@ class WorkOrder extends Eloquent
 	{
 		return DB::table('work_order_material_details')
 			->select()
-			->where('work_order_no','=',$work_order_no);
+			->where('work_order_no','=',$work_order_no)
+			->get();
 	}
+
+	public static function getOrderDetails($work_order_no)
+	{
+		return DB::table('work_order_details')
+				->select()
+				->where('work_order_no','=',$work_order_no)
+				->get();
+	}
+
+
 
 	public static function availableWorkOrderNo()
 	{

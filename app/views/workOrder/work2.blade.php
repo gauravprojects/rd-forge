@@ -24,8 +24,11 @@
                                     <tr>
                                         <th class="heading" style="text-align:center;">Work Order No</th>
                                         <th class="heading" style="...">Item no</th>
-                                        <th class="heading" style="text-align:center;">Description</th>
                                         <th class="heading" style="text-align:center;">Material Grade</th>
+                                        <th class="heading" style="text-align:center;">Size</th>
+                                        <th class="heading" style="text-align:center;">Pressure</th>
+                                        <th class="heading" style="text-align:center;">Type</th>
+                                        <th class="heading" style="text-align:center;">Schedule</th>
                                         <th class="heading" style="text-align:center;">Quantity</th>
                                         <th class="heading" style="text-align:center;">Weight</th>
                                         <th class="heading" style="text-align:center;">Remarks</th>
@@ -39,10 +42,6 @@
                                         {{ Form::text('item_no',$data->work_order_no.'/'.++$count,array('class'=>'form-control')) }}
                                     </td>
 
-                                    <td>
-                                        {{ Form::text('description',null,array('class'=>'form-control','placeholder'=>'Description','id'=>'exampleInputEnail1')) }}
-                                    </td>
-
                                     <!-- Material Grade -->
                                     <td>
                                         <select class="form-control" name="grade">
@@ -51,6 +50,42 @@
                                             @endforeach
                                         </select>
 
+                                    </td>
+
+                                    <td>
+                                        <!-- Size -->
+                                        <select class="form-control" name="standard_size">
+                                            @foreach($standard_size as $standard_size_element)
+                                                <option value="{{ $standard_size_element->std_size }}">{{$standard_size_element->std_size}}</option>
+                                            @endforeach
+                                        </select>
+                                    </td>
+
+                                    <td>
+                                        <!-- Pressure -->
+                                        <select class="form-control" name="pressure">
+                                            @foreach($pressure as $pressure_element)
+                                                <option value="{{ $pressure_element->pressure }}">{{$pressure_element->pressure}}</option>
+                                            @endforeach
+                                        </select>
+                                    </td>
+
+                                    <td>
+                                        <!-- Type -->
+                                        <select class="form-control" name="type">
+                                            @foreach($type as $type_element)
+                                                <option value="{{ $type_element->type }}">{{$type_element->type}}</option>
+                                            @endforeach
+                                        </select>
+                                    </td>
+
+                                    <td>
+                                        <!-- Schedule -->
+                                        <select class="form-control" name="schedule">
+                                            @foreach($schedule as $schedule_element)
+                                                <option value="{{ $schedule_element->schedule }}">{{$schedule_element->schedule}}</option>
+                                            @endforeach
+                                        </select>
                                     </td>
 
                                     <td>

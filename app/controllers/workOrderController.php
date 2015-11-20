@@ -32,10 +32,21 @@ class WorkOrderController extends BaseController {
 		$grades= Grades::getGrades();
 		$work_order_details= WorkOrder::getWorkOrderDetails($last_input->work_order_no);
 
+
+		//all data form master table is taken and fed to the  cutting form
+		$standard_sizes = StandardSizes::getStandardSizes();
+		$pressure = Pressure::getPressure();
+		$schedule = Schedule::getSchedule();
+		$type = DescriptionType::getType();
+
 		return View::make('workOrder.work2')
 			->with('data',$last_input)
 			->with('grades',$grades)
-			->with('work_order_details',$work_order_details);
+			->with('work_order_details',$work_order_details)
+				->with('standard_size', $standard_sizes)
+				->with('pressure', $pressure)
+				->with('schedule', $schedule)
+				->with('type', $type);;
 
 
 	}
@@ -45,20 +56,27 @@ class WorkOrderController extends BaseController {
 	public function details_add()
 	{
 		$data= Input::all();
-
 		$data_array= array(
 			'work_order_no'=>$data['work_order_no'],
 			'item_no' => $data['item_no'],
-			'description'=>$data['description'],
 			'material_grade'=>$data['grade'],
+			'size' =>$data['standard_size'],
+			'pressure' => $data['pressure'],
+			'type'=> $data['type'],
+			'schedule' => $data['schedule'],
 			'quantity' =>$data['quantity'],
 			'weight' => $data['weight'],
 			'remarks' => $data['remarks']
 		);
         $input_response= DB::table('work_order_material_details')->insert($data_array);
 
-        $last_record=DB::table('work_order_details')->orderBy('work_order_no', 'desc')->first();
-        return View::make('workOrder.confirm')->with('data',$last_record);
+        $last_record=DB::table('work_order_material_details')->orderBy('work_order_no', 'desc')->first();
+		$work_order_details= WorkOrder::getOrderDetails($data['work_order_no']);
+		$work_order_details= (array) $work_order_details[0];
+
+		return View::make('workOrder.confirm')
+				->with('data',$last_record)
+				->with('work_order_details',$work_order_details);
 
 	}
 
