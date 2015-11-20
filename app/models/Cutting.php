@@ -30,6 +30,12 @@ class Cutting extends Eloquent
 				->get();
 	}
 
+	public static function getAllRecords()
+	{
+		return DB::table('cutting_records')
+				->select()
+				->get();
+	}
 	public static function returnNullData()
 	{
 		// to send null data while entering form data

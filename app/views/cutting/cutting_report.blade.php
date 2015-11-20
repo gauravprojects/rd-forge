@@ -13,7 +13,6 @@
                     </div>
 
 
-
                     <div class="row">
 
                         <table>
@@ -25,18 +24,28 @@
                                 <th>Quantity</th>
                                 <th>Weight per piece</th>
                                 <th>Total Weight</th>
+                                <th>Size</th>
+                                <th>Pressure</th>
+                                <th>Type</th>
+                                <th>Schedule</th>
+                                <th>Available Weight</th>
                             </tr>
 
-                            @foreach($last_record as $cutting_data)
+                            @foreach($all_records as $cutting_data)
                             <tr>
+                                <td>{{ $cutting_data->cutting_id }}</td>
+                                <td>{{ $cutting_data->date }}</td>
+                                <td>{{ $cutting_data->raw_mat_size }}</td>
+                                <td>{{ $cutting_data->heat_no  }}</td>
+                                <td>{{ $cutting_data->quantity }}</td>
+                                <td>{{ $cutting_data->weight_per_piece }}</td>
+                                <td>{{ $cutting_data->total_weight }}</td>
+                                <td>{{ $cutting_data->size }}</td>
+                                <td>{{ $cutting_data->pressure }}</td>
+                                <td>{{ $cutting_data->type }}</td>
+                                <td>{{ $cutting_data->schedule }}</td>
+                                <th>{{ $cutting_data->available_weight_cutting }}</th>
 
-                                <td>{{{ $cutting_data->cutting_id }}}</td>
-                                <td>{{{ $cutting_data->date }}}</td>
-                                <td>{{{ $cutting_data->raw_mat_size }}}</td>
-                                <td>{{{ $cutting_data->heat_no  }}}</td>
-                                <td>{{{ $cutting_data->quantity }}}</td>
-                                <td>{{{ $cutting_data->weight_per_piece }}}</td>
-                                <td>{{{ $cutting_data->total_weight }}}</td>
                             </tr>
                             @endforeach
 

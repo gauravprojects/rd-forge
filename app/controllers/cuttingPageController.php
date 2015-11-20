@@ -94,27 +94,17 @@
 			// showing report for cutting material
 			// can be found inside admin pannel
 
-			$last_record = Cutting::getLastRecord();
-			return View::make('cutting.cutting_report')->with('last_record', $last_record);
+			$all_records= Cutting::getAllRecords();
+			return View::make('cutting.cutting_report')->with('all_records', $all_records);
 		}
 
 
 		public function excel()
 		{
-			// sending full data for excel
-			// using joins.....
-
-			//	 PROBLEM LIES HERE
-
-			$data = DB::table('cutting_records')
-					->leftjoin('cutting_item_des', 'cutting_records.cutting_id', '=', 'cutting_item_des.cutting_id')
-					->leftjoin('cutting_remarks', 'cutting_records.cutting_id', '=', 'cutting_remarks.cutting_id')
-					//->whereNULL('cutting_remarks.cutting_id')
-					->select()
-					->get();
 
 
-			return View::make('cutting.cutting_report_excel')->with('cutting', $data);
+			$all_records= Cutting::getAllRecords();
+			return View::make('cutting.cutting_report_excel')->with('all_records', $all_records);
 
 		}
 
