@@ -5,13 +5,19 @@ body
 	/*position: relative;*/
 }
 
-<<<<<<< HEAD
 =======
 button:focus{
   background-color: transparent;
 }
 
->>>>>>> 6a5bb9dea13d962ee3127601d87712ddd6840220
+.inputfix:hover,.inputfix:active,.inputfix:focus{
+	border-bottom: 1px solid grey;
+	border-top:none;
+	border-left:none;
+	border-right:none;
+	outline:none;
+}
+
 .card
 {
 	padding: 40px;
@@ -22,14 +28,15 @@ button:focus{
 	margin-bottom: 0;
 }
 
+
 .wrapper
 {
-<<<<<<< HEAD
+
 	padding: 7% 150px 20px 150px;
-=======
+
 	padding: 50px 150px 20px 150px;
 	min-height: 79%;
->>>>>>> 6a5bb9dea13d962ee3127601d87712ddd6840220
+
 	height: auto;
 }
 
@@ -37,7 +44,12 @@ button:focus{
 {
 	margin-top: 50px ;
 	background-color: none;
+	width:100%;
 
+}
+
+.button:hover,.button:active,.button:focus,.button:visited:{
+	border:none;
 }
 
 .loginButton >i>input{
@@ -153,7 +165,6 @@ table,tr,th,td
 	color: #00695c;
 }
 
-<<<<<<< HEAD
 .brand-logo{
 	font-size: 26px !important;
 }
@@ -235,7 +246,7 @@ input:hover{
 	float: left;
 
 }
-=======
+
 .form-container{
 	padding: 1% 5% 1% 22%;
 	display: none;
@@ -250,5 +261,3 @@ input:hover{
 .cardMargin{
 	margin-right: 4%;
 }
-
->>>>>>> 6a5bb9dea13d962ee3127601d87712ddd6840220

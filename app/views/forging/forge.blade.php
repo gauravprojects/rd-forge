@@ -40,16 +40,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class="row">
                 <div class="wrapper">
@@ -76,7 +66,7 @@
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Heat Number(available after cutting)') }}
 
-                                <select class="form-control" name="heatNo" id="heat_no">
+                                <select class="form-control inputfix" name="heatNo" id="heat_no">
                                     @foreach($heat_no as $heat_no_element)
                                         <option value="{{ $heat_no_element->heat_no }}">{{$heat_no_element->heat_no}}</option>
                                     @endforeach
@@ -87,14 +77,14 @@
                             <!-- Weight per peice for forged item -->
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Weight Per Piece') }}
-                                {{ Form::text('weight_per_peice',$dataArray['weight_per_piece'],array('class'=>'form-control','placeholder'=>'Weight per peice','id'=>'wpp')) }}
+                                {{ Form::text('weight_per_peice',$dataArray['weight_per_piece'],array('class'=>'form-control inputfix','placeholder'=>'Weight per peice','id'=>'wpp')) }}
                             </div>
 
 
                             <!-- Quantity -->
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail','Quantity') }}
-                                {{ Form::text('quantity',$dataArray['quantity'],array('class'=>'form-control','placeholder'=>'Quantity of material','id'=>'quantity')) }}
+                                {{ Form::text('quantity',$dataArray['quantity'],array('class'=>'form-control inputfix' ,'placeholder'=>'Quantity of material','id'=>'quantity')) }}
                             </div>
 
 
@@ -106,7 +96,7 @@
                                 <hr>
                                 {{ Form::label('exampleInputEmail1','Standard Size') }}
 
-                                <select class="form-control" name="standard_size">
+                                <select class="form-control inputfix" name="standard_size">
                                     @foreach($standard_size as $standard_size_element)
                                         <option value="{{ $standard_size_element->std_size }}">{{$standard_size_element->std_size}}</option>
                                     @endforeach
@@ -118,7 +108,7 @@
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Pressure') }}
 
-                                <select class="form-control" name="pressure">
+                                <select class="form-control inputfix" name="pressure">
                                     @foreach($pressure as $pressure_element)
                                         <option value="{{ $pressure_element->pressure }}">{{$pressure_element->pressure}}</option>
                                     @endforeach
@@ -129,7 +119,7 @@
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Standard Type') }}
 
-                                <select class="form-control" name="type">
+                                <select class="form-control inputfix" name="type">
                                     @foreach($type as $type_element)
                                         <option value="{{ $type_element->type }}">{{$type_element->type}}</option>
                                     @endforeach
@@ -141,7 +131,7 @@
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Schedule') }}
 
-                                <select class="form-control" name="schedule">
+                                <select class="form-control inputfix" name="schedule">
                                     @foreach($schedule as $schedule_element)
                                         <option value="{{ $schedule_element->schedule }}">{{$schedule_element->schedule}}</option>
                                     @endforeach
@@ -152,7 +142,7 @@
                             <!-- Forging remarks -->
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail','Forging Remarks') }}
-                                {{ Form::text('remarks',$dataArray['remarks'],array('class'=>'form-control','placeholder'=>'Remarks for forging Material','id'=>'JustAnything')) }}
+                                {{ Form::text('remarks',$dataArray['remarks'],array('class'=>'form-control inputfix','placeholder'=>'Remarks for forging Material','id'=>'JustAnything')) }}
                             </div>
 
 

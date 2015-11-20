@@ -20,7 +20,7 @@
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Work Order Number') }}
 
-                            <select class="form-control" name="work_order_no">
+                            <select class="form-contro inputfixl" name="work_order_no">
                                 @foreach($availableWorkOrderNo as $workOrder)
                                     <option value="{{ $workOrder->work_order_no }}">{{$workOrder->work_order_no}}</option>
                                 @endforeach
@@ -35,37 +35,37 @@
                         -->
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Item') }}
-                            {{ Form::text('item',null,array('class'=>'form-control','placeholder'=>'Item','id'=>'exampleInputEnail1')) }}
+                            {{ Form::text('item',null,array('class'=>'form-control inputfix','placeholder'=>'Item','id'=>'exampleInputEnail1')) }}
                         </div>
 
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Heat Number') }}
-                            {{ Form::text('heat_no',null,array('class'=>'form-control','placeholder'=>'Heat Number','id'=>'exampleInputEnail1')) }}
+                            {{ Form::text('heat_no',null,array('class'=>'form-control inputfix','placeholder'=>'Heat Number','id'=>'exampleInputEnail1')) }}
                         </div>
 
 
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Quantity') }}
-                            {{ Form::text('size',null,array('class'=>'form-control','placeholder'=>'Quantity','id'=>'justAnything')) }}
+                            {{ Form::text('size',null,array('class'=>'form-control inputfix','placeholder'=>'Quantity','id'=>'justAnything')) }}
                         </div>
 
 
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Machine Name') }}
-                            {{ Form::text('machine_name',null,array('class'=>'form-control','placeholder'=>'Machine Name','id'=>'exampleInputEnail1')) }}
+                            {{ Form::text('machine_name',null,array('class'=>'form-control inputfix','placeholder'=>'Machine Name','id'=>'exampleInputEnail1')) }}
                         </div>
 
                         <!-- Employee name removed after new review from the client  -->
 
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','quantity') }}
-                            {{ Form::text('quantity',null,array('class'=>'form-control','placeholder'=>'Quantity','id'=>'exampleInputEnail1')) }}
+                            {{ Form::text('quantity',null,array('class'=>'form-control inputfix','placeholder'=>'Quantity','id'=>'exampleInputEnail1')) }}
                         </div>
 
                         <!-- DOUBT HERE, which weight is this, refer doubts -->
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Weight') }}
-                            {{ Form::text('weight',null,array('class'=>'form-control','placeholder'=>'Weight','id'=>'exampleInputEnail1')) }}
+                            {{ Form::text('weight',null,array('class'=>'form-control inputfix','placeholder'=>'Weight','id'=>'exampleInputEnail1')) }}
                         </div>
 
                         <!-- to be fetched from master grades -->
@@ -83,7 +83,7 @@
 
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Remarks') }}
-                            {{ Form::text('remarks',null,array('class'=>'form-control','placeholder'=>'Remarks','id'=>'anything')) }}
+                            {{ Form::text('remarks',null,array('class'=>'form-control inputfix','placeholder'=>'Remarks','id'=>'anything')) }}
                         </div>
 
                         <div class="loginButton">

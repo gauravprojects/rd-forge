@@ -18,10 +18,10 @@
 
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Receipt Code') }}
-                                {{ Form::text('receiptCode',null,array('class'=>'form-control','placeholder'=>'Receipt Number','id'=>'exampleInputEnail1')) }}
+                                {{ Form::text('receiptCode',null,array('class'=>'form-control  inputfix','placeholder'=>'Receipt Number','id'=>'exampleInputEnail1')) }}
                             </div>
 
-                        <div class="form-group">
+                        <div class="form-group inputfix">
                             {{ Form::label('exampleInputEmail1','Date') }}
                             {{ Form::input('date', 'date') }}
                         </div>
@@ -33,7 +33,7 @@
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Size') }}
 
-                            <select class="form-control" name="size">
+                            <select class="form-control inputfix" name="size">
                                 @foreach($sizes as $size_element)
                                     <option value="{{ $size_element->size }}">{{$size_element->size}}</option>
                                 @endforeach
@@ -44,7 +44,7 @@
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail','Manufacturer') }}
 
-                                <select class="form-control" name="Manufacturer">
+                                <select class="form-control inputfix" name="Manufacturer">
                                     @foreach($manufacturers as $manufacturer_element)
                                         <option value="{{ $manufacturer_element->manufacturer_name }}">{{$manufacturer_element->manufacturer_name}}</option>
                                     @endforeach
@@ -54,28 +54,28 @@
                             <!-- Heat no, unique number for every order -->
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Heat Number') }}
-                                {{ Form::text('heatNo',null,array('class'=>'form-control','placeholder'=>'Heat Number','id'=>'Justesehe')) }}
+                                {{ Form::text('heatNo',null,array('class'=>'form-control inputfix','placeholder'=>'Heat Number','id'=>'Justesehe')) }}
                             </div>
                             <!-- Wieght, weight of the incmomh material -->
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Weight') }}
-                                {{ Form::text('weight',null,array('class'=>'form-control','placeholder'=>'Weight','id'=>'Justesehe')) }}
+                                {{ Form::text('weight',null,array('class'=>'form-control inputfix','placeholder'=>'Weight','id'=>'Justesehe')) }}
                             </div>
 
                             <!-- left over weight -->
-                            <div class="form-group">
+                            <div class="form-group inputfix">
                                 {{ Form::label('exampleInputEmail1','Left over weight') }}
-                                {{ Form::text('left_over_weight',null,array('class'=>'form-control','placeholder'=>'Left over weight','id'=>'Justesehe')) }}
+                                {{ Form::text('left_over_weight',null,array('class'=>'form-control inputfix','placeholder'=>'Left over weight','id'=>'Justesehe')) }}
                             </div>
 
                             <!-- Purchase order no -->
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail','Purchase Order Number') }}
-                                {{ Form::text('purchaseNo',null,array('class'=>'form-control','placeholder'=>'Purchase Order No','id'=>'JustAnything')) }}
+                                {{ Form::text('purchaseNo',null,array('class'=>'form-control inputfix','placeholder'=>'Purchase Order No','id'=>'JustAnything')) }}
                             </div>
 
                             <!-- Purchase order date -->
-                            <div class="form-group">
+                            <div class="form-group inputfix">
                                 {{ Form::label('exampleInputEmail','Purchase Order Date') }}
                                 {{ Form::input('date', 'purchaseDate') }}
                             </div>
@@ -83,11 +83,11 @@
                             <!-- Invoice Number -->
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail','Invoice Number') }}
-                                {{ Form::text('invoiceNo',null,array('class'=>'form-control','placeholder'=>'Invoice Number','id'=>'JustAnything')) }}
+                                {{ Form::text('invoiceNo',null,array('class'=>'form-control inputfix','placeholder'=>'Invoice Number','id'=>'JustAnything')) }}
                             </div>
 
                             <!-- Inovice date -->
-                            <div class="form-group">
+                            <div class="form-group inputfix">
                                 {{ Form::label('exampleInputEmail','Invoice Date') }}
                                 {{ Form::input('date', 'invoiceDate') }}
                             </div>
@@ -98,7 +98,7 @@
                                 <div class="form-group">
                                     {{ Form::label('exampleInputEmail1','Grades') }}
 
-                                    <select class="form-control" name="materialGrade">
+                                    <select class="form-control inputfix" name="materialGrade">
                                         @foreach($grades as $grade_element)
                                             <option value="{{ $grade_element->grade_name }}">{{$grade_element->grade_name}}</option>
                                         @endforeach

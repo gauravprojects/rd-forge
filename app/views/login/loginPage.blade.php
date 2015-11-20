@@ -26,14 +26,14 @@
                 {{ Form::open(array('route'=>'login.store','id'=>'loginform','class'=>'form-horizontal','role'=>'form')) }}
 
 
-                <div style="margin-bottom: 25px" class="input-group">
+                <div style="margin-bottom: 25px;" class="input-group ">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                    {{ Form::text('username',null,array('class'=>'form-control','placeholder'=>'username')) }}
+                    {{ Form::text('username',null,array('class'=>'form-control inputfix','placeholder'=>'username')) }}
                 </div>
 
                 <div style="margin-bottom: 25px" class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                    {{ Form::text('password',null,array('class'=>'form-control','placeholder'=>'password','id'=>'login-password')) }}
+                    {{ Form::text('password',null,array('class'=>'form-control inputfix','placeholder'=>'password','id'=>'login-password')) }}
 
                 </div>
 

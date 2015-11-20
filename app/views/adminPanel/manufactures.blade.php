@@ -48,7 +48,7 @@
 
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Manufacturer Name') }}
-                            {{ Form::text('manufacturer_name',null,array('class'=>'form-control','placeholder'=>'Manufacturer name','id'=>'anything')) }}
+                            {{ Form::text('manufacturer_name',null,array('class'=>'form-control inputfix','placeholder'=>'Manufacturer name','id'=>'anything')) }}
                         </div>
 
                         <div class="form-group">

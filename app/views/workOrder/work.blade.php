@@ -18,13 +18,13 @@
                         <!-- Customer Name who is placing the order -->
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Customer Name') }}
-                            {{ Form::text('customer_name',null,array('class'=>'form-control','placeholder'=>'Customer Number','id'=>'exampleInputEnail1')) }}
+                            {{ Form::text('customer_name',null,array('class'=>'form-control inputfix','placeholder'=>'Customer Number','id'=>'exampleInputEnail1')) }}
                         </div>
 
                         <!-- Purchase order number -->
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Purchase Order Number') }}
-                            {{ Form::text('purchase_order_no',null,array('class'=>'form-control','placeholder'=>'Purchase Order Number','id'=>'exampleInputEnail1')) }}
+                            {{ Form::text('purchase_order_no',null,array('class'=>'form-control inputfix','placeholder'=>'Purchase Order Number','id'=>'exampleInputEnail1')) }}
                         </div>
 
                         <!-- Puchase order date -->
@@ -41,29 +41,29 @@
 
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Inspection') }}
-                            {{ Form::text('inspection',null,array('class'=>'form-control','placeholder'=>'Inspection','id'=>'Justesehe')) }}
+                            {{ Form::text('inspection',null,array('class'=>'form-control inputfix','placeholder'=>'Inspection','id'=>'Justesehe')) }}
                         </div>
 
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Packing Instruction') }}
-                            {{ Form::text('packing_instruction',null,array('class'=>'form-control','placeholder'=>'Packing Instruction','id'=>'Justesehe')) }}
+                            {{ Form::text('packing_instruction',null,array('class'=>'form-control inputfix','placeholder'=>'Packing Instruction','id'=>'Justesehe')) }}
                         </div>
 
                         <!-- testing Instruction -->
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Testing Instruction') }}
-                            {{ Form::text('testing_instruction',null,array('class'=>'form-control','placeholder'=>'Testing Instruction','id'=>'Justesehe')) }}
+                            {{ Form::text('testing_instruction',null,array('class'=>'form-control inputfix','placeholder'=>'Testing Instruction','id'=>'Justesehe')) }}
                         </div>
                         <!-- Quotation Number -->
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Quotation Number') }}
-                            {{ Form::text('quatation_no',null,array('class'=>'form-control','placeholder'=>'Quotation Number','id'=>'Justesehe')) }}
+                            {{ Form::text('quatation_no',null,array('class'=>'form-control inputfix','placeholder'=>'Quotation Number','id'=>'Justesehe')) }}
                         </div>
 
                         <!-- Remarks -->
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Remarks') }}
-                            {{ Form::text('remarks',null,array('class'=>'form-control','placeholder'=>'Remarks','id'=>'Justesehe')) }}
+                            {{ Form::text('remarks',null,array('class'=>'form-control inputfix','placeholder'=>'Remarks','id'=>'Justesehe')) }}
                         </div>
 
                         <div class="loginButton">
