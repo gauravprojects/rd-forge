@@ -2,13 +2,22 @@
     <html>
         <head>
            <?php
-            $filename="Cutting ".date("Y-m-d");
+            $filename="Raw Material ".date("Y-m-d");
             header("Content-type: application/vnd.ms-excel");
             header("Content-Disposition: attachment;Filename=". $filename .".xls");
             ?>
+            <style type="text/css">
+
+            tr,td,h2
+            {
+                text-align: center;
+            }
+
+            </style>
         </head>
         <body>
-        <table>
+        <h2>Raw Material Report</h2>
+        <table cellpadding="10" cellspacing="10" border="2">
             <tr class="heading">
                 <th>Internal no</th>
                 <th>Receipt Code</th>

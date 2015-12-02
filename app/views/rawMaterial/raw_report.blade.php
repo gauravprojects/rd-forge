@@ -51,9 +51,9 @@
                     </table>
 
                     <div class="span9 btn-block excelPrint">
-                        <button class="btn btn-small btn-block" type="button" id="excel_button">
-                            <a href="<?php echo  route('raw.excel'); ?>" class="link" >Generate Report in Excel</a>
-                        </button>
+                     
+                            <a href="<?php echo  route('raw.excel'); ?>" class="btn btn-small btn-block" >Generate Report in Excel</a>
+                      
                     </div>
                 </div>		<!-- row conatining form ends here -->
             </div>		<!-- card ends here -->

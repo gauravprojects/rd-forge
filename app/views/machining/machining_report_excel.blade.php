@@ -2,15 +2,24 @@
 <html>
 <head>
     <?php
-
-
-    // $filename="RawMaterial ".date("Y-m-d");
-    // header("Content-type: application/vnd.ms-excel");
-    // header("Content-Disposition: attachment;Filename=". $filename .".xls");
+    $filename="Machining ".date("Y-m-d");
+    header("Content-type: application/vnd.ms-excel");
+    header("Content-Disposition: attachment;Filename=". $filename .".xls");
     ?>
+    <style type="text/css">
+
+            tr,td,h2
+            {
+                text-align: center;
+            }
+
+    </style>
+
 </head>
 <body>
-<table>
+<table cellpadding="10" cellspacing="10" border="2">
+
+    <h2>Machining Report</h2>
     <tr class="heading">
         <th>Machining Id</th>
         <th>Date</th>
