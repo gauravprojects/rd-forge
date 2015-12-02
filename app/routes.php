@@ -1,7 +1,7 @@
 	<?php
 
 						//ROUTES FOR LOGIN AND LOGOUT
-
+	
 		Route::get('/','loginPageController@create');
 		Route::get('login',array(
 
@@ -245,9 +245,9 @@
 
 		// to show reports for machining entries
 
-		Route::get('machining/reports',array(
-			'uses'=>'machiningController@show',
-			'as'=>'machining.report'
+		Route::get('admin/reports/machining',array(
+			'as'=>'machining.report',
+			'uses'=>'machiningController@show'
 		));
 
 		// to move data to the excel sheets
@@ -276,7 +276,7 @@
 	));
 
 	//route to show report for drilling page
-	Route::get('drilling/report',array(
+	Route::get('admin/reports/drilling',array(
 		'as' => 'drilling.report',
 		'uses' => 'drillingController@show'
 	));
@@ -303,7 +303,7 @@
 	));
 
 	//route to show report for drilling page
-	Route::get('seration/report',array(
+	Route::get('admin/reports/seration',array(
 		'as' => 'seration.report',
 		'uses' => 'serationController@show'
 	));

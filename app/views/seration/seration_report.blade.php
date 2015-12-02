@@ -8,7 +8,7 @@
                 <div class="card">
                     <div class="row text-center">
                         <div class="heading">
-                            <span>Seration Entry report</span>
+                            <span>Serration Report</span>
                         </div>
                     </div>
 

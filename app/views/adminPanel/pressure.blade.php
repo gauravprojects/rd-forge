@@ -46,12 +46,13 @@
 
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Pressure') }}
-                            {{ Form::text('pressure',null,array('class'=>'form-control','placeholder'=>'Pressure value','id'=>'anything')) }}
+                            {{ Form::text('pressure',null,array('class'=>'form-control inputfix','placeholder'=>'Pressure value','id'=>'anything')) }}
                         </div>
 
                         <div class="loginButton">
 
-                            {{ Form::submit('Add Pressure',array('class'=>'waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button')) }}
+                        <button class="waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button" type="submit">Add Pressure</button>
+
                         </div>
                         {{ Form::close() }}
                     </div>

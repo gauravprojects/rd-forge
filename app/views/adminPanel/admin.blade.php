@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="row text-center">
                         <div class="heading">
-                            <span>Admin Pannel</span>
+                            <span>Admin Panel</span>
                         </div>
                     </div>
                     <ul>

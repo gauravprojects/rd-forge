@@ -51,7 +51,8 @@
 
                         <div class="loginButton">
 
-                            {{ Form::submit('Add Schedules',array('class'=>'waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button')) }}
+                        <button class="waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button" type="submit">Add Schedules</button>
+
                         </div>
                         {{ Form::close() }}
                     </div>

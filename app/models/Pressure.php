@@ -1,6 +1,6 @@
 <?php
 
-class Pressure extends \Eloquent {
+class Pressure extends Eloquent {
 	protected $fillable = [];
 
 	public static function getPressure()

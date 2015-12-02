@@ -1,6 +1,6 @@
 <?php
 
-class Schedule extends \Eloquent {
+class Schedule extends Eloquent {
 	protected $fillable = [];
 
 	public static function getSchedule()

@@ -1,6 +1,6 @@
 <?php
 
-class Grades extends \Eloquent {
+class Grades extends Eloquent {
 	protected $fillable = [];
 
 	public static function getGrades()

@@ -57,21 +57,16 @@
 
                         <!-- Employee name removed after new review from the client  -->
 
-                        <div class="form-group">
+                       {{--  <div class="form-group">
                             {{ Form::label('exampleInputEmail1','quantity') }}
                             {{ Form::text('quantity',null,array('class'=>'form-control inputfix','placeholder'=>'Quantity','id'=>'exampleInputEnail1')) }}
-                        </div>
+                        </div> --}}
 
-                        <!-- DOUBT HERE, which weight is this, refer doubts -->
-                        <div class="form-group">
-                            {{ Form::label('exampleInputEmail1','Weight') }}
-                            {{ Form::text('weight',null,array('class'=>'form-control inputfix','placeholder'=>'Weight','id'=>'exampleInputEnail1')) }}
-                        </div>
 
                         <!-- to be fetched from master grades -->
 
                         <div class="form-group">
-                            {{ Form::label('exampleInputEmail1','Grade') }}
+                            {{ Form::label('exampleInputEmail1','Material Grade') }}
                             <select name="grade" class="form-control">
                                 @foreach($grades as $grade)
                                     <option value="{{ $grade->grade_name }}">{{ $grade->grade_name }}</option>
@@ -80,7 +75,13 @@
                         </div>
 
 
+                        <!-- DOUBT HERE, which weight is this, refer doubts -->
+                        <div class="form-group">
+                            {{ Form::label('exampleInputEmail1','Weight') }}
+                            {{ Form::text('weight',null,array('class'=>'form-control inputfix','placeholder'=>'Weight','id'=>'exampleInputEnail1')) }}
+                        </div>
 
+                        
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Remarks') }}
                             {{ Form::text('remarks',null,array('class'=>'form-control inputfix','placeholder'=>'Remarks','id'=>'anything')) }}
@@ -88,7 +89,8 @@
 
                         <div class="loginButton">
 
-                            {{ Form::submit('Submit',array('class'=>'waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button')) }}
+                             <button class="waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button" type="submit">Submit</button>
+                             
                         </div>
                         {{ Form::close() }}
                     </div>		<!-- row conatining form ends here -->

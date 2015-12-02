@@ -1,6 +1,6 @@
 <?php
 
-class Manufactures extends \Eloquent {
+class Manufactures extends Eloquent {
 	protected $fillable = [];
 	public static function getManufactures()
 	{

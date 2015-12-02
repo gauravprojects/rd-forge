@@ -1,8 +1,8 @@
 <!doctype html>
     <html>
         <head>
-            <?php
-            $filename="RawMaterial ".date("Y-m-d");
+           <?php
+            $filename="Cutting ".date("Y-m-d");
             header("Content-type: application/vnd.ms-excel");
             header("Content-Disposition: attachment;Filename=". $filename .".xls");
             ?>
@@ -11,7 +11,7 @@
         <table>
             <tr class="heading">
                 <th>Internal no</th>
-                <th>Recipet Code</th>
+                <th>Receipt Code</th>
                 <th>Date</th>
                 <th>Size</th>
                 <th>Manufacturer</th>
@@ -22,7 +22,6 @@
                 <th>Invoice date</th>
                 <th>Material Type</th>
                 <th>Material Grade</th>
-                <th>Internal No</th>
                 <th>Purchase order no</th>
                 <th>Purchase Order Date</th>
             </tr>
@@ -39,9 +38,8 @@
                     <td>{{{ $raw_data->left_over_weight }}}</td>
                     <td>{{{ $raw_data->invoice_no }}}</td>
                     <td>{{{ $raw_data->invoice_date }}}</td>
-                    <td>{{{ $raw_data->material_grade }}}</td>
                     <td>{{{ $raw_data->raw_material_type }}}</td>
-                    <td>Auto gen</td>
+                    <td>{{{ $raw_data->material_grade }}}</td>
                     <td>{{{ $raw_data->pur_order_no }}}</td>
                     <td>{{{ $raw_data->pur_order_date }}}</td>
                 </tr>

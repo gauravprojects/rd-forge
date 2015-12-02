@@ -43,18 +43,14 @@
                             {{ Form::text('machine_name',null,array('class'=>'form-control inputfix','placeholder'=>'Machine Name','id'=>'exampleInputEnail1')) }}
                         </div>
 
-                        <div class="form-group">
-                            {{ Form::label('exampleInputEmail1','Employee Name') }}
-                            {{ Form::text('employee_name',null,array('class'=>'form-control inputfix','placeholder'=>'employee name','id'=>'exampleInputEnail1')) }}
-                        </div>
 
-                        <div class="form-group">
+                       {{--  <div class="form-group">
                             {{ Form::label('exampleInputEmail1','quantity') }}
                             {{ Form::text('quantity',null,array('class'=>'form-control inputfix','placeholder'=>'Quantity','id'=>'exampleInputEnail1')) }}
-                        </div>
+                        </div> --}}
 
                         <div class="form-group">
-                            {{ Form::label('exampleInputEmail1','Grade') }}
+                            {{ Form::label('exampleInputEmail1','Material Grade') }}
                             {{ Form::text('grade',null,array('class'=>'form-control inputfix','placeholder'=>'Grade','id'=>'exampleInputEnail1')) }}
                         </div>
 
@@ -65,12 +61,13 @@
 
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Remarks') }}
-                            {{ Form::text('remarks',null,array('class'=>'form-control inputfix','placeholder'=>'weight','id'=>'anything')) }}
+                            {{ Form::text('remarks',null,array('class'=>'form-control inputfix','placeholder'=>'Remarks','id'=>'anything')) }}
                         </div>
 
                         <div class="loginButton">
 
-                            {{ Form::submit('Submit',array('class'=>'waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button')) }}
+                        <button class="waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button" type="submit">Submit</button>
+                        
                         </div>
                         {{ Form::close() }}
                     </div>		<!-- row conatining form ends here -->

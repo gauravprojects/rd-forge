@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="row text-center">
                     <div class="heading">
-                        <span>Raw Material Entry report</span>
+                        <span>Raw Material Report</span>
                     </div>
                 </div>
 
@@ -18,7 +18,7 @@
                     <table>
                         <tr class="heading">
                             <th>Internal No</th>
-                            <th>Recipet Code</th>
+                            <th>Receipt Code</th>
                             <th>Date</th>
                             <th>Size</th>
                             <th>Manufacturer</th>

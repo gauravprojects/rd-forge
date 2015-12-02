@@ -8,7 +8,7 @@
                 <div class="card">
                     <div class="row text-center">
                         <div class="heading">
-                            <span>Machining Entry report</span>
+                            <span>Machining Report</span>
                         </div>
                     </div>
 

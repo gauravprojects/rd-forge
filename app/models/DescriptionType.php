@@ -4,7 +4,7 @@
 /* ------------------- MASTER DESCRIPTION TYPE ---------------------
  this is master type data, used to store standard type which is used as dropdown entry in cutting and forging table  */
 
-class DescriptionType extends \Eloquent {
+class DescriptionType extends Eloquent {
 	protected $fillable = [];
 
 	//returns type form master data

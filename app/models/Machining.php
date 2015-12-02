@@ -1,6 +1,6 @@
 <?php
 
-class Machining extends \Eloquent {
+class Machining extends Eloquent {
 	protected $fillable = [];
 
 	public static function insertData($input_array)

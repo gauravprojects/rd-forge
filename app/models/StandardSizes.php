@@ -1,6 +1,6 @@
 <?php
 
-class StandardSizes extends \Eloquent {
+class StandardSizes extends Eloquent {
 	protected $fillable = [];
 
 	public static function getStandardSizes()

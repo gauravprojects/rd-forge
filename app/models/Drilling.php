@@ -1,6 +1,6 @@
 <?php
 
-class Drilling extends \Eloquent {
+class Drilling extends Eloquent {
 	protected $fillable = [];
 
 	/* --------------------------------- DRILLING MODULE -------------------------------

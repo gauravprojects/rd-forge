@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('links_data')
+
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <div class="row">
             <div class="wrapper">
@@ -96,7 +97,7 @@
                             waiting for sample data to work further on this -->
 
                                 <div class="form-group">
-                                    {{ Form::label('exampleInputEmail1','Grades') }}
+                                    {{ Form::label('exampleInputEmail1','Material Grade') }}
 
                                     <select class="form-control inputfix" name="materialGrade">
                                         @foreach($grades as $grade_element)
@@ -110,7 +111,7 @@
 
                             <!-- raw material type, these sample types will be provided.. to be implemented using dropdown -->
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Material Type</label>
+                                <label for="exampleInputPassword1">Type of Material</label>
                                 <select class="form-control" name="materialType">
                                     <option value="Ingot">Ingot</option>
                                     <option value="Round">Round</option>
@@ -120,7 +121,8 @@
 
                             <div class="loginButton">
 
-                        {{ Form::submit('Submit',array('class'=>'waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button')) }}
+                            <button class="waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button" type="submit">Submit</button>
+
                             </div>
                         {{ Form::close() }}
                     </div>		<!-- row conatining form ends here -->

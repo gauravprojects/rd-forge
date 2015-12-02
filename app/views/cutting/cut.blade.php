@@ -61,7 +61,7 @@
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Size') }}
 
-                                <select class="form-control inputfix" name="size">
+                                <select class="form-control" name="size">
                                     @foreach($sizes as $size_element)
                                         <option value="{{ $size_element->size }}">{{$size_element->size}}</option>
                                     @endforeach
@@ -75,22 +75,26 @@
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Heat Number(available raw material)') }}
 
-                                <select class="form-control inputfix" name="heatNo" id="heat_no">
+                                <select class="form-control" name="heatNo" id="heat_no">
                                     @foreach($heat_no as $heat_no_element)
                                         <option value="{{ $heat_no_element->heat_no }}">{{$heat_no_element->heat_no}}</option>
                                     @endforeach
                                 </select>
                             </div>
 
+ <br>
+                           <div class="row text-center">
+                                <div class="heading">
+                                    <span>Cutting Description</span>
+                                </div>
+                            </div>
 
-
+                           
 
                             <div class="form-group">
-                                {{ Form::label('exampleInputEmail1','Cutting Description') }}
-                                <hr>
                                 {{ Form::label('exampleInputEmail1','Standard Size') }}
 
-                                <select class="form-control inputfix" name="standard_size">
+                                <select class="form-control" name="standard_size">
                                     @foreach($standard_size as $standard_size_element)
                                         <option value="{{ $standard_size_element->std_size }}">{{$standard_size_element->std_size}}</option>
                                     @endforeach
@@ -102,7 +106,7 @@
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Pressure') }}
 
-                                <select class="form-control inputfix" name="pressure">
+                                <select class="form-control" name="pressure">
                                     @foreach($pressure as $pressure_element)
                                         <option value="{{ $pressure_element->pressure }}">{{$pressure_element->pressure}}</option>
                                     @endforeach
@@ -113,7 +117,7 @@
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Standard Type') }}
 
-                                <select class="form-control inputfix" name="type">
+                                <select class="form-control" name="type">
                                     @foreach($type as $type_element)
                                         <option value="{{ $type_element->type }}">{{$type_element->type}}</option>
                                     @endforeach
@@ -125,7 +129,7 @@
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Schedule') }}
 
-                                <select class="form-control inputfix" name="schedule">
+                                <select class="form-control" name="schedule">
                                     @foreach($schedule as $schedule_element)
                                         <option value="{{ $schedule_element->schedule }}">{{$schedule_element->schedule}}</option>
                                     @endforeach
@@ -137,7 +141,7 @@
 
                             <!-- qunanity.. this is the quantity of the cutted material -->
                                 <div class="form-group">
-                                    {{ Form::label('exampleInputEmail','Qunatity') }}
+                                    {{ Form::label('exampleInputEmail','Quantity') }}
                                     {{ Form::text('quantity',$dataArray['quantity'],array('class'=>'form-control inputfix','placeholder'=>'Quantity','id'=>'quantity')) }}
                                 </div>
 
@@ -163,7 +167,9 @@
                                 </div>
 
 
-                                {{ Form::submit('Submit',array('class'=>'waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button')) }}
+                            {{--     {{ Form::submit('Submit',array('class'=>'waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button')) }} --}}
+
+                            <button class="waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button" type="submit">Submit</button>
                                <!-- Given by pranav
                                 <a class="waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button">Submit</a> -->
                             {{ Form::close() }}

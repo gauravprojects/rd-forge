@@ -1,6 +1,6 @@
 <?php
 
-class Seration extends \Eloquent {
+class Seration extends Eloquent {
 	protected $fillable = [];
 
 	public static function insertData($input_array)
@@ -14,9 +14,6 @@ class Seration extends \Eloquent {
 		return DB::table('seration_remarks')
 				->insert($input_array);
 	}
-
-
-
 
 
 	public static function getLastRecord()

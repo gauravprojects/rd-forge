@@ -39,9 +39,13 @@
 
                 <div style="margin-top:40px" class="form-group">
                     <!-- Button -->
-                    <a class="loginButton"> 
+                    {{-- <a class="loginButton"> 
                         {{ Form::submit('Login',array('class'=>'col-xs-12 col-sm-12 col-md-12 col-lg-12 waves-effect waves-light btn','id'=>'btn-login')) }}
-                    </a>                    
+                    </a>  --}}
+         
+                 <button class="col-xs-12 col-sm-12 col-md-12 col-lg-12 waves-effect waves-light btn" type="submit" id="btn-login" name="Login">Login</button>
+                        
+                                    
                 </div>
 
 

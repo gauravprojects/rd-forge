@@ -7,9 +7,7 @@
                 <div class="card">
                     <div class="row text-center">
                         <div class="heading">
-                            <br><br>
-                            <span>Form submited successfully with following details</span>
-                            <br><br>
+                            <span>Forging Report</span>
                         </div>
                     </div>
 
