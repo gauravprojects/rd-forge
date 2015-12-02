@@ -1,7 +1,7 @@
 <html>
 <head>
-    <!-- jquery -->
-    {{ HTML::script('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.js') }}
+           <!-- jquery -->
+    {{ HTML::script('js/jquery.min.js') }}
 
             <!-- Latest compiled and minified CSS bootstrap-->
     {{ HTML::style('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css') }}
@@ -11,7 +11,7 @@
     {{ HTML::style('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css') }}
 
             <!-- Latest compiled and minified JavaScript bootstrap-->
-    {{ HTML::script('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css') }}
+    {{ HTML::script('http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js') }}
 
             <!-- Compiled and minified CSS -->
     {{ HTML::style('https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css') }}
@@ -27,9 +27,14 @@
     {{ HTML::style('https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css') }}
 
             <!-- font -->
-     {{ HTML::style('https://fonts.googleapis.com/css?family=PT+Sans') }}
+    {{ HTML::style('https://fonts.googleapis.com/css?family=PT+Sans') }}
             <!-- my css -->
     {{ HTML::style('css/index.css') }}
+
+    {{HTML::style('bootstrap-datepicker/css/datepicker.css')}}
+    {{HTML::style('bootstrap-datepicker/css/datepicker3.css')}}
+    {{HTML::script('bootstrap-datepicker/js/bootstrap-datepicker.js')}}
+    {{HTML::script('js/moment.min.js')}}
 
 </head>
 <body>

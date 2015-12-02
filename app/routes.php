@@ -1,7 +1,10 @@
 	<?php
 
 						//ROUTES FOR LOGIN AND LOGOUT
-	
+		Route::get('hello',function(){
+
+			return View::make('hello');
+		});
 		Route::get('/','loginPageController@create');
 		Route::get('login',array(
 

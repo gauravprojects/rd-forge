@@ -2,7 +2,7 @@
 
     @section('links_data')
         <!-- Jquery google cdn to be placed here  -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
         <!-- Script for handling total weight checking -->
         <script type="text/javascript">
             $(document).ready(function(){
@@ -37,9 +37,6 @@
             });
         </script>
 
-
-
-
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class="row">
                 <div class="wrapper">
@@ -55,7 +52,7 @@
                                     <!-- For recipt number of the material coming from outside -->
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Date') }}
-                                {{ Form::input('date', 'date') }}
+                               {{ Form::text('date',null,array('class'=>'form-control inputfix','id'=>'date','name'=>'date','placeholder'=>'Date','readonly')) }}
                             </div>
 
                             <!-- Heat no for forged item -->
@@ -166,6 +163,12 @@
                 </div>		<!-- wrapper ends here -->
             </div>		<!-- row ends here -->
         </div> 		<!-- col-12 ends here -->
+
+        <script type="text/javascript">
+            $(function () {
+                $('#date').datepicker();
+            });
+        </script>
 
 
 

@@ -30,13 +30,13 @@
                         <!-- Puchase order date -->
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail','Purchase Order Date') }}
-                            {{ Form::input('date', 'purchase_order_date') }}
+                            {{ Form::text('purchase_order_date',null,array('class'=>'form-control inputfix','id'=>'purchase_order_date','name'=>'purchase_order_date','placeholder'=>'Purchase Order Date','readonly')) }}
                         </div>
 
                         <!-- Required Delivery date when the order is required -->
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail','Required Delivery Date') }}
-                            {{ Form::input('date', 'required_delivery_date') }}
+                            {{ Form::text('required_delivery_date',null,array('class'=>'form-control inputfix','id'=>'required_delivery_date','name'=>'required_delivery_date','placeholder'=>'Required Delivery Date','readonly')) }}
                         </div>
 
                         <div class="form-group">
@@ -80,7 +80,12 @@
         </div>		<!-- row ends here -->
     </div> 		<!-- col-12 ends here -->
 
-
+    <script type="text/javascript">
+            $(function () {
+                $('#purchase_order_date').datepicker();
+                $('#required_delivery_date').datepicker();
+            });
+        </script>
 
 
 @stop

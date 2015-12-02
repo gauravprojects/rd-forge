@@ -2,7 +2,7 @@
 
     @section('links_data')
 
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+            <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
 
             <script type="application/javascript">
                 // getting the values of quantity,wpp and heat no in the js
@@ -11,6 +11,7 @@
 
 
                 $(document).ready(function(){
+
                         $('#wpp').blur(function(){ // can use form submit also
                          var wpp= $(this).val();
                          var quantity= $('#quantity').val();
@@ -55,7 +56,7 @@
 
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Date') }}
-                                {{ Form::input('date', 'date') }}
+                                 {{ Form::text('date',null,array('class'=>'form-control inputfix','id'=>'date','name'=>'date','placeholder'=>'Date','readonly')) }}
                             </div>
 
                             <div class="form-group">
@@ -179,5 +180,10 @@
             </div>		<!-- row ends here -->
         </div> 		<!-- col-12 ends here -->
 
+         <script type="text/javascript">
+            $(function () {
+                $('#date').datepicker();
+            });
+        </script>
 
-    @stop
+@stop

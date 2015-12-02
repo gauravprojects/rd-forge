@@ -22,11 +22,13 @@
                                 {{ Form::text('receiptCode',null,array('class'=>'form-control  inputfix','placeholder'=>'Receipt Number','id'=>'exampleInputEnail1')) }}
                             </div>
 
-                        <div class="form-group inputfix">
-                            {{ Form::label('exampleInputEmail1','Date') }}
-                            {{ Form::input('date', 'date') }}
-                        </div>
-
+                        
+                            <div class="form-group">
+                                {{ Form::label('exampleInputEmail1','Date') }}
+                                {{ Form::text('date',null,array('class'=>'form-control inputfix','id'=>'date','name'=>'date','placeholder'=>'Date','readonly')) }}
+                            </div>
+                  
+                        
                             <!-- For the date of entry of raw materail
                                 This date will be picket up using date() function from the machine -->
 
@@ -34,7 +36,7 @@
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Size') }}
 
-                            <select class="form-control inputfix" name="size">
+                            <select class="form-control" name="size">
                                 @foreach($sizes as $size_element)
                                     <option value="{{ $size_element->size }}">{{$size_element->size}}</option>
                                 @endforeach
@@ -45,7 +47,7 @@
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail','Manufacturer') }}
 
-                                <select class="form-control inputfix" name="Manufacturer">
+                                <select class="form-control" name="Manufacturer">
                                     @foreach($manufacturers as $manufacturer_element)
                                         <option value="{{ $manufacturer_element->manufacturer_name }}">{{$manufacturer_element->manufacturer_name}}</option>
                                     @endforeach
@@ -76,9 +78,9 @@
                             </div>
 
                             <!-- Purchase order date -->
-                            <div class="form-group inputfix">
+                            <div class="form-group">
                                 {{ Form::label('exampleInputEmail','Purchase Order Date') }}
-                                {{ Form::input('date', 'purchaseDate') }}
+                                {{ Form::text('purchaseDate',null,array('class'=>'form-control inputfix','id'=>'purchaseDate','name'=>'purchaseDate','placeholder'=>'Purchase Order Date','readonly')) }}
                             </div>
 
                             <!-- Invoice Number -->
@@ -88,9 +90,9 @@
                             </div>
 
                             <!-- Inovice date -->
-                            <div class="form-group inputfix">
+                            <div class="form-group">
                                 {{ Form::label('exampleInputEmail','Invoice Date') }}
-                                {{ Form::input('date', 'invoiceDate') }}
+                                {{ Form::text('invoiceDate',null,array('class'=>'form-control inputfix','id'=>'invoiceDate','name'=>'invoiceDate','placeholder'=>'Invoice Date','readonly')) }}
                             </div>
 
                             <!-- Material grade, this will be prementioned, using dropdowm they will be shown
@@ -99,7 +101,7 @@
                                 <div class="form-group">
                                     {{ Form::label('exampleInputEmail1','Material Grade') }}
 
-                                    <select class="form-control inputfix" name="materialGrade">
+                                    <select class="form-control" name="materialGrade">
                                         @foreach($grades as $grade_element)
                                             <option value="{{ $grade_element->grade_name }}">{{$grade_element->grade_name}}</option>
                                         @endforeach
@@ -131,7 +133,12 @@
         </div>		<!-- row ends here -->
     </div> 		<!-- col-12 ends here -->
 
-
-
+ <script type="text/javascript">
+    $(function () {
+        $('#date').datepicker();
+        $("#purchaseDate").datepicker();
+        $("#invoiceDate").datepicker();
+    });
+</script>
 
 @stop
