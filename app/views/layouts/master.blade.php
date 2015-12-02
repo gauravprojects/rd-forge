@@ -40,7 +40,9 @@
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="{{ route('search.index'); }}" >Search Panel</a> </li>
             <li><a href="{{ route('admin.page'); }}">Admin Panel</a> </li>
-            <li><a href="#" class="link">Logout</a></li>
+            @if(Session::has('username'))
+                <li><a href="logout" class="link">Logout</a></li>
+            @endif
         </ul>
     </div>
 </nav>

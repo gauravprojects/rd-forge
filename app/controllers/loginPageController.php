@@ -38,7 +38,10 @@ class LoginPageController extends BaseController {
 			'password' => $input['password']
 		);
 		if(Auth::attempt($credentials))
+		{
+			Session::put('username',$input['username']);
 			return Redirect::intended('home');
+		}
 
 		else
 
@@ -95,11 +98,11 @@ class LoginPageController extends BaseController {
 	public function destroy()
 	{
 
-
-//		//Auth Logout
-//		Auth::logout();
-//		//Redirect to
-//		return Redirect::to('login')->with('message', 'You have successfully logged out');
+		//Auth Logout
+		Auth::logout();
+		Session::flush();
+		//Redirect to
+		return Redirect::to('login')->with('message', 'You have successfully logged out');
 	}
 
 }
