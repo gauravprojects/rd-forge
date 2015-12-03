@@ -51,7 +51,7 @@
 
                         <div class="loginButton">
 
-                        <button class="waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button" type="submit">Add Sizes</button>
+                        <button class="waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button" type="submit">Add Types</button>
 
 
                         </div>

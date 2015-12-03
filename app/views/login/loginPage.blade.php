@@ -33,7 +33,7 @@
 
                 <div style="margin-bottom: 25px" class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                    {{ Form::text('password',null,array('class'=>'form-control inputfix','placeholder'=>'password','id'=>'login-password')) }}
+                    {{ Form::password('password',array('class'=>'form-control inputfix','placeholder'=>'password','id'=>'login-password')) }}
 
                 </div>
 

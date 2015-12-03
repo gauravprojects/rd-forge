@@ -12,7 +12,7 @@
                         </div>
                     </div>
 
-
+                @if($data)
 
                     <div class="row">
                         <table>
@@ -50,6 +50,11 @@
                                 <a href="<?php echo  route('drilling.excel'); ?>" class="btn btn-small btn-block" >Generate Report in Excel</a>
                            
                         </div>
+
+
+              @else
+                    <p class="center-align">No report currently present</p>    
+              @endif
                     </div>		<!-- row conatining form ends here -->
                 </div>		<!-- card ends here -->
             </div>		<!-- wrapper ends here -->

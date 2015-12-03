@@ -17,15 +17,28 @@ class rawMaterialController extends BaseController {
 
 	// index() function is used to raw material form with master sizes and master grades
 	// This is the home page for raw material entry
+
+	public static function getStandardData()
+	{
+		$sizes = Sizes::getSizes();
+		$heat_no = RawMaterial::getHeatNo();
+		$standard_sizes = StandardSizes::getStandardSizes();
+		$pressure = Pressure::getPressure();
+		$schedule = Schedule::getSchedule();
+		$type = DescriptionType::getType();
+		$grades=Grades::getGrades();
+		$manufacturers= Manufactures::getManufactures();
+
+		return array('sizes'=>$sizes,'heat_no'=>$heat_no,'standard_size'=>$standard_sizes,'sizes'=>$sizes,
+			'pressure'=>$pressure,'schedule'=>$schedule,'type'=>$type,'grades'=>$grades,'manufacturers'=>$manufacturers);
+
+	}
+
 	public function index()
 	{
-		$manufacturers= Manufactures::getManufactures();
-		$sizes= Sizes::getSizes();
-		$grades=Grades::getGrades();
-		return View::make('rawMaterial.raw')
-			->with('sizes',$sizes)
-			->with('manufacturers',$manufacturers)
-			->with('grades',$grades);
+		$data = rawMaterialController::getStandardData();
+		
+		return View::make('rawMaterial.raw')->with($data);
 	}
 
 
@@ -79,7 +92,9 @@ class rawMaterialController extends BaseController {
 	public function update($id)
 	{
 		$data_array = RawMaterial::getRecord($id);
-		return View::make('rawMaterial.raw_update')->with('data_array',$data_array);
+		$data = rawMaterialController::getStandardData();
+
+		return View::make('rawMaterial.raw_update')->with('data_array',$data_array)->with($data);
 	}
 
 	public function update_store($id)
@@ -89,7 +104,7 @@ class rawMaterialController extends BaseController {
 
 		$data_array_update = array(
 			'receipt_code' => $data['receiptCode'],
-			'date' => date('Y-m-d',strtotime($date['date'])),
+			'date' => date('Y-m-d',strtotime($data['date'])),
 			'size' => $data['size'],
 			'manufacturer' => $data['Manufacturer'],
 			'heat_no' => $data['heatNo'],

@@ -13,6 +13,7 @@
                 </div>
 
 
+                @if($raw)
 
                 <div class="row">
                     <table>
@@ -30,31 +31,38 @@
 
                         </tr>
 
-                        @foreach($raw as $raw_data)
-                            <tr>
-                                <td>{{{ $raw_data->internal_no }}}</td>
-                                <td>{{{ $raw_data->receipt_code }}}</td>
-                                <td>{{{ $raw_data->date }}}</td>
-                                <td>{{{ $raw_data->size }}}</td>
-                                <td>{{{ $raw_data->manufacturer }}}</td>
-                                <td>{{{ $raw_data->heat_no }}}</td>
-                                <td>{{{ $raw_data->weight }}}</td>
-                                <td>{{{ $raw_data->left_over_weight }}}</td>
-                                <td>{{{ $raw_data->material_grade }}}</td>
-                                <td>{{{ $raw_data->raw_material_type }}}</td>
-                            </tr>
+                        
+                            @foreach($raw as $raw_data)
+                                <tr>
+                                    <td>{{{ $raw_data->internal_no }}}</td>
+                                    <td>{{{ $raw_data->receipt_code }}}</td>
+                                    <td>{{{ $raw_data->date }}}</td>
+                                    <td>{{{ $raw_data->size }}}</td>
+                                    <td>{{{ $raw_data->manufacturer }}}</td>
+                                    <td>{{{ $raw_data->heat_no }}}</td>
+                                    <td>{{{ $raw_data->weight }}}</td>
+                                    <td>{{{ $raw_data->left_over_weight }}}</td>
+                                    <td>{{{ $raw_data->material_grade }}}</td>
+                                    <td>{{{ $raw_data->raw_material_type }}}</td>
+                                </tr>
 
 
-                        @endforeach
+                            @endforeach
 
 
                     </table>
+
+
 
                     <div class="span9 btn-block excelPrint">
                      
                             <a href="<?php echo  route('raw.excel'); ?>" class="btn btn-small btn-block" >Generate Report in Excel</a>
                       
                     </div>
+
+              @else
+                    <p class="center-align">No report currently present</p>    
+              @endif
                 </div>		<!-- row conatining form ends here -->
             </div>		<!-- card ends here -->
         </div>		<!-- wrapper ends here -->

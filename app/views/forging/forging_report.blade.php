@@ -12,6 +12,8 @@
                     </div>
 
 
+                @if($forging_data)
+
                     <div class="row">
                         <table>
                             <tr class="heading">
@@ -51,6 +53,9 @@
                           
                         </div>
 
+              @else
+                    <p class="center-align">No report currently present</p>    
+              @endif
 
                     </div>		<!-- row conatining form ends here -->
                 </div>		<!-- card ends here -->

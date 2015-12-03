@@ -73,7 +73,7 @@
                             <!-- Purchase order date -->
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail','Purchase Order Date') }}
-                                 {{ Form::text('invoiceNo',$data->purchase_date,array('class'=>'form-control inputfix','placeholder'=>'Invoice Number','id'=>'JustAnything')) }}
+                                {{ Form::text('purchaseDate',$data->pur_order_date,array('class'=>'form-control inputfix','id'=>'purchaseDate','name'=>'purchaseDate','placeholder'=>'Purchase Order Date','readonly')) }}
                             </div>
 
                             <!-- Invoice Number -->
@@ -85,9 +85,10 @@
                             <!-- Inovice date -->
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail','Invoice Date') }}
-                                {{ Form::input('date', 'invoiceDate') }}
+                               {{ Form::text('invoiceDate',$data->invoice_date,array('class'=>'form-control inputfix','id'=>'invoiceDate','name'=>'invoiceDate','placeholder'=>'Invoice Date','readonly')) }}
                             </div>
 
+                            @endforeach
                             <!-- Material grade, this will be prementioned, using dropdowm they will be shown
                             waiting for sample data to work further on this -->
                             <div class="form-group">
@@ -95,32 +96,29 @@
 
                                 {{ Form::label('exampleInputPassword','Material Grade') }}
 
-                                <select class="form-control inputfix" name="materialGrade">
-                                    <option>Grade 1</option>
-                                    <option>Grade 2</option>
-                                    <option>Grade 3</option>
-                                    <option>Grade 4</option>
-                                    <option>Grade 5</option>
-                                </select>
+                               <select class="form-control" name="materialGrade">
+                                        @foreach($grades as $grade_element)
+                                            <option value="{{ $grade_element->grade_name }}">{{$grade_element->grade_name}}</option>
+                                        @endforeach
+                                    </select>
 
                             </div>
 
                             <!-- raw material type, these sample types will be provided.. to be implemented using dropdown -->
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Material Type</label>
-                                <select class="form-control inputfix" name="materialType">
-                                    <option>Type 1</option>
-                                    <option>Type 2</option>
-                                    <option>Type 3</option>
-                                    <option>Type 4</option>
-                                    <option>Type 5</option>
+                                <label for="exampleInputPassword1">Type of Material</label>
+                                <select class="form-control" name="materialType">
+                                    <option value="Ingot">Ingot</option>
+                                    <option value="Round">Round</option>
+                                    <option value="Bloom">Bloom</option>
                                 </select>
                             </div>
 
-                            <div class="loginButton">
-                                @endforeach
-                                {{ Form::submit('Submit',array('class'=>'waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button')) }}
-                            </div>
+                            
+                                
+
+                                 <button class="waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button" type="submit">Submit</button>
+                        
                             {{ Form::close() }}
                         </div>		<!-- row conatining form ends here -->
                 </div>		<!-- card ends here -->
@@ -128,7 +126,13 @@
         </div>		<!-- row ends here -->
     </div> 		<!-- col-12 ends here -->
 
-
+<script type="text/javascript">
+    $(function () {
+        $('#date').datepicker();
+        $("#purchaseDate").datepicker();
+        $("#invoiceDate").datepicker();
+    });
+</script>
 
 
 @stop
