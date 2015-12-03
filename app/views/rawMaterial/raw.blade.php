@@ -2,7 +2,10 @@
 
 @section('links_data')
 
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <br><br>
+    <a href="{{route('raw.report')}} " class="waves-effect waves-light btn link right">Raw Material reports</a>
+
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top:-80px;">
         <div class="row">
             <div class="wrapper">
                 <div class="card">
@@ -127,6 +130,8 @@
 
                             </div>
                         {{ Form::close() }}
+
+
                     </div>		<!-- row conatining form ends here -->
                 </div>		<!-- card ends here -->
             </div>		<!-- wrapper ends here -->

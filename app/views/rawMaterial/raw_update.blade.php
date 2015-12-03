@@ -27,6 +27,11 @@
                                 {{ Form::text('receiptCode',$data->receipt_code,array('class'=>'form-control inputfix','placeholder'=>'Receipt Number','id'=>'exampleInputEnail1')) }}
                             </div>
 
+                             <div class="form-group">
+                                {{ Form::label('exampleInputEmail1','Date') }}
+                                {{ Form::text('date',$data->date,array('class'=>'form-control inputfix','id'=>'date','name'=>'date','placeholder'=>'Date','readonly')) }}
+                            </div>
+
                             <!-- For the date of entry of raw materail
                                 This date will be picket up using date() function from the machine -->
 
@@ -68,7 +73,7 @@
                             <!-- Purchase order date -->
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail','Purchase Order Date') }}
-                                {{ Form::input('date', 'purchaseDate') }}
+                                 {{ Form::text('invoiceNo',$data->purchase_date,array('class'=>'form-control inputfix','placeholder'=>'Invoice Number','id'=>'JustAnything')) }}
                             </div>
 
                             <!-- Invoice Number -->

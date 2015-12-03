@@ -9,4 +9,11 @@ class CuttingDes extends Eloquent
 			->insert($records_array);
 	}
 
+	public static function getRecord($id)
+	{
+		return DB::table('cutting_item_des')
+				->select()
+				->where('cutting_id','=',$id)
+				->get();
+	}
 }

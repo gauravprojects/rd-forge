@@ -37,10 +37,15 @@ class LoginPageController extends BaseController {
 			'username' => $input['username'],
 			'password' => $input['password']
 		);
+
+		$get_role = DB::table('users')->select('role')->where('username',$input['username'])->get();
+
+		$redirection_array = ['','home','raw','cutting','forging','machining','drilling','seration'];
+		
 		if(Auth::attempt($credentials))
 		{
 			Session::put('username',$input['username']);
-			return Redirect::intended('home');
+			return Redirect::intended($redirection_array[$get_role[0]->role]);
 		}
 
 		else

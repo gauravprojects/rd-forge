@@ -60,6 +60,8 @@
 			'uses'=>'rawMaterialController@update_store'
 	));
 
+
+
 						//ROUTES TO STORE CUTTING DATA MATERIAL
 
 		//route to get to cutting materials form page
@@ -85,6 +87,11 @@
 		Route::get('/cutting/update/{id}',array(
 			'as' => 'cutting.update',
 			'uses' => 'cuttingPageController@update'
+		));
+
+		Route::post('/cutting/update/{id}',array(
+			'as' => 'cutting.update_store',
+			'uses'=>'cuttingPageController@update_store'
 		));
 
 		//route to check weather the weight being cutted is vailable for that heat no

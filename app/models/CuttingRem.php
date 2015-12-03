@@ -9,4 +9,12 @@ class CuttingRem extends Eloquent
 			->insert($records_array);
 	}
 
+	public static function getRecord($id)
+	{
+		return DB::table('cutting_remarks')
+				->select()
+				->where('cutting_id','=',$id)
+				->get();
+	}
+
 }

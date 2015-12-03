@@ -14,8 +14,8 @@ class WorkOrderController extends BaseController {
 		$data_array= array(
 			'customer_name' => $data_input['customer_name'],
 			'purchase_order_no' => $data_input['purchase_order_no'],
-			'purchase_order_date' => $data_input['purchase_order_date'],
-			'required_delivery_date' => $data_input['required_delivery_date'],
+			'purchase_order_date' => date('Y-m-d',strtotime($data_input['purchase_order_date'])),
+			'required_delivery_date' => date('Y-m-d',strtotime($data_input['required_delivery_date'])),
 			'inspection' => $data_input['inspection'],
 			'packing_instruction' => $data_input['packing_instruction'],
 			'testing_instruction' => $data_input['testing_instruction'],

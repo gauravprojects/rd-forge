@@ -11,6 +11,14 @@ class Cutting extends Eloquent
 			->insert($records_array);
 	}
 
+	public static function getRecord($id)
+	{
+		return DB::table('cutting_records')
+				->select()
+				->where('cutting_id','=',$id)
+				->get();
+	}
+
 	public static function getLastRecord()
 	{
 		//to get the last entry of the cutting table, useful for showing data on confirmation page

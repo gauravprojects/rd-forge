@@ -37,7 +37,10 @@
             });
         </script>
 
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <br><br>
+        <a href="{{route('forging.report')}} " class="waves-effect waves-light btn link right">Forging reports</a>
+
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top:-80px;">
             <div class="row">
                 <div class="wrapper">
                     <div class="card">

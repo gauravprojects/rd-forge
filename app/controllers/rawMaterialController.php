@@ -20,7 +20,6 @@ class rawMaterialController extends BaseController {
 	public function index()
 	{
 		$manufacturers= Manufactures::getManufactures();
-		//dd($manufacturers);
 		$sizes= Sizes::getSizes();
 		$grades=Grades::getGrades();
 		return View::make('rawMaterial.raw')
@@ -38,16 +37,16 @@ class rawMaterialController extends BaseController {
 
 		$data_array = array(
 			'receipt_code' => $data['receiptCode'],
-			'date' => $data['date'],
+			'date' => date('Y-m-d',strtotime($data['date'])),
 			'size' => $data['size'],
 			'manufacturer' => $data['Manufacturer'],
 			'heat_no' => $data['heatNo'],
 			'weight' => $data['weight'],
 			'pur_order_no' => $data['purchaseNo'],
-			'pur_order_date' => $data['purchaseDate'],
+			'pur_order_date' => date('Y-m-d',strtotime($data['purchaseDate'])),
 			'invoice_no' => $data['invoiceNo'],
 			'left_over_weight'=>$data['left_over_weight'],
-			'invoice_date' => $data['invoiceDate'],
+			'invoice_date' => date('Y-m-d',strtotime($data['invoiceDate'])),
 			'material_grade' => $data['materialGrade'],
 			'raw_material_type' => $data['materialType'],
 			'available_weight' => $data['weight']
@@ -85,23 +84,21 @@ class rawMaterialController extends BaseController {
 
 	public function update_store($id)
 	{
-		$date=date("Y-m-d");
+		
 		$data= Input::all();
-
-
 
 		$data_array_update = array(
 			'receipt_code' => $data['receiptCode'],
-			'date' => $date,
+			'date' => date('Y-m-d',strtotime($date['date'])),
 			'size' => $data['size'],
 			'manufacturer' => $data['Manufacturer'],
 			'heat_no' => $data['heatNo'],
 			'weight' => $data['weight'],
 			'pur_order_no' => $data['purchaseNo'],
-			'pur_order_date' => $data['purchaseDate'],
+			'pur_order_date' => date('Y-m-d',strtotime($data['purchaseDate'])),
 			'invoice_no' => $data['invoiceNo'],
 			'left_over_weight'=>$data['left_over_weight'],
-			'invoice_date' => $data['invoiceDate'],
+			'invoice_date' => date('Y-m-d',strtotime($data['invoiceDate'])),
 			'material_grade' => $data['materialGrade'],
 			'raw_material_type' => $data['materialType']
 		);

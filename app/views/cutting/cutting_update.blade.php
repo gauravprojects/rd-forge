@@ -1,65 +1,30 @@
-    @extends('layouts.master')
+@extends('layouts.master')
 
-    @section('links_data')
-
-            <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
-
-            <script type="application/javascript">
-                // getting the values of quantity,wpp and heat no in the js
-                // function availableTotalWeight on cuttingPageController returns 0 if the data is
-                // not correct and 1 if the data entered is correct
-
-
-                $(document).ready(function(){
-
-                        $('#wpp').blur(function(){ // can use form submit also
-                         var wpp= $(this).val();
-                         var quantity= $('#quantity').val();
-                         var heat_no=$('#heat_no').val();
-                            var textData= {
-                                'wpp' : wpp,
-                                'quantity': quantity,
-                                'heat_no': heat_no
-                            }
-                // now sending ajax request to controlller in cutting page controller
-                            $.ajax({
-                                url:'cutting/availableTotalWeight',
-                                method: 'POST',
-                                data : textData,
-                                dataType:"json",
-                                success: function(response)
-                                {
-                                   if(response== 0)
-                                   {
-                                       alert("This much raw material is not avialable for selected heat no");
-                                       return;
-                                   }
-                                }
-                            });
-                      });
-                    });
-
-            </script>
-
-        <br><br>
-        <a href="{{route('cutting.report')}} " class="waves-effect waves-light btn link right">Cutting reports</a>
-
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top:-80px;">
-            <div class="row">
-                <div class="wrapper">
-                    <div class="card">
-                        <div class="row text-center">
-                            <div class="heading">
-                                <span>Cutting Entry</span>
-                            </div>
+@section('links_data')
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="row">
+            <div class="wrapper">
+                <div class="card">
+                    <div class="row text-center">
+                        <div class="heading">
+                            <span>Raw Material Entry</span>
                         </div>
+                    </div>
 
+
+                    @foreach($cutting_array as $cutting)
                         <div class="row">
-                            {{ Form::open(array('action'=>'cuttingPageController@store')) }}
+                            {{ Form::open(array('action'=> 'cuttingPageController@update_store')) }}
+                                    <!-- For recipt number of the material coming from outside -->
+
+                            <div class="form-group">
+                                {{ Form::label('exampleInputEmail1','Id') }}
+                                 {{ Form::text('cutting_id',$cutting->cutting_id,array('class'=>'form-control inputfix','id'=>'cutting_id','name'=>'cutting_id','placeholder'=>'Date')) }}
+                            </div>
 
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Date') }}
-                                 {{ Form::text('date',null,array('class'=>'form-control inputfix','id'=>'date','name'=>'date','placeholder'=>'Date','readonly')) }}
+                                 {{ Form::text('date',$cutting->date,array('class'=>'form-control inputfix','id'=>'date','name'=>'date','placeholder'=>'Date','readonly')) }}
                             </div>
 
                             <div class="form-group">
@@ -146,17 +111,19 @@
                             <!-- qunanity.. this is the quantity of the cutted material -->
                                 <div class="form-group">
                                     {{ Form::label('exampleInputEmail','Quantity') }}
-                                    {{ Form::text('quantity',$dataArray['quantity'],array('class'=>'form-control inputfix','placeholder'=>'Quantity','id'=>'quantity')) }}
+                                    {{ Form::text('quantity',$cutting->quantity,array('class'=>'form-control inputfix','placeholder'=>'Quantity','id'=>'quantity')) }}
                                 </div>
 
                                 <!-- Wieght per piece,, weight per piece of the cutted material -->
                                 <div class="form-group">
                                     {{ Form::label('exampleInputEmail1','Weight per Piece') }}
-                                    {{ Form::text('wpp',$dataArray['weight_per_piece'],array('class'=>'form-control inputfix','placeholder'=>'Weight per piece','id'=>'wpp')) }}
+                                    {{ Form::text('wpp',$cutting->weight_per_piece,array('class'=>'form-control inputfix','placeholder'=>'Weight per piece','id'=>'wpp')) }}
                                 </div>
 
                                 <!-- total weight to be calculated by itself
                                         total weight= quantity * Weight per piece -->
+
+                                  @endforeach
 
                                 <!-- cutting item description  -->
                                 <div class="form-group">
@@ -170,23 +137,19 @@
                                     {{ Form::text('cutRem',null,array('class'=>'form-control inputfix','placeholder'=>'Cutting item remarks','id'=>'JustAnything')) }}
                                 </div>
 
-
-                            {{--     {{ Form::submit('Submit',array('class'=>'waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button')) }} --}}
+                            
 
                             <button class="waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button" type="submit">Submit</button>
                                <!-- Given by pranav
                                 <a class="waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button">Submit</a> -->
-                            {{ Form::close() }}
+                            {{ Form::close() }}                        
                         </div>		<!-- row conatining form ends here -->
-                    </div>		<!-- card ends here -->
-                </div>		<!-- wrapper ends here -->
-            </div>		<!-- row ends here -->
-        </div> 		<!-- col-12 ends here -->
+                </div>		<!-- card ends here -->
+            </div>		<!-- wrapper ends here -->
+        </div>		<!-- row ends here -->
+    </div> 		<!-- col-12 ends here -->
 
-         <script type="text/javascript">
-            $(function () {
-                $('#date').datepicker();
-            });
-        </script>
+
+
 
 @stop
