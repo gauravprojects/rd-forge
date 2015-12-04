@@ -146,11 +146,11 @@
 					);
 
 		$update_response= DB::table('cutting_records')
-							->where('cutting_id',$id)
+							->where('cutting_id',$cutting['cutting_id'])
 							->update($data_array_update);
 
 
-		$get_record_array= Cutting::getRecord($id);
+		$get_record_array= Cutting::getRecord($cutting['cutting_id']);
 		return View::make('cutting.confirm_cutting_update')->with('confirmations',$get_record_array);
 	}
 

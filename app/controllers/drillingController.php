@@ -1,6 +1,6 @@
 <?php
 
-class DrillingController extends \BaseController {
+class DrillingController extends BaseController {
 
 	/*  ----------------------------------- FUNCTIONS USED ------------------------------------
 
@@ -9,10 +9,13 @@ class DrillingController extends \BaseController {
 	*/
 
 
-
 	public function index()
 	{
-		return View::make('drilling.drill');
+		$availableWorkOrder= WorkOrder::availableWorkOrderNo();
+		$grades= Grades::getGrades();
+		return View::make('drilling.drilling')
+				->with('grades',$grades)
+				->with('availableWorkOrderNo',$availableWorkOrder);
 	}
 	public function store()
 	{
@@ -25,8 +28,8 @@ class DrillingController extends \BaseController {
 			'heat_no'	=> $input_data['heat_no'],
 			'quantity'	=>$input_data['quantity'],
 			'machine_name'=>$input_data['machine_name'],
-			'employee_name'=>$input_data['employee_name'],
-			'grade' => $input_data['grade']
+			'grade' => $input_data['grade'],
+			'remarks' => $input_data['remarks']
 		);
 
 
@@ -45,7 +48,7 @@ class DrillingController extends \BaseController {
 
 		$input_response_drilling_remarks= Drilling::getLastRecord();
 
-		return View::make('drilling.confirm')->with('data',$last_record);
+		return View::make('drilling.confirm')->with('last_record',$last_record);
 
 	}
 
@@ -54,6 +57,44 @@ class DrillingController extends \BaseController {
 		$all_data= Drilling::getAllData();
 		return View::make('drilling.drilling_report')->with('data',$all_data);
 	}
+
+	public function update($id)
+	{
+			$drilling_array = Drilling::getRecord($id);
+
+			$grades = Grades::getGrades();
+
+			return View::make('drilling.drilling_update')
+			->with('drilling_array',$drilling_array)
+			->with('grades',$grades);
+	}
+
+
+	public function update_store($id)
+	{
+		
+		$drilling = Input::all();
+
+		$data_array_update = array(
+					'work_order_no' => $drilling['work_order_no'] ,
+					'item'  	=> $drilling['item'],
+					'heat_no'	=> $drilling['heat_no'],
+					'quantity'	=>$drilling['quantity'],
+					'machine_name'=>$drilling['machine_name'],
+					'grade' => $drilling['grade'],
+					'weight'	=> $drilling['weight'],
+					'remarks'=> $drilling['remarks']
+					);
+
+		$update_response= DB::table('drilling_records')
+							->where('drilling_id',$drilling['drilling_id'])
+							->update($data_array_update);
+
+
+		$get_record_array= Drilling::getRecord($drilling['drilling_id']);
+		return View::make('drilling.confirm_drilling_update')->with('confirmations',$get_record_array);
+	}
+
 
 
 	public function excel()

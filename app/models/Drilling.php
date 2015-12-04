@@ -20,6 +20,14 @@ class Drilling extends Eloquent {
 				->insert($input_array);
 	}
 
+	public static function getRecord($id)
+	{
+		return DB::table('drilling_records')
+				->select()
+				->where('drilling_id','=',$id)
+				->get();
+	}
+
 	public static function getLastRecord()
 	{
 		return DB::table('drilling_records')

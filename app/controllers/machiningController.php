@@ -1,6 +1,6 @@
 <?php
 
-class machiningController extends \BaseController
+class machiningController extends BaseController
 {
 
 
@@ -37,7 +37,7 @@ class machiningController extends \BaseController
 
 		$last_record= Machining::getLastRecord();
 
-		return View::make('machining.confirm')->with('data',$last_record);
+		return View::make('machining.confirm')->with('last_record',$last_record);
 
 	}
 
@@ -56,8 +56,39 @@ class machiningController extends \BaseController
 
 	public function update($id)
 	{
-		//
+			$machining_array = Machining::getRecord($id);
+
+			$grades = Grades::getGrades();
+
+			return View::make('machining.machining_update')
+			->with('machining_array',$machining_array)
+			->with('grades',$grades);
 	}
 
+
+	public function update_store($id)
+	{
+		
+		$machining = Input::all();
+
+		$data_array_update = array(
+					'work_order_no' => $machining['work_order_no'] ,
+					'item'  	=> $machining['item'],
+					'heat_no'	=> $machining['heat_no'],
+					'quantity'	=>$machining['quantity'],
+					'machine_name'=>$machining['machine_name'],
+					'grade' => $machining['grade'],
+					'weight'	=> $machining['weight'],
+					'remarks'=> $machining['remarks']
+					);
+
+		$update_response= DB::table('machining_records')
+							->where('machining_id',$machining['machining_id'])
+							->update($data_array_update);
+
+
+		$get_record_array= Machining::getRecord($machining['machining_id']);
+		return View::make('machining.confirm_machining_update')->with('confirmations',$get_record_array);
+	}
 
 }

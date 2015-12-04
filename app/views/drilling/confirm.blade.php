@@ -24,21 +24,32 @@
                                 <th>Quantity</th>
                                 <th>Machine Name</th>
                                 <th>Grade</th>
+                                <th>Remarks</th>
 
                             <tr>
-                                <td>{{ $data->drilling_id }}</td>
-                                <td>{{ $data->date }}</td>
-                                <td>{{ $data->work_order_no }}</td>
-                                <td>{{ $data->item }}</td>
-                                <td>{{ $data->heat_no }}</td>
-                                <td>{{ $data->quantity }}</td>
-                                <td>{{ $data->machine_name }}</td>
-                                <td>{{ $data->grade }}</td>
+                                <td>{{ $last_record->drilling_id }}</td>
+                                <td>{{ $last_record->date }}</td>
+                                <td>{{ $last_record->work_order_no }}</td>
+                                <td>{{ $last_record->item }}</td>
+                                <td>{{ $last_record->heat_no }}</td>
+                                <td>{{ $last_record->quantity }}</td>
+                                <td>{{ $last_record->machine_name }}</td>
+                                <td>{{ $last_record->grade }}</td>
+                                <td>{{ $last_record->remarks }}</td>
 
 
                             </tr>
                         </table>
-                        <br><br><br><br>
+                        <div class="span9 btn-block excelPrint">
+                            <button class="btn btn-small btn-block" type="button" id="excel_button">
+                                <a href="{{ action('drillingController@update',array('id'=>$last_record->drilling_id))}}" class="link" >Update</a>
+                            </button>
+                        </div>
+                         <div class="span9 btn-block excelPrint">
+                            <button class="btn btn-small btn-block" type="button" id="excel_button">
+                                <a href="{{ action('drillingController@index')  }}" class="link" >New Drilling Entry</a>
+                            </button>
+                        </div>
                     </div>		<!-- row conatining form ends here -->
                 </div>		<!-- card ends here -->
             </div>		<!-- wrapper ends here -->

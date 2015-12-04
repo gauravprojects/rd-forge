@@ -98,7 +98,12 @@
 
                                <select class="form-control" name="materialGrade">
                                         @foreach($grades as $grade_element)
-                                            <option value="{{ $grade_element->grade_name }}">{{$grade_element->grade_name}}</option>
+                                            @if($grade_element->grade_name == $data->material_grade)
+                                                    <option value="{{ $grade_element->grade_name }}" selected>{{$grade_element->grade_name}}</option>
+                                            @else
+                                                     <option value="{{ $grade_element->grade_name }}">{{$grade_element->grade_name}}</option>
+                                            @endif
+
                                         @endforeach
                                     </select>
 
@@ -108,6 +113,7 @@
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Type of Material</label>
                                 <select class="form-control" name="materialType">
+                                    
                                     <option value="Ingot">Ingot</option>
                                     <option value="Round">Round</option>
                                     <option value="Bloom">Bloom</option>

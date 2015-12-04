@@ -15,6 +15,14 @@ class Seration extends Eloquent {
 				->insert($input_array);
 	}
 
+	public static function getRecord($id)
+	{
+		return DB::table('seration_records')
+				->select()
+				->where('seration_id','=',$id)
+				->get();
+	}
+
 
 	public static function getLastRecord()
 	{

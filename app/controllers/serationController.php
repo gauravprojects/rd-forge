@@ -13,10 +13,12 @@
 	*/
 		public function index()
 		{
-			return View::make('seration.seration');
+			$availableWorkOrder= WorkOrder::availableWorkOrderNo();
+			$grades= Grades::getGrades();
+			return View::make('seration.seration')
+					->with('grades',$grades)
+					->with('availableWorkOrderNo',$availableWorkOrder);
 		}
-
-
 
 		public function store()
 		{
@@ -29,8 +31,8 @@
 				'heat_no'	=> $input_data['heat_no'],
 				'quantity'	=>$input_data['quantity'],
 				'machine_name'=>$input_data['machine_name'],
-				'employee_name'=>$input_data['employee_name'],
-				'grade' => $input_data['grade']
+				'grade' => $input_data['grade'],
+				'remarks' => $input_data['remarks']
 			);
 
 			$input_response_seration_table=Seration::insertData($input_array_seration_table);
@@ -41,14 +43,14 @@
 
 			// now insert remarks data using the mach_id obtained form last record
 
-			$input_array_seration_remarks= array(
-				'seration_id' => $last_record->seration_id,
-				'remarks' => $input_data['remarks']
-			);
+			// $input_array_seration_remarks= array(
+			// 	'seration_id' => $last_record->seration_id,
+			// 	'remarks' => $input_data['remarks']
+			// );
 
-			$input_response_seration_remarks= Seration::insertRemarks($input_array_seration_remarks);
+			// $input_response_seration_remarks= Seration::insertRemarks($input_array_seration_remarks);
 
-			return View::make('seration.confirm')->with('data',$last_record);
+			return View::make('seration.confirm')->with('last_record',$last_record);
 		}
 
 		public function show()
@@ -56,6 +58,44 @@
 			$all_data=Seration::getAllData();
 			return View::make('seration.seration_report')->with('data',$all_data);
 		}
+
+		public function update($id)
+		{
+				$seration_array = Seration::getRecord($id);
+
+				$grades = Grades::getGrades();
+
+				return View::make('seration.seration_update')
+				->with('seration_array',$seration_array)
+				->with('grades',$grades);
+		}
+
+
+		public function update_store($id)
+		{
+			
+			$seration = Input::all();
+
+			$data_array_update = array(
+						'work_order_no' => $seration['work_order_no'] ,
+						'item'  	=> $seration['item'],
+						'heat_no'	=> $seration['heat_no'],
+						'quantity'	=>$seration['quantity'],
+						'machine_name'=>$seration['machine_name'],
+						'grade' => $seration['grade'],
+						'weight'	=> $seration['weight'],
+						'remarks'=> $seration['remarks']
+						);
+
+			$update_response= DB::table('seration_records')
+								->where('seration_id',$seration['seration_id'])
+								->update($data_array_update);
+
+
+			$get_record_array= Drilling::getRecord($seration['seration_id']);
+			return View::make('seration.confirm_seration_update')->with('confirmations',$get_record_array);
+		}
+
 
 		public function excel()
 		{

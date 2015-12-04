@@ -29,7 +29,7 @@
                             @foreach($data as $machining_data)
 
                             <tr>
-                                <td>{{ $machining_data->mach_id }}</td>
+                                <td>{{ $machining_data->machining_id }}</td>
                                 <td>{{ $machining_data->date }}</td>
                                 <td>{{ $machining_data->work_order_no }}</td>
                                 <td>{{ $machining_data->item }}</td>

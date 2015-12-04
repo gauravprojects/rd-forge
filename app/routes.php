@@ -268,6 +268,18 @@
 
 		));
 
+		// to update if any wrong record is entered
+		Route::get('/machining/update/{id}',array(
+			'as' => 'machining.update',
+			'uses'=> 'machiningController@update'
+		));
+
+		//to store the updated data
+		Route::post('/machining/update/{id}',array(
+			'as' => 'machining.update_store',
+			'uses'=>'machiningController@update_store'
+	));
+
 
 	//ROUTES FOR DRILLING PAGE
 
@@ -297,6 +309,18 @@
 		'uses'=>'drillingController@excel'
 	));
 
+	Route::get('/drilling/update/{id}',array(
+			'as' => 'drilling.update',
+			'uses'=> 'drillingController@update'
+		));
+
+		//to store the updated data
+		Route::post('/drilling/update/{id}',array(
+			'as' => 'drilling.update_store',
+			'uses'=>'drillingController@update_store'
+	));
+
+
 	// ROUTES FOR SERATION PAGE
 
 	//route to get to the drilling page
@@ -323,6 +347,18 @@
 		'as'=>'seration.excel',
 		'uses'=>'serationController@excel'
 	));
+
+	Route::get('/seration/update/{id}',array(
+			'as' => 'seration.update',
+			'uses'=> 'serationController@update'
+		));
+
+		//to store the updated data
+		Route::post('/seration/update/{id}',array(
+			'as' => 'seration.update_store',
+			'uses'=>'serationController@update_store'
+	));
+
 
 
 		// Routes for master Data

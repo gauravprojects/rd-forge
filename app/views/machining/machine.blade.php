@@ -21,14 +21,19 @@
 
                         <!-- For WORK ORDER NUMBER -->
                         <!-- All those workorder will be shown whose status is still incomplete -->
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Work Order Number') }}
 
-                            <select class="form-contro inputfixl" name="work_order_no">
+                            <select class="form-control inputfix" name="work_order_no">
                                 @foreach($availableWorkOrderNo as $workOrder)
                                     <option value="{{ $workOrder->work_order_no }}">{{$workOrder->work_order_no}}</option>
                                 @endforeach
                             </select>
+                        </div> --}}
+
+                        <div class="form-group">
+                            {{ Form::label('exampleInputEmail1','Work Order Number') }}
+                            {{ Form::text('work_order_no',null,array('class'=>'form-control inputfix','placeholder'=>'Work Order Number','id'=>'exampleInputEnail1')) }}
                         </div>
 
                         <!-- FOR ITEM TYPE -->
@@ -50,7 +55,7 @@
 
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Quantity') }}
-                            {{ Form::text('size',null,array('class'=>'form-control inputfix','placeholder'=>'Quantity','id'=>'justAnything')) }}
+                            {{ Form::text('quantity',null,array('class'=>'form-control inputfix','placeholder'=>'Quantity','id'=>'justAnything')) }}
                         </div>
 
 

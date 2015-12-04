@@ -9,11 +9,19 @@ class Machining extends Eloquent {
 				->insert($input_array);
 	}
 
+	public static function getRecord($id)
+	{
+		return DB::table('machining_records')
+				->select()
+				->where('machining_id','=',$id)
+				->get();
+	}
+
 
 	public static function getLastRecord()
 	{
 		return DB::table('machining_records')
-				->orderBy('mach_id', 'desc')
+				->orderBy('machining_id', 'desc')
 				->first();
 	}
 
