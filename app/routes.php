@@ -179,6 +179,11 @@
 			'uses' => 'forgingController@update'
 		));
 
+		Route::post('/forging/update/{id}',array(
+			'as' => 'forging.update_store',
+			'uses'=>'forgingController@update_store'
+		));
+
 		Route::get('/forging/confirm',array(
 
 		'as'=>'forging.show',

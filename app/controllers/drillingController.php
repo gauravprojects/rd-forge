@@ -63,10 +63,12 @@ class DrillingController extends BaseController {
 			$drilling_array = Drilling::getRecord($id);
 
 			$grades = Grades::getGrades();
+			$heat_no = RawMaterial::getHeatNo();
 
 			return View::make('drilling.drilling_update')
 			->with('drilling_array',$drilling_array)
-			->with('grades',$grades);
+			->with('grades',$grades)
+			->with('heat_no',$heat_no);
 	}
 
 

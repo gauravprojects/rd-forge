@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="row text-center">
                         <div class="heading">
-                            <span>Raw Material Entry</span>
+                            <span>Machining Entry</span>
                         </div>
                     </div>
 
@@ -32,9 +32,18 @@
                             {{ Form::text('item',$machining->item,array('class'=>'form-control inputfix','placeholder'=>'Item','id'=>'exampleInputEnail1')) }}
                             </div>
 
-                            <div class="form-group">
-                                {{ Form::label('exampleInputEmail1','Heat Number') }}
-                                {{ Form::text('heat_no',$machining->heat_no,array('class'=>'form-control inputfix','placeholder'=>'Heat Number','id'=>'exampleInputEnail1')) }}
+                             <div class="form-group">
+                                {{ Form::label('exampleInputEmail1','Heat Number(available raw material)') }}
+
+                                <select class="form-control" name="heatNo" id="heat_no">
+                                    @foreach($heat_no as $heat_no_element)
+                                        @if($heat_no_element->heat_no == $machining->heat_no)
+                                            <option value="{{ $heat_no_element->heat_no }}" selected>{{$heat_no_element->heat_no}}</option>
+                                        @else
+                                            <option value="{{ $heat_no_element->heat_no }}">{{$heat_no_element->heat_no}}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
                             </div>
 
 

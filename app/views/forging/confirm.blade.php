@@ -27,21 +27,26 @@
                                 <th>Quantity</th>
                                 <th>Total Weight</th>
                             <tr>
-                                <td>{{ $confirmation->forging_id }}</td>
-                                <td>{{ $confirmation->date }}</td>
-                                <td>{{ $confirmation->weight_per_piece }}</td>
-                                <td>{{ $confirmation->heat_no }}</td>
-                                <td> {{ $confirmation->size }}</td>
-                                <td>{{ $confirmation->pressure }}</td>
-                                <td>{{ $confirmation->type }}</td>
-                                <td> {{ $confirmation->schedule }}</td>
-                                <td>{{ $confirmation->quantity }}</td>
-                                <td>{{ $confirmation->total_weight }}</td>
+                                <td>{{ $last_record->forging_id }}</td>
+                                <td>{{ $last_record->date }}</td>
+                                <td>{{ $last_record->weight_per_piece }}</td>
+                                <td>{{ $last_record->heat_no }}</td>
+                                <td> {{ $last_record->size }}</td>
+                                <td>{{ $last_record->pressure }}</td>
+                                <td>{{ $last_record->type }}</td>
+                                <td> {{ $last_record->schedule }}</td>
+                                <td>{{ $last_record->quantity }}</td>
+                                <td>{{ $last_record->total_weight }}</td>
                             </tr>
                         </table>
                         <div class="span9 btn-block excelPrint">
                             <button class="btn btn-small btn-block" type="button" id="excel_button">
-                                <a href="{{ action('forgingController@update',array('id'=>$confirmation->forging_id))}}" class="link" >Update</a>
+                                <a href="{{ action('forgingController@update',array('id'=>$last_record->forging_id))}}" class="link" >Update</a>
+                            </button>
+                        </div>
+                         <div class="span9 btn-block excelPrint">
+                            <button class="btn btn-small btn-block" type="button" id="excel_button">
+                                <a href="{{ action('forgingController@index')  }}" class="link" >New Forging Entry</a>
                             </button>
                         </div>
                     </div>		<!-- row conatining form ends here -->

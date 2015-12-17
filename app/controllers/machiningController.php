@@ -59,10 +59,12 @@ class machiningController extends BaseController
 			$machining_array = Machining::getRecord($id);
 
 			$grades = Grades::getGrades();
+			$heat_no = RawMaterial::getHeatNo();
 
 			return View::make('machining.machining_update')
 			->with('machining_array',$machining_array)
-			->with('grades',$grades);
+			->with('grades',$grades)
+			->with('heat_no',$heat_no);
 	}
 
 

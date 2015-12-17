@@ -23,32 +23,30 @@
                     <div class="row">
                         <table>
                             <tr class="heading">
-                               <th>Cutting Id</th>
+                               <th>Forging ID</th>
                                 <th>Date</th>
-                                <th>Size</th>
-                                <th>Standard size</th>
+                                <th>Weight per peice</th>
+                                <th>Heat no</th>
+                                <th>Standard Size</th>
                                 <th>Pressure</th>
                                 <th>Type</th>
                                 <th>Schedule</th>
-                                <th>Heat No</th>
                                 <th>Quantity</th>
-                                <th>Weight per piece</th>
                                 <th>Total Weight</th>
 
                             </tr>
                             @foreach($confirmations as $confirmation)
                             <tr>
-                               <td>{{$confirmation->cutting_id }}</td>
-                                <td>{{$confirmation->date }}</td>
-                                <td>{{$confirmation->raw_mat_size}}</td>
-                                <td>{{$confirmation->size}}</td>
-                                <td>{{$confirmation->pressure }}</td>
-                                <td>{{$confirmation->type }}</td>
-                                <td>{{$confirmation->schedule}}</td>
-                                <td>{{$confirmation->heat_no }}</td>
-                                <td>{{$confirmation->quantity}}</td>
-                                <td>{{$confirmation->weight_per_piece}}</td>
-                                <td>{{$confirmation->total_weight}}</td>
+                                <td>{{ $confirmation->forging_id }}</td>
+                                <td>{{ $confirmation->date }}</td>
+                                <td>{{ $confirmation->weight_per_piece }}</td>
+                                <td>{{ $confirmation->heat_no }}</td>
+                                <td> {{ $confirmation->size }}</td>
+                                <td>{{ $confirmation->pressure }}</td>
+                                <td>{{ $confirmation->type }}</td>
+                                <td> {{ $confirmation->schedule }}</td>
+                                <td>{{ $confirmation->quantity }}</td>
+                                <td>{{ $confirmation->total_weight }}</td>
                             </tr>
                             @endforeach
 
@@ -58,7 +56,7 @@
 
                         <div class="span9 btn-block excelPrint">
                             <button class="btn btn-small btn-block" type="button" id="excel_button">
-                                <a href="{{ action('cuttingPageController@update',array('id'=>1))}}" class="link" >Update</a>
+                                <a href="{{ action('forgingController@update',array('id'=>$confirmation->forging_id))}}" class="link" >Update</a>
                             </button>
                         </div>
                         <br><br><br><br>

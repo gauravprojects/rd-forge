@@ -64,10 +64,12 @@
 				$seration_array = Seration::getRecord($id);
 
 				$grades = Grades::getGrades();
+				$heat_no = RawMaterial::getHeatNo();
 
 				return View::make('seration.seration_update')
 				->with('seration_array',$seration_array)
-				->with('grades',$grades);
+				->with('grades',$grades)
+				->with('heat_no',$heat_no);
 		}
 
 
@@ -92,7 +94,7 @@
 								->update($data_array_update);
 
 
-			$get_record_array= Drilling::getRecord($seration['seration_id']);
+			$get_record_array= Seration::getRecord($seration['seration_id']);
 			return View::make('seration.confirm_seration_update')->with('confirmations',$get_record_array);
 		}
 

@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="row text-center">
                         <div class="heading">
-                            <span>Raw Material Entry</span>
+                            <span>Cutting Entry</span>
                         </div>
                     </div>
 

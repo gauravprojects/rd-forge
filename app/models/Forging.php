@@ -10,6 +10,14 @@
 					->insert($records_array);
 		}
 
+		public static function getRecord($id)
+		{
+			return DB::table('forging_records')
+					->select()
+					->where('forging_id','=',$id)
+					->get();
+		}
+
 		public static function getLastRecord()
 		{
 			// returns the last record entered in the forging_records table

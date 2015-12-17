@@ -18,26 +18,35 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 	excel()						generates excel file of all the previously		forging_report_excel.php
 								entered data
 */
+
+	public static function getStandardData()
+	{
+		$sizes = Sizes::getSizes();
+		$heat_no = RawMaterial::getHeatNo();
+		$standard_sizes = StandardSizes::getStandardSizes();
+		$pressure = Pressure::getPressure();
+		$schedule = Schedule::getSchedule();
+		$type = DescriptionType::getType();
+		$grades=Grades::getGrades();
+		$manufacturers= Manufactures::getManufactures();
+
+		return array('sizes'=>$sizes,'heat_no'=>$heat_no,'standard_size'=>$standard_sizes,'sizes'=>$sizes,
+			'pressure'=>$pressure,'schedule'=>$schedule,'type'=>$type,'grades'=>$grades,'manufacturers'=>$manufacturers);
+
+	}
+
+
 	public function index()
 	{
 		//getting null array
 		$dataArray= Forging::getNullArray();
 
 		//getting standard master values from respective models
-		$sizes= Sizes::getSizes();
-		$heat_no= Forging::availableHeatNo();
-		$standard_sizes= StandardSizes::getStandardSizes();
-		$pressure= Pressure::getPressure();
-		$schedule= Schedule::getSchedule();
-		$type= DescriptionType::getType();
+		$data = ForgingController::getStandardData();
+
 		return View::make('forging.forge')
 			->with('dataArray',$dataArray)
-			->with('sizes',$sizes)
-			->with('heat_no',$heat_no)
-			->with('standard_size',$standard_sizes)
-			->with('pressure',$pressure)
-			->with('schedule',$schedule)
-			->with('type',$type);
+			->with($data);
 	}
 
 	public function store()
@@ -49,17 +58,17 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 
 		// forging array for input
 		$forging_array= array(
-						'date'		=> $forging_input['date'],
-						'weight_per_piece'=>$forging_input['weight_per_peice'],
-						'heat_no'		=> $forging_input['heatNo'],
-						'size' =>$forging_input['standard_size'],
-						'pressure' => $forging_input['pressure'],
-						'type' => $forging_input['type'],
-						'schedule' => $forging_input['schedule'],
-						'quantity'		=> $forging_input['quantity'],
-						'total_weight'	=> $total_weight,
-						'remarks'     => $forging_input['remarks'],
-						'available_weight_forging' => $total_weight
+				'date'		=> date('Y-m-d',strtotime($forging_input['date'])),
+				'weight_per_piece'=>$forging_input['weight_per_peice'],
+				'heat_no'		=> $forging_input['heatNo'],
+				'size' =>$forging_input['standard_size'],
+				'pressure' => $forging_input['pressure'],
+				'type' => $forging_input['type'],
+				'schedule' => $forging_input['schedule'],
+				'quantity'		=> $forging_input['quantity'],
+				'total_weight'	=> $total_weight,
+				'remarks'     => $forging_input['remarks'],
+				'available_weight_forging' => $total_weight
 		);
 		
 		Forging::insertData($forging_array);
@@ -80,33 +89,52 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 
 
 		//returning view for confirmation
-		return View::make('forging.confirm')->with('confirmation',$last_record);
+		return View::make('forging.confirm')->with('last_record',$last_record);
 
 
 	}
 
 	public function update($id)
 	{
-		// this function takes the data of a particular id form database and sends it to forge blade
-		// for updataion
-		$dataArray= Forging::getData($id);
-		$dataArray= (array)$dataArray[0];
+		
+		$forging_array = Forging::getRecord($id);
 		//getting standard master values from respective models
-		$sizes= Sizes::getSizes();
-		$heat_no= Forging::availableHeatNo();
-		$standard_sizes= StandardSizes::getStandardSizes();
-		$pressure= Pressure::getPressure();
-		$schedule= Schedule::getSchedule();
-		$type= DescriptionType::getType();
-		return View::make('forging.forge')
-				->with('dataArray',$dataArray)
-				->with('sizes',$sizes)
-				->with('heat_no',$heat_no)
-				->with('standard_size',$standard_sizes)
-				->with('pressure',$pressure)
-				->with('schedule',$schedule)
-				->with('type',$type);
+		$data = ForgingController::getStandardData();
 
+		return View::make('forging.forging_update')
+				->with('forging_array',$forging_array)
+				->with($data);
+
+	}
+
+	public function update_store($id)
+		{
+		
+		$forging = Input::all();
+
+		$total_weight = $forging['weight_per_peice']*$forging['quantity'];
+
+		$data_array_update = array(
+					'date'		=> date('Y-m-d',strtotime($forging['date'])),
+					'weight_per_piece'=>$forging['weight_per_peice'],
+					'heat_no'		=> $forging['heatNo'],
+					'size' =>$forging['standard_size'],
+					'pressure' => $forging['pressure'],
+					'type' => $forging['type'],
+					'schedule' => $forging['schedule'],
+					'quantity'		=> $forging['quantity'],
+					'total_weight'	=> $total_weight,
+					'remarks'     => $forging['remarks'],
+					'available_weight_forging' => $total_weight
+					);
+
+		$update_response= DB::table('forging_records')
+							->where('forging_id',$forging['forging_id'])
+							->update($data_array_update);
+
+
+		$get_record_array= Forging::getRecord($forging['forging_id']);
+		return View::make('forging.confirm_forging_update')->with('confirmations',$get_record_array);
 	}
 
 	public function show()

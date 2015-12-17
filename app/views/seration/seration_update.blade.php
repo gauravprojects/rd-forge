@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="row text-center">
                         <div class="heading">
-                            <span>Raw Material Entry</span>
+                            <span>Serration Entry</span>
                         </div>
                     </div>
 
@@ -35,9 +35,18 @@
                         </div>
 
                         <div class="form-group">
-                            {{ Form::label('exampleInputEmail1','Heat Number') }}
-                            {{ Form::text('heat_no',$seration->heat_no,array('class'=>'form-control inputfix','placeholder'=>'Heat Number','id'=>'exampleInputEnail1')) }}
-                        </div>
+                                {{ Form::label('exampleInputEmail1','Heat Number(available raw material)') }}
+
+                                <select class="form-control" name="heatNo" id="heat_no">
+                                    @foreach($heat_no as $heat_no_element)
+                                        @if($heat_no_element->heat_no == $seration->heat_no)
+                                            <option value="{{ $heat_no_element->heat_no }}" selected>{{$heat_no_element->heat_no}}</option>
+                                        @else
+                                            <option value="{{ $heat_no_element->heat_no }}">{{$heat_no_element->heat_no}}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                            </div>
 
 
                         <div class="form-group">
