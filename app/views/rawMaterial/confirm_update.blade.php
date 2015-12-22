@@ -30,7 +30,6 @@
                                 <th>Manufacturer</th>
                                 <th>Heat No</th>
                                 <th>Weight</th>
-                                <th>Left Over Weight</th>
                                 <th>Material Type</th>
                                 <th>Material Grade</th>
 
@@ -44,7 +43,6 @@
                                 <td>{{ $confirmation->manufacturer }}</td>
                                 <td>{{ $confirmation->heat_no }}</td>
                                 <td>{{ $confirmation->weight }}</td>
-                                <td>{{ $confirmation->left_over_weight }}</td>
                                 <td>{{ $confirmation->material_grade }}</td>
                                 <td>{{ $confirmation->raw_material_type }}</td>
                             </tr>

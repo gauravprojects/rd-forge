@@ -58,7 +58,6 @@ class rawMaterialController extends BaseController {
 			'pur_order_no' => $data['purchaseNo'],
 			'pur_order_date' => date('Y-m-d',strtotime($data['purchaseDate'])),
 			'invoice_no' => $data['invoiceNo'],
-			'left_over_weight'=>$data['left_over_weight'],
 			'invoice_date' => date('Y-m-d',strtotime($data['invoiceDate'])),
 			'material_grade' => $data['materialGrade'],
 			'raw_material_type' => $data['materialType'],
@@ -112,7 +111,6 @@ class rawMaterialController extends BaseController {
 			'pur_order_no' => $data['purchaseNo'],
 			'pur_order_date' => date('Y-m-d',strtotime($data['purchaseDate'])),
 			'invoice_no' => $data['invoiceNo'],
-			'left_over_weight'=>$data['left_over_weight'],
 			'invoice_date' => date('Y-m-d',strtotime($data['invoiceDate'])),
 			'material_grade' => $data['materialGrade'],
 			'raw_material_type' => $data['materialType']
@@ -133,6 +131,15 @@ class rawMaterialController extends BaseController {
 	{
 		$raw= RawMaterial::getExcelData();
 		return View::make('rawMaterial.raw_report_excel')->with('raw',$raw);
+	}
+
+	public  function destroy($id)
+	{
+		$delete_response= RawMaterial::deleteRecord($id);
+		$raw= RawMaterial::getAllData();
+		return View::make('rawMaterial.raw_report')->with('raw',$raw);
+
+
 	}
 
 

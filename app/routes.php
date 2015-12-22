@@ -58,7 +58,13 @@
 		Route::post('/raw/update/{id}',array(
 			'as' => 'raw.update_store',
 			'uses'=>'rawMaterialController@update_store'
-	));
+		));
+
+		//to delete the record
+		Route::get('/raw/delete/{id}',array(
+			'as' => 'raw.delete',
+			'uses' => 'rawMaterialController@destroy'
+		));
 
 
 

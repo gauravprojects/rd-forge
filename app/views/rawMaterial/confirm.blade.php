@@ -30,7 +30,6 @@
                                 <th>Manufacturer</th>
                                 <th>Heat No</th>
                                 <th>Weight</th>
-                                <th>Left Over Weight</th>
                                 <th>Material Type</th>
                                 <th>Material Grade</th>
                                 <th>Available Weight</th>
@@ -45,7 +44,6 @@
                                 <td>{{ $confirmation->manufacturer }}</td>
                                 <td>{{ $confirmation->heat_no }}</td>
                                 <td>{{ $confirmation->weight }}</td>
-                                <td>{{ $confirmation->left_over_weight }}</td>
                                 <td>{{ $confirmation->raw_material_type }}</td>
                                 <td>{{ $confirmation->material_grade }}</td>
                                 <td>{{ $confirmation->available_weight }}</td>
@@ -54,8 +52,14 @@
                         </table>
 
                         <div class="span9 btn-block excelPrint">
+                            <!-- update button -->
                             <button class="btn btn-small btn-block" type="button" id="excel_button">
                                 <a href="{{ action('rawMaterialController@update',array('id'=>$confirmation->internal_no))}}" class="link" >Update</a>
+                            </button>
+
+                            <!-- Delete button -->
+                            <button class="btn btn-small btn-block" type="button" id="excel_button">
+                                <a href="{{ action('rawMaterialController@destroy',array('id'=>$confirmation->internal_no))}}" class="link" >Delete</a>
                             </button>
                         </div>
                         <div class="span9 btn-block excelPrint">

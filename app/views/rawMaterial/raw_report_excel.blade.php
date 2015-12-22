@@ -26,7 +26,6 @@
                 <th>Manufacturer</th>
                 <th>Heat No</th>
                 <th>Weight</th>
-                <th>Left Over Weight</th>
                 <th>Invoice No</th>
                 <th>Invoice date</th>
                 <th>Material Type</th>
@@ -44,7 +43,6 @@
                     <td>{{{ $raw_data->manufacturer }}}</td>
                     <td>{{{ $raw_data->heat_no }}}</td>
                     <td>{{{ $raw_data->weight }}}</td>
-                    <td>{{{ $raw_data->left_over_weight }}}</td>
                     <td>{{{ $raw_data->invoice_no }}}</td>
                     <td>{{{ $raw_data->invoice_date }}}</td>
                     <td>{{{ $raw_data->raw_material_type }}}</td>

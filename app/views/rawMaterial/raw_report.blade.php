@@ -25,9 +25,10 @@
                             <th>Manufacturer</th>
                             <th>Heat No</th>
                             <th>Weight</th>
-                            <th>Left Over Weight</th>
                             <th>Material Type</th>
                             <th>Material Grade</th>
+                            <th>Update</th>
+                            <th>Delete</th>
 
                         </tr>
 
@@ -41,9 +42,17 @@
                                     <td>{{{ $raw_data->manufacturer }}}</td>
                                     <td>{{{ $raw_data->heat_no }}}</td>
                                     <td>{{{ $raw_data->weight }}}</td>
-                                    <td>{{{ $raw_data->left_over_weight }}}</td>
                                     <td>{{{ $raw_data->material_grade }}}</td>
                                     <td>{{{ $raw_data->raw_material_type }}}</td>
+                                    <td>
+                                        <!-- Button for Update -->
+                                            <a href="{{ action('rawMaterialController@update',array('id'=>$raw_data->internal_no))}}" class="link" >Update</a>
+                                    </td>
+                                    <td>
+                                        <!-- Button for delete -->
+                                            <a href="{{ action('rawMaterialController@destroy',array('id'=>$raw_data->internal_no))}}" class="link" >Delete</a>
+                                    </td>
+
                                 </tr>
 
 

@@ -68,11 +68,7 @@
                                 {{ Form::text('weight',null,array('class'=>'form-control inputfix','placeholder'=>'Weight','id'=>'Justesehe')) }}
                             </div>
 
-                            <!-- left over weight -->
-                            <div class="form-group inputfix">
-                                {{ Form::label('exampleInputEmail1','Left over weight') }}
-                                {{ Form::text('left_over_weight',null,array('class'=>'form-control inputfix','placeholder'=>'Left over weight','id'=>'Justesehe')) }}
-                            </div>
+
 
                             <!-- Purchase order no -->
                             <div class="form-group">

@@ -32,6 +32,8 @@ class RawMaterial extends Eloquent
 	}
 
 
+
+
 	public static function getLastRecord()
 	{
 		return DB::table('raw_material')
@@ -77,5 +79,12 @@ class RawMaterial extends Eloquent
 			->select()
 			->where('available_weight','>',0)
 			->get();
+	}
+
+	public static function deleteRecord($id)
+	{
+		return DB::table('raw_material')
+			->where('internal_no','=',$id)
+			->delete();
 	}
 }
