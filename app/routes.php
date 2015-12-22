@@ -195,6 +195,11 @@
 			'uses'=>'forgingController@update_store'
 		));
 
+		Route::get('/forging/delete/{id}',array(
+			'as' => 'forging.delete',
+			'uses' => 'forgingController@destroy'
+		));
+
 		Route::get('/forging/confirm',array(
 
 		'as'=>'forging.show',

@@ -28,6 +28,7 @@
                                 <th>Type</th>
                                 <th>Schedule</th>
                                 <th>Remarks</th>
+                                <th>Update/Delete</th>
                             </tr>
 
                         @foreach($forging_data as $confirmation)
@@ -43,6 +44,13 @@
                                 <td>{{ $confirmation->type }}</td>
                                 <td>{{ $confirmation->schedule }}</td>
                                 <td>{{ $confirmation->remarks }}</td>
+                                <td>
+                                    <!-- Update link -->
+                                    <a href="{{ action('forgingController@update',array('id'=>$confirmation->forging_id))}}" class="link" >Update</a>
+
+                                    <!-- Delete link -->
+                                    <a href="{{ action('forgingController@update',array('id'=>$confirmation->forging_id))}}" class="link" >Delete</a>
+                                </td>
                             </tr>
                         @endforeach
                         </table>

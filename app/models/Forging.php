@@ -29,6 +29,13 @@
 					->first();
 		}
 
+		public static function delete_record($id)
+		{
+			return DB::table('forging_records')
+				->where('forging_id','=',$id)
+				->delete();
+		}
+
 		public static function getData($id)
 		{
 			return DB::table('forging_records')

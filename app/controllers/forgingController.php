@@ -177,4 +177,12 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 		return View::make('forging.forging_report_excel')->with('forging_data',$forging_data);
 	}
 
+	public function destroy($id)
+	{
+		$delete_response= Forging::delete_record($id);
+		$forging_data= Forging::getAllRecords();
+		return View::make('forging.forging_report')->with('forging_data',$forging_data);
+
+	}
+
 }
