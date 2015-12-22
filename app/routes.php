@@ -100,6 +100,11 @@
 			'uses'=>'cuttingPageController@update_store'
 		));
 
+		Route::get('/cutting/delete/{id}',array(
+			'as' => 'cutting.delete',
+			'uses' => 'cuttingPageController@destroy'
+		));
+
 		//route to check weather the weight being cutted is vailable for that heat no
 		Route::post('/cutting/availableTotalWeight',array(
 			'as' => 'cutting.availableTotalWeight',

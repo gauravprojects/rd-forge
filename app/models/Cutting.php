@@ -93,4 +93,11 @@ class Cutting extends Eloquent
 		return $available_weight_object;
 	}
 
+	public static function delete_record($id)
+	{
+		return DB::table('cutting_records')
+			->where('cutting_id','=',$id)
+			->delete();
+	}
+
 }

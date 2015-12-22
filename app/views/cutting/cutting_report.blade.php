@@ -30,6 +30,7 @@
                                 <th>Type</th>
                                 <th>Schedule</th>
                                 <th>Available Weight</th>
+                                <th>Update/Delete</th>
                             </tr>
 
                             @foreach($all_records as $cutting_data)
@@ -45,7 +46,11 @@
                                 <td>{{ $cutting_data->pressure }}</td>
                                 <td>{{ $cutting_data->type }}</td>
                                 <td>{{ $cutting_data->schedule }}</td>
-                                <th>{{ $cutting_data->available_weight_cutting }}</th>
+                                <td>{{ $cutting_data->available_weight_cutting }}</td>
+                                <td><a href="{{ action('cuttingPageController@update',array('id'=>$cutting_data->cutting_id))}}" class="link" >Update</a>
+                                 <a href="{{ action('cuttingPageController@destroy',array('id'=>$cutting_data  ->cutting_id))}}" class="link" >Delete</a>
+                                </td>
+
 
                             </tr>
                             @endforeach

@@ -27,8 +27,7 @@
                             <th>Weight</th>
                             <th>Material Type</th>
                             <th>Material Grade</th>
-                            <th>Update</th>
-                            <th>Delete</th>
+                            <th>Update/Delete</th>
 
                         </tr>
 
@@ -47,9 +46,8 @@
                                     <td>
                                         <!-- Button for Update -->
                                             <a href="{{ action('rawMaterialController@update',array('id'=>$raw_data->internal_no))}}" class="link" >Update</a>
-                                    </td>
-                                    <td>
                                         <!-- Button for delete -->
+                                        <br>
                                             <a href="{{ action('rawMaterialController@destroy',array('id'=>$raw_data->internal_no))}}" class="link" >Delete</a>
                                     </td>
 

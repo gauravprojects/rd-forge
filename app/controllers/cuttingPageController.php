@@ -218,4 +218,13 @@
 			return View::make('cutting.available')
 					->with('data',$data);
 		}
+
+		public function destroy($id)
+		{
+
+			$delete_response= Cutting::delete_record($id);
+			$all_records= Cutting::getAllRecords();
+			return View::make('cutting.cutting_report')->with('all_records', $all_records);
+
+		}
 	}
