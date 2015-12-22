@@ -48,18 +48,38 @@
       <file leaf-file-name="std_size.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/adminPanel/std_size.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
+            <state vertical-scroll-proportion="-30.73077">
               <caret line="47" column="91" selection-start-line="47" selection-start-column="91" selection-end-line="47" selection-end-column="91" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sizes.blade.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/routes.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.65384614">
+              <caret line="411" column="0" selection-start-line="411" selection-start-column="0" selection-end-line="411" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/adminPanel/admin.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-8.653846">
+              <caret line="16" column="176" selection-start-line="16" selection-start-column="176" selection-end-line="16" selection-end-column="176" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sizes.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/adminPanel/sizes.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="48" column="95" selection-start-line="48" selection-start-column="95" selection-end-line="48" selection-end-column="95" />
+            <state vertical-scroll-proportion="0.5435169">
+              <caret line="18" column="44" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -85,10 +105,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="manufactures.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="manufactures.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/adminPanel/manufactures.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.39253998">
+            <state vertical-scroll-proportion="-8.5">
               <caret line="63" column="55" selection-start-line="63" selection-start-column="55" selection-end-line="63" selection-end-column="55" />
               <folding />
             </state>
@@ -142,7 +162,6 @@
         <option value="$PROJECT_DIR$/app/models/StandardSizes.php" />
         <option value="$PROJECT_DIR$/app/views/cutting/available.blade.php" />
         <option value="$PROJECT_DIR$/app/views/rawMaterial/available.blade.php" />
-        <option value="$PROJECT_DIR$/app/views/adminPanel/admin.blade.php" />
         <option value="$PROJECT_DIR$/app/models/Forging.php" />
         <option value="$PROJECT_DIR$/app/models/manufacturers.php" />
         <option value="$PROJECT_DIR$/app/controllers/rawMaterialController.php" />
@@ -176,9 +195,10 @@
         <option value="$PROJECT_DIR$/app/views/seration/seration.blade.php" />
         <option value="$PROJECT_DIR$/app/views/adminPanel/descriptionType.blade.php" />
         <option value="$PROJECT_DIR$/app/views/adminPanel/std_size.blade.php" />
-        <option value="$PROJECT_DIR$/app/views/adminPanel/sizes.blade.php" />
         <option value="$PROJECT_DIR$/app/views/adminPanel/schedule.blade.php" />
         <option value="$PROJECT_DIR$/app/views/adminPanel/manufactures.blade.php" />
+        <option value="$PROJECT_DIR$/app/views/adminPanel/admin.blade.php" />
+        <option value="$PROJECT_DIR$/app/views/adminPanel/sizes.blade.php" />
       </list>
     </option>
   </component>
@@ -482,7 +502,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="SearchEverywhereHistoryKey" value="routes&#9;FILE&#9;file:///opt/lampp/htdocs/rd-forge/app/routes.php&#10;rou&#9;FILE&#9;file:///opt/lampp/htdocs/rd-forge/app/routes.php&#10;for&#9;FILE&#9;file:///opt/lampp/htdocs/rd-forge/app/views/forging/forge.blade.php&#10;route&#9;FILE&#9;file:///opt/lampp/htdocs/rd-forge/app/routes.php&#10;con&#9;FILE&#9;file:///opt/lampp/htdocs/rd-forge/app/views/rawMaterial/confirm.blade.php&#10;raw&#9;FILE&#9;file:///opt/lampp/htdocs/rd-forge/app/controllers/rawMaterialController.php&#10;cutt&#9;FILE&#9;file:///opt/lampp/htdocs/rd-forge/app/controllers/cuttingPageController.php&#10;cu&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/controllers/cuttingPageController.php&#10;cut&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/views/cutting/cut.blade.php&#10;admin&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/views/adminPanel/admin.blade.php&#10;ro&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/routes.php&#10;ma&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/controllers/masterController.php&#10;press&#9;null&#9;null&#10;master&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/controllers/masterController.php&#10;testing&#9;null&#9;null&#10;mas&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/controllers/masterController.php&#10;index.css&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/public/css/index.css&#10;manu&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/models/Manufactures.php&#10;routes.php&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/routes.php" />
+    <property name="SearchEverywhereHistoryKey" value="routes&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/routes.php&#10;rou&#9;FILE&#9;file:///opt/lampp/htdocs/rd-forge/app/routes.php&#10;for&#9;FILE&#9;file:///opt/lampp/htdocs/rd-forge/app/views/forging/forge.blade.php&#10;route&#9;FILE&#9;file:///opt/lampp/htdocs/rd-forge/app/routes.php&#10;con&#9;FILE&#9;file:///opt/lampp/htdocs/rd-forge/app/views/rawMaterial/confirm.blade.php&#10;raw&#9;FILE&#9;file:///opt/lampp/htdocs/rd-forge/app/controllers/rawMaterialController.php&#10;cutt&#9;FILE&#9;file:///opt/lampp/htdocs/rd-forge/app/controllers/cuttingPageController.php&#10;cu&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/controllers/cuttingPageController.php&#10;cut&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/views/cutting/cut.blade.php&#10;admin&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/views/adminPanel/admin.blade.php&#10;ro&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/routes.php&#10;ma&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/controllers/masterController.php&#10;press&#9;null&#9;null&#10;master&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/controllers/masterController.php&#10;testing&#9;null&#9;null&#10;mas&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/controllers/masterController.php&#10;index.css&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/public/css/index.css&#10;manu&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/models/Manufactures.php&#10;routes.php&#9;FILE&#9;file://C:/xampp/htdocs/rd-forge/app/routes.php" />
     <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RunManager">
@@ -599,13 +619,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/adminPanel/admin.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4383117">
-          <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/testing/auto.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.36525974">
@@ -708,13 +721,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7564935">
           <caret line="33" column="18" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8538961">
-          <caret line="494" column="7" selection-start-line="494" selection-start-column="7" selection-end-line="494" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -901,22 +907,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/adminPanel/std_size.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="47" column="91" selection-start-line="47" selection-start-column="91" selection-end-line="47" selection-end-column="91" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/adminPanel/sizes.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="48" column="95" selection-start-line="48" selection-start-column="95" selection-end-line="48" selection-end-column="95" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/adminPanel/schedule.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -951,8 +941,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/adminPanel/manufactures.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39253998">
+        <state vertical-scroll-proportion="-8.5">
           <caret line="63" column="55" selection-start-line="63" selection-start-column="55" selection-end-line="63" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/adminPanel/std_size.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-30.73077">
+          <caret line="47" column="91" selection-start-line="47" selection-start-column="91" selection-end-line="47" selection-end-column="91" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.65384614">
+          <caret line="411" column="0" selection-start-line="411" selection-start-column="0" selection-end-line="411" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/adminPanel/admin.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.653846">
+          <caret line="16" column="176" selection-start-line="16" selection-start-column="176" selection-end-line="16" selection-end-column="176" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/adminPanel/sizes.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5435169">
+          <caret line="18" column="44" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
           <folding />
         </state>
       </provider>

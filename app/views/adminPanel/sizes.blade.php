@@ -7,7 +7,7 @@
                     <div class="card">
                         <div class="row text-center">
                             <div class="heading">
-                                <span>Standard Sizes</span>
+                                <span>Raw Material Sizes</span>
                             </div>
                         </div>
 
@@ -16,7 +16,7 @@
                             <table>
                                 <tr class="heading">
                                     <th>No</th>
-                                    <th>Size(Inches)</th>
+                                    <th>Size</th>
                                     <th>Action</th>
                                 </tr>
                                 <?php $count=0; ?>
