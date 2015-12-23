@@ -49,4 +49,23 @@ class WorkOrder extends Eloquent
 				->where('status','=','0')
 				->get();
 	}
+
+	public static function getRecordByWorkOrderDeails($work_order_no)  //from work order details
+	{
+		return DB::table('work_order_details')
+			->select()
+			->where('work_order_no','=',$work_order_no)
+			->get();
+	}
+
+	public static function getRecordByWorkOrderMaterialDetails($work_order_no)
+	{
+		return DB::table('work_order_material_details')
+			->select()
+			->where('work_order_no','=',$work_order_no)
+			->get();
+	}
+
+
+
 }

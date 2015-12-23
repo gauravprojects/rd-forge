@@ -56,29 +56,34 @@ class WorkOrderController extends BaseController {
 	public function details_add()
 	{
 		$data= Input::all();
+		$i=0;
+		$count_rows= count($data['item_no']);
+		for($i=0;$i<$count_rows;$i++)
+		{
+				$data_array = array(
+					'work_order_no' => $data['work_order_no'][$i],
+					'item_no' => $data['item_no'][$i],
+					'material_grade' => $data['grade'][$i],
+					'size' => $data['standard_size'][$i],
+					'pressure' => $data['pressure'][$i],
+					'type' => $data['type'][$i],
+					'schedule' => $data['schedule'][$i],
+					'quantity' => $data['quantity'][$i],
+					'weight' => $data['weight'][$i],
+					'remarks' => $data['remarks'][$i]
+				);
+				$input_response = DB::table('work_order_material_details')->insert($data_array);
 
-		dd($data);
-		$data_array= array(
-			'work_order_no'=>$data['work_order_no'],
-			'item_no' => $data['item_no'],
-			'material_grade'=>$data['grade'],
-			'size' =>$data['standard_size'],
-			'pressure' => $data['pressure'],
-			'type'=> $data['type'],
-			'schedule' => $data['schedule'],
-			'quantity' =>$data['quantity'],
-			'weight' => $data['weight'],
-			'remarks' => $data['remarks']
-		);
-        $input_response= DB::table('work_order_material_details')->insert($data_array);
+		}
 
-        $last_record=DB::table('work_order_material_details')->orderBy('work_order_no', 'desc')->first();
-		$work_order_details= WorkOrder::getOrderDetails($data['work_order_no']);
-		$work_order_details= (array) $work_order_details[0];
+		// data from work order details for respective work order no
+		$work_order_details= WorkOrder::getRecordByWorkOrderDeails($data['work_order_no'][0]);
+		$work_order_material_details= WorkOrder::getRecordByWorkOrderMaterialDetails($data['work_order_no'][0]);
+
 
 		return View::make('workOrder.confirm')
-				->with('data',$last_record)
-				->with('work_order_details',$work_order_details);
+				->with('work_order_details',$work_order_details)
+				->with('work_order_material_details',$work_order_material_details);
 
 	}
 

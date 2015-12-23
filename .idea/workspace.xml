@@ -48,8 +48,47 @@
       <file leaf-file-name="workOrderController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/workOrderController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.2452831">
-              <caret line="59" column="18" selection-start-line="59" selection-start-column="18" selection-end-line="59" selection-end-column="18" />
+            <state vertical-scroll-proportion="-8.18868">
+              <caret line="85" column="44" selection-start-line="85" selection-start-column="44" selection-end-line="85" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="confirm.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/workOrder/confirm.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.92362344">
+              <caret line="69" column="45" selection-start-line="69" selection-start-column="45" selection-end-line="69" selection-end-column="45" />
+              <folding>
+                <marker date="1450877453470" expanded="true" signature="494:956" placeholder="..." />
+                <marker date="1450877453470" expanded="true" signature="580:956" placeholder="..." />
+                <marker date="1450877453470" expanded="true" signature="617:956" placeholder="..." />
+                <marker date="1450877453470" expanded="true" signature="682:700" placeholder="..." />
+                <marker date="1450877453470" expanded="true" signature="874:892" placeholder="..." />
+                <marker date="1450877453470" expanded="true" signature="1076:1232" placeholder="..." />
+                <marker date="1450877453470" expanded="true" signature="1141:1159" placeholder="..." />
+                <marker date="1450877453470" expanded="true" signature="1351:1369" placeholder="..." />
+                <marker date="1450877453470" expanded="true" signature="1577:3538" placeholder="..." />
+                <marker date="1450877453470" expanded="true" signature="1615:1767" placeholder="..." />
+                <marker date="1450877453470" expanded="true" signature="1680:1698" placeholder="..." />
+                <marker date="1450877453470" expanded="true" signature="1804:2655" placeholder="..." />
+                <marker date="1450877453470" expanded="true" signature="1869:1887" placeholder="..." />
+                <marker date="1450877453470" expanded="true" signature="1971:1989" placeholder="..." />
+                <marker date="1450877453470" expanded="true" signature="2394:2412" placeholder="..." />
+                <marker date="1450877453470" expanded="true" signature="2491:2509" placeholder="..." />
+                <marker date="1450877453470" expanded="true" signature="2586:2604" placeholder="..." />
+                <marker date="1450877453470" expanded="true" signature="2775:3454" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WorkOrder.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/WorkOrder.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-9.471698">
+              <caret line="70" column="1" selection-start-line="70" selection-start-column="1" selection-end-line="70" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -58,31 +97,19 @@
       <file leaf-file-name="work.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/workOrder/work.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.65384614">
+            <state vertical-scroll-proportion="-0.0">
               <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="work2.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="work2.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/workOrder/work2.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.9396092">
-              <caret line="117" column="94" selection-start-line="117" selection-start-column="94" selection-end-line="117" selection-end-column="94" />
-              <folding>
-                <element signature="e#4022#4043#0#HTML" expanded="true" />
-                <element signature="e#4515#4550#0#HTML" expanded="true" />
-                <element signature="e#4630#4665#0#HTML" expanded="true" />
-                <element signature="e#4739#4776#0#HTML" expanded="true" />
-                <element signature="e#4857#4894#0#HTML" expanded="true" />
-                <element signature="e#4965#5001#0#HTML" expanded="true" />
-                <element signature="e#5076#5113#0#HTML" expanded="true" />
-                <element signature="e#5184#5221#0#HTML" expanded="true" />
-                <element signature="e#5296#5322#0#HTML" expanded="true" />
-                <element signature="e#5397#5423#0#HTML" expanded="true" />
-                <element signature="e#5496#5522#0#HTML" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="-20.346153">
+              <caret line="172" column="41" selection-start-line="172" selection-start-column="41" selection-end-line="172" selection-end-column="41" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -116,8 +143,6 @@
         <option value="$PROJECT_DIR$/app/views/search/search.blade.php" />
         <option value="$PROJECT_DIR$/app/views/cutting/cutting_report_excel.blade.php" />
         <option value="$PROJECT_DIR$/app/views/forging/forging_report_excel.blade.php" />
-        <option value="$PROJECT_DIR$/app/models/WorkOrder.php" />
-        <option value="$PROJECT_DIR$/app/views/workOrder/confirm.blade.php" />
         <option value="$PROJECT_DIR$/app/views/login/loginPage.blade.php" />
         <option value="$PROJECT_DIR$/public/css/index.css" />
         <option value="$PROJECT_DIR$/app/views/workOrder/work.blade.php" />
@@ -149,8 +174,10 @@
         <option value="$PROJECT_DIR$/app/models/Forging.php" />
         <option value="$PROJECT_DIR$/app/controllers/forgingController.php" />
         <option value="$PROJECT_DIR$/app/views/forging/forging_report.blade.php" />
-        <option value="$PROJECT_DIR$/app/controllers/workOrderController.php" />
         <option value="$PROJECT_DIR$/app/views/workOrder/work2.blade.php" />
+        <option value="$PROJECT_DIR$/app/models/WorkOrder.php" />
+        <option value="$PROJECT_DIR$/app/controllers/workOrderController.php" />
+        <option value="$PROJECT_DIR$/app/views/workOrder/confirm.blade.php" />
       </list>
     </option>
   </component>
@@ -196,7 +223,6 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -339,6 +365,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -455,13 +482,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/controllers/machiningController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8211244">
-          <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/drillingController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.0">
@@ -560,20 +580,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/workOrder/confirm.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.024350649">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/WorkOrder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43993506">
-          <caret line="34" column="35" selection-start-line="34" selection-start-column="35" selection-end-line="34" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/css/index.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.625">
@@ -637,13 +643,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/loginPageController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.65384614">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/adminPanel/manufactures.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-8.5">
@@ -693,13 +692,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/rawMaterialController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.69962686">
-          <caret line="139" column="70" selection-start-line="139" selection-start-column="70" selection-end-line="139" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/rawMaterial/confirm.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.44227353">
@@ -733,7 +725,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-11.807693">
           <caret line="50" column="149" selection-start-line="50" selection-start-column="32" selection-end-line="50" selection-end-column="149" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -748,14 +739,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6678508">
           <caret line="50" column="32" selection-start-line="50" selection-start-column="32" selection-end-line="50" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/cuttingPageController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.76119405">
-          <caret line="226" column="91" selection-start-line="226" selection-start-column="91" selection-end-line="226" selection-end-column="91" />
         </state>
       </provider>
     </entry>
@@ -763,7 +746,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="35" column="27" selection-start-line="35" selection-start-column="27" selection-end-line="35" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -771,7 +753,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="43" column="144" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="144" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -779,7 +760,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.1545293">
           <caret line="51" column="145" selection-start-line="51" selection-start-column="145" selection-end-line="51" selection-end-column="145" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -787,7 +767,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6980462">
           <caret line="183" column="88" selection-start-line="183" selection-start-column="88" selection-end-line="183" selection-end-column="88" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -799,38 +778,93 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/workOrder/work2.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-20.346153">
+          <caret line="172" column="41" selection-start-line="172" selection-start-column="41" selection-end-line="172" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/rawMaterialController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="3.8650088">
+          <caret line="139" column="70" selection-start-line="139" selection-start-column="70" selection-end-line="139" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/adminPageController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/loginPageController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.040852576">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/cuttingPageController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="6.589698">
+          <caret line="226" column="91" selection-start-line="226" selection-start-column="91" selection-end-line="226" selection-end-column="91" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/workOrder/work.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.65384614">
+        <state vertical-scroll-proportion="0.0">
           <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/WorkOrder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.471698">
+          <caret line="70" column="1" selection-start-line="70" selection-start-column="1" selection-end-line="70" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/workOrderController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.2452831">
-          <caret line="59" column="18" selection-start-line="59" selection-start-column="18" selection-end-line="59" selection-end-column="18" />
+        <state vertical-scroll-proportion="-8.18868">
+          <caret line="85" column="44" selection-start-line="85" selection-start-column="44" selection-end-line="85" selection-end-column="44" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/workOrder/work2.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/views/workOrder/confirm.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9396092">
-          <caret line="117" column="94" selection-start-line="117" selection-start-column="94" selection-end-line="117" selection-end-column="94" />
+        <state vertical-scroll-proportion="0.92362344">
+          <caret line="69" column="45" selection-start-line="69" selection-start-column="45" selection-end-line="69" selection-end-column="45" />
           <folding>
-            <element signature="e#4022#4043#0#HTML" expanded="true" />
-            <element signature="e#4515#4550#0#HTML" expanded="true" />
-            <element signature="e#4630#4665#0#HTML" expanded="true" />
-            <element signature="e#4739#4776#0#HTML" expanded="true" />
-            <element signature="e#4857#4894#0#HTML" expanded="true" />
-            <element signature="e#4965#5001#0#HTML" expanded="true" />
-            <element signature="e#5076#5113#0#HTML" expanded="true" />
-            <element signature="e#5184#5221#0#HTML" expanded="true" />
-            <element signature="e#5296#5322#0#HTML" expanded="true" />
-            <element signature="e#5397#5423#0#HTML" expanded="true" />
-            <element signature="e#5496#5522#0#HTML" expanded="true" />
+            <marker date="1450877453470" expanded="true" signature="494:956" placeholder="..." />
+            <marker date="1450877453470" expanded="true" signature="580:956" placeholder="..." />
+            <marker date="1450877453470" expanded="true" signature="617:956" placeholder="..." />
+            <marker date="1450877453470" expanded="true" signature="682:700" placeholder="..." />
+            <marker date="1450877453470" expanded="true" signature="874:892" placeholder="..." />
+            <marker date="1450877453470" expanded="true" signature="1076:1232" placeholder="..." />
+            <marker date="1450877453470" expanded="true" signature="1141:1159" placeholder="..." />
+            <marker date="1450877453470" expanded="true" signature="1351:1369" placeholder="..." />
+            <marker date="1450877453470" expanded="true" signature="1577:3538" placeholder="..." />
+            <marker date="1450877453470" expanded="true" signature="1615:1767" placeholder="..." />
+            <marker date="1450877453470" expanded="true" signature="1680:1698" placeholder="..." />
+            <marker date="1450877453470" expanded="true" signature="1804:2655" placeholder="..." />
+            <marker date="1450877453470" expanded="true" signature="1869:1887" placeholder="..." />
+            <marker date="1450877453470" expanded="true" signature="1971:1989" placeholder="..." />
+            <marker date="1450877453470" expanded="true" signature="2394:2412" placeholder="..." />
+            <marker date="1450877453470" expanded="true" signature="2491:2509" placeholder="..." />
+            <marker date="1450877453470" expanded="true" signature="2586:2604" placeholder="..." />
+            <marker date="1450877453470" expanded="true" signature="2775:3454" placeholder="..." />
           </folding>
         </state>
       </provider>
