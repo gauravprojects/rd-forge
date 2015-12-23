@@ -1,6 +1,32 @@
     @extends('layouts.master')
 
     @section('links_data')
+
+        <script type="application/javascript">
+
+            $item_no_count=1;
+           $(document).ready(function(){
+              $('#add_record').click(function(){
+                    //alert("function being called");
+                  $work_order_no_current= $('#work_order_no_form').val();
+
+                  // to append work order no
+                  $work_order_no= '<td><input type="text" name="work_order_no[]" class="form-control inputfix" value=" '+$work_order_no_current+ ' "  </td>';
+
+                  // to append item no
+                  $item_no= '<td><input type="text" name="item_no[]" class="form-control inputfix" value=""  </td>';
+
+                  // to append
+                $("table").append("<tr>"+$work_order_no+$item_no+"</tr>");
+
+
+
+                  $item_no_count++;
+              });
+           });
+        </script>
+
+
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class="row">
                 <div class="wrapper">
@@ -14,6 +40,9 @@
 
                         <!-- If $work_order_details is empty then show nothing, otherwise show the required details -->
 
+                        <!-- button to add a feild in the form dynamically -->
+                        <button id="add_record" style="float: right;" onclick="add_record();">Add Field</button>
+                        <br>
 
                         <div class="row">
 
@@ -22,12 +51,12 @@
                             <table class="table table-bordered table-condensed">
                                 <tbody>
                                     <tr>
-                                        <th class="heading" style="text-align:center;">Work Order No</th>
-                                        <th class="heading" style="...">Item no</th>
-                                        <th class="heading" style="text-align:center;">Material Grade</th>
-                                        <th class="heading" style="text-align:center;">Size</th>
-                                        <th class="heading" style="text-align:center;">Pressure</th>
-                                        <th class="heading" style="text-align:center;">Type</th>
+                                        <th class="heading" style="text-align:center; width:8%">Work Order No</th>
+                                        <th class="heading" style="text-align:center; width:8%">Item no</th>
+                                        <th class="heading" style="text-align:center; width: 12%">Material Grade</th>
+                                        <th class="heading" style="text-align:center; width: 12%">Size</th>
+                                        <th class="heading" style="text-align:center; width:12%">Pressure</th>
+                                        <th class="heading" style="text-align:center; width: 12%">Type</th>
                                         <th class="heading" style="text-align:center;">Schedule</th>
                                         <th class="heading" style="text-align:center;">Quantity</th>
                                         <th class="heading" style="text-align:center;">Weight</th>
@@ -36,15 +65,15 @@
 
                                 <tr>
                                     <td>
-                                        {{ Form::text('work_order_no',$data->work_order_no,array('class'=>'form-control inputfix','id'=>'exampleInputEnail1')) }}
+                                        {{ Form::text('work_order_no[]',$data->work_order_no,array('class'=>'form-control inputfix','id'=>'work_order_no_form')) }}
                                     </td>
                                     <td>
-                                        {{ Form::text('item_no',$data->work_order_no.'/'.++$count,array('class'=>'form-control inputfix')) }}
+                                        {{ Form::text('item_no[]',$data->work_order_no.'/'.++$count,array('class'=>'form-control inputfix','id'=>'item_no_form')) }}
                                     </td>
 
                                     <!-- Material Grade -->
                                     <td>
-                                        <select class="form-control inputfix" name="grade">
+                                        <select class="form-control inputfix" name="grade[]">
                                             @foreach($grades as $grade_element)
                                                 <option value="{{ $grade_element->grade_name }}">{{ $grade_element->grade_name }}</option>
                                             @endforeach
@@ -54,7 +83,7 @@
 
                                     <td>
                                         <!-- Size -->
-                                        <select class="form-control inputfix" name="standard_size">
+                                        <select class="form-control inputfix" name="standard_size[]">
                                             @foreach($standard_size as $standard_size_element)
                                                 <option value="{{ $standard_size_element->std_size }}">{{$standard_size_element->std_size}}</option>
                                             @endforeach
@@ -63,7 +92,7 @@
 
                                     <td>
                                         <!-- Pressure -->
-                                        <select class="form-control inputfix" name="pressure">
+                                        <select class="form-control inputfix" name="pressure[]">
                                             @foreach($pressure as $pressure_element)
                                                 <option value="{{ $pressure_element->pressure }}">{{$pressure_element->pressure}}</option>
                                             @endforeach
@@ -72,7 +101,7 @@
 
                                     <td>
                                         <!-- Type -->
-                                        <select class="form-control inputfix" name="type">
+                                        <select class="form-control inputfix" name="type[]">
                                             @foreach($type as $type_element)
                                                 <option value="{{ $type_element->type }}">{{$type_element->type}}</option>
                                             @endforeach
@@ -81,7 +110,7 @@
 
                                     <td>
                                         <!-- Schedule -->
-                                        <select class="form-control inputfix" name="schedule">
+                                        <select class="form-control inputfix" name="schedule[]">
                                             @foreach($schedule as $schedule_element)
                                                 <option value="{{ $schedule_element->schedule }}">{{$schedule_element->schedule}}</option>
                                             @endforeach
@@ -89,14 +118,14 @@
                                     </td>
 
                                     <td>
-                                        {{ Form::text('quantity',null,array('class'=>'form-control inputfix','placeholder'=>'Quantity','id'=>'exampleInputEnail1')) }}
+                                        {{ Form::text('quantity[]',null,array('class'=>'form-control inputfix','placeholder'=>'Quantity','id'=>'exampleInputEnail1')) }}
                                     </td>
 
                                     <td>
-                                        {{ Form::text('weight',null,array('class'=>'form-control inputfix','placeholder'=>'weight','id'=>'exampleInputEnail1')) }}
+                                        {{ Form::text('weight[]',null,array('class'=>'form-control inputfix','placeholder'=>'weight','id'=>'exampleInputEnail1')) }}
                                     </td>
                                     <td>
-                                        {{ Form::text('remarks',null,array('class'=>'form-control inputfix','placeholder'=>'remarks','id'=>'exampleInputEnail1')) }}
+                                        {{ Form::text('remarks[]',null,array('class'=>'form-control inputfix','placeholder'=>'remarks','id'=>'exampleInputEnail1')) }}
                                     </td>
 
                                 </tr>
@@ -106,6 +135,8 @@
 
                                 </tbody>
                             </table>
+
+
 
                             <div class="loginButton">
                                  <button class="waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button" type="submit">Add</button>
