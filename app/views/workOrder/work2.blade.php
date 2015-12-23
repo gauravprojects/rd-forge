@@ -10,18 +10,49 @@
                     //alert("function being called");
                   $work_order_no_current= $('#work_order_no_form').val();
 
-                  // to append work order no
+                  <!-- work order no -->
                   $work_order_no= '<td><input type="text" name="work_order_no[]" class="form-control inputfix" value=" '+$work_order_no_current+ ' "  </td>';
 
-                  // to append item no
-                  $item_no= '<td><input type="text" name="item_no[]" class="form-control inputfix" value=""  </td>';
+                  <!-- item no -->
+                  $item_no= '<td><input type="text" name="item_no[]" class="form-control inputfix" value=" '+ $work_order_no_current+'/'+ ++$item_no_count+ '"  </td>';
 
-                  // to append
-                $("table").append("<tr>"+$work_order_no+$item_no+"</tr>");
+                  <!-- material grade -->
+                  $material_grade= '<td> <select class="form-control inputfix" name="grade[]"> @foreach($grades as $grade_element)
+                                            <option value="{{ $grade_element->grade_name }}">{{ $grade_element->grade_name }}</option> @endforeach </select> </td>';
+
+                  <!-- Size -->
+                  $size= '<td><select class="form-control inputfix" name="standard_size[]"> @foreach($standard_size as $standard_size_element)
+                              <option value="{{ $standard_size_element->std_size }}">{{$standard_size_element->std_size}}</option> @endforeach
+                                </select></td>';
+
+                  <!-- pressure -->
+                  $pressure= '<td><select class="form-control inputfix" name="pressure[]">@foreach($pressure as $pressure_element)
+                              <option value="{{ $pressure_element->pressure }}">{{$pressure_element->pressure}}</option>@endforeach
+                      </select></td>';
+
+                  <!-- Type -->
+                  $type= '<td><select class="form-control inputfix" name="type[]">@foreach($type as $type_element)
+                              <option value="{{ $type_element->type }}">{{$type_element->type}}</option>@endforeach
+                      </select></td>';
 
 
+                  <!-- Schedule -->
+                  $schedule= '<td><select class="form-control inputfix" name="schedule[]"> @foreach($schedule as $schedule_element)
+                              <option value="{{ $schedule_element->schedule }}">{{$schedule_element->schedule}}</option> @endforeach
+                      </select></td>';
 
-                  $item_no_count++;
+                  <!-- quantity -->
+                  $quantity= '<td><input type="text" name="quantity[]" class="form-control inputfix" value="" placeholder="Quantity"  </td>';
+
+                  <!-- Weight -->
+                  $weight= '<td><input type="text" name="weight[]" class="form-control inputfix" value="" placeholder="Weight"  </td>';
+
+                  <!-- remarks -->
+                  $remarks= '<td><input type="text" name="remarks[]" class="form-control inputfix" value="" placeholder="Remarks"  </td>';
+
+             <!-- Jquery append function to append everything to the table -->
+              $("table").append("<tr>"+$work_order_no+$item_no+$material_grade+$size+$pressure+$type+$schedule+$quantity+$weight+$remarks+"</tr>");
+
               });
            });
         </script>
