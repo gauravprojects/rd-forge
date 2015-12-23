@@ -73,7 +73,7 @@
 
                         <!-- button to add a feild in the form dynamically -->
                         <button id="add_record" style="float: right;" onclick="add_record();">Add Field</button>
-                        <br>
+                        <br><br>
 
                         <div class="row">
 
@@ -88,7 +88,7 @@
                                         <th class="heading" style="text-align:center; width: 12%">Size</th>
                                         <th class="heading" style="text-align:center; width:12%">Pressure</th>
                                         <th class="heading" style="text-align:center; width: 12%">Type</th>
-                                        <th class="heading" style="text-align:center;">Schedule</th>
+                                        <th class="heading" style="text-align:center; width: 12%">Schedule</th>
                                         <th class="heading" style="text-align:center;">Quantity</th>
                                         <th class="heading" style="text-align:center;">Weight</th>
                                         <th class="heading" style="text-align:center;">Remarks</th>

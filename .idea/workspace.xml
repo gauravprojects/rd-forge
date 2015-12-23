@@ -45,11 +45,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="workOrderController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="workOrderController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/workOrderController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.25186568">
-              <caret line="58" column="8" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="8" />
+            <state vertical-scroll-proportion="-2.2452831">
+              <caret line="59" column="18" selection-start-line="59" selection-start-column="18" selection-end-line="59" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -65,23 +65,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="work2.blade.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="work2.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/workOrder/work2.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-17.76923">
-              <caret line="50" column="128" selection-start-line="50" selection-start-column="128" selection-end-line="50" selection-end-column="128" />
+            <state vertical-scroll-proportion="0.9396092">
+              <caret line="117" column="94" selection-start-line="117" selection-start-column="94" selection-end-line="117" selection-end-column="94" />
               <folding>
                 <element signature="e#4022#4043#0#HTML" expanded="true" />
-                <element signature="e#4511#4546#0#HTML" expanded="true" />
-                <element signature="e#4626#4661#0#HTML" expanded="true" />
-                <element signature="e#4735#4772#0#HTML" expanded="true" />
-                <element signature="e#4853#4890#0#HTML" expanded="true" />
-                <element signature="e#4961#4997#0#HTML" expanded="true" />
-                <element signature="e#5072#5109#0#HTML" expanded="true" />
-                <element signature="e#5180#5206#0#HTML" expanded="true" />
-                <element signature="e#5281#5307#0#HTML" expanded="true" />
-                <element signature="e#5382#5408#0#HTML" expanded="true" />
-                <element signature="e#5481#5507#0#HTML" expanded="true" />
+                <element signature="e#4515#4550#0#HTML" expanded="true" />
+                <element signature="e#4630#4665#0#HTML" expanded="true" />
+                <element signature="e#4739#4776#0#HTML" expanded="true" />
+                <element signature="e#4857#4894#0#HTML" expanded="true" />
+                <element signature="e#4965#5001#0#HTML" expanded="true" />
+                <element signature="e#5076#5113#0#HTML" expanded="true" />
+                <element signature="e#5184#5221#0#HTML" expanded="true" />
+                <element signature="e#5296#5322#0#HTML" expanded="true" />
+                <element signature="e#5397#5423#0#HTML" expanded="true" />
+                <element signature="e#5496#5522#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -149,8 +149,8 @@
         <option value="$PROJECT_DIR$/app/models/Forging.php" />
         <option value="$PROJECT_DIR$/app/controllers/forgingController.php" />
         <option value="$PROJECT_DIR$/app/views/forging/forging_report.blade.php" />
-        <option value="$PROJECT_DIR$/app/views/workOrder/work2.blade.php" />
         <option value="$PROJECT_DIR$/app/controllers/workOrderController.php" />
+        <option value="$PROJECT_DIR$/app/views/workOrder/work2.blade.php" />
       </list>
     </option>
   </component>
@@ -799,26 +799,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/workOrder/work2.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.76923">
-          <caret line="50" column="128" selection-start-line="50" selection-start-column="128" selection-end-line="50" selection-end-column="128" />
-          <folding>
-            <element signature="e#4022#4043#0#HTML" expanded="true" />
-            <element signature="e#4511#4546#0#HTML" expanded="true" />
-            <element signature="e#4626#4661#0#HTML" expanded="true" />
-            <element signature="e#4735#4772#0#HTML" expanded="true" />
-            <element signature="e#4853#4890#0#HTML" expanded="true" />
-            <element signature="e#4961#4997#0#HTML" expanded="true" />
-            <element signature="e#5072#5109#0#HTML" expanded="true" />
-            <element signature="e#5180#5206#0#HTML" expanded="true" />
-            <element signature="e#5281#5307#0#HTML" expanded="true" />
-            <element signature="e#5382#5408#0#HTML" expanded="true" />
-            <element signature="e#5481#5507#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/workOrder/work.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.65384614">
@@ -829,9 +809,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/workOrderController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25186568">
-          <caret line="58" column="8" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="8" />
+        <state vertical-scroll-proportion="-2.2452831">
+          <caret line="59" column="18" selection-start-line="59" selection-start-column="18" selection-end-line="59" selection-end-column="18" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/workOrder/work2.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9396092">
+          <caret line="117" column="94" selection-start-line="117" selection-start-column="94" selection-end-line="117" selection-end-column="94" />
+          <folding>
+            <element signature="e#4022#4043#0#HTML" expanded="true" />
+            <element signature="e#4515#4550#0#HTML" expanded="true" />
+            <element signature="e#4630#4665#0#HTML" expanded="true" />
+            <element signature="e#4739#4776#0#HTML" expanded="true" />
+            <element signature="e#4857#4894#0#HTML" expanded="true" />
+            <element signature="e#4965#5001#0#HTML" expanded="true" />
+            <element signature="e#5076#5113#0#HTML" expanded="true" />
+            <element signature="e#5184#5221#0#HTML" expanded="true" />
+            <element signature="e#5296#5322#0#HTML" expanded="true" />
+            <element signature="e#5397#5423#0#HTML" expanded="true" />
+            <element signature="e#5496#5522#0#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

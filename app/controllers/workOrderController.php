@@ -56,6 +56,7 @@ class WorkOrderController extends BaseController {
 	public function details_add()
 	{
 		$data= Input::all();
+
 		dd($data);
 		$data_array= array(
 			'work_order_no'=>$data['work_order_no'],
