@@ -257,6 +257,12 @@
 			'uses'=> 'workOrderController@details_delete'
 		));
 
+		//to get item no for a respective work order no using ajax call
+		Route::post('/workOrder/{id}',array(
+			'as' => 'work.item_details',
+			'uses' => 'workOrderController@item_details'
+		));
+
 
 
 		// ROUTES FOR MACHINGING DATA

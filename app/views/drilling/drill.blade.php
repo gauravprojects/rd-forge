@@ -23,7 +23,16 @@
                         <!-- For WORK ORDER NUMBER -->
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Work Order Number') }}
-                            {{ Form::text('work_order_no',null,array('class'=>'form-controlinputfix','placeholder'=>'Work Order Number','id'=>'exampleInputEnail1')) }}
+
+                            <select class="form-control inputfix" name="work_order_no">
+                                @foreach($availableWorkOrderNo as $workOrder)
+                                    <option value="{{ $workOrder->work_order_no }}">
+                                        {{$workOrder->work_order_no}} &nbsp;
+                                        -{{$workOrder->customer_name}} &nbsp;
+                                        -Ordered on:     {{ $workOrder->purchase_order_date  }}
+                                    </option>
+                                @endforeach
+                            </select>
                         </div>
 
                         <!-- FOR ITEM TYPE -->

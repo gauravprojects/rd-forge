@@ -26,7 +26,7 @@
                                 <th>Grade</th>
                                 <th>Weight</th>
                             <tr>
-                                <td>{{ $last_record->machining_id }}</td>
+                                <td>{{ $last_record->mach_id }}</td>
                                 <td>{{ $last_record->date }}</td>
                                 <td>{{ $last_record->work_order_no }}</td>
                                 <td>{{ $last_record->item }}</td>
@@ -40,7 +40,7 @@
                         </table>
                         <div class="span9 btn-block excelPrint">
                             <button class="btn btn-small btn-block" type="button" id="excel_button">
-                                <a href="{{ action('machiningController@update',array('id'=>$last_record->machining_id))}}" class="link" >Update</a>
+                                <a href="{{ action('machiningController@update',array('id'=>$last_record->mach_id))}}" class="link" >Update</a>
                             </button>
                         </div>
                          <div class="span9 btn-block excelPrint">

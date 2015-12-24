@@ -21,7 +21,7 @@ class Machining extends Eloquent {
 	public static function getLastRecord()
 	{
 		return DB::table('machining_records')
-				->orderBy('machining_id', 'desc')
+				->orderBy('mach_id', 'desc')
 				->first();
 	}
 

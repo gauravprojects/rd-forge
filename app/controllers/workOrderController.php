@@ -88,6 +88,12 @@ class WorkOrderController extends BaseController {
 	}
 
 
+	public function item_details($work_order_no)
+	{
+		$item_no_array= WorkOrder::respectiveItemNo($work_order_no);
+		return $item_no_array;
+	}
+
 	public function edit($id)
 	{
 		//

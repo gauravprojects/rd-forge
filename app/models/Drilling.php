@@ -42,5 +42,13 @@ class Drilling extends Eloquent {
 				->get();
 	}
 
+	public static function HeatNo_availableWeightForging()
+	{
+		return DB::table('forging_records')
+			->select('heat_no')
+			->where('available_weight_forging','>','0')
+			->get();
+	}
+
 
 }

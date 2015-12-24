@@ -1,5 +1,5 @@
 @extends('layouts.master')
-
+    `
 @section('links_data')
     <!-- Google's jquery cdn to be placed here -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

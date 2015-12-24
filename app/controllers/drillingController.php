@@ -13,7 +13,7 @@ class DrillingController extends BaseController {
 	{
 		$availableWorkOrder= WorkOrder::availableWorkOrderNo();
 		$grades= Grades::getGrades();
-		return View::make('drilling.drilling')
+		return View::make('drilling.drill')
 				->with('grades',$grades)
 				->with('availableWorkOrderNo',$availableWorkOrder);
 	}

@@ -10,8 +10,10 @@ class machiningController extends BaseController
 		// shows index page for machining form
 		$availableWorkOrder= WorkOrder::availableWorkOrderNo();
 		$grades= Grades::getGrades();
+		$heatNo_available_forging_weight= Drilling::HeatNo_availableWeightForging();
 		return View::make('machining.machine')
 				->with('grades',$grades)
+				->with('heat_no',$heatNo_available_forging_weight)
 				->with('availableWorkOrderNo',$availableWorkOrder);
 	}
 
@@ -20,7 +22,7 @@ class machiningController extends BaseController
 		$input_data= Input::all();
 
 		$input_array_machining_table= array(
-				'date' => date("Y-m-d"),
+				'date' => $input_data['date'],
 				'work_order_no' => $input_data['work_order_no'] ,
 				'item'  	=> $input_data['item'],
 				'heat_no'	=> $input_data['heat_no'],
