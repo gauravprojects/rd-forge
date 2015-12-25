@@ -85,12 +85,27 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="seration_report.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="seration_report.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/seration/seration_report.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.78863233">
+            <state vertical-scroll-proportion="-17.076923">
               <caret line="42" column="127" selection-start-line="42" selection-start-column="127" selection-end-line="42" selection-end-column="127" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="confirm.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/workOrder/confirm.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.87921846">
+              <caret line="47" column="36" selection-start-line="47" selection-start-column="36" selection-end-line="47" selection-end-column="36" />
+              <folding>
+                <element signature="e#1619#1645#0#HTML" expanded="true" />
+                <element signature="e#1799#1825#0#HTML" expanded="true" />
+                <element signature="e#2266#2292#0#HTML" expanded="true" />
+                <element signature="e#2545#2571#0#HTML" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -156,7 +171,6 @@
         <option value="$PROJECT_DIR$/app/controllers/forgingController.php" />
         <option value="$PROJECT_DIR$/app/views/forging/forging_report.blade.php" />
         <option value="$PROJECT_DIR$/app/views/workOrder/work2.blade.php" />
-        <option value="$PROJECT_DIR$/app/views/workOrder/confirm.blade.php" />
         <option value="$PROJECT_DIR$/app/views/search/search.blade.php" />
         <option value="$PROJECT_DIR$/app/controllers/workOrderController.php" />
         <option value="$PROJECT_DIR$/app/models/WorkOrder.php" />
@@ -179,6 +193,7 @@
         <option value="$PROJECT_DIR$/app/controllers/serationController.php" />
         <option value="$PROJECT_DIR$/app/views/seration/confirm.blade.php" />
         <option value="$PROJECT_DIR$/app/views/seration/seration_report.blade.php" />
+        <option value="$PROJECT_DIR$/app/views/workOrder/confirm.blade.php" />
       </list>
     </option>
   </component>
@@ -271,6 +286,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rd-forge" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rd-forge" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="workOrder" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -570,13 +607,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/workOrder/confirm.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-20.0">
-          <caret line="69" column="45" selection-start-line="69" selection-start-column="45" selection-end-line="69" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/WorkOrder.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.943396">
@@ -807,9 +837,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/seration/seration_report.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.78863233">
+        <state vertical-scroll-proportion="-17.076923">
           <caret line="42" column="127" selection-start-line="42" selection-start-column="127" selection-end-line="42" selection-end-column="127" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/workOrder/confirm.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.87921846">
+          <caret line="47" column="36" selection-start-line="47" selection-start-column="36" selection-end-line="47" selection-end-column="36" />
+          <folding>
+            <element signature="e#1619#1645#0#HTML" expanded="true" />
+            <element signature="e#1799#1825#0#HTML" expanded="true" />
+            <element signature="e#2266#2292#0#HTML" expanded="true" />
+            <element signature="e#2545#2571#0#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

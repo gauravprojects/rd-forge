@@ -22,11 +22,32 @@
                                 </tr>
 
                                 <tr>
+
+                                <th class="heading" style="text-align:center;">Purchase Order Date</th>
+                                    <td>{{ $work_order_details[0]->purchase_order_date }}</td>
+
                                     <th class="heading" style="text-align:center;">Required Delivery Date</th>
                                     <td>{{ $work_order_details[0]->required_delivery_date }}</td>
-
+                                </tr>
+                                <tr>
                                     <th class="heading" style="text-align:center;">Remarks</th>
                                     <td>{{ $work_order_details[0]->remarks }}</td>
+
+                                    <th class="heading" style="text-align:center;">Inspection</th>
+                                    <td>{{ $work_order_details[0]->inspection }}</td>
+                                </tr>
+
+
+                                <tr>
+                                    <th class="heading" style="text-align:center;">Packing Instructions</th>
+                                    <td>{{ $work_order_details[0]->packing_instruction }}</td>
+
+                                    <th class="heading" style="text-align:center;">Testing Instructions</th>
+                                    <td>{{ $work_order_details[0]->testing_instruction }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="heading" style="text-align:center;">Quatation No</th>
+                                    <td>{{ $work_order_details[0]->quatation_no }}</td>
                                 </tr>
                             </table>
 
@@ -38,7 +59,7 @@
                                     <th class="heading" style="text-align:center;" colspan="6"> Item Details</th>
                                 </tr>
                                 <tr>
-                                    <th class="heading" style="text-align:center;">Work Order No</th>
+                                    <th class="heading" style="text-align:center;">Item No</th>
                                     <th class="heading" style="text-align:center;">Material Grade</th>
                                     <th class="heading" style="...">Size</th>
                                     <th class="heading" style="...">Pressure</th>
@@ -56,7 +77,7 @@
                                  <tr>
 
                                    
-                                    <td>{{ $data->work_order_no }}</td>
+                                    <td>{{ $data->item_no }}</td>
                                     <td>{{ $data->material_grade }}</td>
                                     <td>{{ $data->size }}</td>
                                     <td>{{ $data->pressure }}</td>
