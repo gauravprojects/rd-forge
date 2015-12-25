@@ -37,4 +37,11 @@ class Seration extends Eloquent {
 				->select()
 				->get();
 	}
+
+	public static function deleteRecord($seration_id)
+	{
+		return DB::table('seration_records')
+			->where('seration_id','=',$seration_id)
+			->delete();
+	}
 }

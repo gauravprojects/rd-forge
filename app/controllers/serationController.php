@@ -15,9 +15,11 @@
 		{
 			$availableWorkOrder= WorkOrder::availableWorkOrderNo();
 			$grades= Grades::getGrades();
+			$heatNo_available_forging_weight= Drilling::HeatNo_availableWeightForging();
 			return View::make('seration.seration')
 					->with('grades',$grades)
-					->with('availableWorkOrderNo',$availableWorkOrder);
+					->with('availableWorkOrderNo',$availableWorkOrder)
+					->with('heat_no',$heatNo_available_forging_weight);
 		}
 
 		public function store()
@@ -62,14 +64,16 @@
 		public function update($id)
 		{
 				$seration_array = Seration::getRecord($id);
-
+			$availableWorkOrder= WorkOrder::availableWorkOrderNo();
 				$grades = Grades::getGrades();
-				$heat_no = RawMaterial::getHeatNo();
+			$heatNo_available_forging_weight= Drilling::HeatNo_availableWeightForging();
+				//$heat_no = RawMaterial::getHeatNo();
 
 				return View::make('seration.seration_update')
 				->with('seration_array',$seration_array)
 				->with('grades',$grades)
-				->with('heat_no',$heat_no);
+				->with('availableWorkOrderNo',$availableWorkOrder)
+				->with('heat_no',$heatNo_available_forging_weight);
 		}
 
 
@@ -103,6 +107,15 @@
 		{
 			$all_data=Seration::getAllData();
 			return View::make('seration.seration_report_excel')->with('data',$all_data);
+
+		}
+
+		public function destroy($id)
+		{
+			$delete_response= Seration::deleteRecord($id);
+			$all_data=Seration::getAllData();
+			return View::make('seration.seration_report')->with('data',$all_data);
+
 
 		}
 

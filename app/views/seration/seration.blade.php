@@ -2,6 +2,38 @@
 
 @section('links_data')
 
+    <script type="application/javascript">
+        $(document).ready(function(){
+            $('#work_order_no').click(function () {
+                var work_order_no= $(this).val();
+                //alert($work_order_no);
+                console.log(work_order_no);
+                $.ajax({
+                    url:'workOrder/'+work_order_no,
+                    data: work_order_no,
+                    method: 'POST',
+                    dataType: "json",
+                }).done(function(response){
+                    var i=0;
+                    //console.log(response[0]['item_no']);
+                    for(i=0;i<100;i++)
+                    {
+                        if (!(typeof response[i]['item_no']  === 'undefined' || response[i]['item_no'] === null))
+                        {
+                            // variable is defined
+                            console.log(response[i]['item_no']);
+                            $('#item_no').append("<option value="+response[i]['item_no']+">"
+                                    + response[i]['item_no'] +
+                                    "<option>");
+                        }
+                    }
+                });
+
+            });
+        });
+    </script>
+
+
     <br><br>
     <a href="{{route('seration.report')}} " class="waves-effect waves-light btn link right">Serration reports</a>
 
@@ -19,21 +51,54 @@
                         {{ Form::open(array('action'=> 'serationController@store')) }}
                                 <!-- For recipt number of the material coming from outside -->
 
+
+                        <div class="form-group">
+                            {{ Form::label('exampleInputEmail1','Date') }}
+                            {{ Form::text('date',null,array('class'=>'form-control inputfix','id'=>'date','name'=>'date','placeholder'=>'Date','readonly')) }}
+                        </div>
+
+
                         <!-- For WORK ORDER NUMBER -->
+                        <!-- All those workorder will be shown whose status is still incomplete -->
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Work Order Number') }}
-                            {{ Form::text('work_order_no',null,array('class'=>'form-control inputfix','placeholder'=>'Work Order Number','id'=>'exampleInputEnail1')) }}
+
+                            <select class="form-control inputfix" name="work_order_no" id="work_order_no">
+                                <option value="">---Select Work Order--------</option>
+                                @foreach($availableWorkOrderNo as $workOrder)
+                                    <option value="{{ $workOrder->work_order_no }}">
+                                        {{$workOrder->work_order_no}} &nbsp;
+                                        -{{$workOrder->customer_name}} &nbsp;
+                                        -Ordered on:     {{ $workOrder->purchase_order_date  }}
+                                    </option>
+                                @endforeach
+                            </select>
                         </div>
 
                         <!-- FOR ITEM TYPE -->
+                        <!-- These items will be of that particular work order above mentioned
+                                   ------- AJAX REQUIRED HERE----------------
+                                   input -> work_order_no
+                                   required-> work_order_details to be autofilled on this page
+                        -->
                         <div class="form-group">
-                            {{ Form::label('exampleInputEmail1','Item') }}
-                            {{ Form::text('item',null,array('class'=>'form-control inputfix','placeholder'=>'Item','id'=>'exampleInputEnail1')) }}
+                            {{ Form::label('exampleInputEmail1','Item no') }}
+                            <select class="form-control inputfix" name="item" id="item_no">
+
+                            </select>
                         </div>
 
+
                         <div class="form-group">
-                            {{ Form::label('exampleInputEmail1','Heat Number') }}
-                            {{ Form::text('heat_no',null,array('class'=>'form-control inputfix','placeholder'=>'Heat Number','id'=>'exampleInputEnail1')) }}
+                            {{ Form::label('exampleInputEmail1','Heat Number  (from forged data)') }}
+                            <select class="form-control inputfix" name="heat_no" id="heat_no">
+                                <option value="">---Select Heat Number --------</option>
+                                @foreach($heat_no as $heat_no_element)
+                                    <option value="{{ $heat_no_element->heat_no }}">
+                                        {{ $heat_no_element->heat_no }}
+                                    </option>
+                                @endforeach
+                            </select>
                         </div>
 
 

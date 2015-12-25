@@ -273,7 +273,7 @@
 				'uses' => 'workOrderController@item_details'
 			));
 
-		Route::post('/serration/update/workOrder/{id}',array(
+		Route::post('/seration/update/workOrder/{id}',array(
 			'as' => 'serration.item_details',
 			'uses' => 'workOrderController@item_details'
 		));
@@ -412,6 +412,11 @@
 		Route::post('/seration/update/{id}',array(
 			'as' => 'seration.update_store',
 			'uses'=>'serationController@update_store'
+	));
+
+	Route::get('/seration/delete/{id}',array(
+		'as' => 'seration.delete',
+		'uses' => 'serationController@destroy'
 	));
 
 

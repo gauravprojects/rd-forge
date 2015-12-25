@@ -25,6 +25,7 @@
                                 <th>Quantity</th>
                                 <th>Machine Name</th>
                                 <th>Grade</th>
+                                <th>Update/Delete</th>
 
                             @foreach($data as $seration_data)
 
@@ -37,6 +38,10 @@
                                 <td>{{ $seration_data->quantity }}</td>
                                 <td>{{ $seration_data->machine_name }}</td>
                                 <td>{{ $seration_data->grade }}</td>
+                                <td>
+                                        <a href="{{ action('serationController@update',array('id'=>$seration_data->seration_id))}}" class="link" >Update</a>
+                                        <a href="{{ action('serationController@destroy',array('id'=>$seration_data->seration_id))}}" class="link" >Delete</a>
+                                </td>
 
 
                             </tr>
