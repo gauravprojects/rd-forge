@@ -26,10 +26,11 @@
                                 <th>Machine Name</th>
                                 <th>Grade</th>
                                 <th>Weight</th>
+                                <th>Update/Delete</th>
                             @foreach($data as $machining_data)
 
                             <tr>
-                                <td>{{ $machining_data->machining_id }}</td>
+                                <td>{{ $machining_data->mach_id }}</td>
                                 <td>{{ $machining_data->date }}</td>
                                 <td>{{ $machining_data->work_order_no }}</td>
                                 <td>{{ $machining_data->item }}</td>
@@ -38,8 +39,14 @@
                                 <td>{{ $machining_data->machine_name }}</td>
                                 <td>{{ $machining_data->grade }}</td>
                                 <td>{{ $machining_data->weight }}</td>
+                                <td>
+                                        <a href="{{ action('machiningController@update',array('id'=>$machining_data->mach_id))}}" class="link" >Update</a>
+                                    <br>
+                                        <a href="{{ action('machiningController@destroy',array('id'=>$machining_data->mach_id))}}" class="link" >Delete</a>
 
+                                </td>
                             </tr>
+
                             @endforeach
                         </table>
 

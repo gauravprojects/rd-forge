@@ -1,6 +1,39 @@
 @extends('layouts.master')
 
 @section('links_data')
+
+    <script type="application/javascript">
+        $(document).ready(function(){
+            $('#work_order_no').click(function () {
+                var work_order_no= $(this).val();
+                //alert($work_order_no);
+                console.log(work_order_no);
+                $.ajax({
+                    url:'workOrder/'+work_order_no,
+                    data: work_order_no,
+                    method: 'POST',
+                    dataType: "json",
+                }).done(function(response){
+                    var i=0;
+                    //console.log(response[0]['item_no']);
+                    for(i=0;i<100;i++)
+                    {
+                        if (!(typeof response[i]['item_no']  === 'undefined' || response[i]['item_no'] === null))
+                        {
+                            // variable is defined
+                            console.log(response[i]['item_no']);
+                            $('#item_no').append("<option value="+response[i]['item_no']+">"
+                                    + response[i]['item_no'] +
+                                    "<option>");
+                        }
+                    }
+                });
+
+            });
+        });
+    </script>
+
+
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <div class="row">
             <div class="wrapper">
@@ -18,18 +51,39 @@
                                     <!-- For recipt number of the material coming from outside -->
 
                             <div class="form-group">
-                                {{ Form::label('exampleInputEmail1','Machining Id') }}
-                                 {{ Form::text('machining_id',$machining->machining_id,array('class'=>'form-control inputfix','id'=>'machining_id','name'=>'machining_id','placeholder'=>'Date')) }}
+                                {{ Form::label('exampleInputEmail1','Date') }}
+                                {{ Form::text('date',$machining->date,array('class'=>'form-control inputfix','id'=>'date','name'=>'date','placeholder'=>'Date','readonly')) }}
                             </div>
 
                             <div class="form-group">
-                            {{ Form::label('exampleInputEmail1','Work Order Number') }}
-                            {{ Form::text('work_order_no',$machining->work_order_no,array('class'=>'form-control inputfix','placeholder'=>'Work Order Number','id'=>'exampleInputEnail1')) }}
-                        </div>
+                                {{ Form::label('exampleInputEmail1','Machining Id') }}
+                                 {{ Form::text('machining_id',$machining->mach_id,array('class'=>'form-control inputfix','id'=>'machining_id','name'=>'machining_id','placeholder'=>'Date')) }}
+                            </div>
 
-                            <div class="form-group"s>
-                            {{ Form::label('exampleInputEmail1','Item') }}
-                            {{ Form::text('item',$machining->item,array('class'=>'form-control inputfix','placeholder'=>'Item','id'=>'exampleInputEnail1')) }}
+
+                            <!-- For WORK ORDER NUMBER -->
+                            <!-- All those workorder will be shown whose status is still incomplete -->
+                            <div class="form-group">
+                                {{ Form::label('exampleInputEmail1','Work Order Number') }}
+
+                                <select class="form-control inputfix" name="work_order_no" id="work_order_no">
+                                    <option value="">---Select Work Order--------</option>
+                                    @foreach($availableWorkOrderNo as $workOrder)
+                                        <option value="{{ $workOrder->work_order_no }}">
+                                            {{$workOrder->work_order_no}} &nbsp;
+                                            -{{$workOrder->customer_name}} &nbsp;
+                                            -Ordered on:     {{ $workOrder->purchase_order_date  }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+
+                            <div class="form-group">
+                                {{ Form::label('exampleInputEmail1','Item no') }}
+                                <select class="form-control inputfix" name="item" id="item_no">
+
+                                </select>
                             </div>
 
                              <div class="form-group">

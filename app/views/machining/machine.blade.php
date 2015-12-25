@@ -56,6 +56,8 @@
                             {{ Form::text('date',null,array('class'=>'form-control inputfix','id'=>'date','name'=>'date','placeholder'=>'Date','readonly')) }}
                         </div>
 
+
+
                         <!-- For WORK ORDER NUMBER -->
                         <!-- All those workorder will be shown whose status is still incomplete -->
                          <div class="form-group">

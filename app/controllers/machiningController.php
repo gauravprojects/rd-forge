@@ -63,10 +63,16 @@ class machiningController extends BaseController
 			$grades = Grades::getGrades();
 			$heat_no = RawMaterial::getHeatNo();
 
-			return View::make('machining.machining_update')
-			->with('machining_array',$machining_array)
+		// shows index page for machining form
+		$availableWorkOrder= WorkOrder::availableWorkOrderNo();
+		$grades= Grades::getGrades();
+		$heatNo_available_forging_weight= Drilling::HeatNo_availableWeightForging();
+		return View::make('machining.machining_update')
 			->with('grades',$grades)
-			->with('heat_no',$heat_no);
+			->with('heat_no',$heatNo_available_forging_weight)
+			->with('availableWorkOrderNo',$availableWorkOrder)
+			->with('machining_array',$machining_array);
+
 	}
 
 
@@ -93,6 +99,14 @@ class machiningController extends BaseController
 
 		$get_record_array= Machining::getRecord($machining['machining_id']);
 		return View::make('machining.confirm_machining_update')->with('confirmations',$get_record_array);
+	}
+
+	public function destroy($id)
+	{
+		$delete_response= Machining::deleteRecord($id);
+		$all_data= Machining::getAllData();
+		return View::make('machining.machining_report')->with('data',$all_data);
+
 	}
 
 }

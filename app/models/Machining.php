@@ -13,7 +13,7 @@ class Machining extends Eloquent {
 	{
 		return DB::table('machining_records')
 				->select()
-				->where('machining_id','=',$id)
+				->where('mach_id','=',$id)
 				->get();
 	}
 
@@ -30,5 +30,12 @@ class Machining extends Eloquent {
 		return DB::table('machining_records')
 				->select()
 				->get();
+	}
+
+	public static function deleteRecord($mach_id)
+	{
+		return DB::table('machining_records')
+			->where('mach_id','=',$mach_id)
+			->delete();
 	}
 }

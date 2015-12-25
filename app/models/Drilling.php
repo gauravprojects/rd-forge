@@ -50,5 +50,12 @@ class Drilling extends Eloquent {
 			->get();
 	}
 
+	public static function deleteRecord($drilling_id)
+	{
+		return DB::table('drilling_records')
+			->where('drilling_id','=',$drilling_id)
+			->delete();
+	}
+
 
 }

@@ -263,6 +263,23 @@
 			'uses' => 'workOrderController@item_details'
 		));
 
+		Route::post('/drilling/update/workOrder/{id}',array(
+			'as' => 'drilling.item_details',
+			'uses' => 'workOrderController@item_details'
+		));
+
+		Route::post('/machining/update/workOrder/{id}',array(
+				'as' => 'machining.item_details',
+				'uses' => 'workOrderController@item_details'
+			));
+
+		Route::post('/serration/update/workOrder/{id}',array(
+			'as' => 'serration.item_details',
+			'uses' => 'workOrderController@item_details'
+		));
+
+
+
 
 
 		// ROUTES FOR MACHINGING DATA
@@ -295,6 +312,7 @@
 
 		));
 
+
 		// to update if any wrong record is entered
 		Route::get('/machining/update/{id}',array(
 			'as' => 'machining.update',
@@ -305,7 +323,12 @@
 		Route::post('/machining/update/{id}',array(
 			'as' => 'machining.update_store',
 			'uses'=>'machiningController@update_store'
-	));
+		));
+
+		Route::get('/machining/delete/{id}',array(
+			'as' => 'machining.delete',
+			'uses' => 'machiningController@destroy'
+		));
 
 
 	//ROUTES FOR DRILLING PAGE
@@ -345,6 +368,11 @@
 		Route::post('/drilling/update/{id}',array(
 			'as' => 'drilling.update_store',
 			'uses'=>'drillingController@update_store'
+	));
+
+	Route::get('/drilling/delete/{id}',array(
+		'as' => 'drilling.delete',
+		'uses' => 'drillingController@destroy'
 	));
 
 

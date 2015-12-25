@@ -25,6 +25,7 @@
                                 <th>Quantity</th>
                                 <th>Machine Name</th>
                                 <th>Grade</th>
+                                <th>Update/Delete</th>
 
                             @foreach($data as $drilling_data)
 
@@ -37,6 +38,11 @@
                                 <td>{{ $drilling_data->quantity }}</td>
                                 <td>{{ $drilling_data->machine_name }}</td>
                                 <td>{{ $drilling_data->grade }}</td>
+                                <td>
+                                        <a href="{{ action('drillingController@update',array('id'=>$drilling_data->drilling_id))}}" class="link" >Update</a>
+                                    <br>
+                                    <a href="{{ action('drillingController@destroy',array('id'=>$drilling_data->drilling_id))}}" class="link" >Delete</a>
+                                </td>
 
 
                             </tr>

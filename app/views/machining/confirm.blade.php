@@ -42,6 +42,10 @@
                             <button class="btn btn-small btn-block" type="button" id="excel_button">
                                 <a href="{{ action('machiningController@update',array('id'=>$last_record->mach_id))}}" class="link" >Update</a>
                             </button>
+
+                            <button class="btn btn-small btn-block" type="button" id="excel_button">
+                                <a href="{{ action('machiningController@destroy',array('id'=>$last_record->mach_id))}}" class="link" >Delete</a>
+                            </button>
                         </div>
                          <div class="span9 btn-block excelPrint">
                             <button class="btn btn-small btn-block" type="button" id="excel_button">

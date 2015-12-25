@@ -13,9 +13,11 @@ class DrillingController extends BaseController {
 	{
 		$availableWorkOrder= WorkOrder::availableWorkOrderNo();
 		$grades= Grades::getGrades();
+		$heatNo_available_forging_weight= Drilling::HeatNo_availableWeightForging();
 		return View::make('drilling.drill')
 				->with('grades',$grades)
-				->with('availableWorkOrderNo',$availableWorkOrder);
+				->with('availableWorkOrderNo',$availableWorkOrder)
+				->with('heat_no',$heatNo_available_forging_weight);
 	}
 	public function store()
 	{
@@ -63,12 +65,15 @@ class DrillingController extends BaseController {
 			$drilling_array = Drilling::getRecord($id);
 
 			$grades = Grades::getGrades();
-			$heat_no = RawMaterial::getHeatNo();
+			//$heat_no = RawMaterial::getHeatNo();
+			$heatNo_available_forging_weight= Drilling::HeatNo_availableWeightForging();
+			$availableWorkOrder= WorkOrder::availableWorkOrderNo();
 
 			return View::make('drilling.drilling_update')
 			->with('drilling_array',$drilling_array)
 			->with('grades',$grades)
-			->with('heat_no',$heat_no);
+			->with('heat_no',$heatNo_available_forging_weight)
+				->with('availableWorkOrderNo',$availableWorkOrder);
 	}
 
 
@@ -103,5 +108,13 @@ class DrillingController extends BaseController {
 	{
 		$all_data= Drilling::getAllData();
 		return View::make('drilling.drilling_report_excel')->with('data',$all_data);
+	}
+
+	public function destroy($id)
+	{
+		$delete_response=Drilling::deleteRecord($id);
+		$all_data= Drilling::getAllData();
+		return View::make('drilling.drilling_report')->with('data',$all_data);
+
 	}
 }
