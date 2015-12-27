@@ -58,6 +58,14 @@
                             <button class="btn btn-small btn-block" type="button" id="excel_button">
                                 <a href="{{ action('forgingController@update',array('id'=>$confirmation->forging_id))}}" class="link" >Update</a>
                             </button>
+                            </div>
+                        <div>
+                            <button class="btn btn-small btn-block" type="button" id="excel_button">
+                                <a href="{{ action('forgingController@destroy',array('id'=>$confirmation->forging_id))}}" class="link" >Delete</a>
+                            </button>
+                            <button class="btn btn-small btn-block" type="button" id="excel_button">
+                                <a href="{{ action('forgingController@index')  }}" class="link" >New Forging Entry</a>
+                            </button>
                         </div>
                         <br><br><br><br>
                     </div>		<!-- row conatining form ends here -->

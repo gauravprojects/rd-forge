@@ -60,6 +60,14 @@
                             <button class="btn btn-small btn-block" type="button" id="excel_button">
                                 <a href="{{ action('cuttingPageController@update',array('id'=>$confirmation->cutting_id))}}" class="link" >Update</a>
                             </button>
+
+                            <button class="btn btn-small btn-block" type="button" id="excel_button">
+                                <a href="{{ action('cuttingPageController@destroy',array('id'=>$confirmation->cutting_id))}}" class="link" >Delete</a>
+                            </button>
+
+                            <button class="btn btn-small btn-block" type="button" id="excel_button">
+                                <a href="{{ action('cuttingPageController@index')  }}" class="link" >New Cutting Entry</a>
+                            </button>
                         </div>
                         <br><br><br><br>
                     </div>		<!-- row conatining form ends here -->

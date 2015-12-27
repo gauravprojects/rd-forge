@@ -56,7 +56,18 @@
                             <button class="btn btn-small btn-block" type="button" id="excel_button">
                                 <a href="{{ action('rawMaterialController@update',array('id'=>$confirmation->internal_no))}}" class="link" >Update</a>
                             </button>
-                        </div>
+
+                            <button class="btn btn-small btn-block" type="button" id="excel_button">
+                                <a href="{{ action('rawMaterialController@destroy',array('id'=>$confirmation->internal_no))}}" class="link" >Delete</a>
+                            </button>
+
+
+
+
+                        <button class="btn btn-small btn-block" type="button" id="excel_button">
+                            <a href="{{ action('rawMaterialController@index')  }}" class="link" >New Raw Material Entry</a>
+                        </button>
+                    </div>
                         <br><br><br><br>
                     </div>		<!-- row conatining form ends here -->
                 </div>		<!-- card ends here -->

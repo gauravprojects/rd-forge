@@ -89,7 +89,6 @@ class DrillingController extends BaseController {
 					'quantity'	=>$drilling['quantity'],
 					'machine_name'=>$drilling['machine_name'],
 					'grade' => $drilling['grade'],
-					'weight'	=> $drilling['weight'],
 					'remarks'=> $drilling['remarks']
 					);
 

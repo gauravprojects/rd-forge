@@ -56,6 +56,16 @@
                             <button class="btn btn-small btn-block" type="button" id="excel_button">
                                 <a href="{{ action('drillingController@update',array('id'=>$confirmation->drilling_id))}}" class="link" >Update</a>
                             </button>
+
+                            <button class="btn btn-small btn-block" type="button" id="excel_button">
+                                <a href="{{ action('drillingController@destroy',array('id'=>$confirmation->drilling_id))}}" class="link" >Delete</a>
+                            </button>
+                        </div>
+
+                        <div class="span9 btn-block excelPrint">
+                            <button class="btn btn-small btn-block" type="button" id="excel_button">
+                                <a href="{{ action('drillingController@index')  }}" class="link" >New Drilling Entry</a>
+                            </button>
                         </div>
                         <br><br><br><br>
                     </div>		<!-- row conatining form ends here -->

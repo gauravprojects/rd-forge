@@ -22,7 +22,7 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 	public static function getStandardData()
 	{
 		$sizes = Sizes::getSizes();
-		$heat_no = RawMaterial::getHeatNo();
+		$heat_no = Cutting::getHeatNo();
 		$standard_sizes = StandardSizes::getStandardSizes();
 		$pressure = Pressure::getPressure();
 		$schedule = Schedule::getSchedule();

@@ -100,4 +100,12 @@ class Cutting extends Eloquent
 			->delete();
 	}
 
+	public static  function getHeatNo()
+	{
+		return DB::table('cutting_records')
+			->select()
+			->where('available_weight_cutting', '>', 0)
+			->get();
+	}
+
 }
