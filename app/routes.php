@@ -251,6 +251,18 @@
 			'uses' => 'workOrderController@details_modify'
 		));
 
+		//to update work order
+		Route::get('/workOrder/update/{id}',array(
+			'as' => 'work.update',
+			'uses' => 'workOrderController@update'
+		));
+
+		//to update work order details
+		Route::get('/workOrder/update_details/{id}',array(
+			'as' => 'work.update_details',
+			'uses' => 'workOrderController@update_details'
+		));
+
 		// to delete any false entered data in the work order details
 		Route::post('workOrder/details/delete/{id}',array(
 			'as' => 'work.details_delete',

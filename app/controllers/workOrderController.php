@@ -94,22 +94,23 @@ class WorkOrderController extends BaseController {
 		return $item_no_array;
 	}
 
-	public function edit($id)
-	{
-		//
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 * PUT /workorder/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
 	public function update($id)
 	{
-		//
+		//to update entered work order
+		$record=WorkOrder::getRecordByWorkOrderDeails($id);
+		$record= $record[0];
+		return View::make('workOrder.work_update')
+			->with('record',$record);
+
+		dd($record);
+
+		dd("update called");
 	}
+
+
+	
+
+
 
 	/**
 	 * Remove the specified resource from storage.

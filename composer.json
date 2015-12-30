@@ -6,7 +6,7 @@
 	"require": {
 		"laravel/framework": "4.2.*",
 	  	"way/generators":"2.*",
-		"behat/behat": "3.0.x-dev"
+	  "mccool/database-backup": "1.0.1"
 	},
 	"autoload": {
 		"classmap": [
