@@ -33,7 +33,7 @@
             });     // category function ends
 
             $('#options').click(function () {
-               alert($('#options').val());
+               //alert($('#options').val());
                 $('#search_form').append("<input type='text' name='"+$('#options').val()+"' value='' placeholder='Enter "+$('#options').val()+"' >");
             });
         });         // document ready function ends

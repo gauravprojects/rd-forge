@@ -10,6 +10,7 @@
                             <span>Admin Panel</span>
                         </div>
                     </div>
+                    <a href="{{route('workOrder.report')}} " class="col-xs-12 col-sm-12 col-md-12 col-lg-12 waves-effect waves-light btn link">Work Order reports</a><br><br>
                     <a href="{{route('raw.report')}} " class="col-xs-12 col-sm-12 col-md-12 col-lg-12 waves-effect waves-light btn link">Raw Material reports</a><br><br>
                     <a href="{{route('cutting.report')}} " class="col-xs-12 col-sm-12 col-md-12 col-lg-12 waves-effect waves-light btn link">Cutting reports</a><br><br>
                     <a href="{{route('forging.report')}} " class="col-xs-12 col-sm-12 col-md-12 col-lg-12 waves-effect waves-light btn link">Forging reports</a><br><br>

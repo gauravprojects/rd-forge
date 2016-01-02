@@ -166,6 +166,12 @@
 
 		));
 
+		//route for work order reports
+		Route::get('/admin/reports/workOrder',array(
+			'as' => 'workOrder.report',
+			'uses' => 'workOrderController@show'
+		));
+
 
 						//ROUTES FOR FORGING DATA
 
@@ -262,6 +268,7 @@
 			'as' => 'work.update_details',
 			'uses' => 'workOrderController@update_details'
 		));
+
 
 		// to delete any false entered data in the work order details
 		Route::post('workOrder/details/delete/{id}',array(

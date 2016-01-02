@@ -74,6 +74,20 @@ class WorkOrder extends Eloquent
 			->get();
 	}
 
+	public static function getAllRecordsWorkOrderDetails()
+	{
+		return DB::table('work_order_details')
+			->select()
+			->get();
+	}
+
+	public static function getAllRecordsWorkOrderMaterialDetails()
+	{
+		return DB::table('work_order_material_details')
+			->select()
+			->get();
+	}
+
 
 
 }
