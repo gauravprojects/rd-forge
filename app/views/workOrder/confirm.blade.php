@@ -92,9 +92,13 @@
 
                             </table>
 
-                            {{--<button class="btn btn-small btn-block" type="button" id="excel_button">--}}
-                                {{--<a href="{{ action('workOrderController@update',array('id'=>$work_order_details[0]->work_order_no))}}" class="link" >Update</a>--}}
-                            {{--</button>--}}
+                            <button class="btn btn-small btn-block" type="button" id="excel_button">
+                                <a href="{{ action('workOrderController@update',array('id'=>$work_order_details[0]->work_order_no))}}" class="link" >Update</a>
+                            </button>
+
+                            <button class="btn btn-small btn-block" type="button" id="excel_button">
+                                <a href="{{ action('workOrderController@destroy',array('id'=>$work_order_details[0]->work_order_no))}}" class="link" >Delete</a>
+                            </button>
 
 
                         </div>

@@ -88,6 +88,17 @@ class WorkOrder extends Eloquent
 			->get();
 	}
 
+	public static function deleteRecord($id)
+	{
+		 DB::table('work_order_details')
+			 ->where('work_order_no','=',$id)
+			 ->delete();
+
+		 return DB::table('work_order_material_details')
+			 ->where('work_order_no','=',$id)
+			 ->delete();
+	}
+
 
 
 }

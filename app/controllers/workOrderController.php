@@ -133,7 +133,15 @@ class WorkOrderController extends BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		//dd($id);
+		WorkOrder::deleteRecord($id);
+		$all_records_work_order_details= WorkOrder::getAllRecordsWorkOrderDetails();
+		$all_records_work_order_material_details=WorkOrder::getAllRecordsWorkOrderMaterialDetails();
+		return View::make('workOrder.work_report')
+			->with('work_order_details',$all_records_work_order_details)
+			->with('work_order_material_details',$all_records_work_order_material_details);
+
+
 	}
 
 }

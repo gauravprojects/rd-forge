@@ -173,6 +173,8 @@
 		));
 
 
+
+
 						//ROUTES FOR FORGING DATA
 
 
@@ -271,10 +273,11 @@
 
 
 		// to delete any false entered data in the work order details
-		Route::post('workOrder/details/delete/{id}',array(
+		Route::get('workOrder/details/delete/{id}',array(
 			'as' => 'work.details_delete',
-			'uses'=> 'workOrderController@details_delete'
+			'uses'=> 'workOrderController@destroy'
 		));
+
 
 		//to get item no for a respective work order no using ajax call
 		Route::post('/workOrder/{id}',array(
