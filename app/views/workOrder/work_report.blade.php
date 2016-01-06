@@ -52,48 +52,66 @@
                             </table>
 
 
-                    @endforeach
-
-
-                            {{--@foreach($work_order_material_details as $data)--}}
-                            {{--<table>--}}
-                                {{--<tr>--}}
-                                    {{--<th class="heading" style="text-align:center;" colspan="6"> Item Details</th>--}}
-                                {{--</tr>--}}
-                                {{--<tr>--}}
-                                    {{--<th class="heading" style="text-align:center;">Item No</th>--}}
-                                    {{--<th class="heading" style="text-align:center;">Material Grade</th>--}}
-                                    {{--<th class="heading" style="...">Size</th>--}}
-                                    {{--<th class="heading" style="...">Pressure</th>--}}
-                                    {{--<th class="heading" style="...">Type</th>--}}
-                                    {{--<th class="heading" style="...">Schedule</th>--}}
-                                    {{--<th class="heading" style="text-align:center;">Quantity</th>--}}
-                                    {{--<th class="heading" style="text-align:center;">Weight</th>--}}
-                                    {{--<th class="heading" style="text-align:center;">Remarks</th>--}}
-                                {{--</tr>--}}
 
 
 
 
+                                <table>
+                                    <tr>
+                                        <th class="heading" style="text-align:center;" colspan="6"> Item Details</th>
+                                    </tr>
+                                    <tr>
+                                        <th class="heading" style="text-align:center;">Item No</th>
+                                        <th class="heading" style="text-align:center;">Material Grade</th>
+                                        <th class="heading" style="...">Size</th>
+                                        <th class="heading" style="...">Pressure</th>
+                                        <th class="heading" style="...">Type</th>
+                                        <th class="heading" style="...">Schedule</th>
+                                        <th class="heading" style="text-align:center;">Quantity</th>
+                                        <th class="heading" style="text-align:center;">Weight</th>
+                                        <th class="heading" style="text-align:center;">Remarks</th>
+                                    </tr>
 
-                                    {{--<tr>--}}
+
+                                    @foreach($work_order_material_details as $data)
 
 
-                                        {{--<td>{{ $data->item_no }}</td>--}}
-                                        {{--<td>{{ $data->material_grade }}</td>--}}
-                                        {{--<td>{{ $data->size }}</td>--}}
-                                        {{--<td>{{ $data->pressure }}</td>--}}
-                                        {{--<td>{{ $data->type }}</td>--}}
-                                        {{--<td>{{ $data->schedule }}</td>--}}
-                                        {{--<td>{{ $data->quantity }}</td>--}}
-                                        {{--<td>{{ $data->weight }}</td>--}}
-                                        {{--<td>{{ $data->remarks }}</td>--}}
-
-                                    {{--</tr>--}}
 
 
-                            {{--</table>--}}
-                            {{--@endforeach--}}
+                                        <?php if($data->work_order_no ==$work_order_detail->work_order_no)
+                                          {
+                                                echo "<tr>";
+                                                echo "<td>".$data->item_no."</td>";
+                                                echo "<td>".$data->material_grade."</td>";
+                                                echo "<td>".$data->size."</td>";
+                                                echo "<td>".$data->pressure."</td>";
+                                                echo "<td>".$data->type."</td>";
+                                                echo "<td>".$data->schedule."</td>";
+                                                echo "<td>".$data->quantity."</td>";
+                                                echo "<td>".$data->weight."</td>";
+                                                echo "<td>".$data->remarks."</td>";
+                                                echo "</tr>";
+                                          }
+                                          ?>
+                                </table>
+                            @endforeach
+
+
+
+
+                            <button class="btn btn-small btn-block" type="button" id="excel_button">
+                                <a href="{{ action('workOrderController@update',array('id'=>$work_order_detail->work_order_no))}}" class="link" >Update</a>
+                            </button>
+
+                            <button class="btn btn-small btn-block" type="button" id="excel_button">
+                                <a href="{{ action('workOrderController@destroy',array('id'=>$work_order_detail->work_order_no))}}" class="link" >Delete</a>
+                            </button>
+
+                            <hr><br><br>
+
+                        @endforeach
+
+
 
                             <hr><hr>
 
