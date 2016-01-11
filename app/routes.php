@@ -326,6 +326,10 @@
 			'uses'=>'machiningController@show'
 		));
 
+		Route::get('admin/reports/workOrder',array(
+			'as' => 'workOrder.report',
+			'uses' => 'workOrderController@excel'
+		));
 		// to move data to the excel sheets
 
 		Route::get('machining/reports/excel',array(

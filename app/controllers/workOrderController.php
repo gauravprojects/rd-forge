@@ -123,6 +123,15 @@ class WorkOrderController extends BaseController {
 	}
 
 
+	public function excel()
+	{
+		$all_records_work_order_details= WorkOrder::getAllRecordsWorkOrderDetails();
+		$all_records_work_order_material_details=WorkOrder::getAllRecordsWorkOrderMaterialDetails();
+		return View::make('workOrder.workOrder_report_excel')
+			->with('work_order_details',$all_records_work_order_details)
+			->with('work_order_material_details',$all_records_work_order_material_details);
+	}
+
 
 	/**
 	 * Remove the specified resource from storage.

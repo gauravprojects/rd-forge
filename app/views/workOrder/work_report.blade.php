@@ -93,8 +93,9 @@
                                                 echo "</tr>";
                                           }
                                           ?>
-                                </table>
+
                             @endforeach
+                                </table>
 
 
 
