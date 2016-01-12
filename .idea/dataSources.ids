@@ -3,4 +3,7 @@
   <data-source name="MySQL - rdforge@localhost" uuid="099cc5e9-598e-48c7-a9b0-389865541d02">
     <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
   </data-source>
+  <data-source name="MySQL - rdforge@localhost [2]" uuid="9395b396-31c4-4691-aa46-f852cbcb53bd">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
 </component>

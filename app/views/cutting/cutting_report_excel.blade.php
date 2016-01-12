@@ -26,10 +26,6 @@
         <th>Quantity</th>
         <th>Weight per piece</th>
         <th>Total Weight</th>
-        <th>Size</th>
-        <th>Pressure</th>
-        <th>Type</th>
-        <th>Schedule</th>
         <th>Available Weight</th>
     </tr>
 
@@ -42,10 +38,6 @@
             <td>{{ $cutting_data->quantity }}</td>
             <td>{{ $cutting_data->weight_per_piece }}</td>
             <td>{{ $cutting_data->total_weight }}</td>
-            <td>{{ $cutting_data->size }}</td>
-            <td>{{ $cutting_data->pressure }}</td>
-            <td>{{ $cutting_data->type }}</td>
-            <td>{{ $cutting_data->schedule }}</td>
             <th>{{ $cutting_data->available_weight_cutting }}</th>
 
         </tr>

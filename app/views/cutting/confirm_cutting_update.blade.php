@@ -26,10 +26,6 @@
                                <th>Cutting Id</th>
                                 <th>Date</th>
                                 <th>Size</th>
-                                <th>Standard size</th>
-                                <th>Pressure</th>
-                                <th>Type</th>
-                                <th>Schedule</th>
                                 <th>Heat No</th>
                                 <th>Quantity</th>
                                 <th>Weight per piece</th>
@@ -41,10 +37,6 @@
                                <td>{{$confirmation->cutting_id }}</td>
                                 <td>{{$confirmation->date }}</td>
                                 <td>{{$confirmation->raw_mat_size}}</td>
-                                <td>{{$confirmation->size}}</td>
-                                <td>{{$confirmation->pressure }}</td>
-                                <td>{{$confirmation->type }}</td>
-                                <td>{{$confirmation->schedule}}</td>
                                 <td>{{$confirmation->heat_no }}</td>
                                 <td>{{$confirmation->quantity}}</td>
                                 <td>{{$confirmation->weight_per_piece}}</td>

@@ -104,7 +104,8 @@
 
             @endforeach
         </table>
-    
+
+
         <hr><br><br>
 
     @endforeach

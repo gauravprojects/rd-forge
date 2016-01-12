@@ -166,11 +166,14 @@
 
 		));
 
-		//route for work order reports
-		Route::get('/admin/reports/workOrder',array(
-			'as' => 'workOrder.report',
-			'uses' => 'workOrderController@show'
-		));
+
+
+	Route::get('/admin/reports/workOrder/excel',array(
+		'as' => 'workOrder.report_excel',
+		'uses' => 'workOrderController@excel'
+	));
+
+
 
 
 
@@ -328,7 +331,7 @@
 
 		Route::get('admin/reports/workOrder',array(
 			'as' => 'workOrder.report',
-			'uses' => 'workOrderController@excel'
+			'uses' => 'workOrderController@show'
 		));
 		// to move data to the excel sheets
 

@@ -4,12 +4,20 @@
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <div class="row">
             <div class="wrapper">
+                <button class="btn btn-small btn-block" type="button" id="excel_button">
+                    <a href="{{ action('workOrderController@excel') }}" class="link" >Generate report in excel</a>
+                </button>
                 <div class="card">
                     <div class="row text-center">
+
                         <div class="heading">
+
                             <span>Work Order Reports</span>
                         </div>
                     </div>
+
+
+
                     <div class="row">
                         @foreach($work_order_details as $work_order_detail)
                             <table>
@@ -115,6 +123,9 @@
 
 
                             <hr><hr>
+                            <button class="btn btn-small btn-block" type="button" id="excel_button">
+                                <a href="{{ action('workOrderController@excel') }}" class="link" >Generate report in excel</a>
+                            </button>
 
 
                     </div>

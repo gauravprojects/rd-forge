@@ -25,10 +25,6 @@
                                 <th>Quantity</th>
                                 <th>Weight per piece</th>
                                 <th>Total Weight</th>
-                                <th>Size</th>
-                                <th>Pressure</th>
-                                <th>Type</th>
-                                <th>Schedule</th>
                                 <th>Available Weight</th>
                                 <th>Update/Delete</th>
                             </tr>
@@ -42,10 +38,6 @@
                                 <td>{{ $cutting_data->quantity }}</td>
                                 <td>{{ $cutting_data->weight_per_piece }}</td>
                                 <td>{{ $cutting_data->total_weight }}</td>
-                                <td>{{ $cutting_data->size }}</td>
-                                <td>{{ $cutting_data->pressure }}</td>
-                                <td>{{ $cutting_data->type }}</td>
-                                <td>{{ $cutting_data->schedule }}</td>
                                 <td>{{ $cutting_data->available_weight_cutting }}</td>
                                 <td><a href="{{ action('cuttingPageController@update',array('id'=>$cutting_data->cutting_id))}}" class="link" >Update</a>
                                  <a href="{{ action('cuttingPageController@destroy',array('id'=>$cutting_data  ->cutting_id))}}" class="link" >Delete</a>

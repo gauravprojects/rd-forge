@@ -1968,5 +1968,49 @@
         ],
         "description": "A framework-agnostic driver-based database backup package with a Laravel add-on.",
         "abandoned": "backup-manager/backup-manager"
+    },
+    {
+        "name": "matthc/privileges",
+        "version": "0.1",
+        "version_normalized": "0.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Matth--/privileges.git",
+            "reference": "0a93990a9d5204e5e346a5a52f42cf96b19d5141"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Matth--/privileges/zipball/0a93990a9d5204e5e346a5a52f42cf96b19d5141",
+            "reference": "0a93990a9d5204e5e346a5a52f42cf96b19d5141",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.5.9"
+        },
+        "time": "2016-01-09 23:02:50",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "MatthC\\Privileges\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Matthieu MatthC",
+                "email": "matthieu.MatthC@gmail.com"
+            }
+        ],
+        "description": "Small Role-Permission integration for laravel",
+        "homepage": "https://github.com/MatthC",
+        "keywords": [
+            "laravel",
+            "permissions",
+            "roles"
+        ]
     }
 ]

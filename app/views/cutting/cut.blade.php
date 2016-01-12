@@ -86,62 +86,6 @@
                                 </select>
                             </div>
 
- <br>
-                           <div class="row text-center">
-                                <div class="heading">
-                                    <span>Cutting Description</span>
-                                </div>
-                            </div>
-
-                           
-
-                            <div class="form-group">
-                                {{ Form::label('exampleInputEmail1','Standard Size') }}
-
-                                <select class="form-control" name="standard_size">
-                                    @foreach($standard_size as $standard_size_element)
-                                        <option value="{{ $standard_size_element->std_size }}">{{$standard_size_element->std_size}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-
-
-                            <!-- standard pressure which to be used for description -->
-                            <div class="form-group">
-                                {{ Form::label('exampleInputEmail1','Pressure') }}
-
-                                <select class="form-control" name="pressure">
-                                    @foreach($pressure as $pressure_element)
-                                        <option value="{{ $pressure_element->pressure }}">{{$pressure_element->pressure}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-
-                            <!-- Standard type for cutting, part of description -->
-                            <div class="form-group">
-                                {{ Form::label('exampleInputEmail1','Standard Type') }}
-
-                                <select class="form-control" name="type">
-                                    @foreach($type as $type_element)
-                                        <option value="{{ $type_element->type }}">{{$type_element->type}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-
-
-                            <!-- Standard type for cutting, part of description -->
-                            <div class="form-group">
-                                {{ Form::label('exampleInputEmail1','Schedule') }}
-
-                                <select class="form-control" name="schedule">
-                                    @foreach($schedule as $schedule_element)
-                                        <option value="{{ $schedule_element->schedule }}">{{$schedule_element->schedule}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-
-
-
 
                             <!-- qunanity.. this is the quantity of the cutted material -->
                                 <div class="form-group">

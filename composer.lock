@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "04021847217dedd1ba1702ccdeddcac9",
-    "content-hash": "365d6540922ce08779505df9029ce48b",
+    "hash": "286870e460746a5f0b7f4fc2ef5cf0d3",
+    "content-hash": "a906ff975d423db0cb03d6feb1af09cd",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -510,6 +510,48 @@
                 "laravel"
             ],
             "time": "2016-01-02 20:27:55"
+        },
+        {
+            "name": "matthc/privileges",
+            "version": "0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Matth--/privileges.git",
+                "reference": "0a93990a9d5204e5e346a5a52f42cf96b19d5141"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Matth--/privileges/zipball/0a93990a9d5204e5e346a5a52f42cf96b19d5141",
+                "reference": "0a93990a9d5204e5e346a5a52f42cf96b19d5141",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MatthC\\Privileges\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Matthieu MatthC",
+                    "email": "matthieu.MatthC@gmail.com"
+                }
+            ],
+            "description": "Small Role-Permission integration for laravel",
+            "homepage": "https://github.com/MatthC",
+            "keywords": [
+                "laravel",
+                "permissions",
+                "roles"
+            ],
+            "time": "2016-01-09 23:02:50"
         },
         {
             "name": "mccool/database-backup",

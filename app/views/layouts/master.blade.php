@@ -58,10 +58,10 @@
 @yield('links_data')
 
 <!-- CUSTOMIZED DATA ENDS HERE... rest everything in this page will remain same..   -->
-
-<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12  margin-fix text-center footerWrap">
-    <div class="row-fluid">
-        <div class="footer">
+col-md-12 col-lg-12  margin-fix text-center footerWrap">
+<div class="row-fluid">
+    <div class="footer">
+<div class="col-xs-12 col-sm-12
             &copy; Forge Metal Corp.
         </div>
     </div>

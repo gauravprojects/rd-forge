@@ -6,7 +6,8 @@
 	"require": {
 		"laravel/framework": "4.2.*",
 	  	"way/generators":"2.*",
-	  "mccool/database-backup": "1.0.1"
+	  "mccool/database-backup": "1.0.1",
+		"matthc/privileges": "^0.1.0"
 	},
 	"autoload": {
 		"classmap": [
