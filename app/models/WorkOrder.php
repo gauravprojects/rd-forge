@@ -8,6 +8,14 @@ class WorkOrder extends Eloquent
 				->insert($records_array);
 	}
 
+	public static function updateRecord($records_array,$work_order_no)
+	{
+		return DB::table('work_order_details')
+			->where('work_order_no','=',$work_order_no)
+			->update($records_array);
+
+	}
+
 	public static function getRecord($work_id)
 	{
 		return DB::table('work_order_material_details')

@@ -117,9 +117,51 @@ class WorkOrderController extends BaseController {
 	}
 
 
-	public function update_details($id)
+	public function update_store()
 	{
-		dd("update functions called");
+
+		$data_input=Input::all();
+
+		//  $data_input['work_order_no'],
+		$data_array= array(
+			'customer_name' => $data_input['customer_name'],
+			'purchase_order_no' => $data_input['purchase_order_no'],
+			'purchase_order_date' => date('Y-m-d',strtotime($data_input['purchase_order_date'])),
+			'required_delivery_date' => date('Y-m-d',strtotime($data_input['required_delivery_date'])),
+			'inspection' => $data_input['inspection'],
+			'packing_instruction' => $data_input['packing_instruction'],
+			'testing_instruction' => $data_input['testing_instruction'],
+			'quatation_no' => $data_input['quatation_no'],
+			'remarks' => $data_input['remarks'],
+			'status' => '0'
+		);
+
+		$response= WorkOrder::updateRecord($data_array,$data_input['work_order_no']);
+
+		$work_order_details=WorkOrder::getOrderDetails($data_input['work_order_no']);
+		//all data form master table is taken and fed to the  cutting form
+		$grades= Grades::getGrades();
+		$standard_sizes = StandardSizes::getStandardSizes();
+		$pressure = Pressure::getPressure();
+		$schedule = Schedule::getSchedule();
+		$type = DescriptionType::getType();
+
+
+
+		return View::make('workOrder.work_update2')
+			->with('grades',$grades)
+			->with('work_order_details',$work_order_details)
+			->with('standard_size', $standard_sizes)
+			->with('pressure', $pressure)
+			->with('schedule', $schedule)
+			->with('type', $type);;
+
+
+	}
+
+	public function update_details_store($id)
+	{
+		dd("update details stored called");
 	}
 
 

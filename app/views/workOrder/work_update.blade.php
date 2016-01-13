@@ -11,8 +11,17 @@
                         </div>
                     </div>
                     <div class="row">
-                        {{ Form::open(array('action'=> 'workOrderController@store')) }}
+
+
+                        {{ Form::open(array('action'=> 'workOrderController@update_store')) }}
                                 <!-- For recipt number of the material coming from outside -->
+
+                        <!-- Customer Name who is placing the order -->
+                        <div class="form-group">
+                            {{ Form::label('exampleInputEmail1','Work Order no') }}
+                            {{ Form::text('work_order_no',$record->work_order_no,array('class'=>'form-control inputfix','placeholder'=>'Work Order Number','id'=>'exampleInputEnail1')) }}
+                        </div>
+
 
                         <!-- Customer Name who is placing the order -->
                         <div class="form-group">

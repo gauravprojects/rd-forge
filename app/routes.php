@@ -269,9 +269,14 @@
 		));
 
 		//to update work order details
-		Route::get('/workOrder/update_details/{id}',array(
+		Route::post('/workOrder/update',array(
 			'as' => 'work.update_details',
-			'uses' => 'workOrderController@update_details'
+			'uses' => 'workOrderController@update_store'
+		));
+
+		Route::post('workOrder/details/update/{id}',array(
+			'as' => 'work.details_update',
+			'uses' => 'workOrderController@update_details_store'
 		));
 
 
