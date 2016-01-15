@@ -54,7 +54,8 @@
 
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Date') }}
-                            {{ Form::text('date',null,array('class'=>'form-control inputfix','id'=>'date','name'=>'date','placeholder'=>'Date','readonly')) }}
+                            <input type="date" name="date" placeholder="date" value="" />
+                            {{--{{ Form::text('date',null,array('class'=>'form-control inputfix','id'=>'date','name'=>'date','placeholder'=>'Date','readonly')) }}--}}
                         </div>
 
 

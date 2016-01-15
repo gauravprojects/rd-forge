@@ -2,7 +2,7 @@
 
     @section('links_data')
         <!-- Jquery google cdn to be placed here  -->
-        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <!-- Script for handling total weight checking -->
         <script type="text/javascript">
             $(document).ready(function(){
@@ -55,6 +55,7 @@
                                     <!-- For recipt number of the material coming from outside -->
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Date') }}
+
                                {{ Form::text('date',null,array('class'=>'form-control inputfix','id'=>'date','name'=>'date','placeholder'=>'Date','readonly')) }}
                             </div>
 
