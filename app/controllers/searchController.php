@@ -10,28 +10,40 @@ class searchController extends \BaseController {
 
     public function index()
     {
-        $categories= search::getCategory();
-        return View::make('search.search')
-            ->with('categories',$categories);
+        $response= RawMaterial::getAllData();
+        return View::make('search.search_new')
+            ->with('data',$response);
+
     }
 
     public function returnOptions($id)
     {
-        $options= search::returnOptions($id);
-        $options_array= array();
-        $count=0;
-
-        foreach($options as $option)
-        {
-            $options_array=array_add($options_array,++$count,$option->options);
-        }
-        return $options_array;
+//        $options= search::returnOptions($id);
+//        $options_array= array();
+//        $count=0;
+//
+//        foreach($options as $option)
+//        {
+//            $options_array=array_add($options_array,++$count,$option->options);
+//        }
+//        return $options_array;
     }
 
     public function store()
     {
         $data= Input::get();
-        dd($data);
+//        $response= DB::table('raw_material')
+//            ->select()
+//            ->where($data['options'],'=',''.$data['selected'].'')
+//            ->get();
+
+        $query= DB::raw("SELECT * FROM raw_material WHERE ". $data['options']."= '" .$data['selected']."'");
+        $response= DB::select($query);
+
+        return View::make('search.search_new')
+            ->with('data',$response);
+
+        dd($response);
     }
 
 

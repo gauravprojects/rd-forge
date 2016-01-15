@@ -144,11 +144,11 @@
 
 		// route for raw material reports.. can pe opened form admin pannel
 		Route::get('/admin/reports/raw',array(
-
 		'as'=>'raw.report',
 		'uses'=>'rawMaterialController@show'
-
 		));
+
+
 
 		// route for cutting material reports..
 		Route::get('/admin/reports/cutting',array(
