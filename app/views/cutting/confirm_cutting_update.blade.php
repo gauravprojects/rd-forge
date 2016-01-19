@@ -26,6 +26,10 @@
                                <th>Cutting Id</th>
                                 <th>Date</th>
                                 <th>Size</th>
+                                <th>Standard size</th>
+                                <th>Pressure</th>
+                                <th>Type</th>
+                                <th>Schedule</th>
                                 <th>Heat No</th>
                                 <th>Quantity</th>
                                 <th>Weight per piece</th>
@@ -37,6 +41,10 @@
                                <td>{{$confirmation->cutting_id }}</td>
                                 <td>{{$confirmation->date }}</td>
                                 <td>{{$confirmation->raw_mat_size}}</td>
+                                <td>{{$confirmation->size}}</td>
+                                <td>{{$confirmation->pressure }}</td>
+                                <td>{{$confirmation->type }}</td>
+                                <td>{{$confirmation->schedule}}</td>
                                 <td>{{$confirmation->heat_no }}</td>
                                 <td>{{$confirmation->quantity}}</td>
                                 <td>{{$confirmation->weight_per_piece}}</td>
@@ -52,20 +60,12 @@
                             <button class="btn btn-small btn-block" type="button" id="excel_button">
                                 <a href="{{ action('cuttingPageController@update',array('id'=>$confirmation->cutting_id))}}" class="link" >Update</a>
                             </button>
-
-                            <button class="btn btn-small btn-block" type="button" id="excel_button">
-                                <a href="{{ action('cuttingPageController@destroy',array('id'=>$confirmation->cutting_id))}}" class="link" >Delete</a>
-                            </button>
-
-                            <button class="btn btn-small btn-block" type="button" id="excel_button">
-                                <a href="{{ action('cuttingPageController@index')  }}" class="link" >New Cutting Entry</a>
-                            </button>
                         </div>
                         <br><br><br><br>
-                    </div>		<!-- row conatining form ends here -->
-                </div>		<!-- card ends here -->
-            </div>		<!-- wrapper ends here -->
-        </div>		<!-- row ends here -->
-    </div> 		<!-- col-12 ends here -->
+                    </div>      <!-- row conatining form ends here -->
+                </div>      <!-- card ends here -->
+            </div>      <!-- wrapper ends here -->
+        </div>      <!-- row ends here -->
+    </div>      <!-- col-12 ends here -->
 
 @stop

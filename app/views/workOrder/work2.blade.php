@@ -65,7 +65,7 @@
                         <div class="row text-center">
                             <div class="heading">
                                 <span>  Work Order no: {{ $data->work_order_no }}</span><br>
-                                <span>  Mr/Mrs: {{ $data->customer_name }} </span>
+                                <span>  M/S: {{ $data->customer_name }} </span>
                             </div>
                         </div>
 

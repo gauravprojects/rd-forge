@@ -53,8 +53,7 @@
 
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Date') }}
-                            <input type="date" name="date" placeholder="date" value="" />
-                            {{--{{ Form::text('date',null,array('class'=>'form-control inputfix','id'=>'date','name'=>'date','placeholder'=>'Date','readonly')) }}--}}
+                            {{ Form::text('date',null,array('class'=>'form-control inputfix','id'=>'date','name'=>'date','placeholder'=>'Date','readonly')) }}
                         </div>
 
 
@@ -93,6 +92,7 @@
                             {{ Form::label('exampleInputEmail1','Heat Number  (from forged data)') }}
                             <select class="form-control inputfix" name="heat_no" id="heat_no">
                                 <option value="">---Select Heat Number --------</option>
+                                <option value="">Job Work</option>
                                 @foreach($heat_no as $heat_no_element)
                                     <option value="{{ $heat_no_element->heat_no }}">
                                         {{ $heat_no_element->heat_no }}
@@ -156,5 +156,10 @@
             </div>		<!-- wrapper ends here -->
         </div>		<!-- row ends here -->
     </div> 		<!-- col-12 ends here -->
+    <script type="text/javascript">
+            $(function () {
+                $('#date').datepicker();
+            });
+        </script>
 
 @stop

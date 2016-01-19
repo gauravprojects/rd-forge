@@ -67,6 +67,10 @@
 					'date' => date('Y-m-d',strtotime($cutting['date'])),
 					'raw_mat_size' => $cutting['size'],
 					'heat_no' => $cutting['heatNo'],
+					'size' => $cutting['standard_size'],
+					'pressure' => $cutting['pressure'],
+					'type' => $cutting['type'],
+					'schedule' => $cutting['schedule'],
 					'quantity' => $cutting['quantity'],
 					'weight_per_piece' => $cutting['wpp'],
 					'total_weight' => $total_weight,
@@ -131,6 +135,10 @@
 					'date' => date('Y-m-d',strtotime($cutting['date'])),
 					'raw_mat_size' => $cutting['size'],
 					'heat_no' => $cutting['heatNo'],
+					'size' => $cutting['standard_size'],
+					'pressure' => $cutting['pressure'],
+					'type' => $cutting['type'],
+					'schedule' => $cutting['schedule'],
 					'quantity' => $cutting['quantity'],
 					'weight_per_piece' => $cutting['wpp'],
 					'total_weight' => $total_weight,
@@ -210,6 +218,7 @@
 			return View::make('cutting.available')
 					->with('data',$data);
 		}
+
 
 		public function destroy($id)
 		{

@@ -52,8 +52,7 @@
 
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Date') }}
-                            <input type="date" name="date" placeholder="date" value="" />
-                            {{--{{ Form::text('date',date("Y-m-d"),array('class'=>'form-control inputfix','id'=>'date','name'=>'date','placeholder'=>'Date','readonly')) }}--}}
+                            {{ Form::text('date',null,array('class'=>'form-control inputfix','id'=>'date','name'=>'date','placeholder'=>'Date','readonly')) }}
                         </div>
 
 
@@ -136,5 +135,10 @@
             </div>		<!-- wrapper ends here -->
         </div>		<!-- row ends here -->
     </div> 		<!-- col-12 ends here -->
+    <script type="text/javascript">
+            $(function () {
+                $('#date').datepicker();
+            });
+        </script>
 
 @stop
