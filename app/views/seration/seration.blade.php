@@ -93,6 +93,7 @@
                             {{ Form::label('exampleInputEmail1','Heat Number  (from forged data)') }}
                             <select class="form-control inputfix" name="heat_no" id="heat_no">
                                 <option value="">---Select Heat Number --------</option>
+                                <option value="Job Work">Job Work</option>
                                 @foreach($heat_no as $heat_no_element)
                                     <option value="{{ $heat_no_element->heat_no }}">
                                         {{ $heat_no_element->heat_no }}

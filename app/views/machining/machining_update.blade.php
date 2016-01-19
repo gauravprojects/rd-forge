@@ -90,6 +90,8 @@
                                 {{ Form::label('exampleInputEmail1','Heat Number(available raw material)') }}
 
                                 <select class="form-control" name="heatNo" id="heat_no">
+                                    <option value="">------Select Work Order----------</option>
+                                    <option value="Job Work">Job Work</option>
                                     @foreach($heat_no as $heat_no_element)
                                         @if($heat_no_element->heat_no == $machining->heat_no)
                                             <option value="{{ $heat_no_element->heat_no }}" selected>{{$heat_no_element->heat_no}}</option>

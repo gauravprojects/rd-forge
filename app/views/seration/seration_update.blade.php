@@ -69,6 +69,7 @@
 
                                 <select class="form-control inputfix" name="work_order_no" id="work_order_no">
                                     <option value="">---Select Work Order--------</option>
+                                    <option value="Job Work">Job Work</option>
                                     @foreach($availableWorkOrderNo as $workOrder)
                                         <option value="{{ $workOrder->work_order_no }}">
                                             {{$workOrder->work_order_no}} &nbsp;
