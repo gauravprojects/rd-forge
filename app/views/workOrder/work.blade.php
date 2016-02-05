@@ -30,13 +30,13 @@
                         <!-- Puchase order date -->
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail','Purchase Order Date') }}
-                            {{ Form::text('purchase_order_date',null,array('class'=>'form-control inputfix','id'=>'purchase_order_date','name'=>'purchase_order_date','placeholder'=>'Purchase Order Date','readonly')) }}
+                            {{ Form::text('purchase_order_date',null,array('class'=>'form-control inputfix','id'=>'purchase_order_date','name'=>'purchase_order_date','placeholder'=>'Purchase Order Date','readonly','data-date-format'=>'dd-mm-yyyy')) }}
                         </div>
 
                         <!-- Required Delivery date when the order is required -->
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail','Required Delivery Date') }}
-                            {{ Form::text('required_delivery_date',null,array('class'=>'form-control inputfix','id'=>'required_delivery_date','name'=>'required_delivery_date','placeholder'=>'Required Delivery Date','readonly')) }}
+                            {{ Form::text('required_delivery_date',null,array('class'=>'form-control inputfix','id'=>'required_delivery_date','name'=>'required_delivery_date','placeholder'=>'Required Delivery Date','readonly','data-date-format'=>'dd-mm-yyyy')) }}
                         </div>
 
                         <div class="form-group">

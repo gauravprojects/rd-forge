@@ -29,7 +29,7 @@
 
                              <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Date') }}
-                                {{ Form::text('date',$data->date,array('class'=>'form-control inputfix','id'=>'date','name'=>'date','placeholder'=>'Date','readonly')) }}
+                                {{ Form::text('date',$data->date,array('class'=>'form-control inputfix','id'=>'date','name'=>'date','placeholder'=>'Date','readonly','data-date-format'=>'dd-mm-yyyy')) }}
                             </div>
 
                             <!-- For the date of entry of raw materail

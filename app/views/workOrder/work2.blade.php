@@ -54,6 +54,14 @@
               $("table").append("<tr>"+$work_order_no+$item_no+$material_grade+$size+$pressure+$type+$schedule+$quantity+$weight+$remarks+"</tr>");
 
               });
+
+             $('#delete_record').click(function(){
+
+              $("table tr:last-child").remove();
+              --$item_no_count;
+
+             });
+
            });
         </script>
 
@@ -72,7 +80,8 @@
                         <!-- If $work_order_details is empty then show nothing, otherwise show the required details -->
 
                         <!-- button to add a feild in the form dynamically -->
-                        <button id="add_record" style="float: right;" onclick="add_record();">Add Field</button>
+                         <button id="delete_record" class="waves-effect waves-light btn right" onclick="delete_record();">Delete Field</button>
+                        <button id="add_record" class="waves-effect waves-light btn right" onclick="add_record();">Add Field</button>
                         <br><br>
 
                         <div class="row">

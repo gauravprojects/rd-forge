@@ -22,13 +22,13 @@
 
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Receipt Code') }}
-                                {{ Form::text('receiptCode',null,array('class'=>'form-control  inputfix','placeholder'=>'Receipt Number','id'=>'exampleInputEnail1')) }}
+                                {{ Form::text('receiptCode',null,array('class'=>'form-control inputfix','placeholder'=>'Receipt Number','id'=>'exampleInputEnail1')) }}
                             </div>
 
                         
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Date') }}
-                                {{ Form::text('date',null,array('class'=>'form-control inputfix','id'=>'date','name'=>'date','placeholder'=>'Date','readonly')) }}
+                                {{ Form::text('date',null,array('class'=>'form-control inputfix','id'=>'date','name'=>'date','placeholder'=>'Date','readonly','data-date-format'=>'dd-mm-yyyy')) }}
                             </div>
                   
                         
