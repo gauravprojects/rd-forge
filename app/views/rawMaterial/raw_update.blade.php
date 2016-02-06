@@ -29,7 +29,7 @@
 
                              <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Date') }}
-                                {{ Form::text('date',$data->date,array('class'=>'form-control inputfix','id'=>'date','name'=>'date','placeholder'=>'Date','readonly','data-date-format'=>'dd-mm-yyyy')) }}
+                                {{ Form::text('date',date('d-m-Y',strtotime($data->date)),array('class'=>'form-control inputfix','id'=>'date','name'=>'date','placeholder'=>'Date','readonly','data-date-format'=>'dd-mm-yyyy')) }}
                             </div>
 
                             <!-- For the date of entry of raw materail
@@ -68,7 +68,7 @@
                             <!-- Purchase order date -->
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail','Purchase Order Date') }}
-                                {{ Form::text('purchaseDate',$data->pur_order_date,array('class'=>'form-control inputfix','id'=>'purchaseDate','name'=>'purchaseDate','placeholder'=>'Purchase Order Date','readonly')) }}
+                                {{ Form::text('purchaseDate',date('d-m-Y',strtotime($data->pur_order_date)),array('class'=>'form-control inputfix','id'=>'purchaseDate','name'=>'purchaseDate','placeholder'=>'Purchase Order Date','readonly','data-date-format'=>'dd-mm-yyyy')) }}
                             </div>
 
                             <!-- Invoice Number -->
@@ -80,7 +80,7 @@
                             <!-- Inovice date -->
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail','Invoice Date') }}
-                               {{ Form::text('invoiceDate',$data->invoice_date,array('class'=>'form-control inputfix','id'=>'invoiceDate','name'=>'invoiceDate','placeholder'=>'Invoice Date','readonly')) }}
+                               {{ Form::text('invoiceDate',date('d-m-Y',strtotime($data->invoice_date)),array('class'=>'form-control inputfix','id'=>'invoiceDate','name'=>'invoiceDate','placeholder'=>'Invoice Date','readonly','data-date-format'=>'dd-mm-yyyy')) }}
                             </div>
 
                             @endforeach

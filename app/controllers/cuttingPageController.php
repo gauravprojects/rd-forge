@@ -74,7 +74,9 @@
 					'quantity' => $cutting['quantity'],
 					'weight_per_piece' => $cutting['wpp'],
 					'total_weight' => $total_weight,
-					'available_weight_cutting' =>$total_weight
+					'available_weight_cutting' =>$total_weight,
+					'remarks' => $cutting['cutRem'],
+					'description' => $cutting['cutDes']
 			);
 
 			
@@ -85,15 +87,8 @@
 			$available_weight_response = RawMaterial::updateAvailableWeight($cutting['heatNo'], $available_weight);
 
 
-
 			$cutting_response = Cutting::insertData($input_array);
 			$last_record = Cutting::getLastRecord();
-
-			if($cutting['cutDes']!="")
-				CuttingDes::insertData(array('cutting_id'=>$last_record->cutting_id,'item_des'=>$cutting['cutDes']));
-			if($cutting['cutRem']!="")
-				CuttingRem::insertData(array('cutting_id'=>$last_record->cutting_id,'remarks'=>$cutting['cutRem']));
-			
 
 			return View::make('cutting.confirm')->with('last_record', $last_record);
 
@@ -111,15 +106,11 @@
 		public function update($id)
 		{
 			$cutting_array = Cutting::getRecord($id);
-			$cutting_item_des_array = CuttingDes::getRecord($id);
-			$cutting_remarks_array = CuttingRem::getRecord($id);
 
 			$data = cuttingPageController::getStandardData();
 
 			return View::make('cutting.cutting_update')
 			->with('cutting_array',$cutting_array)
-			->with('cutting_item_des_array',$cutting_item_des_array)
-			->with('cutting_remarks_array',$cutting_remarks_array)
 			->with($data);
 		}
 
@@ -225,6 +216,15 @@
 
 			$delete_response= Cutting::delete_record($id);
 			$all_records= Cutting::getAllRecords();
+
+			// $total_weight = $cutting['quantity'] * $cutting['wpp'];
+
+			// $data = RawMaterial::returnAvailableWeight($cutting['heatNo']);
+			// $available_weight = $data[0]->available_weight;
+
+			// $available_weight = $available_weight + $total_weight;
+			// $available_weight_response = RawMaterial::updateAvailableWeight($cutting['heatNo'], $available_weight);
+
 			return View::make('cutting.cutting_report')->with('all_records', $all_records);
 
 		}

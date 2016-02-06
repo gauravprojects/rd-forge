@@ -47,6 +47,8 @@
             <td>{{ $cutting_data->type }}</td>
             <td>{{ $cutting_data->schedule }}</td>
             <th>{{ $cutting_data->available_weight_cutting }}</th>
+            <td>{{ $cutting_data->remarks }}</td>
+            <td>{{ $cutting_data->description }}</td>
 
         </tr>
     @endforeach

@@ -24,7 +24,7 @@
 
                            <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Date') }}
-                               {{ Form::text('date',$forging->date,array('class'=>'form-control inputfix','id'=>'date','name'=>'date','placeholder'=>'Date','readonly','data-date-format'=>'dd-mm-yyyy')) }}
+                               {{ Form::text('date',date('d-m-Y',strtotime($forging->date)),array('class'=>'form-control inputfix','id'=>'date','name'=>'date','placeholder'=>'Date','readonly','data-date-format'=>'dd-mm-yyyy')) }}
                             </div>
 
                             <!-- Heat no for forged item -->

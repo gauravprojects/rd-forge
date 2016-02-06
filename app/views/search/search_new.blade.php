@@ -1,8 +1,7 @@
 @extends('layouts.master')
-`
+
 @section('links_data')
         <!-- Google's jquery cdn to be placed here -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -46,10 +45,7 @@
 
                     <br>
 
-                    {{ Form::submit('Submitt') }}
-
-
-
+                     <button class="waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button" type="submit">Submit</button>
 
                     {{ Form::close() }}
 

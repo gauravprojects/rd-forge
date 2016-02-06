@@ -24,7 +24,7 @@
 
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Date') }}
-                                 {{ Form::text('date',$cutting->date,array('class'=>'form-control inputfix','id'=>'date','name'=>'date','placeholder'=>'Date','readonly','data-date-format'=>'dd-mm-yyyy')) }}
+                                 {{ Form::text('date',date('d-m-Y',strtotime($cutting->date)),array('class'=>'form-control inputfix','id'=>'date','name'=>'date','placeholder'=>'Date','readonly','data-date-format'=>'dd-mm-yyyy')) }}
                             </div>
 
                             <div class="form-group">
@@ -147,27 +147,21 @@
                                 <!-- total weight to be calculated by itself
                                         total weight= quantity * Weight per piece -->
 
-                                  @endforeach
-
                                 <!-- cutting item description  -->
-                                @foreach($cutting_item_des_array as $cutting_des_array)
 
                                 <div class="form-group">
                                     {{ Form::label('exampleInputEmail','Cutting Item Discription') }}
-                                    {{ Form::text('cutDes',$cutting_des_array->item_des,array('class'=>'form-control inputfix','placeholder'=>'Cutting item Discription','id'=>'JustAnything')) }}
+                                    {{ Form::text('cutDes',$cutting->description,array('class'=>'form-control inputfix','placeholder'=>'Cutting item Discription','id'=>'JustAnything')) }}
                                 </div>
 
-                                @endforeach
-
                                 <!-- cutting remarks.. optional if user has some additional thing then he can mention it here -->
-                                 @foreach($cutting_remarks_array as $cutting_rem_array)
 
                                 <div class="form-group">
                                     {{ Form::label('exampleInputEmail','Cutting item remarks') }}
-                                    {{ Form::text('cutRem',$cutting_rem_array->remarks,array('class'=>'form-control inputfix','placeholder'=>'Cutting item remarks','id'=>'JustAnything')) }}
+                                    {{ Form::text('cutRem',$cutting->remarks,array('class'=>'form-control inputfix','placeholder'=>'Cutting item remarks','id'=>'JustAnything')) }}
                                 </div>
 
-                                @endforeach
+                                 @endforeach
 
                             
                             <button class="waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button" type="submit">Submit</button>

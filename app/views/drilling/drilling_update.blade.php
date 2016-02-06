@@ -58,7 +58,7 @@
 
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Date') }}
-                                {{ Form::text('date',$drilling->date,array('class'=>'form-control inputfix','id'=>'date','name'=>'date','placeholder'=>'Date','readonly','data-date-format'=>'dd-mm-yyyy')) }}
+                                {{ Form::text('date',date('d-m-Y',strtotime($drilling->date)),array('class'=>'form-control inputfix','id'=>'date','name'=>'date','placeholder'=>'Date','readonly','data-date-format'=>'dd-mm-yyyy')) }}
                             </div>
 
                             <div class="form-group">
