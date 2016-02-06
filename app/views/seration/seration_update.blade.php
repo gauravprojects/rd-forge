@@ -163,7 +163,11 @@
         </div>		<!-- row ends here -->
     </div> 		<!-- col-12 ends here -->
 
-
+<script type="text/javascript">
+    $(function () {
+        $('#date').datepicker();
+    });
+    </script>
 
 
 @stop

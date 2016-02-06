@@ -1,8 +1,6 @@
     @extends('layouts.master')
 
     @section('links_data')
-        <!-- Jquery google cdn to be placed here  -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <!-- Script for handling total weight checking -->
         <script type="text/javascript">
             $(document).ready(function(){
@@ -55,7 +53,6 @@
                                     <!-- For recipt number of the material coming from outside -->
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Date') }}
-
                                {{ Form::text('date',null,array('class'=>'form-control inputfix','id'=>'date','name'=>'date','placeholder'=>'Date','readonly','data-date-format'=>'dd-mm-yyyy')) }}
                             </div>
 
@@ -67,7 +64,7 @@
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Heat Number(available after cutting)') }}
 
-                                <select class="form-control inputfix" name="heatNo" id="heat_no">
+                                <select class="form-control" name="heatNo" id="heat_no">
                                     @foreach($heat_no as $heat_no_element)
                                         <option value="{{ $heat_no_element->heat_no }}">{{$heat_no_element->heat_no}}</option>
                                     @endforeach
@@ -169,11 +166,9 @@
         </div> 		<!-- col-12 ends here -->
 
         <script type="text/javascript">
-            $(function () {
-                $('#date').datepicker();
-            });
-        </script>
-
-
+        $(function () {
+            $('#date').datepicker();
+        });
+    </script>
 
     @stop

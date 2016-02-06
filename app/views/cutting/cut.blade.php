@@ -183,7 +183,7 @@
 
          <script type="text/javascript">
             $(function () {
-                $('#date').datepicker("setDate",new Date());
+                $('#date').datepicker();
             });
         </script>
 

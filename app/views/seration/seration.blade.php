@@ -155,6 +155,6 @@
     $(function () {
         $('#date').datepicker();
     });
-</script>
+    </script>
 
 @stop
