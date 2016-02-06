@@ -31,7 +31,7 @@
 
                             <tr>
                                 <td>{{ $drilling_data->drilling_id }}</td>
-                                <td>{{ $drilling_data->date }}</td>
+                                <td>{{ date('d-m-Y',strtotime($drilling_data->date)) }}</td>
                                 <td>{{ $drilling_data->work_order_no }}</td>
                                 <td>{{ $drilling_data->item }}</td>
                                 <td>{{ $drilling_data->heat_no }}</td>

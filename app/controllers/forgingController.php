@@ -115,7 +115,7 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 		$total_weight = $forging['weight_per_peice']*$forging['quantity'];
 
 		$data_array_update = array(
-					'date'		=> date('d-m-y',strtotime($forging['date'])),
+					'date'		=> date('Y-m-d',strtotime($forging['date'])),
 					'weight_per_piece'=>$forging['weight_per_peice'],
 					'heat_no'		=> $forging['heatNo'],
 					'size' =>$forging['standard_size'],

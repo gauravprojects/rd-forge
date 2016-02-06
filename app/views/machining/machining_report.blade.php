@@ -31,7 +31,7 @@
 
                             <tr>
                                 <td>{{ $machining_data->mach_id }}</td>
-                                <td>{{ $machining_data->date }}</td>
+                                <td>{{ date('d-m-Y',strtotime($machining_data->date)) }}</td>
                                 <td>{{ $machining_data->work_order_no }}</td>
                                 <td>{{ $machining_data->item }}</td>
                                 <td>{{ $machining_data->heat_no }}</td>

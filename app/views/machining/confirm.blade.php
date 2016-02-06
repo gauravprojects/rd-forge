@@ -27,7 +27,7 @@
                                 <th>Weight</th>
                             <tr>
                                 <td>{{ $last_record->mach_id }}</td>
-                                <td>{{ $last_record->date }}</td>
+                                <td>{{ date('d-m-Y',strtotime($last_record->date)) }}</td>
                                 <td>{{ $last_record->work_order_no }}</td>
                                 <td>{{ $last_record->item }}</td>
                                 <td>{{ $last_record->heat_no }}</td>

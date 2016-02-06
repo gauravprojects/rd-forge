@@ -37,7 +37,7 @@
                             @foreach($confirmations as $confirmation)
                             <tr>
                                 <td>{{ $confirmation->seration_id }}</td>
-                                <td>{{ $confirmation->date }}</td>
+                                <td>{{ date('d-m-Y',strtotime($confirmation->date)) }}</td>
                                 <td>{{ $confirmation->work_order_no }}</td>
                                 <td>{{ $confirmation->item }}</td>
                                 <td>{{ $confirmation->heat_no }}</td>

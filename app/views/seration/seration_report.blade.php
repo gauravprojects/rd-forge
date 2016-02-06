@@ -31,7 +31,7 @@
 
                             <tr>
                                 <td>{{ $seration_data->seration_id }}</td>
-                                <td>{{ $seration_data->date }}</td>
+                                <td>{{ date('d-m-Y',strtotime($seration_data->date)) }}</td>
                                 <td>{{ $seration_data->work_order_no }}</td>
                                 <td>{{ $seration_data->item }}</td>
                                 <td>{{ $seration_data->heat_no }}</td>

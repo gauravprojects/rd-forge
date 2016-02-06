@@ -38,7 +38,7 @@
                 <tr>
                     <td>{{{ $raw_data->internal_no }}}</td>
                     <td>{{{ $raw_data->receipt_code }}}</td>
-                    <td>{{{ $raw_data->date }}}</td>
+                    <td>{{{ date('d-m-Y',strtotime($raw_data->date)) }}}</td>
                     <td>{{{ $raw_data->size }}}</td>
                     <td>{{{ $raw_data->manufacturer }}}</td>
                     <td>{{{ $raw_data->heat_no }}}</td>

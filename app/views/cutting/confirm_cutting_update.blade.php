@@ -39,7 +39,7 @@
                             @foreach($confirmations as $confirmation)
                             <tr>
                                <td>{{$confirmation->cutting_id }}</td>
-                                <td>{{$confirmation->date }}</td>
+                                <td>{{date('d-m-Y',strtotime($confirmation->date))}}</td>
                                 <td>{{$confirmation->raw_mat_size}}</td>
                                 <td>{{$confirmation->size}}</td>
                                 <td>{{$confirmation->pressure }}</td>

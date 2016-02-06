@@ -27,7 +27,7 @@
 			$input_data= Input::all();
 
 			$input_array_seration_table= array(
-				'date' => date('d-m-y'),
+				'date' => date('Y-m-d'),
 				'work_order_no' => $input_data['work_order_no'] ,
 				'item'  	=> $input_data['item'],
 				'heat_no'	=> $input_data['heat_no'],

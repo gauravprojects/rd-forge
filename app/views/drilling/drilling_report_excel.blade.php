@@ -29,17 +29,17 @@
         <th>Machine Name</th>
         <th>Grade</th>
 
-    @foreach($data as $machining_data)
+    @foreach($data as $drilling_data)
 
         <tr>
-            <td>{{ $machining_data->drilling_id }}</td>
-            <td>{{ $machining_data->date }}</td>
-            <td>{{ $machining_data->work_order_no }}</td>
-            <td>{{ $machining_data->item }}</td>
-            <td>{{ $machining_data->heat_no }}</td>
-            <td>{{ $machining_data->quantity }}</td>
-            <td>{{ $machining_data->machine_name }}</td>
-            <td>{{ $machining_data->grade }}</td>
+            <td>{{ $drilling_data->drilling_id }}</td>
+            <td>{{ date('d-m-Y',strtotime($drilling_data->date)) }}</td>
+            <td>{{ $drilling_data->work_order_no }}</td>
+            <td>{{ $drilling_data->item }}</td>
+            <td>{{ $drilling_data->heat_no }}</td>
+            <td>{{ $drilling_data->quantity }}</td>
+            <td>{{ $drilling_data->machine_name }}</td>
+            <td>{{ $drilling_data->grade }}</td>
         </tr>
     @endforeach
 </table>

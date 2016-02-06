@@ -30,7 +30,7 @@
                             </tr>
                             <tr>
                                 <td>{{$last_record->cutting_id }}</td>
-                                <td>{{$last_record->date }}</td>
+                                <td>{{date('d-m-Y',strtotime($last_record->date)) }}</td>
                                 <td>{{$last_record->raw_mat_size}}</td>
                                 <td>{{ $last_record->size}}</td>
                                 <td>{{ $last_record->pressure }}</td>

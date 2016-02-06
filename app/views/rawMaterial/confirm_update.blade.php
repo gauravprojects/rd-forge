@@ -38,7 +38,7 @@
                             <tr>
                                 <td>{{ $confirmation->internal_no }}</td>
                                 <td>{{ $confirmation->receipt_code }}</td>
-                                <td>{{ $confirmation->date }}</td>
+                                <td>{{ date('d-m-Y',strtotime($confirmation->date)) }}</td>
                                 <td>{{ $confirmation->size }}</td>
                                 <td>{{ $confirmation->manufacturer }}</td>
                                 <td>{{ $confirmation->heat_no }}</td>

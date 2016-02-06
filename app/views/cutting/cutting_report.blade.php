@@ -36,7 +36,7 @@
                             @foreach($all_records as $cutting_data)
                             <tr>
                                 <td>{{ $cutting_data->cutting_id }}</td>
-                                <td>{{ $cutting_data->date }}</td>
+                                <td>{{ date('d-m-Y',strtotime($cutting_data->date)) }}</td>
                                 <td>{{ $cutting_data->raw_mat_size }}</td>
                                 <td>{{ $cutting_data->heat_no  }}</td>
                                 <td>{{ $cutting_data->quantity }}</td>
