@@ -62,8 +62,6 @@
 
 
 
-
-
         <table>
             <tr>
                 <th class="heading" style="text-align:center;" colspan="6"> Item Details</th>
@@ -84,9 +82,7 @@
             @foreach($work_order_material_details as $data)
 
 
-
-
-                <?php if($data->work_order_no ==$work_order_detail->work_order_no)
+                <?php if($data->work_order_no == $work_order_detail->work_order_no)
                 {
                     echo "<tr>";
                     echo "<td>".$data->item_no."</td>";

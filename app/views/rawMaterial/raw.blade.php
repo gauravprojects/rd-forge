@@ -79,7 +79,7 @@
                             <!-- Purchase order date -->
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail','Purchase Order Date') }}
-                                {{ Form::text('purchaseDate',null,array('class'=>'form-control inputfix','id'=>'purchaseDate','name'=>'purchaseDate','placeholder'=>'Purchase Order Date','readonly')) }}
+                                {{ Form::text('purchaseDate',null,array('class'=>'form-control inputfix','id'=>'purchaseDate','name'=>'purchaseDate','placeholder'=>'Purchase Order Date','readonly','data-date-format'=>'dd-mm-yyyy')) }}
                             </div>
 
                             <!-- Invoice Number -->
@@ -91,7 +91,7 @@
                             <!-- Inovice date -->
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail','Invoice Date') }}
-                                {{ Form::text('invoiceDate',null,array('class'=>'form-control inputfix','id'=>'invoiceDate','name'=>'invoiceDate','placeholder'=>'Invoice Date','readonly')) }}
+                                {{ Form::text('invoiceDate',null,array('class'=>'form-control inputfix','id'=>'invoiceDate','name'=>'invoiceDate','placeholder'=>'Invoice Date','readonly','data-date-format'=>'dd-mm-yyyy')) }}
                             </div>
 
                             <!-- Material grade, this will be prementioned, using dropdowm they will be shown
@@ -100,7 +100,7 @@
                                 <div class="form-group">
                                     {{ Form::label('exampleInputEmail1','Material Grade') }}
 
-                                    <select class="form-control" name="materialGrade">
+                                    <select class="form-control lola" name="materialGrade">
                                         @foreach($grades as $grade_element)
                                             <option value="{{ $grade_element->grade_name }}">{{$grade_element->grade_name}}</option>
                                         @endforeach
@@ -119,7 +119,7 @@
                                     <option value="Bloom">Bloom</option>
                                 </select>
                             </div>
-
+                            
                             <div class="loginButton">
 
                             <button class="waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button" type="submit">Submit</button>

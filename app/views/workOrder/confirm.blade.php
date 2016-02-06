@@ -51,12 +51,12 @@
                                 </tr>
                             </table>
 
-
+                            <br>
 
                           <table>
 
                                 <tr>
-                                    <th class="heading" style="text-align:center;" colspan="6"> Item Details</th>
+                                    <th class="heading" style="text-align:center;" colspan="100%"> Item Details</th>
                                 </tr>
                                 <tr>
                                     <th class="heading" style="text-align:center;">Item No</th>
@@ -92,18 +92,14 @@
 
                             </table>
 
-                            <button class="btn btn-small btn-block" type="button" id="excel_button">
-                                <a href="{{ action('workOrderController@update',array('id'=>$work_order_details[0]->work_order_no))}}" class="link" >Update</a>
-                            </button>
-
-                            <button class="btn btn-small btn-block" type="button" id="excel_button">
-                                <a href="{{ action('workOrderController@destroy',array('id'=>$work_order_details[0]->work_order_no))}}" class="link" >Delete</a>
-                            </button>
-
-
                         </div>
 
                     </div>
+
+                    
+                        <a href="{{ action('workOrderController@update',array('id'=>$work_order_details[0]->work_order_no))}}" class="link"><button class="waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button" type="submit">Update</button></a>
+
+                          <a href="{{ action('workOrderController@destroy',array('id'=>$work_order_details[0]->work_order_no))}}" class="link"><button class="waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button" type="submit">Delete</button></a>
 
                 </div>		<!-- card ends here -->
             </div>		<!-- wrapper ends here -->

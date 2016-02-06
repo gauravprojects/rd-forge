@@ -31,7 +31,7 @@
         });
     </script>
 
-
+    <br><br>
 
     <a href="{{route('drilling.report')}} " class="waves-effect waves-light btn link right">Drilling reports</a>
 
@@ -60,7 +60,7 @@
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Work Order Number') }}
 
-                            <select class="form-control inputfix" name="work_order_no" id="work_order_no">
+                            <select class="form-control" name="work_order_no" id="work_order_no">
                                     <option value="">----Select Work Order-----</option>
                                 @foreach($availableWorkOrderNo as $workOrder)
                                     <option value="{{ $workOrder->work_order_no }}">
@@ -75,14 +75,14 @@
                         <!-- FOR ITEM TYPE -->
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Item no') }}
-                            <select class="form-control inputfix" name="item" id="item_no">
+                            <select class="form-control" name="item" id="item_no">
 
                             </select>
                         </div>
 
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Heat Number (from forging data)') }}
-                                <select class="form-control inputfix" name="heat_no" id="heat_no">
+                                <select class="form-control" name="heat_no" id="heat_no">
                                     <option value="">---Select Heat Number --------</option>
                                     <option value="Job Work">Job Work</option>
                                     @foreach($heat_no as $heat_no_element)
@@ -136,5 +136,11 @@
             </div>		<!-- wrapper ends here -->
         </div>		<!-- row ends here -->
     </div> 		<!-- col-12 ends here -->
+
+    <script type="text/javascript">
+    $(function () {
+        $('#date').datepicker();        
+    });
+</script>
 
 @stop

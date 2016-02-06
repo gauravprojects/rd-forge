@@ -50,7 +50,7 @@ class rawMaterialController extends BaseController {
 
 		$data_array = array(
 			'receipt_code' => $data['receiptCode'],
-			'date' => date('Y-m-d',strtotime($data['date'])),
+			'date' => date('d-m-y',strtotime($data['date'])),
 			'size' => $data['size'],
 			'manufacturer' => $data['Manufacturer'],
 			'heat_no' => $data['heatNo'],
@@ -103,7 +103,7 @@ class rawMaterialController extends BaseController {
 
 		$data_array_update = array(
 			'receipt_code' => $data['receiptCode'],
-			'date' => date('Y-m-d',strtotime($data['date'])),
+			'date' => date('d-m-y',strtotime($data['date'])),
 			'size' => $data['size'],
 			'manufacturer' => $data['Manufacturer'],
 			'heat_no' => $data['heatNo'],

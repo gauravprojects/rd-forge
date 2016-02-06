@@ -32,7 +32,7 @@ class MasterController extends \BaseController
 	{
 		$delete_response = Manufactures::deleteManufacturer($id);
 		$data = Manufactures::getManufactures();
-		return View::make('adminPanel.materialGrade')->with('data', $data);
+		return View::make('adminPanel.manufactures')->with('data', $data);
 
 	}
 

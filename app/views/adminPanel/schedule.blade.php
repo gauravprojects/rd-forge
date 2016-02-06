@@ -46,7 +46,7 @@
 
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Schedule Name') }}
-                            {{ Form::text('schedule',null,array('class'=>'form-control inputfix','placeholder'=>'Schedule name','id'=>'anything')) }}
+                            {{ Form::text('schedule',null,array('class'=>'form-control inputfix','placeholder'=>'Schedule name','id'=>'anything','required')) }}
                         </div>
 
                         <div class="loginButton">

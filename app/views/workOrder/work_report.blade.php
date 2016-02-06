@@ -4,9 +4,7 @@
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <div class="row">
             <div class="wrapper">
-                <button class="btn btn-small btn-block" type="button" id="excel_button">
-                    <a href="{{ action('workOrderController@excel') }}" class="link" >Generate report in excel</a>
-                </button>
+              
                 <div class="card">
                     <div class="row text-center">
 
@@ -15,7 +13,6 @@
                             <span>Work Order Reports</span>
                         </div>
                     </div>
-
 
 
                     <div class="row">
@@ -59,14 +56,11 @@
                                 </tr>
                             </table>
 
-
-
-
-
+                            <br>
 
                                 <table>
                                     <tr>
-                                        <th class="heading" style="text-align:center;" colspan="6"> Item Details</th>
+                                        <th class="heading" style="text-align:center;" colspan="100%"> Item Details</th>
                                     </tr>
                                     <tr>
                                         <th class="heading" style="text-align:center;">Item No</th>
@@ -82,9 +76,6 @@
 
 
                                     @foreach($work_order_material_details as $data)
-
-
-
 
                                         <?php if($data->work_order_no ==$work_order_detail->work_order_no)
                                           {
@@ -102,31 +93,20 @@
                                           }
                                           ?>
 
-                            @endforeach
+                                    @endforeach
                                 </table>
 
+                        
 
+                        <a href="{{ action('workOrderController@update',array('id'=>$work_order_detail->work_order_no))}}" class="link"><button class="waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button" type="submit">Update</button></a>
 
+                        <a href="{{ action('workOrderController@destroy',array('id'=>$work_order_detail->work_order_no))}}" class="link"><button class="waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button" type="submit">Delete</button></a>
 
-                            <button class="btn btn-small btn-block" type="button" id="excel_button">
-                                <a href="{{ action('workOrderController@update',array('id'=>$work_order_detail->work_order_no))}}" class="link" >Update</a>
-                            </button>
-
-                            <button class="btn btn-small btn-block" type="button" id="excel_button">
-                                <a href="{{ action('workOrderController@destroy',array('id'=>$work_order_detail->work_order_no))}}" class="link" >Delete</a>
-                            </button>
-
-                            <hr><br><br>
-
+                          
                         @endforeach
 
 
-
-                            <hr><hr>
-                            <button class="btn btn-small btn-block" type="button" id="excel_button">
-                                <a href="{{ action('workOrderController@excel') }}" class="link" >Generate report in excel</a>
-                            </button>
-
+                            <a href="{{ action('workOrderController@excel') }}" class="link" ><button class="waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button" type="submit">Generate report in excel</button></a>
 
                     </div>
 

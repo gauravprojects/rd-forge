@@ -46,7 +46,7 @@
 
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Pressure') }}
-                            {{ Form::text('pressure',null,array('class'=>'form-control inputfix','placeholder'=>'Pressure value','id'=>'anything')) }}
+                            {{ Form::text('pressure',null,array('class'=>'form-control inputfix','placeholder'=>'Pressure value','id'=>'anything','required')) }}
                         </div>
 
                         <div class="loginButton">

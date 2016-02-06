@@ -64,7 +64,7 @@
 
 			// array for table cutting records
 			$input_array = array(
-					'date' => date('Y-m-d',strtotime($cutting['date'])),
+					'date' => date('d-m-Y',strtotime($cutting['date'])),
 					'raw_mat_size' => $cutting['size'],
 					'heat_no' => $cutting['heatNo'],
 					'size' => $cutting['standard_size'],
@@ -132,7 +132,7 @@
 		$total_weight = $cutting['quantity'] * $cutting['wpp'];
 
 		$data_array_update = array(
-					'date' => date('Y-m-d',strtotime($cutting['date'])),
+					'date' => date('d-m-y',strtotime($cutting['date'])),
 					'raw_mat_size' => $cutting['size'],
 					'heat_no' => $cutting['heatNo'],
 					'size' => $cutting['standard_size'],
