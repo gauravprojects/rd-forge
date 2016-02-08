@@ -64,7 +64,8 @@
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Heat Number(available after cutting)') }}
 
-                                <select class="form-control" name="heatNo" id="heat_no">
+                                <select class="form-control" name="heatNo" id="heat_no" required>
+                                    <option value="">---Select Heat Number--------</option>
                                     @foreach($heat_no as $heat_no_element)
                                         <option value="{{ $heat_no_element->heat_no }}">{{$heat_no_element->heat_no}}</option>
                                     @endforeach
@@ -101,7 +102,8 @@
                                
                                 {{ Form::label('exampleInputEmail1','Standard Size') }}
 
-                                <select class="form-control" name="standard_size">
+                                <select class="form-control" name="standard_size" required>
+                                    <option value="">---Select Standard Size--------</option>
                                     @foreach($standard_size as $standard_size_element)
                                         <option value="{{ $standard_size_element->std_size }}">{{$standard_size_element->std_size}}</option>
                                     @endforeach
@@ -113,7 +115,8 @@
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Pressure') }}
 
-                                <select class="form-control" name="pressure">
+                                <select class="form-control" name="pressure" required>
+                                    <option value="">---Select Pressure--------</option>
                                     @foreach($pressure as $pressure_element)
                                         <option value="{{ $pressure_element->pressure }}">{{$pressure_element->pressure}}</option>
                                     @endforeach
@@ -124,7 +127,8 @@
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Standard Type') }}
 
-                                <select class="form-control" name="type">
+                                <select class="form-control" name="type" required>
+                                    <option value="">---Select Standard Type--------</option>
                                     @foreach($type as $type_element)
                                         <option value="{{ $type_element->type }}">{{$type_element->type}}</option>
                                     @endforeach
@@ -136,7 +140,8 @@
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Schedule') }}
 
-                                <select class="form-control" name="schedule">
+                                <select class="form-control" name="schedule" required>
+                                    <option value="">---Select Schedule--------</option>
                                     @foreach($schedule as $schedule_element)
                                         <option value="{{ $schedule_element->schedule }}">{{$schedule_element->schedule}}</option>
                                     @endforeach

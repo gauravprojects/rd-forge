@@ -61,7 +61,7 @@
                             {{ Form::label('exampleInputEmail1','Work Order Number') }}
 
                             <select class="form-control" name="work_order_no" id="work_order_no">
-                                    <option value="">----Select Work Order-----</option>
+                                <option value="">----Select Work Order-----</option>
                                 @foreach($availableWorkOrderNo as $workOrder)
                                     <option value="{{ $workOrder->work_order_no }}">
                                         {{$workOrder->work_order_no}} &nbsp;
@@ -112,7 +112,12 @@
 
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Material Grade') }}
-                            {{ Form::text('grade',null,array('class'=>'form-control inputfix','placeholder'=>'Grade','id'=>'exampleInputEnail1')) }}
+                            <select class="form-control" name="materialGrade" required>
+                                <option value="">---Select Grade--------</option>
+                                @foreach($grades as $grade_element)
+                                    <option value="{{ $grade_element->grade_name }}">{{$grade_element->grade_name}}</option>
+                                @endforeach
+                            </select>
                         </div>
 
                         <div class="form-group">

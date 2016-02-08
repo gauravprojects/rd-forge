@@ -36,6 +36,7 @@
                                 {{ Form::label('exampleInputEmail1','Heat Number(available raw material)') }}
 
                                 <select class="form-control" name="heatNo" id="heat_no">
+                                    <option value="">---Select Heat Number--------</option>
                                     @foreach($heat_no as $heat_no_element)
                                         @if($heat_no_element->heat_no == $forging->heat_no)
                                             <option value="{{ $heat_no_element->heat_no }}" selected>{{$heat_no_element->heat_no}}</option>
@@ -77,6 +78,7 @@
                                 {{ Form::label('exampleInputEmail1','Standard Size') }}
 
                                 <select class="form-control" name="standard_size">
+                                    <option value="">---Select Standard Size--------</option>
                                     @foreach($standard_size as $standard_size_element)
                                         @if($standard_size_element->std_size == $forging->size)
                                             <option value="{{ $standard_size_element->std_size }}" selected>{{$standard_size_element->std_size}}</option>
@@ -93,6 +95,7 @@
                                 {{ Form::label('exampleInputEmail1','Pressure') }}
 
                                 <select class="form-control" name="pressure">
+                                    <option value="">---Select Pressure--------</option>
                                     @foreach($pressure as $pressure_element)
                                         @if($pressure_element->pressure == $forging->pressure)
                                             <option value="{{ $pressure_element->pressure }}" selected>{{$pressure_element->pressure}}</option>
@@ -108,6 +111,7 @@
                                 {{ Form::label('exampleInputEmail1','Standard Type') }}
 
                                 <select class="form-control" name="type">
+                                    <option value="">---Select Standard Type--------</option>
                                     @foreach($type as $type_element)
                                         @if($type_element->type == $forging->type)
                                             <option value="{{ $type_element->type }}" selected>{{$type_element->type}}</option>
@@ -124,6 +128,7 @@
                                 {{ Form::label('exampleInputEmail1','Schedule') }}
 
                                 <select class="form-control" name="schedule">
+                                    <option value="">---Select Schedule--------</option>
                                     @foreach($schedule as $schedule_element)
                                         @if($schedule_element->schedule == $forging->schedule)
                                             <option value="{{ $schedule_element->schedule }}" selected>{{$schedule_element->schedule}}</option>

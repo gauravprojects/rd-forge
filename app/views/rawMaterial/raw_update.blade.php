@@ -92,6 +92,7 @@
                                 {{ Form::label('exampleInputPassword','Material Grade') }}
 
                                <select class="form-control" name="materialGrade">
+                                <option value="">---Select Grade--------</option>
                                         @foreach($grades as $grade_element)
                                             @if($grade_element->grade_name == $data->material_grade)
                                                     <option value="{{ $grade_element->grade_name }}" selected>{{$grade_element->grade_name}}</option>
@@ -108,7 +109,7 @@
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Type of Material</label>
                                 <select class="form-control" name="materialType">
-                                    
+                                    <option value="">---Select Material Type--------</option>
                                     <option value="Ingot">Ingot</option>
                                     <option value="Round">Round</option>
                                     <option value="Bloom">Bloom</option>

@@ -124,10 +124,10 @@
  --}}
 
 
-
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Material Grade') }}
                                 <select name="grade" class="form-control">
+                                    <option value="">---Select Grade --------</option>
                                     @foreach($grades as $grade)
                                         @if($grade->grade_name == $seration->grade)
                                             <option value="{{ $grade->grade_name }}" selected>{{ $grade->grade_name }}</option>

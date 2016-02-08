@@ -39,7 +39,8 @@
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Size') }}
 
-                            <select class="form-control" name="size">
+                            <select class="form-control" name="size" required>
+                                  <option value="">---Select Size--------</option>
                                 @foreach($sizes as $size_element)
                                     <option value="{{ $size_element->size }}">{{$size_element->size}}</option>
                                 @endforeach
@@ -50,7 +51,8 @@
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail','Manufacturer') }}
 
-                                <select class="form-control" name="Manufacturer">
+                                <select class="form-control" name="Manufacturer" required>
+                                    <option value="">---Select Manufacturer--------</option>
                                     @foreach($manufacturers as $manufacturer_element)
                                         <option value="{{ $manufacturer_element->manufacturer_name }}">{{$manufacturer_element->manufacturer_name}}</option>
                                     @endforeach
@@ -100,7 +102,8 @@
                                 <div class="form-group">
                                     {{ Form::label('exampleInputEmail1','Material Grade') }}
 
-                                    <select class="form-control lola" name="materialGrade">
+                                    <select class="form-control lola" name="materialGrade" required>
+                                        <option value="">---Select Grade--------</option>
                                         @foreach($grades as $grade_element)
                                             <option value="{{ $grade_element->grade_name }}">{{$grade_element->grade_name}}</option>
                                         @endforeach
@@ -113,7 +116,8 @@
                             <!-- raw material type, these sample types will be provided.. to be implemented using dropdown -->
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Type of Material</label>
-                                <select class="form-control" name="materialType">
+                                <select class="form-control" name="materialType" required>
+                                    <option value="">---Select Material type--------</option>
                                     <option value="Ingot">Ingot</option>
                                     <option value="Round">Round</option>
                                     <option value="Bloom">Bloom</option>
