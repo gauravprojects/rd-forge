@@ -38,13 +38,33 @@
                             <!-- For the size of the coming raw material -->
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Size') }}
-                                {{ Form::text('size',$data->size,array('class'=>'form-control inputfix','placeholder'=>'Size','id'=>'justAnything')) }}
+
+                                   <select class="form-control" name="size">
+                                    <option value="">---Select Size--------</option>
+                                    @foreach($sizes as $size_element)
+                                        @if($size_element->size == $data->size)
+                                            <option value="{{ $size_element->size }}" selected>{{$size_element->size}}</option>
+                                        @else
+                                            <option value="{{ $size_element->size }}">{{$size_element->size}}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+
                             </div>
 
                             <!-- Manufacturer's name -->
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail','Manufacturer') }}
-                                {{ Form::text('Manufacturer',$data->manufacturer,array('class'=>'form-control inputfix','placeholder'=>'Manufacturer Name','id'=>'JustAnything2')) }}
+                                <select class="form-control" name="Manufacturer" required>
+                                    <option value="">---Select Manufacturer--------</option>
+                                     @foreach($manufacturers as $manufacturer_element)
+                                        @if($manufacturer_element->manufacturer_name == $data->manufacturer)
+                                            <option value="{{ $manufacturer_element->manufacturer_name }}" selected>{{$manufacturer_element->manufacturer_name}}</option>
+                                        @else
+                                            <option value="{{ $manufacturer_element->manufacturer_name }}">{{$manufacturer_element->manufacturer_name}}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
                             </div>
 
                             <!-- Heat no, unique number for every order -->
