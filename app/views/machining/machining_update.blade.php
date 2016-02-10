@@ -168,6 +168,9 @@
 <script type="text/javascript">
     $(function () {
         $('#date').datepicker();
+        $('#work_order_no_select').dropdown();
+        $('#heat_no_select').dropdown();
+        $('#grade_select').dropdown();
     });
     </script>
 
