@@ -21,13 +21,13 @@ class rawMaterialController extends BaseController {
 	public static function getStandardData()
 	{
 		$sizes = Sizes::getSizes();
-		$heat_no = RawMaterial::getHeatNo();
+		$heat_no = RawMaterialStock::getHeatNo();
 		$standard_sizes = StandardSizes::getStandardSizes();
 		$pressure = Pressure::getPressure();
 		$schedule = Schedule::getSchedule();
 		$type = DescriptionType::getType();
-		$grades=Grades::getGrades();
-		$manufacturers= Manufactures::getManufactures();
+		$grades = Grades::getGrades();
+		$manufacturers = Manufactures::getManufactures();
 
 		return array('sizes'=>$sizes,'heat_no'=>$heat_no,'standard_size'=>$standard_sizes,'sizes'=>$sizes,
 			'pressure'=>$pressure,'schedule'=>$schedule,'type'=>$type,'grades'=>$grades,'manufacturers'=>$manufacturers);
@@ -37,7 +37,6 @@ class rawMaterialController extends BaseController {
 	public function index()
 	{
 		$data = rawMaterialController::getStandardData();
-		
 		return View::make('rawMaterial.raw')->with($data);
 	}
 
@@ -48,7 +47,7 @@ class rawMaterialController extends BaseController {
 	{
 		$data = Input::all(); // returns array form raw material entry form
 
-		$data_array = array(
+		$raw_material_array = array(
 			'receipt_code' => $data['receiptCode'],
 			'date' => date('Y-m-d',strtotime($data['date'])),
 			'size' => $data['size'],
@@ -64,11 +63,26 @@ class rawMaterialController extends BaseController {
 			'available_weight' => $data['weight']
 		);
 
-		RawMaterial::insertData($data_array);
+
+		$raw_material_stock_array = array(
+			'heat_no' => $data['heatNo'],
+			'material_grade' => $data['materialGrade'],
+			'raw_material_type' => $data['materialType'],
+			'available_weight' => $data['weight']
+			);
+
+
+		RawMaterial::insertData($raw_material_array);
+		$heat_numbers = RawMaterialStock::getHeatNumbers($data['heatNo']);
+		
+		if($heat_numbers)
+			RawMaterialStock::incrementWeight($data['heatNo'],$data['weight']);	
+		else
+			RawMaterialStock::insertData($raw_material_stock_array);	
 
 		//get the last entry in raw material table and pass it to confirm blade
 
-		$last_record= RawMaterial::getLastRecord();
+		$last_record = RawMaterial::getLastRecord();		
 		//returns the view to the confirmation page that shows last entered raw material entry
 		return View::make('rawMaterial.confirm')->with('confirmation',$last_record);
 	}
@@ -83,7 +97,7 @@ class rawMaterialController extends BaseController {
 
 	public function available()
 	{
-		$data= RawMaterial::availableWeight();
+		$data= RawMaterialStock::availableWeight();
 		return View::make('rawMaterial.available')
 			->with('data',$data);
 	}
@@ -115,6 +129,7 @@ class rawMaterialController extends BaseController {
 			'material_grade' => $data['materialGrade'],
 			'raw_material_type' => $data['materialType']
 		);
+
 		$update_response= DB::table('raw_material')
 							->where('internal_no',$data['internal_no'])
 							->update($data_array_update);
@@ -126,17 +141,16 @@ class rawMaterialController extends BaseController {
 
 	}
 
-
 	public function excel()
 	{
-		$raw= RawMaterial::getExcelData();
+		$raw = RawMaterial::getExcelData();
 		return View::make('rawMaterial.raw_report_excel')->with('raw',$raw);
 	}
 
 	public  function destroy($id)
 	{
 		$delete_response= RawMaterial::deleteRecord($id);
-		$raw= RawMaterial::getAllData();
+		$raw = RawMaterial::getAllData();
 		return View::make('rawMaterial.raw_report')->with('raw',$raw);
 
 

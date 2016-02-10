@@ -26,7 +26,7 @@
 		public static function getStandardData()
 		{
 			$sizes = Sizes::getSizes();
-			$heat_no = RawMaterial::getHeatNo();
+			$heat_no = RawMaterialStock::getHeatNo();
 			$standard_sizes = StandardSizes::getStandardSizes();
 			$pressure = Pressure::getPressure();
 			$schedule = Schedule::getSchedule();
@@ -79,16 +79,27 @@
 					'description' => $cutting['cutDes']
 			);
 
+			$stock_array = array(	
+					'heat_no' => $cutting['heatNo'],
+					'standard_size' => $cutting['standard_size'],
+					'pressure' => $cutting['pressure'],
+					'type' => $cutting['type'],
+					'schedule' => $cutting['schedule'],
+					'available_weight_cutting' => $total_weight
+				);
+
 			
-			$data = RawMaterial::returnAvailableWeight($cutting['heatNo']);
+			$data = RawMaterialStock::returnAvailableWeight($cutting['heatNo']);
 			$available_weight = $data[0]->available_weight;
 
 			$available_weight = $available_weight - $total_weight;
-			$available_weight_response = RawMaterial::updateAvailableWeight($cutting['heatNo'], $available_weight);
+			$available_weight_response = RawMaterialStock::updateAvailableWeight($cutting['heatNo'], $available_weight);
 
 
 			$cutting_response = Cutting::insertData($input_array);
 			$last_record = Cutting::getLastRecord();
+
+			CuttingStock::insertData($stock_array);
 
 			return View::make('cutting.confirm')->with('last_record', $last_record);
 
@@ -205,7 +216,7 @@
 
 		public function available()
 		{
-			$data= Cutting::availableCutting();
+			$data= CuttingStock::availableCutting();
 			return View::make('cutting.available')
 					->with('data',$data);
 		}
@@ -213,17 +224,18 @@
 
 		public function destroy($id)
 		{
+			$cutting_response = Cutting::getRecord($id);
 
-			$delete_response= Cutting::delete_record($id);
-			$all_records= Cutting::getAllRecords();
+			$total_weight = $cutting_response[0]->weight_per_piece * $cutting_response[0]->quantity;
 
-			// $total_weight = $cutting['quantity'] * $cutting['wpp'];
+			$data = RawMaterialStock::returnAvailableWeight($cutting_response[0]->heat_no);
+			$available_weight = $data[0]->available_weight;
 
-			// $data = RawMaterial::returnAvailableWeight($cutting['heatNo']);
-			// $available_weight = $data[0]->available_weight;
+			$available_weight = $available_weight + $total_weight;
+			$available_weight_response = RawMaterialStock::updateAvailableWeight($cutting_response[0]->heat_no, $available_weight);
 
-			// $available_weight = $available_weight + $total_weight;
-			// $available_weight_response = RawMaterial::updateAvailableWeight($cutting['heatNo'], $available_weight);
+			$delete_response = Cutting::delete_record($id);
+			$all_records = Cutting::getAllRecords();
 
 			return View::make('cutting.cutting_report')->with('all_records', $all_records);
 

@@ -32,8 +32,6 @@ class RawMaterial extends Eloquent
 	}
 
 
-
-
 	public static function getLastRecord()
 	{
 		return DB::table('raw_material')

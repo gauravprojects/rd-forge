@@ -24,7 +24,7 @@
                             </tr>
                             @foreach($data as $data_element)
                             <tr>
-                                <td>{{ $data_element->internal_no }}</td>
+                                <td>{{ $data_element->id }}</td>
                                 <td>{{ $data_element->heat_no }}</td>
                                 <td>{{ $data_element->raw_material_type }}</td>
                                 <td>{{ $data_element->material_grade }}</td>

@@ -22,18 +22,16 @@
                                 <th>Pressure</th>
                                 <th>Type</th>
                                 <th>Schedule</th>
-                                <th>Total Weight(initially)</th>
                                 <th>Available Weight</th>
                             </tr>
                             @foreach($data as $data_element)
                                 <tr>
-                                    <td>{{ $data_element->cutting_id }}</td>
+                                    <td>{{ $data_element->id }}</td>
                                     <td>{{ $data_element->heat_no }}</td>
-                                    <td>{{ $data_element->size }}</td>
+                                    <td>{{ $data_element->standard_size }}</td>
                                     <td>{{ $data_element->pressure }}</td>
                                     <td>{{ $data_element->type }}</td>
                                     <td>{{ $data_element->schedule }}</td>
-                                    <td>{{ $data_element->total_weight }}</td>
                                     <td>{{ $data_element->available_weight_cutting }}</td>
                                 </tr>
                             @endforeach
