@@ -66,7 +66,7 @@
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Work Order Number') }}
 
-                                <select class="form-control inputfix" name="work_order_no" id="work_order_no">
+                                <select class="form-control search selection" name="work_order_no" id="work_order_no_select" required>
                                     <option value="">---Select Work Order--------</option>
                                     @foreach($availableWorkOrderNo as $workOrder)
                                         <option value="{{ $workOrder->work_order_no }}">
@@ -89,7 +89,7 @@
                              <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Heat Number(available raw material)') }}
 
-                                <select class="form-control" name="heatNo" id="heat_no">
+                                <select class="form-control search selection" name="heat_no" id="heat_no_select" required>
                                     <option value="">------Select Work Order----------</option>
                                     <option value="Job Work">Job Work</option>
                                     @foreach($heat_no as $heat_no_element)
@@ -126,7 +126,7 @@
 
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Material Grade') }}
-                                <select name="grade" class="form-control">
+                                <select name="grade" class="form-control search selection" id="grade_select" required>
                                     <option value="">---Select Grade --------</option>
                                     @foreach($grades as $grade)
                                         @if($grade->grade_name == $machining->grade)

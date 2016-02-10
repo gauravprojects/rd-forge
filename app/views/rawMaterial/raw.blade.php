@@ -39,8 +39,8 @@
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Size') }}
 
-                            <select class="form-control" name="size" required>
-                                  <option value="">---Select Size--------</option>
+                            <select class="form-control search selection" id="size_select" name="size" required>
+                                <option value="">---Select Size--------</option>
                                 @foreach($sizes as $size_element)
                                     <option value="{{ $size_element->size }}">{{$size_element->size}}</option>
                                 @endforeach
@@ -50,8 +50,7 @@
                             <!-- Manufacturer's name -->
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail','Manufacturer') }}
-
-                                <select class="form-control" name="Manufacturer" required>
+                                <select class="form-control search selection" id="manufacturer_select" name="Manufacturer" required>
                                     <option value="">---Select Manufacturer--------</option>
                                     @foreach($manufacturers as $manufacturer_element)
                                         <option value="{{ $manufacturer_element->manufacturer_name }}">{{$manufacturer_element->manufacturer_name}}</option>
@@ -102,7 +101,7 @@
                                 <div class="form-group">
                                     {{ Form::label('exampleInputEmail1','Material Grade') }}
 
-                                    <select class="form-control lola" name="materialGrade" required>
+                                    <select class="form-control search selection" id="grade_select" name="materialGrade" required>
                                         <option value="">---Select Grade--------</option>
                                         @foreach($grades as $grade_element)
                                             <option value="{{ $grade_element->grade_name }}">{{$grade_element->grade_name}}</option>
@@ -143,6 +142,9 @@
         $('#date').datepicker();
         $("#purchaseDate").datepicker();
         $("#invoiceDate").datepicker();
+        $('#size_select').dropdown();
+        $('#grade_select').dropdown();
+        $('#manufacturer_select').dropdown();
     });
 </script>
 

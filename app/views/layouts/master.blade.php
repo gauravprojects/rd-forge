@@ -36,6 +36,20 @@
     {{HTML::script('bootstrap-datepicker/js/bootstrap-datepicker.js')}}
     {{HTML::script('js/moment.min.js')}}
 
+    {{HTML::script('js/transition.js')}}
+    {{HTML::script('js/dropdown.js')}}
+
+    {{HTML::style('css/dropdown.css')}}
+    {{HTML::style('css/transition.css')}}
+
+     <style type="text/css">
+
+    .search.selection{
+        margin-top: 15px;
+    }
+
+    </style>
+
 </head>
 <body>
 <!-- header -->

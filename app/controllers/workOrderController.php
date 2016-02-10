@@ -12,6 +12,7 @@ class WorkOrderController extends BaseController {
 		$data_input=Input::all();
 
 		$data_array= array(
+			'work_order_no' => $data_input['work_order_no'],
 			'customer_name' => $data_input['customer_name'],
 			'purchase_order_no' => $data_input['purchase_order_no'],
 			'purchase_order_date' => date('Y-m-d',strtotime($data_input['purchase_order_date'])),
@@ -50,8 +51,6 @@ class WorkOrderController extends BaseController {
 
 
 	}
-
-
 
 	public function details_add()
 	{

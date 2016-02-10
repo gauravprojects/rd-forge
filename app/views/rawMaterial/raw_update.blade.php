@@ -39,7 +39,7 @@
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Size') }}
 
-                                   <select class="form-control" name="size">
+                                   <select class="form-control search selection" id="size_select" name="size">
                                     <option value="">---Select Size--------</option>
                                     @foreach($sizes as $size_element)
                                         @if($size_element->size == $data->size)
@@ -55,7 +55,7 @@
                             <!-- Manufacturer's name -->
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail','Manufacturer') }}
-                                <select class="form-control" name="Manufacturer" required>
+                                <select class="form-control search selection" id="manufacturer_select" name="Manufacturer" required>
                                     <option value="">---Select Manufacturer--------</option>
                                      @foreach($manufacturers as $manufacturer_element)
                                         @if($manufacturer_element->manufacturer_name == $data->manufacturer)
@@ -111,7 +111,7 @@
 
                                 {{ Form::label('exampleInputPassword','Material Grade') }}
 
-                               <select class="form-control" name="materialGrade">
+                               <select class="form-control search selection" id="grade_select" name="materialGrade">
                                 <option value="">---Select Grade--------</option>
                                         @foreach($grades as $grade_element)
                                             @if($grade_element->grade_name == $data->material_grade)
@@ -153,6 +153,9 @@
         $('#date').datepicker();
         $("#purchaseDate").datepicker();
         $("#invoiceDate").datepicker();
+        $('#size_select').dropdown();
+        $('#grade_select').dropdown();
+        $('#manufacturer_select').dropdown();
     });
 </script>
 

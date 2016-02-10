@@ -17,8 +17,13 @@
 
                         <!-- Customer Name who is placing the order -->
                         <div class="form-group">
+                            {{ Form::label('exampleInputEmail1','Work Order Number') }}
+                            {{ Form::text('work_order_no',null,array('class'=>'form-control inputfix','placeholder'=>'Work Order Number','id'=>'exampleInputEnail1')) }}
+                        </div>
+
+                        <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Customer Name') }}
-                            {{ Form::text('customer_name',null,array('class'=>'form-control inputfix','placeholder'=>'Customer Number','id'=>'exampleInputEnail1')) }}
+                            {{ Form::text('customer_name',null,array('class'=>'form-control inputfix','placeholder'=>'Customer Name','id'=>'exampleInputEnail1')) }}
                         </div>
 
                         <!-- Purchase order number -->
