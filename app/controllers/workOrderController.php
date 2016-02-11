@@ -191,4 +191,11 @@ class WorkOrderController extends BaseController {
 
 	}
 
+	public function getWorkOrderMaterial()
+	{
+		$work_order_no = Input::get('work_order_no');
+		$details = DB::table('work_order_material_details')->where('work_order_no',$work_order_no)->get();
+		return json_encode($details);
+	}
+
 }

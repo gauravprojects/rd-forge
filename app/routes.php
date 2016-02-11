@@ -234,6 +234,15 @@
 							//ROUTES FOR WORK ORDER ENTRY
 
 		//form1 for index
+
+		Route::get('/workOrderMaterial',array(
+
+		'as'=>'work.getWorkOrderMaterial',
+		'uses'=>'workOrderController@getWorkOrderMaterial'
+
+		));
+
+
 		Route::get('/workOrder',array(
 
 		'as'=>'work.index',

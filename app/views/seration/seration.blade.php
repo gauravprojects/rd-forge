@@ -3,34 +3,34 @@
 @section('links_data')
 
     <script type="application/javascript">
-        $(document).ready(function(){
-            $('#work_order_no').click(function () {
-                var work_order_no= $(this).val();
-                //alert($work_order_no);
-                console.log(work_order_no);
-                $.ajax({
-                    url:'workOrder/'+work_order_no,
-                    data: work_order_no,
-                    method: 'POST',
-                    dataType: "json",
-                }).done(function(response){
-                    var i=0;
-                    //console.log(response[0]['item_no']);
-                    for(i=0;i<100;i++)
-                    {
-                        if (!(typeof response[i]['item_no']  === 'undefined' || response[i]['item_no'] === null))
-                        {
-                            // variable is defined
-                            console.log(response[i]['item_no']);
-                            $('#item_no').append("<option value="+response[i]['item_no']+">"
-                                    + response[i]['item_no'] +
-                                    "<option>");
-                        }
-                    }
-                });
+        // $(document).ready(function(){
+        //     $('#work_order_no').click(function () {
+        //         var work_order_no= $(this).val();
+        //         //alert($work_order_no);
+        //         console.log(work_order_no);
+        //         $.ajax({
+        //             url:'workOrder/'+work_order_no,
+        //             data: work_order_no,
+        //             method: 'POST',
+        //             dataType: "json",
+        //         }).done(function(response){
+        //             var i=0;
+        //             //console.log(response[0]['item_no']);
+        //             for(i=0;i<100;i++)
+        //             {
+        //                 if (!(typeof response[i]['item_no']  === 'undefined' || response[i]['item_no'] === null))
+        //                 {
+        //                     // variable is defined
+        //                     console.log(response[i]['item_no']);
+        //                     $('#item_no').append("<option value="+response[i]['item_no']+">"
+        //                             + response[i]['item_no'] +
+        //                             "<option>");
+        //                 }
+        //             }
+        //         });
 
-            });
-        });
+        //     });
+        // });
     </script>
 
 
@@ -69,7 +69,7 @@
                                     <option value="{{ $workOrder->work_order_no }}">
                                         {{$workOrder->work_order_no}} &nbsp;
                                         -{{$workOrder->customer_name}} &nbsp;
-                                        -Ordered on:     {{ $workOrder->purchase_order_date  }}
+                                        -Ordered on:     {{ date('d-m-Y',strtotime($workOrder->purchase_order_date))  }}
                                     </option>
                                 @endforeach
                             </select>
@@ -83,8 +83,8 @@
                         -->
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Item no') }}
-                            <select class="form-control" name="item" id="item_no">
-
+                            <select class="form-control search selection" name="item" id="item_no_select">
+                                <option value="">---Select Item Number --------</option>
                             </select>
                         </div>
 
@@ -155,7 +155,31 @@
     <script type="text/javascript">
     $(function () {
         $('#date').datepicker();
-        $('#work_order_no_select').dropdown();
+        $('#work_order_no_select').dropdown({
+                    onChange : function(){ 
+
+                        var work_order_no = $(this)[0].value;
+
+                        $.ajax({
+
+                            'type' : 'GET',
+                            'url' : 'workOrderMaterial',
+                            'data' : {work_order_no : work_order_no}
+
+                        })
+                        .done(function(data)
+                        {                            
+                            $.each(JSON.parse(data),function(key,value)
+                            {
+                            $("#item_no_select").append(
+                            '<option value="'+value['item_no']+'">'+value['work_order_no']+"/"+value['item_no']+'</option>');
+                            });
+                            
+                        });
+
+                     }
+                });
+        $('#item_no_select').dropdown();
         $('#heat_no_select').dropdown();
         $('#grade_select').dropdown();
     });
