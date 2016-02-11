@@ -59,7 +59,7 @@
 
                   <!-- Category to be searched, category means these processes, like raw material, cutting etc -->
                         {{ Form::label('exampleInputEmail1','Category') }}
-                        <select class="form-control" name="category" id="category">
+                        <select class="form-control multiple search selection" name="category" id="category">
                                 <option value="">---- Select Category From here ----</option>
                             @foreach($categories as $category)
                                 <option value="{{ $category->category }}">{{$category->category}}</option>
@@ -83,7 +83,13 @@
         </div>		<!-- row ends here -->
     </div> 		<!-- col-12 ends here -->
 
+<script type="text/javascript">
+    $(function(){
 
+        $("#category").dropdown();
+    });
+
+</script>
 
 
 @stop

@@ -36,14 +36,13 @@ class searchController extends \BaseController {
 //            ->select()
 //            ->where($data['options'],'=',''.$data['selected'].'')
 //            ->get();
+        // $query= DB::raw("SELECT * FROM raw_material WHERE ". $data['options']."= '" .$data['selected']."'");
+        // $response= DB::select($query);
 
-        $query= DB::raw("SELECT * FROM raw_material WHERE ". $data['options']."= '" .$data['selected']."'");
-        $response= DB::select($query);
+        // return View::make('search.search_new')
+        //     ->with('data',$response);
 
-        return View::make('search.search_new')
-            ->with('data',$response);
-
-        dd($response);
+        // dd($response);
     }
 
 

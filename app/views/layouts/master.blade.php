@@ -42,6 +42,8 @@
     {{HTML::style('css/dropdown.css')}}
     {{HTML::style('css/transition.css')}}
 
+
+
      <style type="text/css">
 
     .search.selection{

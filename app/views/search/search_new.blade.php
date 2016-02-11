@@ -1,6 +1,43 @@
 @extends('layouts.master')
 
 @section('links_data')
+
+        <style type="text/css">
+
+        .ui.label {
+    color:black;
+    display: inline-block;
+    line-height: 1;
+    vertical-align: baseline;
+    margin: 0em 0.14285714em;
+    background-color: #e8e8e8;
+    background-image: none;
+    padding: 0.5833em 0.833em;
+    /* color: rgba(0, 0, 0, 0.6); */
+    text-transform: none;
+    font-weight: bold;
+    border: 0px solid transparent;
+    border-radius: 0.28571429rem;
+    -webkit-transition: background 0.1s ease;
+    transition: background 0.1s ease;
+}
+
+.ui.label > .delete.icon {
+    cursor: pointer;
+    margin-right: 0em;
+    margin-left: 0.5em;
+    font-size: 0.92857143em;
+    opacity: 0.5;
+    -webkit-transition: background 0.1s ease;
+    transition: background 0.1s ease;
+}
+
+i.icon.delete:before {
+    content: "\f00d";
+}
+
+        </style>
+
         <!-- Google's jquery cdn to be placed here -->
 
     <script type="text/javascript">
@@ -36,7 +73,7 @@
 
                     <!-- Options to be selected, to be loaded using ajax form search_selection table -->
                     {{ Form::label('exampleInputEmail1','Select from following options') }}
-                    <select class="form-control" name="options" id="options" >
+                    <select class="form-control ui fluid search dropdown" name="options[]" id="options" multiple="">
                         <option value="">Select form following options</option>
                         <option value="manufacturer">Manufacturer</option>
                         <option value="size">Size</option>
@@ -108,19 +145,20 @@
                         <p class="center-align">No report currently present</p>
                     @endif
 
-
-
-
-
-
-
-
             </div>		<!-- card ends here -->
         </div>		<!-- wrapper ends here -->
     </div>		<!-- row ends here -->
 </div> 		<!-- col-12 ends here -->
 
 
+
+<script type="text/javascript">
+    $(function(){
+        $("#options").dropdown();
+        $("#patterson").dropdown();
+    });
+
+</script>
 
 
 @stop
