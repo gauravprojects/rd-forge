@@ -66,7 +66,7 @@ class WorkOrder extends Eloquent
 			->get();
 	}
 
-	public static function getRecordByWorkOrderDeails($work_order_no)  //from work order details
+	public static function getRecordByWorkOrderDetails($work_order_no)  //from work order details
 	{
 		return DB::table('work_order_details')
 			->select()
@@ -102,6 +102,13 @@ class WorkOrder extends Eloquent
 			 ->where('work_order_no','=',$id)
 			 ->delete();
 
+		 return DB::table('work_order_material_details')
+			 ->where('work_order_no','=',$id)
+			 ->delete();
+	}
+
+	public static function deleteRecordMaterialDetails($id)
+	{
 		 return DB::table('work_order_material_details')
 			 ->where('work_order_no','=',$id)
 			 ->delete();

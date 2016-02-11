@@ -4,14 +4,25 @@ class WorkOrderController extends BaseController {
 
 	public function index()
 	{
-		return View::make('workOrder.work');
+		$grades= Grades::getGrades();
+		$standard_sizes = StandardSizes::getStandardSizes();
+		$pressure = Pressure::getPressure();
+		$schedule = Schedule::getSchedule();
+		$type = DescriptionType::getType();
+		
+		return View::make('workOrder.work')
+				->with('grades',$grades)
+				->with('standard_size', $standard_sizes)
+				->with('pressure', $pressure)
+				->with('schedule', $schedule)
+				->with('type', $type);
 	}
 
 	public function store()
 	{
 		$data_input=Input::all();
 
-		$data_array= array(
+		$work_order_array= array(
 			'work_order_no' => $data_input['work_order_no'],
 			'customer_name' => $data_input['customer_name'],
 			'purchase_order_no' => $data_input['purchase_order_no'],
@@ -20,64 +31,34 @@ class WorkOrderController extends BaseController {
 			'inspection' => $data_input['inspection'],
 			'packing_instruction' => $data_input['packing_instruction'],
 			'testing_instruction' => $data_input['testing_instruction'],
-			'quatation_no' => $data_input['quatation_no'],
+			'quotation_no' => $data_input['quotation_no'],
 			'remarks' => $data_input['remarks'],
 			'status' => '0'
 		);
 
-		WorkOrder::insertData($data_array);
-
-		//now fetch dis data to return to the array
-		$last_input = WorkOrder::getLastRecord();
-
-		$grades= Grades::getGrades();
-		$work_order_details= WorkOrder::getWorkOrderDetails($last_input->work_order_no);
-
-
-		//all data form master table is taken and fed to the  cutting form
-		$standard_sizes = StandardSizes::getStandardSizes();
-		$pressure = Pressure::getPressure();
-		$schedule = Schedule::getSchedule();
-		$type = DescriptionType::getType();
-
-		return View::make('workOrder.work2')
-			->with('data',$last_input)
-			->with('grades',$grades)
-			->with('work_order_details',$work_order_details)
-				->with('standard_size', $standard_sizes)
-				->with('pressure', $pressure)
-				->with('schedule', $schedule)
-				->with('type', $type);;
-
-
-	}
-
-	public function details_add()
-	{
-		$data= Input::all();
-		$i=0;
-		$count_rows= count($data['item_no']);
-		for($i=0;$i<$count_rows;$i++)
+		WorkOrder::insertData($work_order_array);
+	
+		for($i=0;$i<count($data_input['item_no']);$i++)
 		{
-				$data_array = array(
-					'work_order_no' => $data['work_order_no'][$i],
-					'item_no' => $data['item_no'][$i],
-					'material_grade' => $data['grade'][$i],
-					'size' => $data['standard_size'][$i],
-					'pressure' => $data['pressure'][$i],
-					'type' => $data['type'][$i],
-					'schedule' => $data['schedule'][$i],
-					'quantity' => $data['quantity'][$i],
-					'weight' => $data['weight'][$i],
-					'remarks' => $data['remarks'][$i]
+				$work_order_material_array = array(
+					'work_order_no' => $data_input['work_order_no'],
+					'item_no' => $data_input['item_no'][$i],
+					'material_grade' => $data_input['grade'][$i],
+					'size' => $data_input['standard_size'][$i],
+					'pressure' => $data_input['pressure'][$i],
+					'type' => $data_input['type'][$i],
+					'schedule' => $data_input['schedule'][$i],
+					'quantity' => $data_input['quantity'][$i],
+					'weight' => $data_input['weight'][$i],
+					'remarks' => $data_input['remarks_mat'][$i]
 				);
-				$input_response = DB::table('work_order_material_details')->insert($data_array);
+
+				DB::table('work_order_material_details')->insert($work_order_material_array);
 
 		}
 
-		// data from work order details for respective work order no
-		$work_order_details= WorkOrder::getRecordByWorkOrderDeails($data['work_order_no'][0]);
-		$work_order_material_details= WorkOrder::getRecordByWorkOrderMaterialDetails($data['work_order_no'][0]);
+		$work_order_details= WorkOrder::getRecordByWorkOrderDetails($data_input['work_order_no']);
+		$work_order_material_details= WorkOrder::getRecordByWorkOrderMaterialDetails($data_input['work_order_no']);
 
 
 		return View::make('workOrder.confirm')
@@ -90,6 +71,7 @@ class WorkOrderController extends BaseController {
 	{
 		$all_records_work_order_details= WorkOrder::getAllRecordsWorkOrderDetails();
 		$all_records_work_order_material_details=WorkOrder::getAllRecordsWorkOrderMaterialDetails();
+
 		return View::make('workOrder.work_report')
 			->with('work_order_details',$all_records_work_order_details)
 			->with('work_order_material_details',$all_records_work_order_material_details);
@@ -105,24 +87,35 @@ class WorkOrderController extends BaseController {
 	public function update($id)
 	{
 		//to update entered work order
-		$record=WorkOrder::getRecordByWorkOrderDeails($id);
-		$record= $record[0];
+		$work_order_details = WorkOrder::getRecordByWorkOrderDetails($id);
+		$work_order_material_details = WorkOrder::getRecordByWorkOrderMaterialDetails($id);
+		$record = $work_order_details[0];
+		$record_new = $work_order_material_details;
+
+		$grades= Grades::getGrades();
+		$standard_sizes = StandardSizes::getStandardSizes();
+		$pressure = Pressure::getPressure();
+		$schedule = Schedule::getSchedule();
+		$type = DescriptionType::getType();
+		
+
 		return View::make('workOrder.work_update')
-			->with('record',$record);
-
-		dd($record);
-
-		dd("update called");
+			->with('record',$record)
+			->with('record_new',$record_new)
+			->with('grades',$grades)
+				->with('standard_size', $standard_sizes)
+				->with('pressure', $pressure)
+				->with('schedule', $schedule)
+				->with('type', $type);
 	}
 
 
 	public function update_store()
 	{
 
-		$data_input=Input::all();
+		$data_input = Input::all();
 
-		//  $data_input['work_order_no'],
-		$data_array= array(
+		$data_array = array(
 			'customer_name' => $data_input['customer_name'],
 			'purchase_order_no' => $data_input['purchase_order_no'],
 			'purchase_order_date' => date('Y-m-d',strtotime($data_input['purchase_order_date'])),
@@ -130,37 +123,43 @@ class WorkOrderController extends BaseController {
 			'inspection' => $data_input['inspection'],
 			'packing_instruction' => $data_input['packing_instruction'],
 			'testing_instruction' => $data_input['testing_instruction'],
-			'quatation_no' => $data_input['quatation_no'],
+			'quotation_no' => $data_input['quotation_no'],
 			'remarks' => $data_input['remarks'],
 			'status' => '0'
 		);
 
-		$response= WorkOrder::updateRecord($data_array,$data_input['work_order_no']);
+		WorkOrder::updateRecord($data_array,$data_input['work_order_no']);
+		WorkOrder::deleteRecordMaterialDetails($data_input['work_order_no']);
 
-		$work_order_details=WorkOrder::getOrderDetails($data_input['work_order_no']);
-		//all data form master table is taken and fed to the  cutting form
-		$grades= Grades::getGrades();
-		$standard_sizes = StandardSizes::getStandardSizes();
-		$pressure = Pressure::getPressure();
-		$schedule = Schedule::getSchedule();
-		$type = DescriptionType::getType();
+		for($i=0;$i<count($data_input['item_no']);$i++)
+		{
+				$work_order_material_array = array(
+					'work_order_no' => $data_input['work_order_no'],
+					'item_no' => $data_input['item_no'][$i],
+					'material_grade' => $data_input['grade'][$i],
+					'size' => $data_input['standard_size'][$i],
+					'pressure' => $data_input['pressure'][$i],
+					'type' => $data_input['type'][$i],
+					'schedule' => $data_input['schedule'][$i],
+					'quantity' => $data_input['quantity'][$i],
+					'weight' => $data_input['weight'][$i],
+					'remarks' => $data_input['remarks_mat'][$i]
+				);
+
+				DB::table('work_order_material_details')->insert($work_order_material_array);
+
+		}
+
+		$work_order_details= WorkOrder::getRecordByWorkOrderDetails($data_input['work_order_no']);
+		$work_order_material_details= WorkOrder::getRecordByWorkOrderMaterialDetails($data_input['work_order_no']);
+
+
+		return View::make('workOrder.confirm')
+				->with('work_order_details',$work_order_details)
+				->with('work_order_material_details',$work_order_material_details);
 
 
 
-		return View::make('workOrder.work_update2')
-			->with('grades',$grades)
-			->with('work_order_details',$work_order_details)
-			->with('standard_size', $standard_sizes)
-			->with('pressure', $pressure)
-			->with('schedule', $schedule)
-			->with('type', $type);;
-
-
-	}
-
-	public function update_details_store($id)
-	{
-		dd("update details stored called");
 	}
 
 
@@ -183,14 +182,12 @@ class WorkOrderController extends BaseController {
 	 */
 	public function destroy($id)
 	{
-		//dd($id);
 		WorkOrder::deleteRecord($id);
 		$all_records_work_order_details= WorkOrder::getAllRecordsWorkOrderDetails();
 		$all_records_work_order_material_details=WorkOrder::getAllRecordsWorkOrderMaterialDetails();
 		return View::make('workOrder.work_report')
 			->with('work_order_details',$all_records_work_order_details)
 			->with('work_order_material_details',$all_records_work_order_material_details);
-
 
 	}
 

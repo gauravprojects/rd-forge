@@ -173,7 +173,7 @@
         <script type="text/javascript">
         $(function () {
             $('#date').datepicker();
-            $('#heatno_select').dropdown();
+            $('#heat_no_select').dropdown();
             $('#standardsize_select').dropdown();
             $('#pressure_select').dropdown();
             $('#standardtype_select').dropdown();

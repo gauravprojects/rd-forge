@@ -60,7 +60,7 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 		$forging_array= array(
 				'date'		=> date('d-m-y',strtotime($forging_input['date'])),
 				'weight_per_piece'=>$forging_input['weight_per_peice'],
-				'heat_no'		=> $forging_input['heatNo'],
+				'heat_no'		=> $forging_input['heat_no'],
 				'size' =>$forging_input['standard_size'],
 				'pressure' => $forging_input['pressure'],
 				'type' => $forging_input['type'],
@@ -117,7 +117,7 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 		$data_array_update = array(
 					'date'		=> date('Y-m-d',strtotime($forging['date'])),
 					'weight_per_piece'=>$forging['weight_per_peice'],
-					'heat_no'		=> $forging['heatNo'],
+					'heat_no'		=> $forging['heat_no'],
 					'size' =>$forging['standard_size'],
 					'pressure' => $forging['pressure'],
 					'type' => $forging['type'],

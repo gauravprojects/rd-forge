@@ -47,7 +47,7 @@
                                 </tr>
                                 <tr>
                                     <th class="heading" style="text-align:center;">Quatation No</th>
-                                    <td>{{ $work_order_details[0]->quatation_no }}</td>
+                                    <td>{{ $work_order_details[0]->quotation_no }}</td>
                                 </tr>
                             </table>
 
@@ -88,7 +88,7 @@
                                     <td>{{ $data->remarks }}</td>
 
                                 </tr>
-                                  @endforeach
+                                @endforeach
 
                             </table>
 

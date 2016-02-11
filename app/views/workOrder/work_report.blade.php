@@ -52,7 +52,7 @@
                                 </tr>
                                 <tr>
                                     <th class="heading" style="text-align:center;">Quatation No</th>
-                                    <td>{{ $work_order_detail->quatation_no }}</td>
+                                    <td>{{ $work_order_detail->quotation_no }}</td>
                                 </tr>
                             </table>
 
@@ -77,7 +77,7 @@
 
                                     @foreach($work_order_material_details as $data)
 
-                                        <?php if($data->work_order_no ==$work_order_detail->work_order_no)
+                                        <?php if($data->work_order_no == $work_order_detail->work_order_no)
                                           {
                                                 echo "<tr>";
                                                 echo "<td>".$data->item_no."</td>";
