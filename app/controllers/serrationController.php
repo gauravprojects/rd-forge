@@ -1,22 +1,22 @@
 	<?php
 
-	class SerationController extends \BaseController {
+	class SerrationController extends BaseController {
 
 		/* ------------------------------- FUNCTIONS USED -----------------------------------------------
 
-		Note-> everywhere I have used the serration as seration, please ignore spelling and used serration as seration
+		Note-> everywhere I have used the serration as serration, please ignore spelling and used serration as serration
 				to avoid any further confusions..................
 
 			name							DESCRIPTION 							  BLADE USED FOR
 
-			index()						to shoe the serration form					seration blade
+			index()						to shoe the serration form					serration blade
 	*/
 		public function index()
 		{
 			$availableWorkOrder= WorkOrder::availableWorkOrderNo();
 			$grades= Grades::getGrades();
 			$heatNo_available_forging_weight= Drilling::HeatNo_availableWeightForging();
-			return View::make('seration.seration')
+			return View::make('serration.serration')
 					->with('grades',$grades)
 					->with('availableWorkOrderNo',$availableWorkOrder)
 					->with('heat_no',$heatNo_available_forging_weight);
@@ -26,7 +26,7 @@
 		{
 			$input_data= Input::all();
 
-			$input_array_seration_table= array(
+			$input_array_serration_table= array(
 				'date' => date('Y-m-d'),
 				'work_order_no' => $input_data['work_order_no'] ,
 				'item'  	=> $input_data['item'],
@@ -37,40 +37,40 @@
 				'remarks' => $input_data['remarks']
 			);
 
-			$input_response_seration_table=Seration::insertData($input_array_seration_table);
+			$input_response_serration_table=Serration::insertData($input_array_serration_table);
 
 			//get last record
 
-			$last_record=Seration::getLastRecord();
+			$last_record=Serration::getLastRecord();
 
 			// now insert remarks data using the mach_id obtained form last record
 
-			// $input_array_seration_remarks= array(
-			// 	'seration_id' => $last_record->seration_id,
+			// $input_array_serration_remarks= array(
+			// 	'serration_id' => $last_record->serration_id,
 			// 	'remarks' => $input_data['remarks']
 			// );
 
-			// $input_response_seration_remarks= Seration::insertRemarks($input_array_seration_remarks);
+			// $input_response_serration_remarks= Serration::insertRemarks($input_array_serration_remarks);
 
-			return View::make('seration.confirm')->with('last_record',$last_record);
+			return View::make('serration.confirm')->with('last_record',$last_record);
 		}
 
 		public function show()
 		{
-			$all_data=Seration::getAllData();
-			return View::make('seration.seration_report')->with('data',$all_data);
+			$all_data=Serration::getAllData();
+			return View::make('serration.serration_report')->with('data',$all_data);
 		}
 
 		public function update($id)
 		{
-				$seration_array = Seration::getRecord($id);
+				$serration_array = Serration::getRecord($id);
 			$availableWorkOrder= WorkOrder::availableWorkOrderNo();
 				$grades = Grades::getGrades();
 			$heatNo_available_forging_weight= Drilling::HeatNo_availableWeightForging();
 				//$heat_no = RawMaterial::getHeatNo();
 
-				return View::make('seration.seration_update')
-				->with('seration_array',$seration_array)
+				return View::make('serration.serration_update')
+				->with('serration_array',$serration_array)
 				->with('grades',$grades)
 				->with('availableWorkOrderNo',$availableWorkOrder)
 				->with('heat_no',$heatNo_available_forging_weight);
@@ -80,41 +80,41 @@
 		public function update_store($id)
 		{
 			
-			$seration = Input::all();
+			$serration = Input::all();
 
 			$data_array_update = array(
-						'work_order_no' => $seration['work_order_no'] ,
-						'item'  	=> $seration['item'],
-						'heat_no'	=> $seration['heat_no'],
-						'quantity'	=>$seration['quantity'],
-						'machine_name'=>$seration['machine_name'],
-						'grade' => $seration['grade'],
-						'weight'	=> $seration['weight'],
-						'remarks'=> $seration['remarks']
+						'work_order_no' => $serration['work_order_no'] ,
+						'item'  	=> $serration['item'],
+						'heat_no'	=> $serration['heat_no'],
+						'quantity'	=>$serration['quantity'],
+						'machine_name'=>$serration['machine_name'],
+						'grade' => $serration['grade'],
+						'weight'	=> $serration['weight'],
+						'remarks'=> $serration['remarks']
 						);
 
-			$update_response= DB::table('seration_records')
-								->where('seration_id',$seration['seration_id'])
+			$update_response= DB::table('serration_records')
+								->where('serration_id',$serration['serration_id'])
 								->update($data_array_update);
 
 
-			$get_record_array= Seration::getRecord($seration['seration_id']);
-			return View::make('seration.confirm_seration_update')->with('confirmations',$get_record_array);
+			$get_record_array= Serration::getRecord($serration['serration_id']);
+			return View::make('serration.confirm_serration_update')->with('confirmations',$get_record_array);
 		}
 
 
 		public function excel()
 		{
-			$all_data=Seration::getAllData();
-			return View::make('seration.seration_report_excel')->with('data',$all_data);
+			$all_data=Serration::getAllData();
+			return View::make('serration.serration_report_excel')->with('data',$all_data);
 
 		}
 
 		public function destroy($id)
 		{
-			$delete_response= Seration::deleteRecord($id);
-			$all_data=Seration::getAllData();
-			return View::make('seration.seration_report')->with('data',$all_data);
+			$delete_response= Serration::deleteRecord($id);
+			$all_data=Serration::getAllData();
+			return View::make('serration.serration_report')->with('data',$all_data);
 		}
 
 		public function search_display()

@@ -1,10 +1,12 @@
 @extends('layouts.master')
 
 @section('links_data')
+
     <script type="application/javascript">
         // $(document).ready(function(){
         //     $('#work_order_no').click(function () {
         //         var work_order_no= $(this).val();
+        //         //alert($work_order_no);
         //         console.log(work_order_no);
         //         $.ajax({
         //             url:'workOrder/'+work_order_no,
@@ -31,9 +33,9 @@
         // });
     </script>
 
-    <br><br>
 
-    <a href="{{route('drilling.report')}} " class="waves-effect waves-light btn link right">Drilling reports</a>
+    <br><br>
+    <a href="{{route('serration.report')}} " class="waves-effect waves-light btn link right">Serration reports</a>
 
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top:-80px;">
         <div class="row">
@@ -41,12 +43,12 @@
                 <div class="card">
                     <div class="row text-center">
                         <div class="heading">
-                            <span>Drilling Entry</span>
+                            <span>Serration Entry</span>
                         </div>
                     </div>
 
                     <div class="row">
-                        {{ Form::open(array('action'=> 'drillingController@store')) }}
+                        {{ Form::open(array('action'=> 'serrationController@store')) }}
                                 <!-- For recipt number of the material coming from outside -->
 
 
@@ -57,22 +59,28 @@
 
 
                         <!-- For WORK ORDER NUMBER -->
+                        <!-- All those workorder will be shown whose status is still incomplete -->
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Work Order Number') }}
 
                             <select class="form-control search selection" name="work_order_no" id="work_order_no_select" required>
-                                <option value="">----Select Work Order-----</option>
+                                <option value="">---Select Work Order--------</option>
                                 @foreach($availableWorkOrderNo as $workOrder)
                                     <option value="{{ $workOrder->work_order_no }}">
                                         {{$workOrder->work_order_no}} &nbsp;
                                         -{{$workOrder->customer_name}} &nbsp;
-                                        -Ordered on:     {{ date('d-m-Y',strtotime($workOrder->purchase_order_date))}}
+                                        -Ordered on:     {{ date('d-m-Y',strtotime($workOrder->purchase_order_date))  }}
                                     </option>
                                 @endforeach
                             </select>
                         </div>
 
                         <!-- FOR ITEM TYPE -->
+                        <!-- These items will be of that particular work order above mentioned
+                                   ------- AJAX REQUIRED HERE----------------
+                                   input -> work_order_no
+                                   required-> work_order_details to be autofilled on this page
+                        -->
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Item no') }}
                             <select class="form-control search selection" name="item" id="item_no_select">
@@ -80,23 +88,24 @@
                             </select>
                         </div>
 
+
                         <div class="form-group">
-                            {{ Form::label('exampleInputEmail1','Heat Number (from forging data)') }}
-                                <select class="form-control search selection" name="heat_no" id="heat_no_select" required>
-                                    <option value="">---Select Heat Number --------</option>
-                                    <option value="Job Work">Job Work</option>
-                                    @foreach($heat_no as $heat_no_element)
-                                        <option value="{{ $heat_no_element->heat_no }}">
-                                            {{ $heat_no_element->heat_no }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
+                            {{ Form::label('exampleInputEmail1','Heat Number  (from forged data)') }}
+                            <select class="form-control search selection" name="heat_no" id="heat_no_select" required>
+                                <option value="">---Select Heat Number --------</option>
+                                <option value="Job Work">Job Work</option>
+                                @foreach($heat_no as $heat_no_element)
+                                    <option value="{{ $heat_no_element->heat_no }}">
+                                        {{ $heat_no_element->heat_no }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
 
 
                         <div class="form-group">
-                            {{ Form::label('exampleInputEmail1','Size') }}
-                            {{ Form::text('size',null,array('class'=>'form-control inputfix','placeholder'=>'Size','id'=>'justAnything')) }}
+                            {{ Form::label('exampleInputEmail1','Quantity') }}
+                            {{ Form::text('quantity',null,array('class'=>'form-control inputfix','placeholder'=>'Quantity','id'=>'justAnything')) }}
                         </div>
 
                         <div class="form-group">
@@ -104,18 +113,17 @@
                             {{ Form::text('machine_name',null,array('class'=>'form-control inputfix','placeholder'=>'Machine Name','id'=>'exampleInputEnail1')) }}
                         </div>
 
-
-                         <div class="form-group">
+{{--                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','quantity') }}
                             {{ Form::text('quantity',null,array('class'=>'form-control inputfix','placeholder'=>'Quantity','id'=>'exampleInputEnail1')) }}
                         </div>
-
+ --}}
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Material Grade') }}
-                            <select class="form-control search selection" name="grade" id="grade_select" required>
-                                <option value="">---Select Grade--------</option>
-                                @foreach($grades as $grade_element)
-                                    <option value="{{ $grade_element->grade_name }}">{{$grade_element->grade_name}}</option>
+                            <select name="grade" class="form-control search selection" id="grade_select" required>
+                                <option value="">---Select Grade --------</option>
+                                @foreach($grades as $grade)
+                                    <option value="{{ $grade->grade_name }}">{{ $grade->grade_name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -132,8 +140,10 @@
 
                         <div class="loginButton">
 
-                        <button class="waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button" type="submit">Submit</button>
-                        
+                            {{-- {{ Form::submit('Submit',array('class'=>'waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button')) }} --}}
+
+                             <button class="waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button" type="submit">Submit</button>
+                             
                         </div>
                         {{ Form::close() }}
                     </div>		<!-- row conatining form ends here -->
@@ -144,7 +154,7 @@
 
     <script type="text/javascript">
     $(function () {
-        $('#date').datepicker();      
+        $('#date').datepicker();
         $('#work_order_no_select').dropdown({
                     onChange : function(){ 
 
@@ -171,8 +181,8 @@
                 });
         $('#item_no_select').dropdown();
         $('#heat_no_select').dropdown();
-        $('#grade_select').dropdown();  
+        $('#grade_select').dropdown();
     });
-</script>
+    </script>
 
 @stop

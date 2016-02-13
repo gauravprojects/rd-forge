@@ -1,10 +1,13 @@
 @extends('layouts.master')
 
 @section('links_data')
+
+
     <script type="application/javascript">
         // $(document).ready(function(){
         //     $('#work_order_no').click(function () {
         //         var work_order_no= $(this).val();
+        //         //alert($work_order_no);
         //         console.log(work_order_no);
         //         $.ajax({
         //             url:'workOrder/'+work_order_no,
@@ -13,7 +16,7 @@
         //             dataType: "json",
         //         }).done(function(response){
         //             var i=0;
-        //             console.log(response[0]['item_no']);
+        //             //console.log(response[0]['item_no']);
         //             for(i=0;i<100;i++)
         //             {
         //                 if (!(typeof response[i]['item_no']  === 'undefined' || response[i]['item_no'] === null))
@@ -30,44 +33,45 @@
         //     });
         // });
     </script>
-
-
-
-
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <div class="row">
             <div class="wrapper">
                 <div class="card">
                     <div class="row text-center">
                         <div class="heading">
-                            <span>Drilling Entry</span>
+                            <span>Serration Entry</span>
                         </div>
                     </div>
 
 
-                    @foreach($drilling_array as $drilling)
+                    @foreach($serration_array as $serration)
                         <div class="row">
-                            {{ Form::open(array('action'=> 'drillingController@update_store')) }}
+                            {{ Form::open(array('action'=> 'serrationController@update_store')) }}
                                     <!-- For recipt number of the material coming from outside -->
 
-                            <div class="form-group">
-                                {{ Form::label('exampleInputEmail1','Drilling Id') }}
-                                 {{ Form::text('drilling_id',$drilling->drilling_id,array('class'=>'form-control inputfix','id'=>'drilling_id','name'=>'drilling_id','placeholder'=>'Date')) }}
-                            </div>
+                        <div class="form-group">
+                                {{ Form::label('exampleInputEmail1','Serration Id') }}
+                                 {{ Form::text('serration_id',$serration->serration_id,array('class'=>'form-control inputfix','id'=>'serration_id','name'=>'serration_id','placeholder'=>'Date')) }}
+                        </div>
+
 
 
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Date') }}
-                                {{ Form::text('date',date('d-m-Y',strtotime($drilling->date)),array('class'=>'form-control inputfix','id'=>'date','name'=>'date','placeholder'=>'Date','readonly','data-date-format'=>'dd-mm-yyyy')) }}
+                                {{ Form::text('date',date('d-m-Y',strtotime($serration->date)),array('class'=>'form-control inputfix','id'=>'date','name'=>'date','placeholder'=>'Date','readonly','data-date-format'=>'dd-mm-yyyy')) }}
                             </div>
 
+
+                            <!-- For WORK ORDER NUMBER -->
+                            <!-- All those workorder will be shown whose status is still incomplete -->
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Work Order Number') }}
 
-                            <select class="form-control search selection" name="work_order_no" id="work_order_no_select" required>
-                                    <option value="">----Select Work Order-----</option>
-                                    @foreach($availableWorkOrderNo as $workOrder)
-                                        @if($drilling->work_order_no == $workOrder->work_order_no)
+                                <select class="form-control search selection" name="work_order_no" id="work_order_no_select" required>
+                                    <option value="">---Select Work Order--------</option>
+                                    <option value="Job Work">Job Work</option>
+                                   @foreach($availableWorkOrderNo as $workOrder)
+                                        @if($serration->work_order_no == $workOrder->work_order_no)
                                             <option value="{{ $workOrder->work_order_no }}" selected>
                                                 {{$workOrder->work_order_no}} &nbsp;
                                                 -{{$workOrder->customer_name}} &nbsp;
@@ -85,6 +89,11 @@
                             </div>
 
                             <!-- FOR ITEM TYPE -->
+                            <!-- These items will be of that particular work order above mentioned
+                                       ------- AJAX REQUIRED HERE----------------
+                                       input -> work_order_no
+                                       required-> work_order_details to be autofilled on this page
+                            -->
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Item no') }}
                                 <select class="form-control search selection" name="item" id="item_no_select">
@@ -94,84 +103,80 @@
 
 
                             <div class="form-group">
-                                {{ Form::label('exampleInputEmail1','Heat Number (from forging data)') }}
+                                {{ Form::label('exampleInputEmail1','Heat Number  (from forged data)') }}
                                 <select class="form-control search selection" name="heat_no" id="heat_no_select" required>
                                     <option value="">---Select Heat Number --------</option>
                                     <option value="Job Work">Job Work</option>
                                     @foreach($heat_no as $heat_no_element)
-                                        @if($drilling->heat_no == $heat_no_element->heat_no)
-                                            <option value="{{ $heat_no_element->heat_no }}" selected>{{$heat_no_element->heat_no}}</option>
+                                        @if($serration->heat_no == $heat_no_element->heat_no)
+                                            <option value="{{ $heat_no_element->heat_no }}" selected>
+                                                {{ $heat_no_element->heat_no }}
+                                            </option>
                                         @else
-                                            <option value="{{ $heat_no_element->heat_no }}">{{$heat_no_element->heat_no}}</option>
+                                            <option value="{{ $heat_no_element->heat_no }}">
+                                                {{ $heat_no_element->heat_no }}
+                                            </option>
                                         @endif
                                     @endforeach
                                 </select>
                             </div>
 
 
-                            <div class="form-group">
-                                {{ Form::label('exampleInputEmail1','Size') }}
-                                {{ Form::text('size',$drilling->size,array('class'=>'form-control inputfix','placeholder'=>'Quantity','id'=>'justAnything')) }}
-                            </div>
+                        <div class="form-group">
+                            {{ Form::label('exampleInputEmail1','Quantity') }}
+                            {{ Form::text('quantity',$serration->quantity,array('class'=>'form-control inputfix','placeholder'=>'Quantity','id'=>'justAnything')) }}
+                        </div>
 
+                        <div class="form-group">
+                            {{ Form::label('exampleInputEmail1','Machine Name') }}
+                            {{ Form::text('machine_name',$serration->machine_name,array('class'=>'form-control inputfix','placeholder'=>'Machine Name','id'=>'exampleInputEnail1')) }}
+                        </div>
 
-                            <div class="form-group">
-                                {{ Form::label('exampleInputEmail1','Machine Name') }}
-                                {{ Form::text('machine_name',$drilling->machine_name,array('class'=>'form-control inputfix','placeholder'=>'Machine Name','id'=>'exampleInputEnail1')) }}
-                            </div>
+{{--                         <div class="form-group">
+                            {{ Form::label('exampleInputEmail1','quantity') }}
+                            {{ Form::text('quantity',null,array('class'=>'form-control inputfix','placeholder'=>'Quantity','id'=>'exampleInputEnail1')) }}
+                        </div>
+ --}}
 
-                            <!-- Employee name removed after new review from the client  -->
-
-                            <div class="form-group">
-                                {{ Form::label('exampleInputEmail1','quantity') }}
-                                {{ Form::text('quantity',$drilling->quantity,array('class'=>'form-control inputfix','placeholder'=>'Quantity','id'=>'exampleInputEnail1')) }}
-                            </div>
-
-
-                            <!-- to be fetched from master grades -->
 
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Material Grade') }}
-                                <select name="grade" class="form-control search selection" id="grade_select" required>
-                                    <option value="">---Select Grade--------</option>
+                                <select name="grade" class="form-control search selection" name="grade_select" required>
+                                    <option value="">---Select Grade --------</option>
                                     @foreach($grades as $grade)
-                                        @if($grade->grade_name == $drilling->grade)
+                                        @if($grade->grade_name == $serration->grade)
                                             <option value="{{ $grade->grade_name }}" selected>{{ $grade->grade_name }}</option>
                                         @else
                                             <option value="{{ $grade->grade_name }}">{{ $grade->grade_name }}</option>
                                         @endif
                                     @endforeach
                                 </select>
-                            </div>
+                        </div>
 
 
-                            {{--<!-- DOUBT HERE, which weight is this, refer doubts -->--}}
-                            {{--<div class="form-group">--}}
-                                {{--{{ Form::label('exampleInputEmail1','Weight') }}--}}
-                                {{--{{ Form::text('weight',$drilling->weight,array('class'=>'form-control inputfix','placeholder'=>'Weight','id'=>'exampleInputEnail1')) }}--}}
-                            {{--</div>--}}
+                        <div class="form-group">
+                            {{ Form::label('exampleInputEmail1','Weight') }}
+                            {{ Form::text('weight',$serration->weight,array('class'=>'form-control inputfix','placeholder'=>'Weight','id'=>'exampleInputEnail1')) }}
+                        </div>
 
-                            
-                            <div class="form-group">
-                                {{ Form::label('exampleInputEmail1','Remarks') }}
-                                {{ Form::text('remarks',$drilling->remarks,array('class'=>'form-control inputfix','placeholder'=>'Remarks','id'=>'anything')) }}
-                            </div>
+                        <div class="form-group">
+                            {{ Form::label('exampleInputEmail1','Remarks') }}
+                            {{ Form::text('remarks',$serration->remarks,array('class'=>'form-control inputfix','placeholder'=>'Remarks','id'=>'anything')) }}
+                        </div>
 
-                            @endforeach
+                        @endforeach
 
-                            <div class="loginButton">
+                        <div class="loginButton">
 
-                                 <button class="waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button" type="submit">Submit</button>
-                                 
-                            </div>
-                            {{ Form::close() }}
-               
+                             <button class="waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button" type="submit">Submit</button>
+                             
+                        </div>
+                        {{ Form::close() }}
                         </div>		<!-- row conatining form ends here -->
                 </div>		<!-- card ends here -->
             </div>		<!-- wrapper ends here -->
         </div>		<!-- row ends here -->
     </div> 		<!-- col-12 ends here -->
-
 
 <script type="text/javascript">
     $(function () {
@@ -189,7 +194,7 @@
 
                         })
                         .done(function(data)
-                        {           
+                        {                            
                             $.each(JSON.parse(data),function(key,value)
                             {
                             $("#item_no_select").append(
@@ -205,5 +210,6 @@
         $('#grade_select').dropdown();
     });
     </script>
+
 
 @stop

@@ -312,7 +312,7 @@
 				'uses' => 'workOrderController@item_details'
 			));
 
-		Route::post('/seration/update/workOrder/{id}',array(
+		Route::post('/serration/update/workOrder/{id}',array(
 			'as' => 'serration.item_details',
 			'uses' => 'workOrderController@item_details'
 		));
@@ -419,47 +419,47 @@
 	));
 
 
-	// ROUTES FOR SERATION PAGE
+	// ROUTES FOR serration PAGE
 
 	//route to get to the drilling page
-	Route::get('/seration',array(
-		'as' => 'seration',
-		'uses'=>'serationController@index'
+	Route::get('/serration',array(
+		'as' => 'serration',
+		'uses'=>'serrationController@index'
 	));
 
 
 	//route ot get to store the drillig page information
-	Route::post('/seration',array(
-		'as' => 'seration.store',
-		'uses' => 'serationController@store'
+	Route::post('/serration',array(
+		'as' => 'serration.store',
+		'uses' => 'serrationController@store'
 	));
 
 	//route to show report for drilling page
-	Route::get('admin/reports/seration',array(
-		'as' => 'seration.report',
-		'uses' => 'serationController@show'
+	Route::get('admin/reports/serration',array(
+		'as' => 'serration.report',
+		'uses' => 'serrationController@show'
 	));
 
 	//route to show reports in excel
-	Route::get('seration/report/excel',array(
-		'as'=>'seration.excel',
-		'uses'=>'serationController@excel'
+	Route::get('serration/report/excel',array(
+		'as'=>'serration.excel',
+		'uses'=>'serrationController@excel'
 	));
 
-	Route::get('/seration/update/{id}',array(
-			'as' => 'seration.update',
-			'uses'=> 'serationController@update'
+	Route::get('/serration/update/{id}',array(
+			'as' => 'serration.update',
+			'uses'=> 'serrationController@update'
 		));
 
 		//to store the updated data
-		Route::post('/seration/update/{id}',array(
-			'as' => 'seration.update_store',
-			'uses'=>'serationController@update_store'
+		Route::post('/serration/update/{id}',array(
+			'as' => 'serration.update_store',
+			'uses'=>'serrationController@update_store'
 	));
 
-	Route::get('/seration/delete/{id}',array(
-		'as' => 'seration.delete',
-		'uses' => 'serationController@destroy'
+	Route::get('/serration/delete/{id}',array(
+		'as' => 'serration.delete',
+		'uses' => 'serrationController@destroy'
 	));
 
 
@@ -630,6 +630,11 @@
 	Route::get('/search',array(
 		'as' => 'search.index',
 			'uses' => 'searchController@index'
+	));
+
+	Route::get('/search/display',array(
+		'as' => 'search.display',
+			'uses' => 'searchController@display'
 	));
 
 	Route::get('/raw_material_search',array(

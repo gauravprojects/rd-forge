@@ -22,7 +22,7 @@ class machiningController extends BaseController
 		$input_data= Input::all();
 
 		$input_array_machining_table= array(
-				'date' => $input_data['date'],
+				'date' => date('Y-m-d',strtotime($input_data['date'])),
 				'work_order_no' => $input_data['work_order_no'] ,
 				'item'  	=> $input_data['item'],
 				'heat_no'	=> $input_data['heat_no'],

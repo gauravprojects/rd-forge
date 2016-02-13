@@ -1,47 +1,47 @@
 <?php
 
-class Seration extends Eloquent {
+class Serration extends Eloquent {
 	protected $fillable = [];
 
 	public static function insertData($input_array)
 	{
-		return DB::table('seration_records')
+		return DB::table('serration_records')
 				->insert($input_array);
 	}
 
 	public static function insertRemarks($input_array)
 	{
-		return DB::table('seration_remarks')
+		return DB::table('serration_remarks')
 				->insert($input_array);
 	}
 
 	public static function getRecord($id)
 	{
-		return DB::table('seration_records')
+		return DB::table('serration_records')
 				->select()
-				->where('seration_id','=',$id)
+				->where('serration_id','=',$id)
 				->get();
 	}
 
 
 	public static function getLastRecord()
 	{
-		return DB::table('seration_records')
-				->orderBy('seration_id', 'desc')
+		return DB::table('serration_records')
+				->orderBy('serration_id', 'desc')
 				->first();
 	}
 
 	public static function getAllData()
 	{
-		return DB::table('seration_records')
+		return DB::table('serration_records')
 				->select()
 				->get();
 	}
 
-	public static function deleteRecord($seration_id)
+	public static function deleteRecord($serration_id)
 	{
-		return DB::table('seration_records')
-			->where('seration_id','=',$seration_id)
+		return DB::table('serration_records')
+			->where('serration_id','=',$serration_id)
 			->delete();
 	}
 }
