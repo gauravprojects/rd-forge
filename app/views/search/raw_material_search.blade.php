@@ -27,7 +27,8 @@
                         <option value="manufacturer">Manufacturer</option>
                         <option value="size">Size</option>
                         <option value="available_weight">Left Over material</option>
-                        <option value="date_range">Date Range</option>
+                        <option value="start_date">Start Date</option> 
+                        <option value="end_date">End Date</option> 
                     </select>
 
                     <br>

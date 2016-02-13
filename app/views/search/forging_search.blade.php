@@ -24,7 +24,8 @@
                     <select class="form-control ui fluid search dropdown" name="options[]" id="options" multiple="">
                         <option value="">Select from following options</option>
                         <option value="size">Size</option>
-                        <option value="date_range">Date Range</option>     
+                        <option value="start_date">Start Date</option> 
+                        <option value="end_date">End Date</option>      
                     </select>
 
                     <br>

@@ -26,7 +26,8 @@
                         <option value="work_order_no">Work Order Number</option>
                         <option value="size">Size</option>
                         <option value="machine_name">Machine Name</option>  
-                        <option value="date_range">Date Range</option>                      
+                        <option value="start_date">Start Date</option> 
+                        <option value="end_date">End Date</option>                
                     </select>
 
                     <br>

@@ -7,10 +7,7 @@
                 else
                 {
                     for(var i=0;i<options.length;i++)
-                        if(options[i] != "date_range")
-                             html = html + '<input type="text" class="form-control inputfix" placeholder="Enter '+options[i]+' here " class="'+options[i]+'">';
-                         else
-                             html = html + '<input type="text" class="form-control inputfix" placeholder="Enter start date"><input type="text" class="form-control inputfix" placeholder="Enter end date">';
+                        html = html + '<input type="text" class="form-control inputfix" placeholder="Enter '+options[i]+' here " class="'+options[i]+'">';
                 }
                 $('#search_form_div').html(html);
             });
