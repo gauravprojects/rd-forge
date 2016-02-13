@@ -152,11 +152,10 @@ class rawMaterialController extends BaseController {
 		$delete_response= RawMaterial::deleteRecord($id);
 		$raw = RawMaterial::getAllData();
 		return View::make('rawMaterial.raw_report')->with('raw',$raw);
-
-
 	}
 
-
-
-
+    public function search_display()
+    {
+        return View::make('search.raw_material_search')->with('data',RawMaterial::getAllData());
+    }
 }

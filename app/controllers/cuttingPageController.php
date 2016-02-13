@@ -240,4 +240,9 @@
 			return View::make('cutting.cutting_report')->with('all_records', $all_records);
 
 		}
+
+		public function search_display()
+	    {
+	        return View::make('search.cutting_search')->with('data',Cutting::getAllData());
+	    }
 	}

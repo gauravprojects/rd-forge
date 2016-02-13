@@ -38,7 +38,7 @@ class Cutting extends Eloquent
 				->get();
 	}
 
-	public static function getAllRecords()
+	public static function getAllData()
 	{
 		return DB::table('cutting_records')
 				->select()

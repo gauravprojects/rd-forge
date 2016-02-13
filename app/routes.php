@@ -632,6 +632,31 @@
 			'uses' => 'searchController@index'
 	));
 
+	Route::get('/raw_material_search',array(
+		'as' => 'raw_material_search',
+		'uses' => 'rawMaterialController@search_display'
+	));
+
+	Route::get('/cutting_search',array(
+		'as' => 'cutting_search',
+		'uses' => 'cuttingPageController@search_display'
+	));
+
+	Route::get('/machining_search',array(
+		'as' => 'machining_search',
+		'uses' => 'machiningController@search_display'
+	));
+
+	Route::get('/drilling_search',array(
+		'as' => 'drilling_search',
+		'uses' => 'drillingController@search_display'
+	));
+
+	Route::get('/serration_search',array(
+		'as' => 'serration_search',
+		'uses' => 'serrationController@search_display'
+	));
+
 
 	Route::post('/search/category/{id}',array(
 		'as' => 'search.category',

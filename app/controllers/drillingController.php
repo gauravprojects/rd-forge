@@ -116,4 +116,9 @@ class DrillingController extends BaseController {
 		return View::make('drilling.drilling_report')->with('data',$all_data);
 
 	}
+
+	public function search_display()
+    {
+        return View::make('search.drilling_search')->with('data',Drilling::getAllData());
+    }
 }

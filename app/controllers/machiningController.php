@@ -109,4 +109,9 @@ class machiningController extends BaseController
 
 	}
 
+	public function search_display()
+    {
+        return View::make('search.machining_search')->with('data',Machining::getAllData());
+    }
+
 }

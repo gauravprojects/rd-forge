@@ -1,6 +1,6 @@
 <?php
 
-class searchController extends \BaseController {
+class searchController extends BaseController {
 
     /*  ----------------------------------- FUNCTIONS USED ------------------------------------
 
@@ -10,9 +10,9 @@ class searchController extends \BaseController {
 
     public function index()
     {
-        $response= RawMaterial::getAllData();
-        return View::make('search.search_new')
-            ->with('data',$response);
+        return View::make('search.search_master');
+        //return View::make('search.search_new')->with('data',RawMaterial::getAllData());
+
 
     }
 
@@ -29,9 +29,25 @@ class searchController extends \BaseController {
 //        return $options_array;
     }
 
-    public function store()
+    public function display()
     {
-        $data= Input::get();
+        $options_name = Input::get('options_name');
+        $options_values = Input::get('options_values');
+        $category = Input::get('category');
+
+        var_dump($category);
+
+        // Latest array is used as key values pairs array for searching the details
+
+        // for($p = 0;$p < count($options_name); $p++)
+        //     $latest_array[$options_name[$p]] = $options_values[$p];
+
+        // $response = DB::table('raw_material_stock')
+        //         ->where($latest_array)
+        //         ->get();
+
+        // var_dump($response);
+        
 //        $response= DB::table('raw_material')
 //            ->select()
 //            ->where($data['options'],'=',''.$data['selected'].'')
