@@ -6,7 +6,7 @@
 
                 <div class="row text-center">
                     <div class="heading">
-                        <span>Raw Material Search Panel</span>
+                        <span>Forging Search Panel</span>
                     </div>
                 </div>
 

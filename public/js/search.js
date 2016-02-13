@@ -56,7 +56,6 @@
                     '<th>Weight</th>'+
                     '<th>Material Type</th>'+
                     '<th>Material Grade</th>'+
-                    '<th>Update/Delete</th>'+
                 '</tr>';
 
     $.each(data,function(key,report){
@@ -99,7 +98,6 @@ function cutting_(data)
                     '<th>Type</th>'+
                     '<th>Schedule</th>'+
                     '<th>Available_Weight</th>'+
-                    '<th>Update/Delete</th>'+
                 '</tr>';
 
     $.each(data,function(key,report){
@@ -142,7 +140,6 @@ function forging_(data)
                     '<th>Weight</th>'+
                     '<th>Material Type</th>'+
                     '<th>Material Grade</th>'+
-                    '<th>Update/Delete</th>'+
                 '</tr>';
 
     $.each(data,function(key,report){
@@ -182,7 +179,6 @@ function machining_(data)
                     '<th>Machine Name</th>'+
                     '<th>Grade</th>'+
                     '<th>Weight</th>'+
-                    '<th>Update/Delete</th>'+
                 '</tr>';
 
     $.each(data,function(key,report){
@@ -222,7 +218,6 @@ function drilling_(data)
                     '<th>Machine Name</th>'+
                     '<th>Grade</th>'+
                     '<th>Weight</th>'+
-                    '<th>Update/Delete</th>'+
                 '</tr>';
 
     $.each(data,function(key,report){
@@ -262,7 +257,6 @@ function drilling_(data)
                     '<th>Machine Name</th>'+
                     '<th>Grade</th>'+
                     '<th>Weight</th>'+
-                    '<th>Update/Delete</th>'+
                 '</tr>';
 
     $.each(data,function(key,report){

@@ -647,6 +647,11 @@
 		'uses' => 'cuttingPageController@search_display'
 	));
 
+	Route::get('/forging_search',array(
+		'as' => 'forging_search',
+		'uses' => 'forgingController@search_display'
+	));
+
 	Route::get('/machining_search',array(
 		'as' => 'machining_search',
 		'uses' => 'machiningController@search_display'

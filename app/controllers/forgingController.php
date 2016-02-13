@@ -185,4 +185,9 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 
 	}
 
+	public function search_display()
+    {
+        return View::make('search.forging_search')->with('data',Forging::getAllData());
+    }
+
 }
