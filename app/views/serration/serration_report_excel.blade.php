@@ -20,7 +20,7 @@
 
     <h2>Serration Report</h2>
     <tr class="heading">
-        <th>Seration Id</th>
+        <th>S.No</th>
         <th>Date</th>
         <th>Work Order Number</th>
         <th>Item</th>
@@ -29,10 +29,12 @@
         <th>Machine Name</th>
         <th>Grade</th>
 
+    <?php $serial_number = 1; ?>
+
     @foreach($data as $serration_data)
 
         <tr>
-            <td>{{ $serration_data->seration_id }}</td>
+            <td>{{ $serial_number++ }}</td>
             <td>{{ date('d-m-Y',strtotime($serration_data->date)) }}</td>
             <td>{{ $serration_data->work_order_no }}</td>
             <td>{{ $serration_data->item }}</td>

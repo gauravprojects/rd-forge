@@ -14,10 +14,11 @@
 
                 @if($data)
 
+                <?php $serial_number = 1; ?>
                     <div class="row">
                         <table>
                             <tr class="heading">
-                                <th>Serration Id</th>
+                                <th>S.No</th>
                                 <th>Date</th>
                                 <th>Work Order Number</th>
                                 <th>Item</th>
@@ -30,7 +31,7 @@
                             @foreach($data as $serration_data)
 
                             <tr>
-                                <td>{{ $serration_data->serration_id }}</td>
+                                <td>{{ $serial_number++ }}</td>
                                 <td>{{ date('d-m-Y',strtotime($serration_data->date)) }}</td>
                                 <td>{{ $serration_data->work_order_no }}</td>
                                 <td>{{ $serration_data->item }}</td>

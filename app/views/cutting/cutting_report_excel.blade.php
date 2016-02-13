@@ -19,7 +19,7 @@
     <h2>Cutting Report</h2>
 <table cellpadding="10" cellspacing="10" border="2">
     <tr class="heading">
-        <th>Cutting Id</th>
+        <th>S.No</th>
         <th>Date</th>
         <th>Size</th>
         <th>Heat No</th>
@@ -33,9 +33,11 @@
         <th>Available Weight</th>
     </tr>
 
+    <?php $serial_number = 1; ?>
+
     @foreach($all_records as $cutting_data)
         <tr>
-            <td>{{ $cutting_data->cutting_id }}</td>
+            <td>{{ $serial_number++ }}</td>
             <td>{{ date('d-m-Y',strtotime($cutting_data->date)) }}</td>
             <td>{{ $cutting_data->raw_mat_size }}</td>
             <td>{{ $cutting_data->heat_no  }}</td>

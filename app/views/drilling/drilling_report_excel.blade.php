@@ -20,7 +20,7 @@
 
      <h2>Drilling Report</h2>
     <tr class="heading">
-        <th>Drilling Id</th>
+        <th>S.No</th>
         <th>Date</th>
         <th>Work Order Number</th>
         <th>Item</th>
@@ -29,10 +29,12 @@
         <th>Machine Name</th>
         <th>Grade</th>
 
+        <?php $serial_number = 1; ?>
+
     @foreach($data as $drilling_data)
 
         <tr>
-            <td>{{ $drilling_data->drilling_id }}</td>
+            <td>{{ $serial_number++ }}</td>
             <td>{{ date('d-m-Y',strtotime($drilling_data->date)) }}</td>
             <td>{{ $drilling_data->work_order_no }}</td>
             <td>{{ $drilling_data->item }}</td>

@@ -16,7 +16,7 @@
                     <a href="{{route('forging.report')}} " class="col-xs-12 col-sm-12 col-md-12 col-lg-12 waves-effect waves-light btn link">Forging reports</a><br><br>
                     <a href="{{route('machining.report')}} " class="col-xs-12 col-sm-12 col-md-12 col-lg-12 waves-effect waves-light btn link">Machining reports</a><br><br>
                     <a href="{{route('drilling.report')}} " class="col-xs-12 col-sm-12 col-md-12 col-lg-12 waves-effect waves-light btn link">Drilling reports</a><br><br>
-                    <a href="{{route('seration.report')}} " class="col-xs-12 col-sm-12 col-md-12 col-lg-12 waves-effect waves-light btn link">Serration reports</a>
+                    <a href="{{route('serration.report')}} " class="col-xs-12 col-sm-12 col-md-12 col-lg-12 waves-effect waves-light btn link">Serration reports</a>
                     <div class="row">
 
                     </div>		<!-- row conatining form ends here -->

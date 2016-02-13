@@ -19,7 +19,7 @@
         <h2>Raw Material Report</h2>
         <table cellpadding="10" cellspacing="10" border="2">
             <tr class="heading">
-                <th>Internal no</th>
+                <th>S.No</th>
                 <th>Receipt Code</th>
                 <th>Date</th>
                 <th>Size</th>
@@ -34,9 +34,11 @@
                 <th>Purchase Order Date</th>
             </tr>
 
+            <?php $serial_number = 1; ?>
+
             @foreach($raw as $raw_data)
                 <tr>
-                    <td>{{{ $raw_data->internal_no }}}</td>
+                    <td>{{{ $serial_number++ }}}</td>
                     <td>{{{ $raw_data->receipt_code }}}</td>
                     <td>{{{ date('d-m-Y',strtotime($raw_data->date)) }}}</td>
                     <td>{{{ $raw_data->size }}}</td>

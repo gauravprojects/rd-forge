@@ -14,10 +14,11 @@
 
                 @if($data)
 
+                <?php $serial_number = 1; ?>
                     <div class="row">
                         <table>
                             <tr class="heading">
-                                <th>Drilling Id</th>
+                                <th>S.No</th>
                                 <th>Date</th>
                                 <th>Work Order Number</th>
                                 <th>Item</th>
@@ -30,7 +31,7 @@
                             @foreach($data as $drilling_data)
 
                             <tr>
-                                <td>{{ $drilling_data->drilling_id }}</td>
+                                <td>{{ $serial_number++ }}</td>
                                 <td>{{ date('d-m-Y',strtotime($drilling_data->date)) }}</td>
                                 <td>{{ $drilling_data->work_order_no }}</td>
                                 <td>{{ $drilling_data->item }}</td>

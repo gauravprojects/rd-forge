@@ -14,10 +14,11 @@
 
                 @if($forging_data)
 
+                    <?php $serial_number = 1; ?>
                     <div class="row">
                         <table>
                             <tr class="heading">
-                                <th>Forging ID</th>
+                                <th>S.No</th>
                                 <th>Date</th>
                                 <th>Heat no</th>
                                 <th>Weight per peice</th>
@@ -33,7 +34,7 @@
 
                         @foreach($forging_data as $confirmation)
                             <tr>
-                                <td>{{ $confirmation->forging_id }}</td>
+                                <td>{{ $serial_number++ }}</td>
                                 <td>{{ $confirmation->date }}</td>
                                 <td>{{ $confirmation->heat_no }}</td>
                                 <td>{{ $confirmation->weight_per_piece }}</td>

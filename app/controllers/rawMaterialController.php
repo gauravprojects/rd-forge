@@ -158,4 +158,5 @@ class rawMaterialController extends BaseController {
     {
         return View::make('search.raw_material_search')->with('data',RawMaterial::getAllData());
     }
+
 }

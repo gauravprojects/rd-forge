@@ -672,3 +672,5 @@
 		'as' => 'search.store',
 			'uses' => 'searchController@store'
 	));
+
+	Route::get('superfun','rawMaterialController@hottie');

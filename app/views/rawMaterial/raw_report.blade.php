@@ -15,10 +15,11 @@
 
                 @if($raw)
 
+                <?php $serial_number = 1; ?>
                 <div class="row">
                     <table>
                         <tr class="heading">
-                            <th>Internal No</th>
+                            <th>S.No</th>
                             <th>Receipt Code</th>
                             <th>Date</th>
                             <th>Size</th>
@@ -34,7 +35,7 @@
                         
                             @foreach($raw as $raw_data)
                                 <tr>
-                                    <td>{{{ $raw_data->internal_no }}}</td>
+                                    <td>{{{ $serial_number++ }}}</td>
                                     <td>{{{ $raw_data->receipt_code }}}</td>
                                     <td>{{{ date('d-m-Y',strtotime($raw_data->date)) }}}</td>
                                     <td>{{{ $raw_data->size }}}</td>

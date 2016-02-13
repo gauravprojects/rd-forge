@@ -85,4 +85,9 @@ class RawMaterial extends Eloquent
 			->where('internal_no','=',$id)
 			->delete();
 	}
+
+	public static function getSerializedData()
+	{
+		return DB::select(DB::raw('SELECT @serial := @serial+1 AS serial FROM (SELECT @serial:=0) AS hello,raw_material_records'));
+	}
 }

@@ -19,7 +19,7 @@
 <h2>Forging Report</h2>
 <table cellpadding="10" cellspacing="10" border="2">
     <tr class="heading">
-        <th>Forging ID</th>
+        <th>S.No</th>
         <th>Date</th>
         <th>Heat no</th>
         <th>Weight per peice</th>
@@ -32,9 +32,11 @@
         <th>Remarks</th>
     </tr>
 
+    <?php $serial_number = 1; ?>
+
     @foreach($forging_data as $confirmation)
         <tr>
-            <td>{{ $confirmation->forging_id }}</td>
+            <td>{{ $serial_number++ }}</td>
             <td>{{ $confirmation->date }}</td>
             <td>{{ $confirmation->heat_no }}</td>
             <td>{{ $confirmation->weight_per_piece }}</td>

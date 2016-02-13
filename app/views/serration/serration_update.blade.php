@@ -122,9 +122,9 @@
                             </div>
 
 
-                        <div class="form-group">
-                            {{ Form::label('exampleInputEmail1','Quantity') }}
-                            {{ Form::text('quantity',$serration->quantity,array('class'=>'form-control inputfix','placeholder'=>'Quantity','id'=>'justAnything')) }}
+                       <div class="form-group">
+                            {{ Form::label('exampleInputEmail1','Size') }}
+                            {{ Form::text('size',$serration->size,array('class'=>'form-control inputfix','placeholder'=>'Quantity','id'=>'justAnything')) }}
                         </div>
 
                         <div class="form-group">
@@ -132,11 +132,11 @@
                             {{ Form::text('machine_name',$serration->machine_name,array('class'=>'form-control inputfix','placeholder'=>'Machine Name','id'=>'exampleInputEnail1')) }}
                         </div>
 
-{{--                         <div class="form-group">
+                        <div class="form-group">
                             {{ Form::label('exampleInputEmail1','quantity') }}
-                            {{ Form::text('quantity',null,array('class'=>'form-control inputfix','placeholder'=>'Quantity','id'=>'exampleInputEnail1')) }}
+                            {{ Form::text('quantity',$serration->quantity,array('class'=>'form-control inputfix','placeholder'=>'Quantity','id'=>'exampleInputEnail1')) }}
                         </div>
- --}}
+
 
 
                             <div class="form-group">

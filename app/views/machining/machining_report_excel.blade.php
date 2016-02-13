@@ -21,7 +21,7 @@
 
     <h2>Machining Report</h2>
     <tr class="heading">
-        <th>Machining Id</th>
+        <th>S.No</th>
         <th>Date</th>
         <th>Work Order Number</th>
         <th>Item</th>
@@ -30,10 +30,13 @@
         <th>Machine Name</th>
         <th>Grade</th>
         <th>Weight</th>
+
+        <?php $serial_number = 1; ?>
+
     @foreach($data as $machining_data)
 
         <tr>
-            <td>{{ $machining_data->mach_id }}</td>
+            <td>{{ $serial_number++ }}</td>
             <td>{{ date('d-m-Y',strtotime($machining_data->date)) }}</td>
             <td>{{ $machining_data->work_order_no }}</td>
             <td>{{ $machining_data->item }}</td>

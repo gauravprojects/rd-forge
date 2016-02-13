@@ -43,10 +43,11 @@
   function raw_material_(data)
   {
     var report_data = "";
+    var serial_number = 1;
 
     report_data = report_data + '<table>'+
                 '<tr class="heading">'+
-                    '<th>Internal No</th>'+
+                    '<th>S.No</th>'+
                     '<th>Receipt Code</th>'+
                     '<th>Date</th>'+
                     '<th>Size</th>'+
@@ -61,10 +62,11 @@
     $.each(data,function(key,report){
 
         report_data = report_data + '<tr>' +
-        '<td>'+report.internal_no+'</td>'+     
+        '<td>'+ serial_number++ +'</td>'+     
         '<td>'+report.receipt_code+'</td>'+
         '<td>'+report.date+'</td>'+
         '<td>'+report.size+'</td>'+
+        '<td>'+report.manufacturer+'</td>'+
         '<td>'+report.heat_no+'</td>'+
         '<td>'+report.weight+'</td>'+
         '<td>'+report.raw_material_type+'</td>'+
@@ -81,10 +83,11 @@
 function cutting_(data)
 {
     var report_data = "";
+    var serial_number = 1;
 
     report_data = report_data + '<table>'+
                 '<tr class="heading">'+
-                    '<th>Cutting Id</th>'+
+                    '<th>S.No</th>'+
                     '<th>Date</th>'+
                     '<th>Size</th>'+
                     '<th>Heat No</th>'+
@@ -102,7 +105,7 @@ function cutting_(data)
     $.each(data,function(key,report){
 
         report_data = report_data + '<tr>' +
-        '<td>'+report.cutting_id+'</td>'+     
+        '<td>'+ serial_number++ +'</td>'+     
         '<td>'+report.date+'</td>'+
         '<td>'+report.raw_mat_size+'</td>'+
         '<td>'+report.heat_no+'</td>'+
@@ -126,10 +129,11 @@ function cutting_(data)
 function forging_(data)
 {
     var report_data = "";
+    var serial_number = 1;
 
     report_data = report_data + '<table>'+
                 '<tr class="heading">'+
-                    '<th>Internal No</th>'+
+                    '<th>S.No</th>'+
                     '<th>Receipt Code</th>'+
                     '<th>Date</th>'+
                     '<th>Size</th>'+
@@ -144,7 +148,7 @@ function forging_(data)
     $.each(data,function(key,report){
 
         report_data = report_data + '<tr>' +
-        '<td>'+report.internal_no+'</td>'+     
+        '<td>'+ serial_number++ +'</td>'+     
         '<td>'+report.receipt_code+'</td>'+
         '<td>'+report.date+'</td>'+
         '<td>'+report.size+'</td>'+
@@ -165,10 +169,11 @@ function forging_(data)
 function machining_(data)
 {
     var report_data = "";
+    var serial_number = 1;
 
     report_data = report_data + '<table>'+
                 '<tr class="heading">'+
-                    '<th>Machining Id</th>'+
+                    '<th>S.No</th>'+
                     '<th>Date</th>'+
                     '<th>Work Order Number</th>'+
                     '<th>Item</th>'+
@@ -183,7 +188,7 @@ function machining_(data)
     $.each(data,function(key,report){
 
         report_data = report_data + '<tr>' +
-        '<td>'+report.mach_id+'</td>'+     
+        '<td>'+ serial_number++ +'</td>'+     
         '<td>'+report.date+'</td>'+
         '<td>'+report.work_order_no+'</td>'+
         '<td>'+report.item+'</td>'+
@@ -204,10 +209,11 @@ function machining_(data)
 function drilling_(data)
 {
     var report_data = "";
+    var serial_number = 1;
 
     report_data = report_data + '<table>'+
                 '<tr class="heading">'+
-                    '<th>Drilling Id</th>'+
+                    '<th>S.No</th>'+
                     '<th>Date</th>'+
                     '<th>Work Order Number</th>'+
                     '<th>Item</th>'+
@@ -222,7 +228,7 @@ function drilling_(data)
     $.each(data,function(key,report){
 
         report_data = report_data + '<tr>' +
-        '<td>'+report.drilling_id+'</td>'+     
+        '<td>'+ serial_number++ +'</td>'+     
         '<td>'+report.date+'</td>'+
         '<td>'+report.work_order_no+'</td>'+
         '<td>'+report.item+'</td>'+
@@ -243,10 +249,11 @@ function drilling_(data)
   function serration_(data)
   {
     var report_data = "";
+    var serial_number = 1;
 
     report_data = report_data + '<table>'+
                 '<tr class="heading">'+
-                    '<th>Serration Id</th>'+
+                    '<th>S.No</th>'+
                     '<th>Date</th>'+
                     '<th>Work Order Number</th>'+
                     '<th>Item</th>'+
@@ -261,7 +268,7 @@ function drilling_(data)
     $.each(data,function(key,report){
 
        report_data = report_data + '<tr>' +
-        '<td>'+report.serration_id+'</td>'+     
+        '<td>'+serial_number++ +'</td>'+     
         '<td>'+report.date+'</td>'+
         '<td>'+report.work_order_no+'</td>'+
         '<td>'+report.item+'</td>'+
