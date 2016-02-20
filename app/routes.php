@@ -594,6 +594,25 @@
 		'uses' => 'masterController@deleteType'
 	));
 
+	// ROUTES FOR STATUS 
+
+
+	Route::get('admin/status',array(
+		'as' => 'status.show',
+		'uses' => 'masterController@showStatus'
+	));
+
+
+	Route::post('admin/status',array(
+		'as' => 'status.store',
+		'uses'=> 'masterController@storeStatus'
+	));
+
+	Route::get('admin/status/{id}',array(
+		'as' => 'status.delete',
+		'uses' => 'masterController@deleteStatus'
+	));
+
 
 
 
@@ -635,6 +654,11 @@
 	Route::get('/search/display',array(
 		'as' => 'search.display',
 			'uses' => 'searchController@display'
+	));
+
+	Route::get('/work_order_search',array(
+		'as' => 'work_order_search',
+		'uses' => 'workOrderController@search_display'
 	));
 
 	Route::get('/raw_material_search',array(

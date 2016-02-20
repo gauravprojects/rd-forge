@@ -4,13 +4,13 @@ class WorkOrder extends Eloquent
 {
 	public static function insertData($records_array)
 	{
-		return DB::table('work_order_details')
+		return DB::table('work_order_records')
 				->insert($records_array);
 	}
 
 	public static function updateRecord($records_array,$work_order_no)
 	{
-		return DB::table('work_order_details')
+		return DB::table('work_order_records')
 			->where('work_order_no','=',$work_order_no)
 			->update($records_array);
 
@@ -26,7 +26,7 @@ class WorkOrder extends Eloquent
 
 	public static function getLastRecord()
 	{
-		return DB::table('work_order_details')
+		return DB::table('work_order_records')
 				->orderBy('work_order_no','desc')
 				->first();
 	}
@@ -42,7 +42,7 @@ class WorkOrder extends Eloquent
 
 	public static function getOrderDetails($work_order_no)
 	{
-		return DB::table('work_order_details')
+		return DB::table('work_order_records')
 				->select()
 				->where('work_order_no','=',$work_order_no)
 				->get();
@@ -52,7 +52,7 @@ class WorkOrder extends Eloquent
 
 	public static function availableWorkOrderNo()
 	{
-		return DB::table('work_order_details')
+		return DB::table('work_order_records')
 				->select('work_order_no','customer_name','purchase_order_date')
 				->where('status','=','0')
 				->get();
@@ -68,7 +68,7 @@ class WorkOrder extends Eloquent
 
 	public static function getRecordByWorkOrderDetails($work_order_no)  //from work order details
 	{
-		return DB::table('work_order_details')
+		return DB::table('work_order_records')
 			->select()
 			->where('work_order_no','=',$work_order_no)
 			->get();
@@ -84,7 +84,7 @@ class WorkOrder extends Eloquent
 
 	public static function getAllRecordsWorkOrderDetails()
 	{
-		return DB::table('work_order_details')
+		return DB::table('work_order_records')
 			->select()
 			->get();
 	}
@@ -98,7 +98,7 @@ class WorkOrder extends Eloquent
 
 	public static function deleteRecord($id)
 	{
-		 DB::table('work_order_details')
+		 DB::table('work_order_records')
 			 ->where('work_order_no','=',$id)
 			 ->delete();
 

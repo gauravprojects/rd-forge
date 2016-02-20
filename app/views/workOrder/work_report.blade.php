@@ -72,6 +72,7 @@
                                         <th class="heading" style="text-align:center;">Quantity</th>
                                         <th class="heading" style="text-align:center;">Weight</th>
                                         <th class="heading" style="text-align:center;">Remarks</th>
+                                        <th class="heading" style="text-align:center;">Status</th>
                                     </tr>
 
 
@@ -89,6 +90,7 @@
                                                 echo "<td>".$data->quantity."</td>";
                                                 echo "<td>".$data->weight."</td>";
                                                 echo "<td>".$data->remarks."</td>";
+                                                echo "<td>".$data->status."</td>";
                                                 echo "</tr>";
                                           }
                                           ?>

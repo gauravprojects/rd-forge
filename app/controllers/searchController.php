@@ -13,7 +13,6 @@ class searchController extends BaseController {
         return View::make('search.search_master');
         //return View::make('search.search_new')->with('data',RawMaterial::getAllData());
 
-
     }
 
     public function returnOptions($id)

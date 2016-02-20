@@ -22,6 +22,11 @@
                                 {{ Form::text('internal_no',$data->internal_no,array('class'=>'form-control inputfix','placeholder'=>'Internal No (non editable)','id'=>'exampleInputEnail1')) }}
                             </div>
 
+                              <div class="form-group">
+                                {{ Form::label('exampleInputEmail1','Stock Id') }}
+                                {{ Form::text('stock_id',$data->stock_id,array('class'=>'form-control inputfix','placeholder'=>'Stock Id (non editable)','id'=>'exampleInputEnail1')) }}
+                            </div>
+
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Receipt Code') }}
                                 {{ Form::text('receiptCode',$data->receipt_code,array('class'=>'form-control inputfix','placeholder'=>'Receipt Number','id'=>'exampleInputEnail1')) }}

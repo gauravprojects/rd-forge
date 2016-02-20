@@ -108,4 +108,11 @@ class Cutting extends Eloquent
 			->get();
 	}
 
+	public static function updateAllData($cutting_id,$array)
+	{
+		return DB::table('cutting_records')
+			  ->where('cutting_id',$cutting_id)
+			  ->update($array);
+	}
+
 }

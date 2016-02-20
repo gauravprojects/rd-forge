@@ -83,6 +83,7 @@ i.icon.delete:before {
                     {{ Form::label('exampleInputEmail1','Select from following options') }}
                     <select class="form-control ui search selection" name="categories[]" id="categories">
                        <option value="">Select from following options</option>
+                       <option value="work_order_search">Work Order</option>
                         <option value="raw_material_search">Raw Material</option>
                         <option value="cutting_search">Cutting</option>
                         <option value="forging_search">Forging</option>

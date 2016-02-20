@@ -1,6 +1,42 @@
     @extends('layouts.master')
 
     @section('links_data')
+
+<style type="text/css">
+
+.ui.label {
+    color:black;
+    display: inline-block;
+    line-height: 1;
+    vertical-align: baseline;
+    margin: 0em 0.14285714em;
+    background-color: #e8e8e8;
+    background-image: none;
+    padding: 0.5833em 0.833em;
+    /* color: rgba(0, 0, 0, 0.6); */
+    text-transform: none;
+    font-weight: bold;
+    border: 0px solid transparent;
+    border-radius: 0.28571429rem;
+    -webkit-transition: background 0.1s ease;
+    transition: background 0.1s ease;
+}
+
+.ui.label > .delete.icon {
+    cursor: pointer;
+    margin-right: 0em;
+    margin-left: 0.5em;
+    font-size: 0.92857143em;
+    opacity: 0.5;
+    -webkit-transition: background 0.1s ease;
+    transition: background 0.1s ease;
+}
+
+i.icon.delete:before {
+    content: "\f00d";
+}
+
+        </style>
         <!-- Script for handling total weight checking -->
         <script type="text/javascript">
             $(document).ready(function(){
@@ -102,7 +138,7 @@
                                
                                 {{ Form::label('exampleInputEmail1','Standard Size') }}
 
-                                <select class="form-control search selection" name="standard_size" id="standardsize_select" required>
+                                <select class="form-control ui fluid search dropdown" name="standard_size[]" id="standardsize_select" multiple="" required>
                                     <option value="">---Select Standard Size--------</option>
                                     @foreach($standard_size as $standard_size_element)
                                         <option value="{{ $standard_size_element->std_size }}">{{$standard_size_element->std_size}}</option>

@@ -53,15 +53,18 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 	{
 		$forging_input= Input::all();
 
+
 		// calculating total_weight
 		$total_weight= $forging_input['weight_per_peice']*$forging_input['quantity'];
 
+		foreach($forging_input['standard_size'] as $standard_size)
+		{
 		// forging array for input
 		$forging_array= array(
 				'date'		=> date('d-m-y',strtotime($forging_input['date'])),
 				'weight_per_piece'=>$forging_input['weight_per_peice'],
 				'heat_no'		=> $forging_input['heat_no'],
-				'size' =>$forging_input['standard_size'],
+				'size' => $standard_size,
 				'pressure' => $forging_input['pressure'],
 				'type' => $forging_input['type'],
 				'schedule' => $forging_input['schedule'],
@@ -72,17 +75,18 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 		);
 		
 		Forging::insertData($forging_array);
+	}
 
 
 		// now we have to subtract this forged item total weight from cutting_records available_weight_cutting
 		//   	TO BE DONE HERE ---------------------------------------------------------------
 
-			$available_weight_cutting= Forging::getAvailableWeight($forging_input['heatNo']);
-			$available_weight_cutting= (array) $available_weight_cutting[0];
-			$available_weight_cutting= $available_weight_cutting['available_weight_cutting'];
+		$available_weight_cutting= Forging::getAvailableWeight($forging_input['heat_no']);
+		$available_weight_cutting= (array) $available_weight_cutting[0];
+		$available_weight_cutting= $available_weight_cutting['available_weight_cutting'];
 
-			$available_weight_cutting= $available_weight_cutting- $total_weight;
-			Forging::updateCuttingWeight($forging_input['heatNo'],$available_weight_cutting);
+		$available_weight_cutting= $available_weight_cutting - $total_weight;
+		Forging::updateCuttingWeight($forging_input['heatNo'],$available_weight_cutting);
 
 		// now getting the last record for getting forging_id
 		$last_record = Forging::getLastRecord();

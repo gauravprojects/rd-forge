@@ -22,6 +22,13 @@ class RawMaterial extends Eloquent
 				->get();
 	}
 
+	public static function updateAllData($internal_no,$array)
+	{
+		return DB::table('raw_material_records')
+			  ->where('internal_no',$internal_no)
+			  ->update($array);
+	}
+
 	public static function getDateData()
 	{
 		$date=date("Y-m-d");
@@ -30,7 +37,6 @@ class RawMaterial extends Eloquent
 				->where('date','=',$date)
 				->get();
 	}
-
 
 	public static function getLastRecord()
 	{

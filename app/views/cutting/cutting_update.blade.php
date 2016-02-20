@@ -19,7 +19,12 @@
 
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Id') }}
-                                 {{ Form::text('cutting_id',$cutting->cutting_id,array('class'=>'form-control inputfix','id'=>'cutting_id','name'=>'cutting_id','placeholder'=>'Date')) }}
+                                 {{ Form::text('cutting_id',$cutting->cutting_id,array('class'=>'form-control inputfix','id'=>'cutting_id','name'=>'cutting_id','placeholder'=>'Id')) }}
+                            </div>
+
+                            <div class="form-group">
+                                {{ Form::label('exampleInputEmail1','Stock Id') }}
+                                 {{ Form::text('stock_id',$cutting->stock_id,array('class'=>'form-control inputfix','id'=>'stock_id','name'=>'stock_id','placeholder'=>'Stock Id')) }}
                             </div>
 
                             <div class="form-group">

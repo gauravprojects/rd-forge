@@ -23,8 +23,7 @@
                     <div class="row">
                         <table>
                             <tr class="heading">
-                                <th>Internal No</th>
-                                <th>Recipet Code</th>
+                                <th>Receipt Code</th>
                                 <th>Date</th>
                                 <th>Size</th>
                                 <th>Manufacturer</th>
@@ -37,7 +36,6 @@
                             </tr>
 
                             <tr>
-                                <td>{{ $confirmation->internal_no }}</td>
                                 <td>{{ $confirmation->receipt_code }}</td>
                                 <td>{{ date('d-m-Y',strtotime($confirmation->date)) }}</td>
                                 <td>{{ $confirmation->size }}</td>

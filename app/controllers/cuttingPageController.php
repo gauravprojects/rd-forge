@@ -62,8 +62,27 @@
 			$total_weight = $cutting['quantity'] * $cutting['wpp'];
 
 
+			$cutting_stock_array = array(	
+					'heat_no' => $cutting['heatNo'],
+					'standard_size' => $cutting['standard_size'],
+					'pressure' => $cutting['pressure'],
+					'type' => $cutting['type'],
+					'schedule' => $cutting['schedule'],
+					'available_weight_cutting' => $total_weight
+				);
+		
+			$cutting_stock_data = CuttingStock::getAllData($cutting);
+
+			if($cutting_stock_data)
+				CuttingStock::incrementWeight($cutting_stock_array,$total_weight);
+			else
+				CuttingStock::insertData($cutting_stock_array);
+
+			$just_added_stock = CuttingStock::getLastRecord();
+
 			// array for table cutting records
-			$input_array = array(
+			$cutting_array = array(
+					'stock_id' => $just_added_stock->stock_id,
 					'date' => date('Y-m-d',strtotime($cutting['date'])),
 					'raw_mat_size' => $cutting['size'],
 					'heat_no' => $cutting['heatNo'],
@@ -79,28 +98,11 @@
 					'description' => $cutting['cutDes']
 			);
 
-			$stock_array = array(	
-					'heat_no' => $cutting['heatNo'],
-					'standard_size' => $cutting['standard_size'],
-					'pressure' => $cutting['pressure'],
-					'type' => $cutting['type'],
-					'schedule' => $cutting['schedule'],
-					'available_weight_cutting' => $total_weight
-				);
+			$cutting_response = Cutting::insertData($cutting_array);
 
-			
-			$data = RawMaterialStock::returnAvailableWeight($cutting['heatNo']);
-			$available_weight = $data[0]->available_weight;
-
-			$available_weight = $available_weight - $total_weight;
-			$available_weight_response = RawMaterialStock::updateAvailableWeight($cutting['heatNo'], $available_weight);
-
-
-			$cutting_response = Cutting::insertData($input_array);
+			RawMaterialStock::updateAvailableWeight($cutting['heatNo'], $total_weight);
 			$last_record = Cutting::getLastRecord();
-
-			CuttingStock::insertData($stock_array);
-
+	
 			return View::make('cutting.confirm')->with('last_record', $last_record);
 
 		}
@@ -133,7 +135,7 @@
 
 		$total_weight = $cutting['quantity'] * $cutting['wpp'];
 
-		$data_array_update = array(
+		$cutting_array = array(
 					'date' => date('Y-m-d',strtotime($cutting['date'])),
 					'raw_mat_size' => $cutting['size'],
 					'heat_no' => $cutting['heatNo'],
@@ -147,12 +149,20 @@
 					'available_weight_cutting' =>$total_weight
 					);
 
-		$update_response= DB::table('cutting_records')
-							->where('cutting_id',$cutting['cutting_id'])
-							->update($data_array_update);
+		$cutting_stock_array = array(	
+					'heat_no' => $cutting['heatNo'],
+					'standard_size' => $cutting['standard_size'],
+					'pressure' => $cutting['pressure'],
+					'type' => $cutting['type'],
+					'schedule' => $cutting['schedule'],
+					'available_weight_cutting' => $total_weight
+				);
+
+		Cutting::updateAllData($cutting['cutting_id'],$cutting_array);
+		CuttingStock::updateAllData($cutting['stock_id'],$cutting_stock_array);
 
 
-		$get_record_array= Cutting::getRecord($cutting['cutting_id']);
+		$get_record_array = Cutting::getRecord($cutting['cutting_id']);
 		return View::make('cutting.confirm_cutting_update')->with('confirmations',$get_record_array);
 	}
 

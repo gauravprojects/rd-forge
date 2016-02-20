@@ -246,7 +246,38 @@ class MasterController extends \BaseController
 	}
 
 
+	public function showStatus()
+	{
 
+		$data=Status::getStatus();
+		return View::make('adminPanel.status')->with('data', $data);
+	}
+
+
+	public function storeStatus()
+	{
+
+		$input_array= Input::all();
+
+		$input= array(
+			'Status'=>$input_array['status']
+		);
+
+		$input_response=Status::insertStatus($input);
+		$data=Status::getStatus();
+		return View::make('adminPanel.status')->with('data', $data);
+
+	}
+
+
+	public function deleteStatus($id)
+	{
+		$delete_response=Status::deleteStatus($id);
+		$data=Status::getStatus();
+		return View::make('adminPanel.status')->with('data', $data);
+
+
+	}
 
 
 

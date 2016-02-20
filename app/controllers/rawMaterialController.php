@@ -42,12 +42,31 @@ class rawMaterialController extends BaseController {
 
 
 	// store function stores data coming from raw material form
-	// view confirm shows tha last entered entry in ra material table
+	// view confirm shows tha last entered entry in raw material table
 	public function store()
 	{
 		$data = Input::all(); // returns array form raw material entry form
 
+		$raw_material_stock_array = array(
+			'heat_no' => $data['heatNo'],
+			'material_grade' => $data['materialGrade'],
+			'size' => $data['size'],
+			'raw_material_type' => $data['materialType'],
+			'available_weight' => $data['weight']
+			);
+
+
+		$raw_material_stock_data = RawMaterialStock::getAllData($data);
+		
+		if($raw_material_stock_data)
+			RawMaterialStock::incrementWeight($data['heatNo'],$data['weight']);	
+		else
+			RawMaterialStock::insertData($raw_material_stock_array);	
+
+		$just_added_stock = RawMaterialStock::getLastRecord();
+
 		$raw_material_array = array(
+			'stock_id' => $just_added_stock->stock_id,
 			'receipt_code' => $data['receiptCode'],
 			'date' => date('Y-m-d',strtotime($data['date'])),
 			'size' => $data['size'],
@@ -63,24 +82,7 @@ class rawMaterialController extends BaseController {
 			'available_weight' => $data['weight']
 		);
 
-
-		$raw_material_stock_array = array(
-			'heat_no' => $data['heatNo'],
-			'material_grade' => $data['materialGrade'],
-			'raw_material_type' => $data['materialType'],
-			'available_weight' => $data['weight']
-			);
-
-
 		RawMaterial::insertData($raw_material_array);
-		$heat_numbers = RawMaterialStock::getHeatNumbers($data['heatNo']);
-		
-		if($heat_numbers)
-			RawMaterialStock::incrementWeight($data['heatNo'],$data['weight']);	
-		else
-			RawMaterialStock::insertData($raw_material_stock_array);	
-
-		//get the last entry in raw material table and pass it to confirm blade
 
 		$last_record = RawMaterial::getLastRecord();		
 		//returns the view to the confirmation page that shows last entered raw material entry
@@ -113,9 +115,9 @@ class rawMaterialController extends BaseController {
 	public function update_store($id)
 	{
 		
-		$data= Input::all();
+		$data = Input::all();
 
-		$data_array_update = array(
+		$raw_material_array = array(
 			'receipt_code' => $data['receiptCode'],
 			'date' => date('Y-m-d',strtotime($data['date'])),
 			'size' => $data['size'],
@@ -130,14 +132,21 @@ class rawMaterialController extends BaseController {
 			'raw_material_type' => $data['materialType']
 		);
 
-		$update_response= DB::table('raw_material')
-							->where('internal_no',$data['internal_no'])
-							->update($data_array_update);
+		$raw_material_stock_array = array(
+			'heat_no' => $data['heatNo'],
+			'material_grade' => $data['materialGrade'],
+			'size' => $data['size'],
+			'raw_material_type' => $data['materialType'],
+			'available_weight' => $data['weight']
+			);
 
 
-		$get_record_array= RawMaterial::getRecord($data['internal_no']);
+		RawMaterial::updateAllData($data['internal_no'],$raw_material_array);
+		RawMaterialStock::updateAllData($data['stock_id'],$raw_material_stock_array);
+
+
+		$get_record_array = RawMaterial::getRecord($data['internal_no']);
 		return View::make('rawMaterial.confirm_update')->with('confirmations',$get_record_array);
-
 
 	}
 
@@ -147,9 +156,9 @@ class rawMaterialController extends BaseController {
 		return View::make('rawMaterial.raw_report_excel')->with('raw',$raw);
 	}
 
-	public  function destroy($id)
+	public function destroy($id)
 	{
-		$delete_response= RawMaterial::deleteRecord($id);
+		$delete_response = RawMaterial::deleteRecord($id);
 		$raw = RawMaterial::getAllData();
 		return View::make('rawMaterial.raw_report')->with('raw',$raw);
 	}

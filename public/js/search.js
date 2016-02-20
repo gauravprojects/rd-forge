@@ -37,6 +37,43 @@
 
         });
 
+  // function work_order_(data)
+  // {
+  //   var report_data = "";
+  //   var serial_number = 1;
+
+  //   report_data = report_data + '<table>'+
+  //               '<tr class="heading">'+
+  //                   '<th>S.No</th>'+
+  //                   '<th>Receipt Code</th>'+
+  //                   '<th>Date</th>'+
+  //                   '<th>Size</th>'+
+  //                   '<th>Manufacturer</th>'+
+  //                   '<th>Heat No</th>'+
+  //                   '<th>Weight</th>'+
+  //                   '<th>Material Type</th>'+
+  //                   '<th>Material Grade</th>'+
+  //               '</tr>';
+
+  //   $.each(data,function(key,report){
+
+  //       report_data = report_data + '<tr>' +
+  //       '<td>'+ serial_number++ +'</td>'+     
+  //       '<td>'+report.receipt_code+'</td>'+
+  //       '<td>'+report.date+'</td>'+
+  //       '<td>'+report.size+'</td>'+
+  //       '<td>'+report.manufacturer+'</td>'+
+  //       '<td>'+report.heat_no+'</td>'+
+  //       '<td>'+report.weight+'</td>'+
+  //       '<td>'+report.raw_material_type+'</td>'+
+  //       '<td>'+report.material_grade+'</td>';
+  //       report_data = report_data + '</tr>';
+
+  //   });
+
+  //   report_data = report_data + "</table>";
+  //   return report_data;
+  // }
   function raw_material_(data)
   {
     var report_data = "";

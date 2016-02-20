@@ -159,6 +159,7 @@
                                         <th class="heading" style="text-align:center;">Quantity</th>
                                         <th class="heading" style="text-align:center;">Weight</th>
                                         <th class="heading" style="text-align:center;">Remarks</th>
+                                        <th class="heading" style="text-align:center;">Status</th>
                                     </tr>
 
                                 @foreach($record_new as $pushpam_matah)
@@ -243,6 +244,20 @@
                                     </td>
                                     <td>
                                         <input type="text" name="remarks_mat[]" class="form-control inputfix" placeholder="Remarks" value="{{$pushpam_matah->remarks}}">
+                                    </td>
+
+                                    <td>
+                                        <!-- Order status -->
+                                    <select class="form-control" name="order_status[]">
+                                        @foreach($status as $order_status)
+                                            @if($pushpam_matah->status == $order_status->status)
+                                                <option value="{{$order_status->status}}" selected>{{$order_status->status}}</option>
+                                            @else
+                                            <option value="{{$order_status->status}}">{{$order_status->status}}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+
                                     </td>
 
                                 </tr>

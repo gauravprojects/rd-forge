@@ -97,16 +97,18 @@ class WorkOrderController extends BaseController {
 		$pressure = Pressure::getPressure();
 		$schedule = Schedule::getSchedule();
 		$type = DescriptionType::getType();
+		$status = Status::getStatus();
 		
 
 		return View::make('workOrder.work_update')
+			->with('status',$status)
 			->with('record',$record)
 			->with('record_new',$record_new)
 			->with('grades',$grades)
-				->with('standard_size', $standard_sizes)
-				->with('pressure', $pressure)
-				->with('schedule', $schedule)
-				->with('type', $type);
+			->with('standard_size', $standard_sizes)
+			->with('pressure', $pressure)
+			->with('schedule', $schedule)
+			->with('type', $type);
 	}
 
 
@@ -143,7 +145,8 @@ class WorkOrderController extends BaseController {
 					'schedule' => $data_input['schedule'][$i],
 					'quantity' => $data_input['quantity'][$i],
 					'weight' => $data_input['weight'][$i],
-					'remarks' => $data_input['remarks_mat'][$i]
+					'remarks' => $data_input['remarks_mat'][$i],
+					'status' => $data_input['order_status'][$i]
 				);
 
 				DB::table('work_order_material_details')->insert($work_order_material_array);
@@ -197,5 +200,10 @@ class WorkOrderController extends BaseController {
 		$details = DB::table('work_order_material_details')->where('work_order_no',$work_order_no)->get();
 		return json_encode($details);
 	}
+
+	public function search_display()
+    {
+        return View::make('search.work_order_search');
+    }
 
 }
