@@ -23,7 +23,7 @@
                     {{ Form::label('exampleInputEmail1','Select from following options') }}
                     <select class="form-control ui fluid search dropdown" name="options[]" id="options" multiple="">
                         <option value="">Select from following options</option>
-                        <option value="work_order_no">Work order Number</option>
+                        <option value="work_order_records.work_order_no">Work order Number</option>
                         <option value="customer_name">Customer Name</option>
                         <option value="start_date">Start Date</option> 
                         <option value="end_date">End Date</option> 

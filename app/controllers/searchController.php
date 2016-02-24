@@ -51,8 +51,16 @@ class searchController extends BaseController {
         }
 
 
-        if($flag == 1)
+        if($flag == 1 && $category != "work_order_records")
             $response = DB::table($category)->whereBetween('date',array($again_array['start_date'],$again_array['end_date']))->where($latest_array)->get();
+        else if($flag == 1 && $category == "work_order_records")
+        {
+            $response = DB::table($category)
+                        ->join('work_order_material_details','work_order_records.work_order_no','=','work_order_material_details.work_order_no')
+                        ->whereBetween('work_order_records.date',array($again_array['start_date'],$again_array['end_date']))->where($latest_array)->get();
+        }
+        else if($category == "work_order_records")
+            $response = DB::table($category)->join('work_order_material_details','work_order_records.work_order_no','=','work_order_material_details.work_order_no')->where($latest_array)->get();
         else
             $response = DB::table($category)->where($latest_array)->get();
 

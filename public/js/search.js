@@ -37,43 +37,85 @@
 
         });
 
-  // function work_order_(data)
-  // {
-  //   var report_data = "";
-  //   var serial_number = 1;
+  function work_order_(data)
+  {
+    var report_data = "";
+    var serial_number = 1;
+    var serial_number2 = 1;
+    var haslooped = false;
 
-  //   report_data = report_data + '<table>'+
-  //               '<tr class="heading">'+
-  //                   '<th>S.No</th>'+
-  //                   '<th>Receipt Code</th>'+
-  //                   '<th>Date</th>'+
-  //                   '<th>Size</th>'+
-  //                   '<th>Manufacturer</th>'+
-  //                   '<th>Heat No</th>'+
-  //                   '<th>Weight</th>'+
-  //                   '<th>Material Type</th>'+
-  //                   '<th>Material Grade</th>'+
-  //               '</tr>';
+    report_data = report_data + '<table>'+
+                '<tr class="heading">'+
+                    '<th>S.No</th>'+
+                    '<th>Work order no.</th>'+
+                    '<th>Purchase order no.</th>'+
+                    '<th>Customer name</th>'+
+                    '<th>Purchase order date</th>'+
+                    '<th>Required delivery Date</th>'+
+                    '<th>Inspection</th>'+
+                    '<th>Packing Instruction</th>'+
+                    '<th>Testing Instruction</th>'+
+                    '<th>Quotation Number</th>'+
+                '</tr>';
+    console.log(data);
 
-  //   $.each(data,function(key,report){
+    $.each(data,function(key,report){
 
-  //       report_data = report_data + '<tr>' +
-  //       '<td>'+ serial_number++ +'</td>'+     
-  //       '<td>'+report.receipt_code+'</td>'+
-  //       '<td>'+report.date+'</td>'+
-  //       '<td>'+report.size+'</td>'+
-  //       '<td>'+report.manufacturer+'</td>'+
-  //       '<td>'+report.heat_no+'</td>'+
-  //       '<td>'+report.weight+'</td>'+
-  //       '<td>'+report.raw_material_type+'</td>'+
-  //       '<td>'+report.material_grade+'</td>';
-  //       report_data = report_data + '</tr>';
+        if(haslooped == false)
+        {
+            report_data = report_data + '<tr>' +
+            '<td>'+ serial_number++ +'</td>'+     
+            '<td>'+report.work_order_no+'</td>'+
+            '<td>'+report.purchase_order_no+'</td>'+
+            '<td>'+report.customer_name+'</td>'+
+            '<td>'+report.purchase_order_date+'</td>'+
+            '<td>'+report.required_delivery_date+'</td>'+
+            '<td>'+report.inspection+'</td>'+
+            '<td>'+report.packing_instruction+'</td>'+
+            '<td>'+report.testing_instruction+'</td>'+
+            '<td>'+report.quotation_no+'</td>';
 
-  //   });
+            report_data = report_data + '</tr>';
+            haslooped = true;
+        }
 
-  //   report_data = report_data + "</table>";
-  //   return report_data;
-  // }
+    });
+
+    report_data = report_data + '</table><br/><br/><table>'+
+                '<tr class="heading">'+
+                    '<th>S.No</th>'+
+                    '<th>Item no.</th>'+
+                    '<th>Material Grade</th>'+
+                    '<th>Size</th>'+
+                    '<th>Pressure</th>'+
+                    '<th>Schedule</th>'+
+                    '<th>Quantity</th>'+
+                    '<th>Weight</th>'+
+                    '<th>Remarks</th>'+
+                    '<th>Status</th>'+
+                '</tr>';
+
+     $.each(data,function(key,report){
+
+        report_data = report_data + '<tr>' +
+        '<td>'+ serial_number2++ +'</td>'+     
+        '<td>'+report.item_no+'</td>'+
+        '<td>'+report.material_grade+'</td>'+
+        '<td>'+report.size+'</td>'+
+        '<td>'+report.pressure+'</td>'+
+        '<td>'+report.schedule+'</td>'+
+        '<td>'+report.quantity+'</td>'+
+        '<td>'+report.weight+'</td>'+
+        '<td>'+report.remarks+'</td>'+
+        '<td>'+report.status+'</td>';
+        report_data = report_data + '</tr>';
+
+    });
+
+
+    report_data = report_data + "</table>";
+    return report_data;
+  }
   function raw_material_(data)
   {
     var report_data = "";
