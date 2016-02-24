@@ -35,18 +35,18 @@ class RawMaterialStock extends Eloquent
 				->get();
 	}
 
-	public static function updateAvailableWeight($heat_no,$weight)
+	public static function updateAvailableWeight($heat_no,$size,$weight)
 	{
 
 		return DB::table('raw_material_stock')
 			->where('heat_no','=',$heat_no)
+			->where('size','=',$size)
 			->decrement('available_weight',$weight);
 	}
 
 	public static function getHeatNo()
 	{
 		return DB::table('raw_material_stock')
-			->select()
 			->where('available_weight','>',0)
 			->get();
 	}
@@ -71,6 +71,30 @@ class RawMaterialStock extends Eloquent
 		return DB::table('raw_material_stock')
 			  ->where('stock_id',$stock_id)
 			  ->update($array);
+	}
+
+	public static function getHeatSizeData($heat_no,$size)
+	{
+		return DB::table('raw_material_stock')
+			   ->where('heat_no',$heat_no)
+			   ->where('size',$size)
+			   ->get();
+	}
+
+	public static function decrementRecordByHeatSize($heat_no,$size,$weight)
+	{
+		return DB::table('raw_material_stock')
+			   ->where('heat_no',$heat_no)
+			   ->where('size',$size)
+			   ->decrement('available_weight',$weight);
+	}
+
+	public static function incrementRecordByHeatSize($heat_no,$size,$weight)
+	{
+		return DB::table('raw_material_stock')
+			   ->where('heat_no',$heat_no)
+			   ->where('size',$size)
+			   ->increment('available_weight',$weight);
 	}
 }
 

@@ -56,17 +56,16 @@ class rawMaterialController extends BaseController {
 			);
 
 
-		$raw_material_stock_data = RawMaterialStock::getAllData($data);
+		$whether_stock_present = RawMaterialStock::getHeatSizeData($data['heatNo'],$data['size']);
 		
-		if($raw_material_stock_data)
+		if($whether_stock_present)
 			RawMaterialStock::incrementWeight($data['heatNo'],$data['weight']);	
 		else
 			RawMaterialStock::insertData($raw_material_stock_array);	
 
-		$just_added_stock = RawMaterialStock::getLastRecord();
+		// $just_added_stock = RawMaterialStock::getLastRecord();
 
 		$raw_material_array = array(
-			'stock_id' => $just_added_stock->stock_id,
 			'receipt_code' => $data['receiptCode'],
 			'date' => date('Y-m-d',strtotime($data['date'])),
 			'size' => $data['size'],
@@ -141,9 +140,22 @@ class rawMaterialController extends BaseController {
 			);
 
 
-		RawMaterial::updateAllData($data['internal_no'],$raw_material_array);
-		RawMaterialStock::updateAllData($data['stock_id'],$raw_material_stock_array);
+		// Delete data where old size and old heat no
 
+		RawMaterial::updateAllData($data['internal_no'],$raw_material_array);
+		// Update data where new size and new heat no
+		$whether_stock_present = RawMaterialStock::getHeatSizeData($data['heatNo'],$data['size']);
+
+		if(!$whether_stock_present)
+		{
+			RawMaterialStock::insertData($raw_material_stock_array);	
+			RawMaterialStock::decrementRecordByHeatSize($data['old_heat_no'],$data['old_size'],$data['weight']);
+		}
+		else
+		{
+		RawMaterialStock::decrementRecordByHeatSize($data['old_heat_no'],$data['old_size'],$data['weight']);
+		RawMaterialStock::incrementRecordByHeatSize($data['heatNo'],$data['size'],$data['weight']);
+		}
 
 		$get_record_array = RawMaterial::getRecord($data['internal_no']);
 		return View::make('rawMaterial.confirm_update')->with('confirmations',$get_record_array);

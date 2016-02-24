@@ -18,13 +18,7 @@
                                     <!-- For recipt number of the material coming from outside -->
 
                             <div class="form-group">
-                                {{ Form::label('exampleInputEmail1','Internal Number') }}
-                                {{ Form::text('internal_no',$data->internal_no,array('class'=>'form-control inputfix','placeholder'=>'Internal No (non editable)','id'=>'exampleInputEnail1')) }}
-                            </div>
-
-                              <div class="form-group">
-                                {{ Form::label('exampleInputEmail1','Stock Id') }}
-                                {{ Form::text('stock_id',$data->stock_id,array('class'=>'form-control inputfix','placeholder'=>'Stock Id (non editable)','id'=>'exampleInputEnail1')) }}
+                                {{ Form::hidden('internal_no',$data->internal_no,array('class'=>'form-control inputfix','placeholder'=>'Internal No (non editable)','id'=>'exampleInputEnail1')) }}
                             </div>
 
                             <div class="form-group">
@@ -49,11 +43,13 @@
                                     @foreach($sizes as $size_element)
                                         @if($size_element->size == $data->size)
                                             <option value="{{ $size_element->size }}" selected>{{$size_element->size}}</option>
+                                            <?php $old_size = $size_element->size; ?>
                                         @else
                                             <option value="{{ $size_element->size }}">{{$size_element->size}}</option>
                                         @endif
                                     @endforeach
                                 </select>
+                                  {{ Form::hidden('old_size',$old_size,array('class'=>'form-control inputfix')) }}
 
                             </div>
 
@@ -76,6 +72,11 @@
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Heat Number') }}
                                 {{ Form::text('heatNo',$data->heat_no,array('class'=>'form-control inputfix','placeholder'=>'Heat Number','id'=>'Justesehe')) }}
+
+                                 <?php $old_heat_no = $data->heat_no; ?>
+
+                                {{ Form::hidden('old_heat_no',$old_heat_no,array('class'=>'form-control inputfix')) }}
+                                   
                             </div>
                             <!-- Wieght, weight of the incmomh material -->
                             <div class="form-group">

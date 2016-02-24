@@ -96,4 +96,12 @@ class RawMaterial extends Eloquent
 	{
 		return DB::select(DB::raw('SELECT @serial := @serial+1 AS serial FROM (SELECT @serial:=0) AS hello,raw_material_records'));
 	}
+
+	public static function getHeatSizeData($heat_no,$size)
+	{
+		return DB::table('raw_material_records')
+			   ->where('heat_no',$heat_no)
+			   ->where('size',$size)
+			   ->get();
+	}
 }

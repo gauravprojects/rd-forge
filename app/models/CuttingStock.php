@@ -50,6 +50,39 @@ class CuttingStock extends Eloquent
 			  ->update($array);
 	}
 
+	public static function getHeatSizePressureTypeScheduleData($heat_no,$size,$pressure,$type,$schedule)
+	{
+		return DB::table('cutting_stock')
+			   ->where('heat_no',$heat_no)
+			   ->where('standard_size',$size)
+			   ->where('pressure',$pressure)
+			   ->where('type',$type)
+			   ->where('schedule',$schedule)
+			   ->get();
+	}
+
+	public static function decrementHeatSizePressureTypeScheduleData($heat_no,$size,$pressure,$type,$schedule,$weight)
+	{
+		return DB::table('cutting_stock')
+			   ->where('heat_no',$heat_no)
+			   ->where('standard_size',$size)
+			   ->where('pressure',$pressure)
+			   ->where('type',$type)
+			   ->where('schedule',$schedule)
+			   ->decrement('available_weight_cutting',$weight);
+	}
+
+	public static function incrementHeatSizePressureTypeScheduleData($heat_no,$size,$pressure,$type,$schedule,$weight)
+	{
+		return DB::table('cutting_stock')
+			   ->where('heat_no',$heat_no)
+			   ->where('standard_size',$size)
+			   ->where('pressure',$pressure)
+			   ->where('type',$type)
+			   ->where('schedule',$schedule)
+			   ->increment('available_weight_cutting',$weight);
+	}
+
 }
 
 

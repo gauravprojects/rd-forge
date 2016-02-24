@@ -22,10 +22,6 @@
                                  {{ Form::text('cutting_id',$cutting->cutting_id,array('class'=>'form-control inputfix','id'=>'cutting_id','name'=>'cutting_id','placeholder'=>'Id')) }}
                             </div>
 
-                            <div class="form-group">
-                                {{ Form::label('exampleInputEmail1','Stock Id') }}
-                                 {{ Form::text('stock_id',$cutting->stock_id,array('class'=>'form-control inputfix','id'=>'stock_id','name'=>'stock_id','placeholder'=>'Stock Id')) }}
-                            </div>
 
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Date') }}
@@ -57,10 +53,12 @@
                                 <select class="form-control search selection" name="heatNo" id="heatno_select" required>
                                     <option value="">---Select Heat Number--------</option>
                                     @foreach($heat_no as $heat_no_element)
-                                        @if($heat_no_element->heat_no == $cutting->heat_no)
-                                            <option value="{{ $heat_no_element->heat_no }}" selected>{{$heat_no_element->heat_no}}</option>
+                                        @if($heat_no_element->heat_no == $cutting->heat_no && $heat_no_element->size == $cutting->raw_mat_size)
+                                            <option value="{{ $heat_no_element->heat_no }}-{{ $heat_no_element->size }}" selected>{{$heat_no_element->heat_no}}-{{ $heat_no_element->size }}</option>
+
+                                            <?php $old_heat_no = $heat_no_element->heat_no."-".$heat_no_element->size; ?>
                                         @else
-                                            <option value="{{ $heat_no_element->heat_no }}">{{$heat_no_element->heat_no}}</option>
+                                            <option value="{{ $heat_no_element->heat_no }}-{{ $heat_no_element->size}}">{{$heat_no_element->heat_no}}-{{ $heat_no_element->size }}</option>
                                         @endif
                                     @endforeach
                                 </select>
@@ -83,6 +81,7 @@
                                     @foreach($standard_size as $standard_size_element)
                                         @if($standard_size_element->std_size == $cutting->size)
                                             <option value="{{ $standard_size_element->std_size }}" selected>{{$standard_size_element->std_size}}</option>
+                                            <?php $old_standard_size = $standard_size_element->std_size; ?>
                                         @else
                                             <option value="{{ $standard_size_element->std_size }}">{{$standard_size_element->std_size}}</option>
                                         @endif
@@ -100,6 +99,7 @@
                                     @foreach($pressure as $pressure_element)
                                         @if($pressure_element->pressure == $cutting->pressure)
                                             <option value="{{ $pressure_element->pressure }}" selected>{{$pressure_element->pressure}}</option>
+                                            <?php $old_pressure = $pressure_element->pressure; ?>
                                         @else
                                             <option value="{{ $pressure_element->pressure }}">{{$pressure_element->pressure}}</option>
                                         @endif
@@ -116,6 +116,7 @@
                                     @foreach($type as $type_element)
                                         @if($type_element->type == $cutting->type)
                                             <option value="{{ $type_element->type }}" selected>{{$type_element->type}}</option>
+                                            <?php $old_type = $type_element->type; ?>
                                         @else
                                             <option value="{{ $type_element->type }}">{{$type_element->type}}</option>
                                         @endif
@@ -133,6 +134,7 @@
                                     @foreach($schedule as $schedule_element)
                                         @if($schedule_element->schedule == $cutting->schedule)
                                             <option value="{{ $schedule_element->schedule }}" selected>{{$schedule_element->schedule}}</option>
+                                            <?php $old_schedule = $schedule_element->schedule; ?>
                                         @else
                                             <option value="{{ $schedule_element->schedule }}">{{$schedule_element->schedule}}</option>
                                         @endif
@@ -140,7 +142,13 @@
                                 </select>
                             </div>
 
-
+                            <div class="form-group">
+                                 {{ Form::hidden('old_heat_no',$old_heat_no,array('class'=>'form-control inputfix'))}}
+                                 {{ Form::hidden('old_standard_size',$old_standard_size,array('class'=>'form-control inputfix'))}}
+                                 {{ Form::hidden('old_pressure',$old_pressure,array('class'=>'form-control inputfix'))}}
+                                 {{ Form::hidden('old_type',$old_type,array('class'=>'form-control inputfix'))}}
+                                 {{ Form::hidden('old_schedule',$old_schedule,array('class'=>'form-control inputfix'))}}
+                            </div>
 
 
                             <!-- qunanity.. this is the quantity of the cutted material -->

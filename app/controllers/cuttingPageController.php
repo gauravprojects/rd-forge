@@ -62,30 +62,32 @@
 			$total_weight = $cutting['quantity'] * $cutting['wpp'];
 
 
+			$final_heat_no = explode("-",$cutting['heatNo'])[0];
+			$final_size = explode("-",$cutting['heatNo'])[1];
+
+
 			$cutting_stock_array = array(	
-					'heat_no' => $cutting['heatNo'],
+					'heat_no' => $final_heat_no,
 					'standard_size' => $cutting['standard_size'],
 					'pressure' => $cutting['pressure'],
 					'type' => $cutting['type'],
 					'schedule' => $cutting['schedule'],
 					'available_weight_cutting' => $total_weight
 				);
+
+
+		$whether_stock_present = CuttingStock::getHeatSizePressureTypeScheduleData($final_heat_no,$cutting['standard_size'],$cutting['pressure'],$cutting['type'],$cutting['schedule']);
 		
-			$cutting_stock_data = CuttingStock::getAllData($cutting);
-
-			if($cutting_stock_data)
-				CuttingStock::incrementWeight($cutting_stock_array,$total_weight);
-			else
-				CuttingStock::insertData($cutting_stock_array);
-
-			$just_added_stock = CuttingStock::getLastRecord();
+		if($whether_stock_present)
+			CuttingStock::incrementHeatSizePressureTypeScheduleData($final_heat_no,$cutting['standard_size'],$cutting['pressure'],$cutting['type'],$cutting['schedule'],$cutting['weight']);
+		else
+			CuttingStock::insertData($cutting_stock_array);	
 
 			// array for table cutting records
 			$cutting_array = array(
-					'stock_id' => $just_added_stock->stock_id,
 					'date' => date('Y-m-d',strtotime($cutting['date'])),
 					'raw_mat_size' => $cutting['size'],
-					'heat_no' => $cutting['heatNo'],
+					'heat_no' => $final_heat_no,
 					'size' => $cutting['standard_size'],
 					'pressure' => $cutting['pressure'],
 					'type' => $cutting['type'],
@@ -100,7 +102,7 @@
 
 			$cutting_response = Cutting::insertData($cutting_array);
 
-			RawMaterialStock::updateAvailableWeight($cutting['heatNo'], $total_weight);
+			RawMaterialStock::updateAvailableWeight($final_heat_no,$final_size,$total_weight);
 			$last_record = Cutting::getLastRecord();
 	
 			return View::make('cutting.confirm')->with('last_record', $last_record);
@@ -112,7 +114,7 @@
 			// showing report for cutting material
 			// can be found inside admin pannel
 
-			$all_records= Cutting::getAllRecords();
+			$all_records= Cutting::getAllData();
 			return View::make('cutting.cutting_report')->with('all_records', $all_records);
 		}
 
@@ -135,10 +137,13 @@
 
 		$total_weight = $cutting['quantity'] * $cutting['wpp'];
 
+		$final_heat_no = explode("-",$cutting['heatNo'])[0];
+		$final_size = explode("-",$cutting['heatNo'])[1];
+
 		$cutting_array = array(
 					'date' => date('Y-m-d',strtotime($cutting['date'])),
 					'raw_mat_size' => $cutting['size'],
-					'heat_no' => $cutting['heatNo'],
+					'heat_no' => $final_heat_no,
 					'size' => $cutting['standard_size'],
 					'pressure' => $cutting['pressure'],
 					'type' => $cutting['type'],
@@ -150,7 +155,7 @@
 					);
 
 		$cutting_stock_array = array(	
-					'heat_no' => $cutting['heatNo'],
+					'heat_no' => $final_heat_no,
 					'standard_size' => $cutting['standard_size'],
 					'pressure' => $cutting['pressure'],
 					'type' => $cutting['type'],
@@ -159,7 +164,19 @@
 				);
 
 		Cutting::updateAllData($cutting['cutting_id'],$cutting_array);
-		CuttingStock::updateAllData($cutting['stock_id'],$cutting_stock_array);
+		// Update data where new size and new heat no
+		$whether_stock_present = CuttingStock::getHeatSizePressureTypeScheduleData($final_heat_no,$cutting['standard_size'],$cutting['pressure'],$cutting['type'],$cutting['schedule']);
+
+		if(!$whether_stock_present)
+		{
+			CuttingStock::insertData($cutting_stock_array);	
+			CuttingStock::decrementHeatSizePressureTypeScheduleData($cutting['old_heat_no'],$cutting['old_standard_size'],$cutting['old_pressure'],$cutting['old_type'],$cutting['old_schedule'],$total_weight);
+		}
+		else
+		{
+		CuttingStock::decrementHeatSizePressureTypeScheduleData($cutting['old_heat_no'],$cutting['old_standard_size'],$cutting['old_pressure'],$cutting['old_type'],$cutting['old_schedule'],$total_weight);
+		CuttingStock::incrementHeatSizePressureTypeScheduleData($final_heat_no,$cutting['size'],$cutting['pressure'],$cutting['type'],$cutting['schedule'],$total_weight);
+		}
 
 
 		$get_record_array = Cutting::getRecord($cutting['cutting_id']);
@@ -169,7 +186,7 @@
 		public function excel()
 		{
 
-			$all_records= Cutting::getAllRecords();
+			$all_records= Cutting::getAllData();
 			return View::make('cutting.cutting_report_excel')->with('all_records', $all_records);
 
 		}
