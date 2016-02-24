@@ -245,6 +245,42 @@ class MasterController extends \BaseController
 
 	}
 
+		// ------------------------- FUNCTIONS FOR TYPE IN MATERIAL TYPE DATA --------------------
+
+	public function showMaterialType()
+	{
+
+		$data=MaterialType::getMaterialType();
+		return View::make('adminPanel.materialType')->with('data', $data);
+	}
+
+
+	public function storeMaterialType()
+	{
+
+		$input_array= Input::all();
+
+		$input= array(
+			'material_type'=>$input_array['material_type']
+		);
+
+		$input_response=MaterialType::insertMaterialType($input);
+		$data=MaterialType::getMaterialType();
+		return View::make('adminPanel.materialType')->with('data', $data);
+	}
+
+
+	public function deleteMaterialType($id)
+	{
+		$delete_response=MaterialType::deleteMaterialType($id);
+		$data=MaterialType::getMaterialType();
+		return View::make('adminPanel.materialType')->with('data', $data);
+
+
+	}
+
+
+		// ------------------------- FUNCTIONS FOR TYPE IN STATUS DATA --------------------
 
 	public function showStatus()
 	{

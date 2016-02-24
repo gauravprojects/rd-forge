@@ -594,6 +594,25 @@
 		'uses' => 'masterController@deleteType'
 	));
 
+	// ROUTES FOR TYPES IN MATERIAL TYPE DATA
+
+	Route::get('admin/materialType',array(
+		'as' => 'materialType.show',
+		'uses' => 'masterController@showMaterialType'
+	));
+
+
+	Route::post('admin/materialType',array(
+		'as' => 'materialType.store',
+		'uses'=> 'masterController@storeMaterialType'
+	));
+
+	Route::get('admin/materialType/{id}',array(
+		'as' => 'materialType.delete',
+		'uses' => 'masterController@deleteMaterialType'
+	));
+
+
 	// ROUTES FOR STATUS 
 
 

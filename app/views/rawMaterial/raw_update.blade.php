@@ -134,11 +134,16 @@
                             <!-- raw material type, these sample types will be provided.. to be implemented using dropdown -->
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Type of Material</label>
-                                <select class="form-control" name="materialType">
+                                <select class="form-control" name="materialType" id="material_type_select" required>
                                     <option value="">---Select Material Type--------</option>
-                                    <option value="Ingot">Ingot</option>
-                                    <option value="Round">Round</option>
-                                    <option value="Bloom">Bloom</option>
+                                     @foreach($material_type as $material_type_element)
+                                            @if($material_type_element->material_type == $data->raw_material_type)
+                                                    <option value="{{ $material_type_element->material_type }}" selected>{{$material_type_element->material_type}}</option>
+                                            @else
+                                                     <option value="{{ $material_type_element->material_type }}">{{$material_type_element->material_type}}</option>
+                                            @endif
+
+                                        @endforeach
                                 </select>
                             </div>
 
@@ -162,6 +167,7 @@
         $('#size_select').dropdown();
         $('#grade_select').dropdown();
         $('#manufacturer_select').dropdown();
+        $('#material_type_select').dropdown();
     });
 </script>
 

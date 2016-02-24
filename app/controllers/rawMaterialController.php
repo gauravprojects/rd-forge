@@ -28,9 +28,11 @@ class rawMaterialController extends BaseController {
 		$type = DescriptionType::getType();
 		$grades = Grades::getGrades();
 		$manufacturers = Manufactures::getManufactures();
+		$material_type = MaterialType::getMaterialType();
 
 		return array('sizes'=>$sizes,'heat_no'=>$heat_no,'standard_size'=>$standard_sizes,'sizes'=>$sizes,
-			'pressure'=>$pressure,'schedule'=>$schedule,'type'=>$type,'grades'=>$grades,'manufacturers'=>$manufacturers);
+			'pressure'=>$pressure,'schedule'=>$schedule,'type'=>$type,'material_type'=>$material_type,
+					'grades'=>$grades,'manufacturers'=>$manufacturers);
 
 	}
 

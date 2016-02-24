@@ -23,6 +23,7 @@ return array(
     'Machining' => $baseDir . '/app/models/Machining.php',
     'Manufactures' => $baseDir . '/app/models/Manufactures.php',
     'MasterController' => $baseDir . '/app/controllers/masterController.php',
+    'MaterialType' => $baseDir . '/app/models/MaterialType.php',
     'Normalizer' => $vendorDir . '/patchwork/utf8/src/Normalizer.php',
     'Pressure' => $baseDir . '/app/models/Pressure.php',
     'RawMaterial' => $baseDir . '/app/models/RawMaterial.php',

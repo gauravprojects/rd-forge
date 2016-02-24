@@ -31,9 +31,10 @@
 			$pressure = Pressure::getPressure();
 			$schedule = Schedule::getSchedule();
 			$type = DescriptionType::getType();
+			$material_type = MaterialType::getMaterialType();
 
 			return array('sizes'=>$sizes,'heat_no'=>$heat_no,'standard_size'=>$standard_sizes,
-				'pressure'=>$pressure,'schedule'=>$schedule,'type'=>$type);
+				'pressure'=>$pressure,'schedule'=>$schedule,'type'=>$type,'material_type'=>$material_type);
 
 		}
 
