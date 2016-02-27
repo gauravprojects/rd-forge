@@ -22,6 +22,13 @@ class RawMaterial extends Eloquent
 				->get();
 	}
 
+	public static function getDataFromStock($internal_no)
+	{
+		return DB::table('raw_material_records')
+			   ->where('internal_no',$internal_no)
+			   ->get();
+	}
+
 	public static function updateAllData($internal_no,$array)
 	{
 		return DB::table('raw_material_records')

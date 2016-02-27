@@ -118,7 +118,7 @@
                                 <select class="form-control search selection" name="materialType" id="material_type_select" required>
                                     <option value="">---Select Material type--------</option>
                                     @foreach($material_type as $material_type_element)
-                                            <option value="{{ $material_type_element->$material_type }}">{{$material_type_element->$material_type}}</option>
+                                            <option value="{{ $material_type_element->material_type }}">{{$material_type_element->material_type}}</option>
                                     @endforeach
                                 </select>
                             </div>

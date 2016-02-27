@@ -89,6 +89,13 @@ class RawMaterialStock extends Eloquent
 			   ->decrement('available_weight',$weight);
 	}
 
+	public static function decrementRecordByStock($stock_id,$weight)
+	{
+		return DB::table('raw_material_stock')
+			   ->where('stock_id',$stock_id)
+			   ->decrement('available_weight',$weight);
+	}
+
 	public static function incrementRecordByHeatSize($heat_no,$size,$weight)
 	{
 		return DB::table('raw_material_stock')

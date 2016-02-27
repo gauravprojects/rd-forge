@@ -65,9 +65,10 @@ class rawMaterialController extends BaseController {
 		else
 			RawMaterialStock::insertData($raw_material_stock_array);	
 
-		// $just_added_stock = RawMaterialStock::getLastRecord();
+		$just_added_stock = RawMaterialStock::getLastRecord();
 
 		$raw_material_array = array(
+			'stock_id' => $just_added_stock,
 			'receipt_code' => $data['receiptCode'],
 			'date' => date('Y-m-d',strtotime($data['date'])),
 			'size' => $data['size'],
@@ -142,21 +143,43 @@ class rawMaterialController extends BaseController {
 			);
 
 
-		// Delete data where old size and old heat no
-
-		RawMaterial::updateAllData($data['internal_no'],$raw_material_array);
-		// Update data where new size and new heat no
 		$whether_stock_present = RawMaterialStock::getHeatSizeData($data['heatNo'],$data['size']);
 
-		if(!$whether_stock_present)
-		{
-			RawMaterialStock::insertData($raw_material_stock_array);	
-			RawMaterialStock::decrementRecordByHeatSize($data['old_heat_no'],$data['old_size'],$data['weight']);
+		DB::beginTransaction();
+
+		try{
+			$whether_stock_present = RawMaterialStock::getHeatSizeData($data['heatNo'],$data['size']);
+
+			if(!$whether_stock_present)
+			{
+				if(!RawMaterialStock::insertData($raw_material_stock_array))
+					throw new Exception("Could not insert data for new heat number",1);
+
+				if(!RawMaterialStock::decrementRecordByHeatSize($data['old_heat_no'],$data['old_size'],$data['weight']))
+					throw new Exception("Could not decrement data for old heat number",1);
+
+				else
+					DB::commit();
+			}
+			else
+			{
+				if(!RawMaterial::updateAllData($data['internal_no'],$raw_material_array))
+					throw new Exception("Could not update all data",1);
+
+				if(!RawMaterialStock::decrementRecordByHeatSize($data['old_heat_no'],$data['old_size'],$data['weight']))
+					throw new Exception("Could not decrement data for old heat number",1);
+
+				if(!RawMaterialStock::incrementRecordByHeatSize($data['heatNo'],$data['size'],$data['weight']))
+					throw new Exception("Could not increment data for new heat number",1);
+
+				else
+					DB::commit();
+			}
 		}
-		else
+		catch(Exception $e)
 		{
-		RawMaterialStock::decrementRecordByHeatSize($data['old_heat_no'],$data['old_size'],$data['weight']);
-		RawMaterialStock::incrementRecordByHeatSize($data['heatNo'],$data['size'],$data['weight']);
+			DB::rollback();
+			return 0;
 		}
 
 		$get_record_array = RawMaterial::getRecord($data['internal_no']);
@@ -172,7 +195,28 @@ class rawMaterialController extends BaseController {
 
 	public function destroy($id)
 	{
-		$delete_response = RawMaterial::deleteRecord($id);
+		$get_details = RawMaterial::getDataFromStock($id);
+
+		DB::beginTransaction();
+
+		try
+		{
+				
+			if(!RawMaterial::deleteRecord($id))
+				throw new Exception("Cannot delete record", 1);
+
+			if(!RawMaterialStock::decrementRecordByStock($get_details[0]->stock_id,$get_details[0]->weight))
+				throw new Exception("Cannot decrement from stock", 1);
+
+			else
+				DB::commit();
+		}
+		catch(Exception $e)
+		{
+			DB::rollback();
+			return 0;
+		}
+		
 		$raw = RawMaterial::getAllData();
 		return View::make('rawMaterial.raw_report')->with('raw',$raw);
 	}
