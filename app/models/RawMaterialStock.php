@@ -35,15 +35,6 @@ class RawMaterialStock extends Eloquent
 				->get();
 	}
 
-	public static function updateAvailableWeight($heat_no,$size,$weight)
-	{
-
-		return DB::table('raw_material_stock')
-			->where('heat_no','=',$heat_no)
-			->where('size','=',$size)
-			->decrement('available_weight',$weight);
-	}
-
 	public static function getHeatNo()
 	{
 		return DB::table('raw_material_stock')

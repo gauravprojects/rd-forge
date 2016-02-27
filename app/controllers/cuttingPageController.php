@@ -79,10 +79,41 @@
 
 		$whether_stock_present = CuttingStock::getHeatSizePressureTypeScheduleData($final_heat_no,$cutting['standard_size'],$cutting['pressure'],$cutting['type'],$cutting['schedule']);
 		
-		if($whether_stock_present)
-			CuttingStock::incrementHeatSizePressureTypeScheduleData($final_heat_no,$cutting['standard_size'],$cutting['pressure'],$cutting['type'],$cutting['schedule'],$cutting['weight']);
-		else
-			CuttingStock::insertData($cutting_stock_array);	
+		
+
+		DB::beginTransaction();
+
+		try
+		{
+			if(!$whether_stock_present)
+			{
+				if(!CuttingStock::insertData($cutting_stock_array))
+					throw new Exception("Cannot Insert cutting data", 1);
+
+				if(!RawMaterialStock::decrementRecordByHeatSize($final_heat_no,$final_size,$total_weight))
+					throw new Exception("Cannot update weight", 1);
+
+				else
+					DB::commit();
+			}
+			else
+			{
+				if(!CuttingStock::incrementHeatSizePressureTypeScheduleData($final_heat_no,$cutting['standard_size'],$cutting['pressure'],$cutting['type'],$cutting['schedule'],$cutting['weight']))
+					throw new Exception("Cannot increment cutting data", 1);
+
+				if(!RawMaterialStock::decrementRecordByHeatSize($final_heat_no,$final_size,$total_weight))
+					throw new Exception("Cannot update weight", 1);
+
+				else
+					DB::commit();
+			}
+				
+		}
+		catch(Exception $e)
+		{
+			DB::rollback();
+			return 0;
+		}
 
 			// array for table cutting records
 			$cutting_array = array(
@@ -103,7 +134,6 @@
 
 			$cutting_response = Cutting::insertData($cutting_array);
 
-			RawMaterialStock::updateAvailableWeight($final_heat_no,$final_size,$total_weight);
 			$last_record = Cutting::getLastRecord();
 	
 			return View::make('cutting.confirm')->with('last_record', $last_record);
@@ -164,21 +194,55 @@
 					'available_weight_cutting' => $total_weight
 				);
 
-		Cutting::updateAllData($cutting['cutting_id'],$cutting_array);
-		// Update data where new size and new heat no
-		$whether_stock_present = CuttingStock::getHeatSizePressureTypeScheduleData($final_heat_no,$cutting['standard_size'],$cutting['pressure'],$cutting['type'],$cutting['schedule']);
 
-		if(!$whether_stock_present)
-		{
-			CuttingStock::insertData($cutting_stock_array);	
-			CuttingStock::decrementHeatSizePressureTypeScheduleData($cutting['old_heat_no'],$cutting['old_standard_size'],$cutting['old_pressure'],$cutting['old_type'],$cutting['old_schedule'],$total_weight);
-		}
-		else
-		{
-		CuttingStock::decrementHeatSizePressureTypeScheduleData($cutting['old_heat_no'],$cutting['old_standard_size'],$cutting['old_pressure'],$cutting['old_type'],$cutting['old_schedule'],$total_weight);
-		CuttingStock::incrementHeatSizePressureTypeScheduleData($final_heat_no,$cutting['size'],$cutting['pressure'],$cutting['type'],$cutting['schedule'],$total_weight);
-		}
+		DB::beginTransaction();
 
+		try{
+			$whether_stock_present = CuttingStock::getHeatSizePressureTypeScheduleData($final_heat_no,$cutting['standard_size'],$cutting['pressure'],$cutting['type'],$cutting['schedule']);
+
+			if(!$whether_stock_present)
+			{
+				if(!CuttingStock::insertData($cutting_stock_array))
+					throw new Exception("Could not insert data for new heat number",1);
+
+				if(!CuttingStock::decrementHeatSizePressureTypeScheduleData($cutting['old_heat_no'],$cutting['old_standard_size'],$cutting['old_pressure'],$cutting['old_type'],$cutting['old_schedule'],$total_weight))
+					throw new Exception("Could not decrement data for old heat number",1);
+
+				if(!RawMaterialStock::decrementRecordByHeatSize($final_heat_no,$final_size,$total_weight))
+					throw new Exception("Cannot update weight", 1);
+
+				if(!RawMaterialStock::decrementRecordByHeatSize($cutting['old_heat_no'],$cutting['old_standard_size'],$total_weight))
+					throw new Exception("Cannot update weight", 1);
+
+				else
+					DB::commit();
+			}
+			else
+			{
+				if(!Cutting::updateAllData($cutting['cutting_id'],$cutting_array))
+					throw new Exception("Could not update all data",1);
+
+				if(!CuttingStock::decrementHeatSizePressureTypeScheduleData($cutting['old_heat_no'],$cutting['old_standard_size'],$cutting['old_pressure'],$cutting['old_type'],$cutting['old_schedule'],$total_weight))
+					throw new Exception("Could not decrement data for old heat number",1);
+
+				if(!CuttingStock::incrementHeatSizePressureTypeScheduleData($final_heat_no,$cutting['size'],$cutting['pressure'],$cutting['type'],$cutting['schedule'],$total_weight))
+					throw new Exception("Could not increment data for new heat number",1);
+
+				if(!RawMaterialStock::decrementRecordByHeatSize($final_heat_no,$final_size,$total_weight))
+					throw new Exception("Cannot update weight", 1);
+
+				if(!RawMaterialStock::decrementRecordByHeatSize($cutting['old_heat_no'],$cutting['old_standard_size'],$total_weight))
+					throw new Exception("Cannot update weight", 1);
+
+				else
+					DB::commit();
+			}
+		}
+		catch(Exception $e)
+		{
+			DB::rollback();
+			return 0;
+		}
 
 		$get_record_array = Cutting::getRecord($cutting['cutting_id']);
 		return View::make('cutting.confirm_cutting_update')->with('confirmations',$get_record_array);
@@ -191,39 +255,6 @@
 			return View::make('cutting.cutting_report_excel')->with('all_records', $all_records);
 
 		}
-
-		
-
-
-		// public function update($id)
-		// {
-		// 	//get all cutting details of the given id in a variable
-
-		// 	//------------ PROBLEM-------------------------------
-		// 	// Here the issue is that, $dataArray is able to return data to the cut blade for update
-		// 	// but in select html tags I am not able to give "selected" attribute.. so instead it is showing all values
-
-		// 	$dataArray = Cutting::getUpdateData($id);
-		// 	$dataArray = (array)$dataArray[0];
-
-		// 	//upate function
-		// 	// route is /cutting/update
-		// 	$sizes = Sizes::getSizes();
-		// 	$heat_no = RawMaterial::getHeatNo();
-		// 	$standard_sizes = StandardSizes::getStandardSizes();
-		// 	$pressure = Pressure::getPressure();
-		// 	$schedule = Schedule::getSchedule();
-		// 	$type = DescriptionType::getType();
-		// 	return View::make('cutting.cut')
-		// 			->with('sizes', $sizes)
-		// 			->with('heat_no', $heat_no)
-		// 			->with('standard_size', $standard_sizes)
-		// 			->with('pressure', $pressure)
-		// 			->with('schedule', $schedule)
-		// 			->with('type', $type)
-		// 			->with('dataArray', $dataArray);
-
-		// }
 
 		public function availableTotalWeight()
 		{
@@ -256,14 +287,29 @@
 
 			$total_weight = $cutting_response[0]->weight_per_piece * $cutting_response[0]->quantity;
 
-			$data = RawMaterialStock::returnAvailableWeight($cutting_response[0]->heat_no);
-			$available_weight = $data[0]->available_weight;
+			DB::beginTransaction();
+			try
+			{
+				if(!RawMaterialStock::incrementRecordByHeatSize($cutting_response[0]->heat_no,$cutting_response[0]->raw_mat_size,$total_weight))
+					throw new Exception("Cannot update raw material data", 1);
+					
+				if(!Cutting::delete_record($id))
+					throw new Exception("Cannot delete cutting record", 1);
 
-			$available_weight = $available_weight + $total_weight;
-			$available_weight_response = RawMaterialStock::updateAvailableWeight($cutting_response[0]->heat_no, $available_weight);
+				if(!CuttingStock::decrementHeatSizePressureTypeScheduleData($cutting_response[0]->heat_no,$cutting_response[0]->standard_size,$cutting_response[0]->pressure,$cutting_response[0]->type,$cutting_response[0]->schedule,$total_weight))
+					throw new Exception("Could not decrement data for old heat number",1);
 
-			$delete_response = Cutting::delete_record($id);
-			$all_records = Cutting::getAllRecords();
+				else
+					DB::commit();
+					
+			}
+			catch(Exception $e)
+			{
+				DB::rollback();
+				return 0;
+			}
+
+			$all_records = Cutting::getAllData();
 
 			return View::make('cutting.cutting_report')->with('all_records', $all_records);
 

@@ -65,10 +65,7 @@ class rawMaterialController extends BaseController {
 		else
 			RawMaterialStock::insertData($raw_material_stock_array);	
 
-		$just_added_stock = RawMaterialStock::getLastRecord();
-
 		$raw_material_array = array(
-			'stock_id' => $just_added_stock,
 			'receipt_code' => $data['receiptCode'],
 			'date' => date('Y-m-d',strtotime($data['date'])),
 			'size' => $data['size'],
@@ -205,7 +202,7 @@ class rawMaterialController extends BaseController {
 			if(!RawMaterial::deleteRecord($id))
 				throw new Exception("Cannot delete record", 1);
 
-			if(!RawMaterialStock::decrementRecordByStock($get_details[0]->stock_id,$get_details[0]->weight))
+			if(!RawMaterialStock::decrementRecordByHeatSize($get_details[0]->heat_no,$get_details[0]->size))
 				throw new Exception("Cannot decrement from stock", 1);
 
 			else
