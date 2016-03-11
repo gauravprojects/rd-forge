@@ -62,7 +62,7 @@
 			// calculating required total weight
 			$total_weight = $cutting['quantity'] * $cutting['wpp'];
 
-
+			// The cutting heat number is combination of heat number and size of the data
 			$final_heat_no = explode("-",$cutting['heatNo'])[0];
 			$final_size = explode("-",$cutting['heatNo'])[1];
 
@@ -77,19 +77,22 @@
 				);
 
 
+		//Checks whether the stock of given heat,size,pressure,type and schedule is present or not in stock table
 		$whether_stock_present = CuttingStock::getHeatSizePressureTypeScheduleData($final_heat_no,$cutting['standard_size'],$cutting['pressure'],$cutting['type'],$cutting['schedule']);
 		
 		
-
+		//Transaction begins
 		DB::beginTransaction();
 
 		try
 		{
 			if(!$whether_stock_present)
 			{
+				//Insert the stock data
 				if(!CuttingStock::insertData($cutting_stock_array))
 					throw new Exception("Cannot Insert cutting data", 1);
 
+				//Decrement the data from the raw material stock depending on the heat and size
 				if(!RawMaterialStock::decrementRecordByHeatSize($final_heat_no,$final_size,$total_weight))
 					throw new Exception("Cannot update weight", 1);
 
@@ -98,9 +101,11 @@
 			}
 			else
 			{
+				//Increments the stock data weight on the basis of given heat,size,pressure,type and schedule
 				if(!CuttingStock::incrementHeatSizePressureTypeScheduleData($final_heat_no,$cutting['standard_size'],$cutting['pressure'],$cutting['type'],$cutting['schedule'],$cutting['weight']))
 					throw new Exception("Cannot increment cutting data", 1);
 
+				//Decrements the stock data weight on the basis of heat number and size
 				if(!RawMaterialStock::decrementRecordByHeatSize($final_heat_no,$final_size,$total_weight))
 					throw new Exception("Cannot update weight", 1);
 
@@ -132,6 +137,7 @@
 					'description' => $cutting['cutDes']
 			);
 
+			// Insert the cutting data 
 			$cutting_response = Cutting::insertData($cutting_array);
 
 			$last_record = Cutting::getLastRecord();
@@ -142,13 +148,12 @@
 
 		public function show()
 		{
-			// showing report for cutting material
-			// can be found inside admin pannel
-
 			$all_records= Cutting::getAllData();
 			return View::make('cutting.cutting_report')->with('all_records', $all_records);
 		}
 
+
+		//Shows the cutting material update page to update the data depending on the id
 		public function update($id)
 		{
 			$cutting_array = Cutting::getRecord($id);
@@ -173,7 +178,7 @@
 
 		$cutting_array = array(
 					'date' => date('Y-m-d',strtotime($cutting['date'])),
-					'raw_mat_size' => $cutting['size'],
+					'raw_mat_size' => $final_size,
 					'heat_no' => $final_heat_no,
 					'size' => $cutting['standard_size'],
 					'pressure' => $cutting['pressure'],
@@ -194,24 +199,28 @@
 					'available_weight_cutting' => $total_weight
 				);
 
-
 		DB::beginTransaction();
 
 		try{
+			//Checks whether the stock of given heat,size,pressure,type and schedule is present or not in stock table
 			$whether_stock_present = CuttingStock::getHeatSizePressureTypeScheduleData($final_heat_no,$cutting['standard_size'],$cutting['pressure'],$cutting['type'],$cutting['schedule']);
 
 			if(!$whether_stock_present)
 			{
+				//Insert data in the stock table
 				if(!CuttingStock::insertData($cutting_stock_array))
 					throw new Exception("Could not insert data for new heat number",1);
 
+				//Decrements the cutting stock data weight on the basis of given OLD heat,size,pressure,type and schedule
 				if(!CuttingStock::decrementHeatSizePressureTypeScheduleData($cutting['old_heat_no'],$cutting['old_standard_size'],$cutting['old_pressure'],$cutting['old_type'],$cutting['old_schedule'],$total_weight))
 					throw new Exception("Could not decrement data for old heat number",1);
 
+				//Decrements the raw material stock data weight on the basis of given heat and size
 				if(!RawMaterialStock::decrementRecordByHeatSize($final_heat_no,$final_size,$total_weight))
 					throw new Exception("Cannot update weight", 1);
 
-				if(!RawMaterialStock::decrementRecordByHeatSize($cutting['old_heat_no'],$cutting['old_standard_size'],$total_weight))
+				//Increments the raw material stock data weight on the basis of given old heat and size
+				if(!RawMaterialStock::incrementRecordByHeatSize($cutting['old_heat_no'],$cutting['old_size'],$total_weight))
 					throw new Exception("Cannot update weight", 1);
 
 				else
@@ -219,19 +228,24 @@
 			}
 			else
 			{
+				//Update all data in the cutting records table
 				if(!Cutting::updateAllData($cutting['cutting_id'],$cutting_array))
 					throw new Exception("Could not update all data",1);
 
+				//Decrements the cutting stock data weight on the basis of given OLD heat,size,pressure,type and schedule
 				if(!CuttingStock::decrementHeatSizePressureTypeScheduleData($cutting['old_heat_no'],$cutting['old_standard_size'],$cutting['old_pressure'],$cutting['old_type'],$cutting['old_schedule'],$total_weight))
 					throw new Exception("Could not decrement data for old heat number",1);
 
-				if(!CuttingStock::incrementHeatSizePressureTypeScheduleData($final_heat_no,$cutting['size'],$cutting['pressure'],$cutting['type'],$cutting['schedule'],$total_weight))
+				//Increments the cutting stock data weight on the basis of given heat,size,pressure,type and schedule
+				if(!CuttingStock::incrementHeatSizePressureTypeScheduleData($final_heat_no,$cutting['standard_size'],$cutting['pressure'],$cutting['type'],$cutting['schedule'],$total_weight))
 					throw new Exception("Could not increment data for new heat number",1);
 
+				//Decrements the raw material stock data weight on the basis of given heat and size
 				if(!RawMaterialStock::decrementRecordByHeatSize($final_heat_no,$final_size,$total_weight))
 					throw new Exception("Cannot update weight", 1);
 
-				if(!RawMaterialStock::decrementRecordByHeatSize($cutting['old_heat_no'],$cutting['old_standard_size'],$total_weight))
+				//Increments the raw material stock data weight on the basis of given old heat and size
+				if(!RawMaterialStock::incrementRecordByHeatSize($cutting['old_heat_no'],$cutting['old_size'],$total_weight))
 					throw new Exception("Cannot update weight", 1);
 
 				else
@@ -241,19 +255,18 @@
 		catch(Exception $e)
 		{
 			DB::rollback();
-			return 0;
+			return $e;
 		}
 
 		$get_record_array = Cutting::getRecord($cutting['cutting_id']);
 		return View::make('cutting.confirm_cutting_update')->with('confirmations',$get_record_array);
 	}
 
+		//Generates the excel data for the cutting records
 		public function excel()
 		{
-
 			$all_records= Cutting::getAllData();
 			return View::make('cutting.cutting_report_excel')->with('all_records', $all_records);
-
 		}
 
 		public function availableTotalWeight()
@@ -272,15 +285,15 @@
 				return 1;
 		}
 
-
+		//Shows all the material that is available in the current stock
 		public function available()
 		{
-			$data= CuttingStock::availableCutting();
+			$data= CuttingStock::availableWeight();
 			return View::make('cutting.available')
 					->with('data',$data);
 		}
 
-
+		//Deletes the cutting material records and the stock related to particular heat,size,pressure,type and schedule
 		public function destroy($id)
 		{
 			$cutting_response = Cutting::getRecord($id);
@@ -290,12 +303,15 @@
 			DB::beginTransaction();
 			try
 			{
+				//Increments the raw material stock data weight on the basis of given heat and size
 				if(!RawMaterialStock::incrementRecordByHeatSize($cutting_response[0]->heat_no,$cutting_response[0]->raw_mat_size,$total_weight))
 					throw new Exception("Cannot update raw material data", 1);
 					
+				//Delete the cutting records specified by the internal number
 				if(!Cutting::delete_record($id))
 					throw new Exception("Cannot delete cutting record", 1);
 
+				//Decrements the cutting stock data weight on the basis of given heat,size,pressure,type and schedule
 				if(!CuttingStock::decrementHeatSizePressureTypeScheduleData($cutting_response[0]->heat_no,$cutting_response[0]->standard_size,$cutting_response[0]->pressure,$cutting_response[0]->type,$cutting_response[0]->schedule,$total_weight))
 					throw new Exception("Could not decrement data for old heat number",1);
 
@@ -315,6 +331,7 @@
 
 		}
 
+		//Returns the search view in the search panel
 		public function search_display()
 	    {
 	        return View::make('search.cutting_search')->with('data',Cutting::getAllData());

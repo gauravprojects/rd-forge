@@ -12,22 +12,24 @@
                             <br><br>
                         </div>
                     </div>
-
+                    <?php $serial_number = 1; ?>
                     <div class="row">
                         <table>
                             <tr class="heading">
-                              <th>Internal No</th>
+                                <th>Serial No</th>
                                 <th>Heat No</th>
                                 <th>Material Type</th>
                                 <th>Material Grade</th>
+                                <th>Size</th>
                                 <th>Available Weight</th>
                             </tr>
                             @foreach($data as $data_element)
                             <tr>
-                                <td>{{ $data_element->id }}</td>
+                                <td>{{ $serial_number++ }}</td>
                                 <td>{{ $data_element->heat_no }}</td>
                                 <td>{{ $data_element->raw_material_type }}</td>
                                 <td>{{ $data_element->material_grade }}</td>
+                                <td>{{ $data_element->size }}</td>
                                 <td>{{ $data_element->available_weight }}</td>
                             </tr>
                                 @endforeach

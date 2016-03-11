@@ -56,12 +56,16 @@
                                         @if($heat_no_element->heat_no == $cutting->heat_no && $heat_no_element->size == $cutting->raw_mat_size)
                                             <option value="{{ $heat_no_element->heat_no }}-{{ $heat_no_element->size }}" selected>{{$heat_no_element->heat_no}}-{{ $heat_no_element->size }}</option>
 
-                                            <?php $old_heat_no = $heat_no_element->heat_no."-".$heat_no_element->size; ?>
+                                            <?php $old_heat_no = $heat_no_element->heat_no; 
+                                                  $old_size = $heat_no_element->size; ?>
                                         @else
                                             <option value="{{ $heat_no_element->heat_no }}-{{ $heat_no_element->size}}">{{$heat_no_element->heat_no}}-{{ $heat_no_element->size }}</option>
                                         @endif
                                     @endforeach
                                 </select>
+
+                                 {{ Form::hidden('old_heat_no',$old_heat_no,array('class'=>'form-control inputfix')) }}
+                                 {{ Form::hidden('old_size',$old_size,array('class'=>'form-control inputfix')) }}
                             </div>
 
  <br>
@@ -87,6 +91,8 @@
                                         @endif
                                     @endforeach
                                 </select>
+
+                                 {{ Form::hidden('old_standard_size',$old_standard_size,array('class'=>'form-control inputfix')) }}
                             </div>
 
 
@@ -105,6 +111,8 @@
                                         @endif
                                     @endforeach
                                 </select>
+
+                                 {{ Form::hidden('old_pressure',$old_pressure,array('class'=>'form-control inputfix')) }}
                             </div>
 
                             <!-- Standard type for cutting, part of description -->
@@ -122,6 +130,8 @@
                                         @endif
                                     @endforeach
                                 </select>
+
+                                 {{ Form::hidden('old_type',$old_type,array('class'=>'form-control inputfix')) }}
                             </div>
 
 
@@ -140,16 +150,11 @@
                                         @endif
                                     @endforeach
                                 </select>
+
+                                  {{ Form::hidden('old_schedule',$old_schedule,array('class'=>'form-control inputfix'))}}
                             </div>
 
-                            <div class="form-group">
-                                 {{ Form::hidden('old_heat_no',$old_heat_no,array('class'=>'form-control inputfix'))}}
-                                 {{ Form::hidden('old_standard_size',$old_standard_size,array('class'=>'form-control inputfix'))}}
-                                 {{ Form::hidden('old_pressure',$old_pressure,array('class'=>'form-control inputfix'))}}
-                                 {{ Form::hidden('old_type',$old_type,array('class'=>'form-control inputfix'))}}
-                                 {{ Form::hidden('old_schedule',$old_schedule,array('class'=>'form-control inputfix'))}}
-                            </div>
-
+                        
 
                             <!-- qunanity.. this is the quantity of the cutted material -->
                                 <div class="form-group">

@@ -8,9 +8,11 @@ class CuttingStock extends Eloquent
 			->insert($records_array);
 	}
 
-	public static function availableCutting()
+	public static function availableWeight()
 	{
-		return DB::table('cutting_stock')->get();
+		return DB::table('cutting_stock')
+			->where('available_weight','>',0)
+			->get();
 	}
 
 	public static function getAllData($cutting)
@@ -50,6 +52,7 @@ class CuttingStock extends Eloquent
 			  ->update($array);
 	}
 
+	//Gets the stock data on the basis of given heat,size,pressure,type and schedule
 	public static function getHeatSizePressureTypeScheduleData($heat_no,$size,$pressure,$type,$schedule)
 	{
 		return DB::table('cutting_stock')
@@ -61,6 +64,7 @@ class CuttingStock extends Eloquent
 			   ->get();
 	}
 
+	//Decrements the stock data weight on the basis of given heat,size,pressure,type and schedule
 	public static function decrementHeatSizePressureTypeScheduleData($heat_no,$size,$pressure,$type,$schedule,$weight)
 	{
 		return DB::table('cutting_stock')
@@ -72,6 +76,7 @@ class CuttingStock extends Eloquent
 			   ->decrement('available_weight_cutting',$weight);
 	}
 
+	//Increments the stock data weight on the basis of given heat,size,pressure,type and schedule
 	public static function incrementHeatSizePressureTypeScheduleData($heat_no,$size,$pressure,$type,$schedule,$weight)
 	{
 		return DB::table('cutting_stock')

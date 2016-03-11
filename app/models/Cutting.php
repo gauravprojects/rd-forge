@@ -2,11 +2,11 @@
 
 class Cutting extends Eloquent
 {
+
+	//Insert data in the specified table
 	public static function insertData($records_array)
 	{
 
-		// inserts data in cutting_records table
-		// store function on cuttingPageController
 		return DB::table('cutting_records')
 			->insert($records_array);
 	}
@@ -19,9 +19,10 @@ class Cutting extends Eloquent
 				->get();
 	}
 
+
+	//Get the last entered record from the specified table
 	public static function getLastRecord()
 	{
-		//to get the last entry of the cutting table, useful for showing data on confirmation page
 		return DB::table('cutting_records')
 			->orderBy('cutting_id', 'desc')
 			->first();
@@ -38,12 +39,12 @@ class Cutting extends Eloquent
 				->get();
 	}
 
+	//Get all the data from the cutting records
 	public static function getAllData()
 	{
-		return DB::table('cutting_records')
-				->select()
-				->get();
+		return DB::table('cutting_records')->get();
 	}
+
 	public static function returnNullData()
 	{
 		// to send null data while entering form data

@@ -58,11 +58,14 @@ class rawMaterialController extends BaseController {
 			);
 
 
+		//Checks whether the stock of given heat and size is present or not in stock table
 		$whether_stock_present = RawMaterialStock::getHeatSizeData($data['heatNo'],$data['size']);
 		
 		if($whether_stock_present)
-			RawMaterialStock::incrementWeight($data['heatNo'],$data['weight']);	
+			//If present increment the current stock on the basis of heat number and size
+			RawMaterialStock::incrementWeight($data['heatNo'],$data['size'],$data['weight']);	
 		else
+			//Else insert the new stock data
 			RawMaterialStock::insertData($raw_material_stock_array);	
 
 		$raw_material_array = array(
@@ -88,7 +91,7 @@ class rawMaterialController extends BaseController {
 		return View::make('rawMaterial.confirm')->with('confirmation',$last_record);
 	}
 
-	// shows all data present in raw material
+	//Shows all the data present in raw_material_records table
 	public function show()
 	{
 		$raw= RawMaterial::getAllData();
@@ -96,6 +99,7 @@ class rawMaterialController extends BaseController {
 	}
 
 
+	//Shows all the material that is available in the current stock
 	public function available()
 	{
 		$data= RawMaterialStock::availableWeight();
@@ -103,14 +107,18 @@ class rawMaterialController extends BaseController {
 			->with('data',$data);
 	}
 
+
+	//Shows the raw material update page to update the data depending on the id
 	public function update($id)
 	{
-		$data_array = RawMaterial::getRecord($id);
+		$data_array = RawMaterial::getRecordFromInternalNo($id);
 		$data = rawMaterialController::getStandardData();
 
 		return View::make('rawMaterial.raw_update')->with('data_array',$data_array)->with($data);
 	}
 
+
+	//Update the raw material data and does work accordingly
 	public function update_store($id)
 	{
 		
@@ -139,33 +147,44 @@ class rawMaterialController extends BaseController {
 			'available_weight' => $data['weight']
 			);
 
+		// $whether_stock_present = RawMaterialStock::getHeatSizeData($data['heatNo'],$data['size']);
 
-		$whether_stock_present = RawMaterialStock::getHeatSizeData($data['heatNo'],$data['size']);
 
+		//Transaction starts here
 		DB::beginTransaction();
 
 		try{
+			//Checks whether the stock of given heat and size is present or not in stock table
 			$whether_stock_present = RawMaterialStock::getHeatSizeData($data['heatNo'],$data['size']);
 
 			if(!$whether_stock_present)
 			{
+				//Update the data in the records table pertaining to internal number
+				if(!RawMaterial::updateAllData($data['internal_no'],$raw_material_array))
+					throw new Exception("Could not update all data",1);
+
+				//Insert the new stock data in the table
 				if(!RawMaterialStock::insertData($raw_material_stock_array))
 					throw new Exception("Could not insert data for new heat number",1);
 
+				//Decrement the stock from the previous heat number or/and size
 				if(!RawMaterialStock::decrementRecordByHeatSize($data['old_heat_no'],$data['old_size'],$data['weight']))
-					throw new Exception("Could not decrement data for old heat number",1);
+					throw new Exception("Could not decrement data for old heat number and old size",1);
 
 				else
 					DB::commit();
 			}
 			else
 			{
+				//Update the data in the records table pertaining to internal number
 				if(!RawMaterial::updateAllData($data['internal_no'],$raw_material_array))
 					throw new Exception("Could not update all data",1);
 
+				//Decrement the stock from the previous heat number or/and size
 				if(!RawMaterialStock::decrementRecordByHeatSize($data['old_heat_no'],$data['old_size'],$data['weight']))
 					throw new Exception("Could not decrement data for old heat number",1);
 
+				//Increment the stock from the updated heat number or/and size
 				if(!RawMaterialStock::incrementRecordByHeatSize($data['heatNo'],$data['size'],$data['weight']))
 					throw new Exception("Could not increment data for new heat number",1);
 
@@ -179,29 +198,32 @@ class rawMaterialController extends BaseController {
 			return 0;
 		}
 
-		$get_record_array = RawMaterial::getRecord($data['internal_no']);
+		$get_record_array = RawMaterial::getRecordFromInternalNo($data['internal_no']);
 		return View::make('rawMaterial.confirm_update')->with('confirmations',$get_record_array);
 
 	}
 
+	//Generates the excel data for raw material records
 	public function excel()
 	{
 		$raw = RawMaterial::getExcelData();
 		return View::make('rawMaterial.raw_report_excel')->with('raw',$raw);
 	}
 
+	//Deletes the raw material records and the stock related to particular heat number
 	public function destroy($id)
 	{
-		$get_details = RawMaterial::getDataFromStock($id);
+		$get_details = RawMaterial::getRecordFromInternalNo($id);
 
 		DB::beginTransaction();
 
 		try
 		{
-				
+			//Delete the record from the raw material records table
 			if(!RawMaterial::deleteRecord($id))
 				throw new Exception("Cannot delete record", 1);
 
+			//Delete the record from the raw material stock table as well !!
 			if(!RawMaterialStock::decrementRecordByHeatSize($get_details[0]->heat_no,$get_details[0]->size))
 				throw new Exception("Cannot decrement from stock", 1);
 
@@ -218,6 +240,7 @@ class rawMaterialController extends BaseController {
 		return View::make('rawMaterial.raw_report')->with('raw',$raw);
 	}
 
+	//Returns the search view in the search panel
     public function search_display()
     {
         return View::make('search.raw_material_search')->with('data',RawMaterial::getAllData());
