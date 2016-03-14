@@ -11,7 +11,14 @@ class CuttingStock extends Eloquent
 	public static function availableWeight()
 	{
 		return DB::table('cutting_stock')
-			->where('available_weight','>',0)
+			->where('available_weight_cutting','>',0)
+			->get();
+	}
+
+	public static function getHeatNo()
+	{
+		return DB::table('cutting_stock')
+			->where('available_weight_cutting','>',0)
 			->get();
 	}
 

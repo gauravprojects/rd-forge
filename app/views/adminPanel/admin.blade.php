@@ -17,6 +17,7 @@
                         <li><a href="{{ action('masterController@showSizes'); }}" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 waves-effect waves-light btn link">Raw Material Sizes</a></li>
                         <li><a href="{{ action('rawMaterialController@available'); }}" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 waves-effect waves-light btn link">Available Raw Material</a></li>
                         <li><a href="{{ action('cuttingPageController@available'); }}" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 waves-effect waves-light btn link">Available Cutting Material</a></li>
+                        <li><a href="{{ action('ForgingController@available'); }}" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 waves-effect waves-light btn link">Available Forging Material</a></li>
                         <li><a href="{{ action('masterController@showStandardSizes'); }}" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 waves-effect waves-light btn link">Standard Sizes</a></li>
                         <li><a href="{{ action('masterController@showPressure'); }}" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 waves-effect waves-light btn link">Standard Pressures</a></li>
                         <li><a href="{{ action('masterController@showSchedule'); }}" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 waves-effect waves-light btn link">Standard Schedules</a></li>

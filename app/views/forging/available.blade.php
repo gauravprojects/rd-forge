@@ -8,7 +8,7 @@
                     <div class="row text-center">
                         <div class="heading">
                             <br><br>
-                            <span>Available cutting material in inventory</span>
+                            <span>Available forging material in inventory</span>
                             <br><br>
                         </div>
                     </div>
@@ -16,7 +16,7 @@
                     <div class="row">
                         <table>
                             <tr class="heading">
-                                <th>Cutting ID</th>
+                                <th>Stock ID</th>
                                 <th>Heat No</th>
                                 <th>Size</th>
                                 <th>Pressure</th>
@@ -28,11 +28,11 @@
                                 <tr>
                                     <td>{{ $data_element->stock_id }}</td>
                                     <td>{{ $data_element->heat_no }}</td>
-                                    <td>{{ $data_element->standard_size }}</td>
+                                    <td>{{ $data_element->size }}</td>
                                     <td>{{ $data_element->pressure }}</td>
                                     <td>{{ $data_element->type }}</td>
                                     <td>{{ $data_element->schedule }}</td>
-                                    <td>{{ $data_element->available_weight_cutting }}</td>
+                                    <td>{{ $data_element->available_weight_forging }}</td>
                                 </tr>
                             @endforeach
 

@@ -230,6 +230,13 @@
 			'uses' => 'forgingController@availableTotalWeight'
 		));
 
+		Route::get('/forging/available',array(
+			'as' => 'forging.available',
+			'uses' => 'ForgingController@available'
+		));
+
+
+
 
 							//ROUTES FOR WORK ORDER ENTRY
 

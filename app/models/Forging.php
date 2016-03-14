@@ -10,6 +10,13 @@
 					->insert($records_array);
 		}
 
+		public static function updateAllData($forging_id,$array)
+		{
+			return DB::table('forging_records')
+				  ->where('forging_id',$forging_id)
+				  ->update($array);
+		}
+
 		public static function getRecord($id)
 		{
 			return DB::table('forging_records')

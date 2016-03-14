@@ -23,6 +23,14 @@ class WorkOrder extends Eloquent
 				->where('work_id','=',$work_id);
 	}
 
+	public static function getRecordFromItem($work_order_no,$work_order_item_no)
+	{
+		return DB::table('work_order_material_details')
+				->where('work_order_no',$work_order_no)
+				->where('item_no',$work_order_item_no)
+				->get();
+	}
+
 
 	public static function getLastRecord()
 	{

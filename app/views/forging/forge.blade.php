@@ -71,6 +71,57 @@ i.icon.delete:before {
             });
         </script>
 
+        <script type="application/javascript">
+
+            var $item_no_count=1;
+           $(document).ready(function(){
+              $('#add_record').click(function(){
+                    //alert("function being called");
+
+                  <!-- Size -->
+                  $size= '<td><select class="form-control ui fluid search dropdown standardsize_select" name="standard_size[]" required> @foreach($standard_size as $standard_size_element)
+                              <option value="{{ $standard_size_element->std_size }}">{{$standard_size_element->std_size}}</option> @endforeach
+                                </select></td>';
+
+                  <!-- pressure -->
+                  $pressure= '<td><select class="form-control ui fluid search dropdown pressure_select" name="pressure[]" required>@foreach($pressure as $pressure_element)
+                              <option value="{{ $pressure_element->pressure }}">{{$pressure_element->pressure}}</option>@endforeach
+                      </select></td>';
+
+                  <!-- Type -->
+                  $type= '<td><select class="form-control ui fluid search dropdown standardtype_select" name="type[]" required>@foreach($type as $type_element)
+                              <option value="{{ $type_element->type }}">{{$type_element->type}}</option>@endforeach
+                      </select></td>';
+
+
+                  <!-- Schedule -->
+                  $schedule= '<td><select class="form-control ui fluid search dropdown schedule_select" name="schedule[]" required> @foreach($schedule as $schedule_element)
+                              <option value="{{ $schedule_element->schedule }}">{{$schedule_element->schedule}}</option> @endforeach
+                      </select></td>';
+
+
+             <!-- Jquery append function to append everything to the table -->
+              $("table").append("<tr>"+$size+$pressure+$type+$schedule+"</tr>");
+
+              //Re initializing the dropdowns so that there is no problem
+                    $('.standardsize_select').dropdown();
+                    $('.pressure_select').dropdown();
+                    $('.standardtype_select').dropdown();
+                    $('.schedule_select').dropdown();
+
+              });
+
+             $('#delete_record').click(function(){
+
+              $("table tr:last-child").remove();
+              --$item_no_count;
+
+             });
+
+           });
+        </script>
+
+
         <br><br>
         <a href="{{route('forging.report')}} " class="waves-effect waves-light btn link right">Forging reports</a>
 
@@ -103,7 +154,7 @@ i.icon.delete:before {
                                 <select class="form-control search selection" name="heat_no" id="heat_no_select" required>
                                     <option value="">---Select Heat Number--------</option>
                                     @foreach($heat_no as $heat_no_element)
-                                        <option value="{{ $heat_no_element->heat_no }}">{{$heat_no_element->heat_no}}</option>
+                                        <option value="{{ $heat_no_element->heat_no }}-{{ $heat_no_element->standard_size }}-{{ $heat_no_element->pressure }}-{{ $heat_no_element->type }}-{{ $heat_no_element->schedule }}">{{$heat_no_element->heat_no}}-{{ $heat_no_element->standard_size }}-{{ $heat_no_element->pressure }}-{{ $heat_no_element->type }}-{{ $heat_no_element->schedule }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -134,57 +185,69 @@ i.icon.delete:before {
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                               
-                                {{ Form::label('exampleInputEmail1','Standard Size') }}
+                        <a id="delete_record" class="waves-effect waves-light btn right">Delete Field</a>
 
-                                <select class="form-control ui fluid search dropdown" name="standard_size[]" id="standardsize_select" multiple="" required>
+                        <a id="add_record" class="waves-effect waves-light btn right">Add Field</a>
+
+                        <div class="row">
+
+                            <?php $count=0; ?>
+                            <br/>
+                            <table class="table table-bordered table-condensed">
+                                <tbody>
+                                    <tr>
+                                        <th class="heading" style="text-align:center; width: 12%">Size</th>
+                                        <th class="heading" style="text-align:center; width:12%">Pressure</th>
+                                        <th class="heading" style="text-align:center; width: 12%">Type</th>
+                                        <th class="heading" style="text-align:center; width: 12%">Schedule</th>
+                                    </tr>
+
+
+                                    <td>
+                                        <!-- Size -->
+                                <select class="form-control ui fluid search dropdown standardsize_select" name="standard_size[]" required>
                                     <option value="">---Select Standard Size--------</option>
                                     @foreach($standard_size as $standard_size_element)
                                         <option value="{{ $standard_size_element->std_size }}">{{$standard_size_element->std_size}}</option>
                                     @endforeach
                                 </select>
-                            </div>
+                                    </td>
 
-
-                            <!-- standard pressure which to be used for description -->
-                            <div class="form-group">
-                                {{ Form::label('exampleInputEmail1','Pressure') }}
-
-                                <select class="form-control search selection" name="pressure" id="pressure_select" required>
+                                    <td>
+                                        <!-- Pressure -->
+                                <select class="form-control ui fluid search dropdown pressure_select" name="pressure[]" required>
                                     <option value="">---Select Pressure--------</option>
                                     @foreach($pressure as $pressure_element)
                                         <option value="{{ $pressure_element->pressure }}">{{$pressure_element->pressure}}</option>
                                     @endforeach
                                 </select>
-                            </div>
+                                    </td>
 
-                            <!-- Standard type for cutting, part of description -->
-                            <div class="form-group">
-                                {{ Form::label('exampleInputEmail1','Standard Type') }}
-
-                                <select class="form-control search selection" name="type" id="standardtype_select" required>
-                                    <option value="">---Select Standard Type--------</option>
+                                    <td>
+                                        <!-- Type -->
+                                <select class="form-control ui fluid search dropdown standardtype_select" name="type[]" required>
+                                    <option value="">---Select Type--------</option>
                                     @foreach($type as $type_element)
                                         <option value="{{ $type_element->type }}">{{$type_element->type}}</option>
                                     @endforeach
                                 </select>
-                            </div>
+                                    </td>
 
-
-                            <!-- Standard type for cutting, part of description -->
-                            <div class="form-group">
-                                {{ Form::label('exampleInputEmail1','Schedule') }}
-
-                                <select class="form-control search selection" name="schedule" id="schedule_select" required>
+                                    <td>
+                                        <!-- Schedule -->
+                                <select class="form-control ui fluid search dropdown schedule_select" name="schedule[]" required>
                                     <option value="">---Select Schedule--------</option>
                                     @foreach($schedule as $schedule_element)
                                         <option value="{{ $schedule_element->schedule }}">{{$schedule_element->schedule}}</option>
                                     @endforeach
                                 </select>
-                            </div>
+                                    </td>
 
+                                </tr>
 
+                                </tbody>
+                            </table>
+                           
                             <!-- Forging remarks -->
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail','Forging Remarks') }}
@@ -210,10 +273,10 @@ i.icon.delete:before {
         $(function () {
             $('#date').datepicker();
             $('#heat_no_select').dropdown();
-            $('#standardsize_select').dropdown();
-            $('#pressure_select').dropdown();
-            $('#standardtype_select').dropdown();
-            $('#schedule_select').dropdown();
+            $('.standardsize_select').dropdown();
+            $('.pressure_select').dropdown();
+            $('.standardtype_select').dropdown();
+            $('.schedule_select').dropdown();
         });
     </script>
 

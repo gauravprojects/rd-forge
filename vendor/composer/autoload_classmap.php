@@ -16,6 +16,7 @@ return array(
     'DrillingController' => $baseDir . '/app/controllers/drillingController.php',
     'Forging' => $baseDir . '/app/models/Forging.php',
     'ForgingController' => $baseDir . '/app/controllers/forgingController.php',
+    'ForgingStock' => $baseDir . '/app/models/ForgingStock.php',
     'Grades' => $baseDir . '/app/models/Grades.php',
     'HomeController' => $baseDir . '/app/controllers/HomeController.php',
     'IlluminateQueueClosure' => $vendorDir . '/laravel/framework/src/Illuminate/Queue/IlluminateQueueClosure.php',
@@ -47,6 +48,5 @@ return array(
     'homePageController' => $baseDir . '/app/controllers/homePageController.php',
     'machiningController' => $baseDir . '/app/controllers/machiningController.php',
     'rawMaterialController' => $baseDir . '/app/controllers/rawMaterialController.php',
-    'search' => $baseDir . '/app/models/search.php',
     'searchController' => $baseDir . '/app/controllers/searchController.php',
 );

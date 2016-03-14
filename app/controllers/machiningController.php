@@ -19,25 +19,41 @@ class machiningController extends BaseController
 
 	public function store()
 	{
-		$input_data= Input::all();
+		$machining = Input::all();
 
-		$input_array_machining_table= array(
-				'date' => date('Y-m-d',strtotime($input_data['date'])),
-				'work_order_no' => $input_data['work_order_no'] ,
-				'item'  	=> $input_data['item'],
-				'heat_no'	=> $input_data['heat_no'],
-				'quantity'	=>$input_data['quantity'],
-				'machine_name'=>$input_data['machine_name'],
-				'grade' => $input_data['grade'],
-				'weight'	=> $input_data['weight'],
-				'remarks'=> $input_data['remarks']
+		$machining_array= array(
+				'date' => date('Y-m-d',strtotime($machining['date'])),
+				'work_order_no' => $machining['work_order_no'] ,
+				'item'  	=> $machining['item'],
+				'heat_no'	=> $machining['heat_no'],
+				'quantity'  => $machining['quantity'],
+				'machine_name'=>$machining['machine_name'],
+				'grade' => $machining['grade'],
+				'weight'	=> $machining['weight'],
+				'remarks'=> $machining['remarks']
 		);
 
-		$input_response_machining_table= Machining::insertData($input_array_machining_table);
+		$work_order_material_details = WorkOrder::getRecordFromItem($machining['work_order_no'],$machining['item']);
+		$work_order_material_details = $work_order_material_details[0];
 
+		DB::beginTransaction();
+
+		try
+		{
+			if(!Machining::insertData($machining_array))
+				throw new Exception("Could not insert machining data",1);
+
+			if(!ForgingStock::decrementHeatSizePressureTypeScheduleData())
+				throw new Exception("Could not deduct forging data",1);
+		}
+		catch(Exception $e)
+		{
+			DB::rollback();
+			return 0;
+		}
 		//get last record
 
-		$last_record= Machining::getLastRecord();
+		$last_record = Machining::getLastRecord();
 
 		return View::make('machining.confirm')->with('last_record',$last_record);
 

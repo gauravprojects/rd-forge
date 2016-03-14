@@ -62,7 +62,7 @@
 			// calculating required total weight
 			$total_weight = $cutting['quantity'] * $cutting['wpp'];
 
-			// The cutting heat number is combination of heat number and size of the data
+			// The cutting heat number is combination of heat number and size of the data and used for deduction of raw material stock
 			$final_heat_no = explode("-",$cutting['heatNo'])[0];
 			$final_size = explode("-",$cutting['heatNo'])[1];
 
