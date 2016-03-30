@@ -92,11 +92,9 @@
                             {{ Form::label('exampleInputEmail1','Heat Number (from forged data)') }}
                             <select class="form-control search selection" name="heat_no" id="heat_no_select" required>
                                 <option value="">---Select Heat Number --------</option>
-                                <option value="Job work">Job Work</option>
+                           {{--      <option value="Job work">Job Work</option> --}}
                                 @foreach($heat_no as $heat_no_element)
-                                    <option value="{{ $heat_no_element->heat_no }}">
-                                        {{ $heat_no_element->heat_no }}
-                                    </option>
+                                        <option value="{{ $heat_no_element->heat_no }}-{{ $heat_no_element->size }}-{{ $heat_no_element->pressure }}-{{ $heat_no_element->type }}-{{ $heat_no_element->schedule }}">{{$heat_no_element->heat_no}}-{{ $heat_no_element->size }}-{{ $heat_no_element->pressure }}-{{ $heat_no_element->type }}-{{ $heat_no_element->schedule }}</option>
                                 @endforeach
                             </select>
                         </div>

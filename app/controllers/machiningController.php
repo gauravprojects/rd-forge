@@ -3,6 +3,20 @@
 class machiningController extends BaseController
 {
 
+	public static function getStandardData()
+		{
+			$sizes = Sizes::getSizes();
+			$heat_no = ForgingStock::getHeatNo();
+			$standard_sizes = StandardSizes::getStandardSizes();
+			$pressure = Pressure::getPressure();
+			$schedule = Schedule::getSchedule();
+			$type = DescriptionType::getType();
+			$material_type = MaterialType::getMaterialType();
+
+			return array('sizes'=>$sizes,'heat_no'=>$heat_no,'standard_size'=>$standard_sizes,
+				'pressure'=>$pressure,'schedule'=>$schedule,'type'=>$type,'material_type'=>$material_type);
+
+		}
 
 
 	public function index()
@@ -10,22 +24,28 @@ class machiningController extends BaseController
 		// shows index page for machining form
 		$availableWorkOrder= WorkOrder::availableWorkOrderNo();
 		$grades= Grades::getGrades();
-		$heatNo_available_forging_weight= Drilling::HeatNo_availableWeightForging();
+		$heat_no = ForgingStock::getHeatNo();
 		return View::make('machining.machine')
 				->with('grades',$grades)
-				->with('heat_no',$heatNo_available_forging_weight)
+				->with('heat_no',$heat_no)
 				->with('availableWorkOrderNo',$availableWorkOrder);
 	}
 
 	public function store()
 	{
-		$machining = Input::all();
+		$machining_input = Input::all();
+
+		$final_heat_no = explode("-",$machining_input['heat_no'])[0];
+		$final_size = explode("-",$machining_input['heat_no'])[1];
+		$final_pressure = explode("-",$machining_input['heat_no'])[2];
+		$final_type = explode("-",$machining_input['heat_no'])[3];
+		$final_schedule = explode("-",$machining_input['heat_no'])[4];
 
 		$machining_array= array(
 				'date' => date('Y-m-d',strtotime($machining['date'])),
 				'work_order_no' => $machining['work_order_no'] ,
 				'item'  	=> $machining['item'],
-				'heat_no'	=> $machining['heat_no'],
+				'heat_no'	=> $final_heat_no,
 				'quantity'  => $machining['quantity'],
 				'machine_name'=>$machining['machine_name'],
 				'grade' => $machining['grade'],
@@ -45,6 +65,9 @@ class machiningController extends BaseController
 
 			if(!ForgingStock::decrementHeatSizePressureTypeScheduleData())
 				throw new Exception("Could not deduct forging data",1);
+
+			else
+				DB::commit();
 		}
 		catch(Exception $e)
 		{

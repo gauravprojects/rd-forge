@@ -8,6 +8,13 @@ class ForgingStock extends Eloquent
 			->insert($records_array);
 	}
 
+	public static function getHeatNo()
+	{
+		return DB::table('forging_stock')
+			->where('available_weight_forging','>',0)
+			->get();
+	}
+
 	//Gets the stock data on the basis of given heat,size,pressure,type and schedule
 	public static function getHeatSizePressureTypeScheduleData($heat_no,$size,$pressure,$type,$schedule)
 	{
