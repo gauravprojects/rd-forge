@@ -196,7 +196,7 @@
 					'pressure' => $cutting['pressure'],
 					'type' => $cutting['type'],
 					'schedule' => $cutting['schedule'],
-					'available_weight_cutting' => $total_weight
+					'available_weight_cutting' => $cutting['old_weight']
 				);
 
 		DB::beginTransaction();
@@ -212,7 +212,7 @@
 					throw new Exception("Could not insert data for new heat number",1);
 
 				//Decrements the cutting stock data weight on the basis of given OLD heat,size,pressure,type and schedule
-				if(!CuttingStock::decrementHeatSizePressureTypeScheduleData($cutting['old_heat_no'],$cutting['old_standard_size'],$cutting['old_pressure'],$cutting['old_type'],$cutting['old_schedule'],$total_weight))
+				if(!CuttingStock::decrementHeatSizePressureTypeScheduleData($cutting['old_heat_no'],$cutting['old_standard_size'],$cutting['old_pressure'],$cutting['old_type'],$cutting['old_schedule'],$cutting['old_weight']))
 					throw new Exception("Could not decrement data for old heat number",1);
 
 				//Decrements the raw material stock data weight on the basis of given heat and size
@@ -220,7 +220,7 @@
 					throw new Exception("Cannot update weight", 1);
 
 				//Increments the raw material stock data weight on the basis of given old heat and size
-				if(!RawMaterialStock::incrementRecordByHeatSize($cutting['old_heat_no'],$cutting['old_size'],$total_weight))
+				if(!RawMaterialStock::incrementRecordByHeatSize($cutting['old_heat_no'],$cutting['old_size'],$cutting['old_weight']))
 					throw new Exception("Cannot update weight", 1);
 
 				else
@@ -233,7 +233,7 @@
 					throw new Exception("Could not update all data",1);
 
 				//Decrements the cutting stock data weight on the basis of given OLD heat,size,pressure,type and schedule
-				if(!CuttingStock::decrementHeatSizePressureTypeScheduleData($cutting['old_heat_no'],$cutting['old_standard_size'],$cutting['old_pressure'],$cutting['old_type'],$cutting['old_schedule'],$total_weight))
+				if(!CuttingStock::decrementHeatSizePressureTypeScheduleData($cutting['old_heat_no'],$cutting['old_standard_size'],$cutting['old_pressure'],$cutting['old_type'],$cutting['old_schedule'],$cutting['old_weight']))
 					throw new Exception("Could not decrement data for old heat number",1);
 
 				//Increments the cutting stock data weight on the basis of given heat,size,pressure,type and schedule
@@ -245,7 +245,7 @@
 					throw new Exception("Cannot update weight", 1);
 
 				//Increments the raw material stock data weight on the basis of given old heat and size
-				if(!RawMaterialStock::incrementRecordByHeatSize($cutting['old_heat_no'],$cutting['old_size'],$total_weight))
+				if(!RawMaterialStock::incrementRecordByHeatSize($cutting['old_heat_no'],$cutting['old_size'],$cutting['old_weight']))
 					throw new Exception("Cannot update weight", 1);
 
 				else

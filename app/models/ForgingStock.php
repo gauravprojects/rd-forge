@@ -28,7 +28,7 @@ class ForgingStock extends Eloquent
 	}
 
 	//Increments the stock data weight on the basis of given heat,size,pressure,type and schedule
-	public static function incrementHeatSizePressureTypeScheduleData($heat_no,$size,$pressure,$type,$schedule,$weight)
+	public static function incrementHeatSizePressureTypeScheduleData($heat_no,$size,$pressure,$type,$schedule,$quantity)
 	{
 		return DB::table('forging_stock')
 			   ->where('heat_no',$heat_no)
@@ -36,11 +36,11 @@ class ForgingStock extends Eloquent
 			   ->where('pressure',$pressure)
 			   ->where('type',$type)
 			   ->where('schedule',$schedule)
-			   ->increment('available_weight_forging',$weight);
+			   ->increment('available_quantity_forging',$quantity);
 	}
 
 	//Decrements the stock data weight on the basis of given heat,size,pressure,type and schedule
-	public static function decrementHeatSizePressureTypeScheduleData($heat_no,$size,$pressure,$type,$schedule,$weight)
+	public static function decrementHeatSizePressureTypeScheduleData($heat_no,$size,$pressure,$type,$schedule,$quantity)
 	{
 		return DB::table('forging_stock')
 			   ->where('heat_no',$heat_no)
@@ -48,13 +48,13 @@ class ForgingStock extends Eloquent
 			   ->where('pressure',$pressure)
 			   ->where('type',$type)
 			   ->where('schedule',$schedule)
-			   ->decrement('available_weight_forging',$weight);
+			   ->decrement('available_quantity_forging',$quantity);
 	}
 
-	public static function availableWeight()
+	public static function availableQuantity()
 	{
 		return DB::table('forging_stock')
-			->where('available_weight_forging','>',0)
+			->where('available_quantity_forging','>',0)
 			->get();
 	}
 

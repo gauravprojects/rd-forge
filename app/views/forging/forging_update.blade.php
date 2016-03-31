@@ -124,11 +124,11 @@ i.icon.delete:before {
                                     @foreach($heat_no as $heat_no_element)
                                         @if($heat_no_element->heat_no == $forging->heat_no && $heat_no_element->standard_size == $forging->cutting_size && $heat_no_element->pressure == $forging->cutting_pressure && $heat_no_element->type == $forging->cutting_type && $heat_no_element->schedule == $forging->cutting_schedule)
 
-                                            <option value="{{ $heat_no_element->heat_no }}-{{ $heat_no_element->standard_size }}-{{ $heat_no_element->pressure }}-{{ $heat_no_element->type }}-{{ $heat_no_element->schedule }}" selected>{{ $heat_no_element->heat_no }}-{{ $heat_no_element->standard_size }}-{{ $heat_no_element->pressure }}-{{ $heat_no_element->type }}-{{ $heat_no_element->schedule }}</option>
+                                            <option value="{{ $heat_no_element->heat_no }}-{{ $heat_no_element->standard_size }}-{{ $heat_no_element->pressure }}-{{ $heat_no_element->type }}-{{ $heat_no_element->schedule }}" selected>{{$heat_no_element->heat_no}} - {{ $heat_no_element->standard_size }}" - {{ $heat_no_element->pressure }}# - {{ $heat_no_element->type }} x {{ $heat_no_element->schedule }}</option>
 
                                             <?php $old_cutting_data = $heat_no_element->heat_no."-".$heat_no_element->standard_size."-".$heat_no_element->pressure."-".$heat_no_element->type."-".$heat_no_element->schedule; ?>
                                         @else
-                                            <option value="{{ $heat_no_element->heat_no }}-{{ $heat_no_element->standard_size }}-{{ $heat_no_element->pressure }}-{{ $heat_no_element->type }}-{{ $heat_no_element->schedule }}">{{ $heat_no_element->heat_no }}-{{ $heat_no_element->standard_size }}-{{ $heat_no_element->pressure }}-{{ $heat_no_element->type }}-{{ $heat_no_element->schedule }}</option>
+                                            <option value="{{ $heat_no_element->heat_no }}-{{ $heat_no_element->standard_size }}-{{ $heat_no_element->pressure }}-{{ $heat_no_element->type }}-{{ $heat_no_element->schedule }}">{{$heat_no_element->heat_no}} - {{ $heat_no_element->standard_size }}" - {{ $heat_no_element->pressure }}# - {{ $heat_no_element->type }} x {{ $heat_no_element->schedule }}</option>
                                         @endif
                                     @endforeach
                                 </select>
@@ -149,6 +149,13 @@ i.icon.delete:before {
                                 {{ Form::text('quantity',$forging->quantity,array('class'=>'form-control inputfix' ,'placeholder'=>'Quantity of material','id'=>'quantity')) }}
                             </div>
 
+                            <?php 
+                                  $old_quantity = $forging->quantity;
+                                  $old_weight_per_piece = $forging->weight_per_piece;
+                            ?>
+
+                            {{ Form::hidden('old_quantity',$old_quantity,array('class'=>'form-control inputfix')) }}
+                            {{ Form::hidden('old_weight_per_piece',$old_weight_per_piece,array('class'=>'form-control inputfix')) }}
 
                             <!-- Forging description, it consists of four parts
                                 Standard size,pressure , type and schdule -->
@@ -267,7 +274,8 @@ i.icon.delete:before {
                                 {{ Form::text('remarks',$forging->remarks,array('class'=>'form-control inputfix','placeholder'=>'Remarks for forging Material','id'=>'JustAnything')) }}
                             </div>
 
-                              {{ Form::hidden('old_heat_no',$old_cutting_data,array('class'=>'form-control inputfix')) }}
+                          {{ Form::hidden('old_heat_no',$old_cutting_data,array('class'=>'form-control inputfix')) }}
+
                             <input type="hidden" name="old_standard_size" value="{{implode(",",$old_standard_size)}}">
                             <input type="hidden" name="old_pressure" value="{{implode(",",$old_pressure)}}">
                             <input type="hidden" name="old_type" value="{{implode(",",$old_type)}}">

@@ -17,10 +17,7 @@
                             {{ Form::open(array('action'=> 'cuttingPageController@update_store')) }}
                                     <!-- For recipt number of the material coming from outside -->
 
-                            <div class="form-group">
-                                {{ Form::label('exampleInputEmail1','Id') }}
-                                 {{ Form::text('cutting_id',$cutting->cutting_id,array('class'=>'form-control inputfix','id'=>'cutting_id','name'=>'cutting_id','placeholder'=>'Id')) }}
-                            </div>
+                            {{ Form::hidden('cutting_id',$cutting->cutting_id,array('class'=>'form-control inputfix','id'=>'cutting_id','name'=>'cutting_id','placeholder'=>'Id')) }}
 
 
                             <div class="form-group">
@@ -54,12 +51,12 @@
                                     <option value="">---Select Heat Number--------</option>
                                     @foreach($heat_no as $heat_no_element)
                                         @if($heat_no_element->heat_no == $cutting->heat_no && $heat_no_element->size == $cutting->raw_mat_size)
-                                            <option value="{{ $heat_no_element->heat_no }}-{{ $heat_no_element->size }}" selected>{{$heat_no_element->heat_no}}-{{ $heat_no_element->size }}</option>
+                                            <option value="{{ $heat_no_element->heat_no }}-{{ $heat_no_element->size }}" selected>{{$heat_no_element->heat_no}} - {{ $heat_no_element->size }}</option>
 
                                             <?php $old_heat_no = $heat_no_element->heat_no; 
                                                   $old_size = $heat_no_element->size; ?>
                                         @else
-                                            <option value="{{ $heat_no_element->heat_no }}-{{ $heat_no_element->size}}">{{$heat_no_element->heat_no}}-{{ $heat_no_element->size }}</option>
+                                            <option value="{{ $heat_no_element->heat_no }}-{{ $heat_no_element->size}}">{{$heat_no_element->heat_no}} - {{ $heat_no_element->size }}</option>
                                         @endif
                                     @endforeach
                                 </select>
@@ -168,6 +165,9 @@
                                     {{ Form::text('wpp',$cutting->weight_per_piece,array('class'=>'form-control inputfix','placeholder'=>'Weight per piece','id'=>'wpp')) }}
                                 </div>
 
+                            <?php $old_weight = $cutting->quantity*$cutting->weight_per_piece; ?>
+
+                            {{ Form::hidden('old_weight',$old_weight,array('class'=>'form-control inputfix'))}}
                                 <!-- total weight to be calculated by itself
                                         total weight= quantity * Weight per piece -->
 

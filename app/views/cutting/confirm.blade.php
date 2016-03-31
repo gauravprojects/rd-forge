@@ -16,7 +16,6 @@
                     <div class="row">
                         <table>
                             <tr class="heading">
-                                <th>Cutting Id</th>
                                 <th>Date</th>
                                 <th>Size</th>
                                 <th>Standard size</th>
@@ -29,7 +28,6 @@
                                 <th>Total Weight</th>
                             </tr>
                             <tr>
-                                <td>{{$last_record->cutting_id }}</td>
                                 <td>{{date('d-m-Y',strtotime($last_record->date)) }}</td>
                                 <td>{{$last_record->raw_mat_size}}</td>
                                 <td>{{ $last_record->size}}</td>

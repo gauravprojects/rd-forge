@@ -16,7 +16,6 @@
                     <div class="row">
                         <table>
                             <tr class="heading">
-                                <th>Forging ID</th>
                                 <th>Date</th>
                                 <th>Weight per peice</th>
                                 <th>Heat no</th>
@@ -27,7 +26,7 @@
                                 <th>Quantity</th>
                                 <th>Total Weight</th>
                             <tr>
-                                <td>{{ $last_record->forging_id }}</td>
+                                
                                 <td>{{ $last_record->date }}</td>
                                 <td>{{ $last_record->weight_per_piece }}</td>
                                 <td>{{ $last_record->heat_no }}</td>

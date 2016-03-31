@@ -51,9 +51,7 @@ class rawMaterialController extends BaseController {
 
 		$raw_material_stock_array = array(
 			'heat_no' => $data['heatNo'],
-			'material_grade' => $data['materialGrade'],
 			'size' => $data['size'],
-			'raw_material_type' => $data['materialType'],
 			'available_weight' => $data['weight']
 			);
 
@@ -141,9 +139,7 @@ class rawMaterialController extends BaseController {
 
 		$raw_material_stock_array = array(
 			'heat_no' => $data['heatNo'],
-			'material_grade' => $data['materialGrade'],
 			'size' => $data['size'],
-			'raw_material_type' => $data['materialType'],
 			'available_weight' => $data['weight']
 			);
 
@@ -168,7 +164,7 @@ class rawMaterialController extends BaseController {
 					throw new Exception("Could not insert data for new heat number",1);
 
 				//Decrement the stock from the previous heat number or/and size
-				if(!RawMaterialStock::decrementRecordByHeatSize($data['old_heat_no'],$data['old_size'],$data['weight']))
+				if(!RawMaterialStock::decrementRecordByHeatSize($data['old_heat_no'],$data['old_size'],$data['old_weight']))
 					throw new Exception("Could not decrement data for old heat number and old size",1);
 
 				else
@@ -181,7 +177,7 @@ class rawMaterialController extends BaseController {
 					throw new Exception("Could not update all data",1);
 
 				//Decrement the stock from the previous heat number or/and size
-				if(!RawMaterialStock::decrementRecordByHeatSize($data['old_heat_no'],$data['old_size'],$data['weight']))
+				if(!RawMaterialStock::decrementRecordByHeatSize($data['old_heat_no'],$data['old_size'],$data['old_weight']))
 					throw new Exception("Could not decrement data for old heat number",1);
 
 				//Increment the stock from the updated heat number or/and size

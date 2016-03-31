@@ -82,9 +82,11 @@
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Weight') }}
                                 {{ Form::text('weight',$data->weight,array('class'=>'form-control inputfix','placeholder'=>'Weight','id'=>'Justesehe')) }}
+
+                                <?php $old_weight = $data->weight; ?>
                             </div>
 
-
+                            {{ Form::hidden('old_weight',$old_weight,array('class'=>'form-control inputfix')) }}
                             <!-- Purchase order no -->
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail','Purchase Order Number') }}
