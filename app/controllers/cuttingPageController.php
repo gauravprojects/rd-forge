@@ -40,17 +40,12 @@
 
 		public function index()
 		{
-			//testing for empty array
-			$dataArray = Cutting::returnNullData();
-
-			// returns cutting form page
 			//all data form master table is taken and fed to the  cutting form
 			
 			$data = cuttingPageController::getStandardData();
 
 			return View::make('cutting.cut')
-					->with($data)
-					->with('dataArray', $dataArray);
+					->with($data);
 		}
 
 		public function store()
@@ -123,7 +118,7 @@
 			// array for table cutting records
 			$cutting_array = array(
 					'date' => date('Y-m-d',strtotime($cutting['date'])),
-					'raw_mat_size' => $cutting['size'],
+					'raw_mat_size' => $final_size, // Raw material size cut from the heat number
 					'heat_no' => $final_heat_no,
 					'size' => $cutting['standard_size'],
 					'pressure' => $cutting['pressure'],

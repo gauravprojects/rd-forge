@@ -62,17 +62,7 @@
                                  {{ Form::text('date',null,array('class'=>'form-control inputfix','id'=>'date','name'=>'date','placeholder'=>'Date','readonly','data-date-format'=>'dd-mm-yyyy')) }}
                             </div>
 
-                            <div class="form-group">
-                                {{ Form::label('exampleInputEmail1','Size') }}
-
-                                <select class="form-control search selection" name="size" id="size_select" required>
-                                    <option value="">---Select Size--------</option>
-                                    @foreach($sizes as $size_element)
-                                        <option value="{{ $size_element->size }}">{{$size_element->size}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-
+                      
 
                             <!-- here it will show only those heat no who have available weight
                             in raw_material table -->
@@ -152,13 +142,13 @@
                             <!-- qunanity.. this is the quantity of the cutted material -->
                                 <div class="form-group">
                                     {{ Form::label('exampleInputEmail','Quantity') }}
-                                    {{ Form::text('quantity',$dataArray['quantity'],array('class'=>'form-control inputfix','placeholder'=>'Quantity','id'=>'quantity')) }}
+                                    {{ Form::text('quantity',null,array('class'=>'form-control inputfix','placeholder'=>'Quantity','id'=>'quantity')) }}
                                 </div>
 
                                 <!-- Wieght per piece,, weight per piece of the cutted material -->
                                 <div class="form-group">
                                     {{ Form::label('exampleInputEmail1','Weight per Piece') }}
-                                    {{ Form::text('wpp',$dataArray['weight_per_piece'],array('class'=>'form-control inputfix','placeholder'=>'Weight per piece','id'=>'wpp')) }}
+                                    {{ Form::text('wpp',null,array('class'=>'form-control inputfix','placeholder'=>'Weight per piece','id'=>'wpp')) }}
                                 </div>
 
                                 <!-- total weight to be calculated by itself
@@ -190,7 +180,6 @@
          <script type="text/javascript">
             $(function () {
                 $('#date').datepicker();
-                $('#size_select').dropdown();
                 $('#heatno_select').dropdown();
                 $('#standardsize_select').dropdown();
                 $('#pressure_select').dropdown();
