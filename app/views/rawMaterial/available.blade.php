@@ -18,8 +18,6 @@
                             <tr class="heading">
                                 <th>Serial No</th>
                                 <th>Heat No</th>
-                                <th>Material Type</th>
-                                <th>Material Grade</th>
                                 <th>Size</th>
                                 <th>Available Weight</th>
                             </tr>
@@ -27,8 +25,6 @@
                             <tr>
                                 <td>{{ $serial_number++ }}</td>
                                 <td>{{ $data_element->heat_no }}</td>
-                                <td>{{ $data_element->raw_material_type }}</td>
-                                <td>{{ $data_element->material_grade }}</td>
                                 <td>{{ $data_element->size }}</td>
                                 <td>{{ $data_element->available_weight }}</td>
                             </tr>

@@ -31,6 +31,8 @@
         <th>Type</th>
         <th>Schedule</th>
         <th>Available Weight</th>
+        <th>Remarks</th>
+        <th>Description</th>
     </tr>
 
     <?php $serial_number = 1; ?>

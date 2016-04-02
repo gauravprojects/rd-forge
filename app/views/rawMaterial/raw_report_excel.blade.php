@@ -46,11 +46,11 @@
                     <td>{{{ $raw_data->heat_no }}}</td>
                     <td>{{{ $raw_data->weight }}}</td>
                     <td>{{{ $raw_data->invoice_no }}}</td>
-                    <td>{{{ $raw_data->invoice_date }}}</td>
+                    <td>{{{ date('d-m-Y',strtotime($raw_data->invoice_date)) }}}</td>
                     <td>{{{ $raw_data->raw_material_type }}}</td>
                     <td>{{{ $raw_data->material_grade }}}</td>
                     <td>{{{ $raw_data->pur_order_no }}}</td>
-                    <td>{{{ $raw_data->pur_order_date }}}</td>
+                    <td>{{{ date('d-m-Y',strtotime($raw_data->pur_order_date)) }}}</td>
                 </tr>
 
 
