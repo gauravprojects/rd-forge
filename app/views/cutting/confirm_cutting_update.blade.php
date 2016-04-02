@@ -12,18 +12,10 @@
                             <br><br>
                         </div>
                     </div>
-                    <!--
-                    array(12) { ["receipt_code"]=> string(6) "123456" ["date"]=> string(10) "21/09/1994"
-                    ["size"]=> string(0) "" ["manufacturer"]=> string(0) "" ["heat_no"]=> string(0) ""
-                    ["weight"]=> string(0) "" ["pur_order_no"]=> string(0) "" ["pur_order_date"]=> string(0)
-                    "" ["invoice_no"]=> string(0) "" ["invoice_date"]=> string(10) "21/09/1994"
-                    ["material_grade"]=> string(7) "Grade 1" ["raw_material_type"]=> string(6) "Type 1" }
-                    -->
-
+                   
                     <div class="row">
                         <table>
                             <tr class="heading">
-                               <th>Cutting Id</th>
                                 <th>Date</th>
                                 <th>Size</th>
                                 <th>Standard size</th>
@@ -38,7 +30,6 @@
                             </tr>
                             @foreach($confirmations as $confirmation)
                             <tr>
-                               <td>{{$confirmation->cutting_id }}</td>
                                 <td>{{date('d-m-Y',strtotime($confirmation->date))}}</td>
                                 <td>{{$confirmation->raw_mat_size}}</td>
                                 <td>{{$confirmation->size}}</td>
@@ -59,6 +50,11 @@
                         <div class="span9 btn-block excelPrint">
                             <button class="btn btn-small btn-block" type="button" id="excel_button">
                                 <a href="{{ action('cuttingPageController@update',array('id'=>$confirmation->cutting_id))}}" class="link" >Update</a>
+                            </button>
+                        </div>
+                         <div class="span9 btn-block excelPrint">
+                            <button class="btn btn-small btn-block" type="button" id="excel_button">
+                                <a href="{{ action('cuttingPageController@index')  }}" class="link" >New Cutting Entry</a>
                             </button>
                         </div>
                         <br><br><br><br>

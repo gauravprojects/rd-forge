@@ -38,6 +38,7 @@
                                 <td>{{ $last_record->total_weight }}</td>
                             </tr>
                         </table>
+                        
                         <div class="span9 btn-block excelPrint">
                             <button class="btn btn-small btn-block" type="button" id="excel_button">
                                 <a href="{{ action('forgingController@update',array('id'=>$last_record->forging_id))}}" class="link" >Update</a>

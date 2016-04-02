@@ -16,7 +16,6 @@
                     <div class="row">
                         <table>
                             <tr class="heading">
-                                <th>serration Id</th>
                                 <th>Date</th>
                                 <th>Work Order Number</th>
                                 <th>Item</th>
@@ -27,7 +26,6 @@
                                 <th>Remarks</th>
 
                             <tr>
-                                <td>{{ $last_record->serration_id }}</td>
                                 <td>{{ date('d-m-Y',strtotime($last_record->date)) }}</td>
                                 <td>{{ $last_record->work_order_no }}</td>
                                 <td>{{ $last_record->item }}</td>

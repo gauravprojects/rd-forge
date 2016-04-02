@@ -94,7 +94,7 @@
                                 <option value="">---Select Heat Number --------</option>
                            {{--      <option value="Job work">Job Work</option> --}}
                                 @foreach($heat_no as $heat_no_element)
-                                        <option value="{{ $heat_no_element->heat_no }}-{{ $heat_no_element->size }}-{{ $heat_no_element->pressure }}-{{ $heat_no_element->type }}-{{ $heat_no_element->schedule }}">{{$heat_no_element->heat_no}}-{{ $heat_no_element->size }}-{{ $heat_no_element->pressure }}-{{ $heat_no_element->type }}-{{ $heat_no_element->schedule }}</option>
+                                        <option value="{{ $heat_no_element->heat_no }}-{{ $heat_no_element->size }}-{{ $heat_no_element->pressure }}-{{ $heat_no_element->type }}-{{ $heat_no_element->schedule }}">{{$heat_no_element->heat_no}} - {{ $heat_no_element->size }}" - {{ $heat_no_element->pressure }}# - {{ $heat_no_element->type }} x {{ $heat_no_element->schedule }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -176,7 +176,7 @@
                             $.each(JSON.parse(data),function(key,value)
                             {
                             $("#item_no_select").append(
-                            '<option value="'+value['item_no']+'">'+value['work_order_no']+"/"+value['item_no']+'</option>');
+                            '<option value="'+value['item_no']+'">'+value['work_order_no']+"/"+value['item_no']+' - '+value['item_no']+'" - '+value['pressure']+'# - '+value['type']+' x '+value['schedule']+'</option>');
                             });
                             
                         });

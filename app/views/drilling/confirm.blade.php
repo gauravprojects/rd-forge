@@ -16,7 +16,6 @@
                     <div class="row">
                         <table>
                             <tr class="heading">
-                                <th>Drilling Id</th>
                                 <th>Date</th>
                                 <th>Work Order Number</th>
                                 <th>Item</th>
@@ -27,7 +26,6 @@
                                 <th>Remarks</th>
 
                             <tr>
-                                <td>{{ $last_record->drilling_id }}</td>
                                 <td>{{ date('d-m-Y',strtotime($last_record->date)) }}</td>
                                 <td>{{ $last_record->work_order_no }}</td>
                                 <td>{{ $last_record->item }}</td>
@@ -48,7 +46,6 @@
                             <button class="btn btn-small btn-block" type="button" id="excel_button">
                                 <a href="{{ action('drillingController@destroy',array('id'=>$last_record->drilling_id))}}" class="link" >Delete</a>
                             </button>
-
 
                         </div>
                          <div class="span9 btn-block excelPrint">

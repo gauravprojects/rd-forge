@@ -11,7 +11,7 @@ class ForgingStock extends Eloquent
 	public static function getHeatNo()
 	{
 		return DB::table('forging_stock')
-			->where('available_weight_forging','>',0)
+			->where('available_quantity_forging','>',0)
 			->get();
 	}
 

@@ -12,13 +12,6 @@
                             <br><br>
                         </div>
                     </div>
-                    <!--
-                    array(12) { ["receipt_code"]=> string(6) "123456" ["date"]=> string(10) "21/09/1994"
-                    ["size"]=> string(0) "" ["manufacturer"]=> string(0) "" ["heat_no"]=> string(0) ""
-                    ["weight"]=> string(0) "" ["pur_order_no"]=> string(0) "" ["pur_order_date"]=> string(0)
-                    "" ["invoice_no"]=> string(0) "" ["invoice_date"]=> string(10) "21/09/1994"
-                    ["material_grade"]=> string(7) "Grade 1" ["raw_material_type"]=> string(6) "Type 1" }
-                    -->
 
                     <div class="row">
                         <table>
@@ -50,18 +43,17 @@
 
                         </table>
 
-                        <div class="span9 btn-block excelPrint">
-                            <button class="btn btn-small btn-block" type="button" id="excel_button">
-                                <a href="{{ action('rawMaterialController@update',array('id'=>$confirmation->internal_no))}}" class="link" >Update</a>
-                            </button>
+                    <div class="span9 btn-block excelPrint">
+                        <button class="btn btn-small btn-block" type="button" id="excel_button">
+                            <a href="{{ action('rawMaterialController@update',array('id'=>$confirmation->internal_no))}}" class="link" >Update</a>
+                        </button>
 
-                            <button class="btn btn-small btn-block" type="button" id="excel_button">
-                                <a href="{{ action('rawMaterialController@destroy',array('id'=>$confirmation->internal_no))}}" class="link" >Delete</a>
-                            </button>
-
-
-
-
+                        <button class="btn btn-small btn-block" type="button" id="excel_button">
+                            <a href="{{ action('rawMaterialController@destroy',array('id'=>$confirmation->internal_no))}}" class="link" >Delete</a>
+                        </button>
+                    </div>
+                        
+                    <div class="span9 btn-block excelPrint">
                         <button class="btn btn-small btn-block" type="button" id="excel_button">
                             <a href="{{ action('rawMaterialController@index')  }}" class="link" >New Raw Material Entry</a>
                         </button>

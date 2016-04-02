@@ -22,7 +22,7 @@
                                 <th>Pressure</th>
                                 <th>Type</th>
                                 <th>Schedule</th>
-                                <th>Available Weight</th>
+                                <th>Available Quantity</th>
                             </tr>
                             @foreach($data as $data_element)
                                 <tr>
@@ -32,7 +32,7 @@
                                     <td>{{ $data_element->pressure }}</td>
                                     <td>{{ $data_element->type }}</td>
                                     <td>{{ $data_element->schedule }}</td>
-                                    <td>{{ $data_element->available_weight_forging }}</td>
+                                    <td>{{ $data_element->available_quantity_forging }}</td>
                                 </tr>
                             @endforeach
 
