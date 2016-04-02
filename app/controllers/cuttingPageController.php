@@ -298,17 +298,17 @@
 			DB::beginTransaction();
 			try
 			{
-				//Increments the raw material stock data weight on the basis of given heat and size
-				if(!RawMaterialStock::incrementRecordByHeatSize($cutting_response[0]->heat_no,$cutting_response[0]->raw_mat_size,$total_weight))
-					throw new Exception("Cannot update raw material data", 1);
+				// //Increments the raw material stock data weight on the basis of given heat and size
+				// if(!RawMaterialStock::incrementRecordByHeatSize($cutting_response[0]->heat_no,$cutting_response[0]->raw_mat_size,$total_weight))
+				// 	throw new Exception("Cannot update raw material data", 1);
 					
 				//Delete the cutting records specified by the internal number
 				if(!Cutting::delete_record($id))
 					throw new Exception("Cannot delete cutting record", 1);
 
-				//Decrements the cutting stock data weight on the basis of given heat,size,pressure,type and schedule
-				if(!CuttingStock::decrementHeatSizePressureTypeScheduleData($cutting_response[0]->heat_no,$cutting_response[0]->standard_size,$cutting_response[0]->pressure,$cutting_response[0]->type,$cutting_response[0]->schedule,$total_weight))
-					throw new Exception("Could not decrement data for old heat number",1);
+				// //Decrements the cutting stock data weight on the basis of given heat,size,pressure,type and schedule
+				// if(!CuttingStock::decrementHeatSizePressureTypeScheduleData($cutting_response[0]->heat_no,$cutting_response[0]->standard_size,$cutting_response[0]->pressure,$cutting_response[0]->type,$cutting_response[0]->schedule,$total_weight))
+				// 	throw new Exception("Could not decrement data for old heat number",1);
 
 				else
 					DB::commit();
