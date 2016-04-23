@@ -55,46 +55,70 @@
                                 {{ Form::text('date',date('d-m-Y',strtotime($machining->date)),array('class'=>'form-control inputfix','id'=>'date','name'=>'date','placeholder'=>'Date','readonly','data-date-format'=>'dd-mm-yyyy')) }}
                             </div>
 
-                            <div class="form-group">
-                                {{ Form::label('exampleInputEmail1','Machining Id') }}
-                                 {{ Form::text('machining_id',$machining->mach_id,array('class'=>'form-control inputfix','id'=>'machining_id','name'=>'machining_id','placeholder'=>'Date')) }}
-                            </div>
 
+                        {{ Form::hidden('machining_id',$machining->mach_id,array('class'=>'form-control inputfix','id'=>'machining_id','name'=>'machining_id','placeholder'=>'Date')) }}
 
                             <!-- For WORK ORDER NUMBER -->
                             <!-- All those workorder will be shown whose status is still incomplete -->
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Work Order Number') }}
 
-                            <select class="form-control search selection" name="work_order_no" id="work_order_no_select" required>
-                                    <option value="">---Select Work Order--------</option>
                                     @foreach($availableWorkOrderNo as $workOrder)
                                         @if($machining->work_order_no == $workOrder->work_order_no)
-                                            <option value="{{ $workOrder->work_order_no }}" selected>
+                                            
                                                 {{$workOrder->work_order_no}} &nbsp;
                                                 -{{$workOrder->customer_name}} &nbsp;
                                                 -Ordered on:    {{ date('d-m-Y',strtotime($workOrder->purchase_order_date))  }}
-                                            </option>
-                                        @else
-                                             <option value="{{ $workOrder->work_order_no }}">
-                                                {{$workOrder->work_order_no}} &nbsp;
-                                                -{{$workOrder->customer_name}} &nbsp;
-                                                -Ordered on:    {{ date('d-m-Y',strtotime($workOrder->purchase_order_date))  }}
-                                            </option>
+                                        
                                         @endif
                                     @endforeach
 
-                                </select>
                             </div>
-
 
                             <div class="form-group">
-                                {{ Form::label('exampleInputEmail1','Item no') }}
-                                <select class="form-control" name="item" id="item_no_select" required>
-                                    <option value="{{ $machining->work_order_no }}-{{ $machining->item }}-{{ $machining->forging_size }}-{{ $machining->forging_pressure }}-{{ $machining->forging_type }}-{{$machining->forging_schedule}}">{{ $machining->work_order_no }}/{{ $machining->item }} - {{ $machining->forging_size }}" - {{ $machining->forging_pressure }}# - {{ $machining->forging_type }} x {{$machining->forging_schedule}}</option>
-                                </select>
+                                {{ Form::label('exampleInputEmail1','Work Order Item') }}
+
+                                    @foreach($availableWorkOrderItemNo as $workOrder)
+                                        @if($machining->work_order_no == $workOrder->work_order_no && $machining->item == $workOrder->item_no)
+                                            
+                                         {{ $workOrder->work_order_no }}/{{ $workOrder->item_no }} - {{ $workOrder->size }}" - {{ $workOrder->pressure }}# - {{ $workOrder->type }} x {{$workOrder->schedule}}
+
+                                        @endif
+                                    @endforeach
+
+
                             </div>
 
+
+                    <a href="#" class="waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button" onclick="change_parameters()">Change parameters</a>
+                        
+
+                     <div class="form-group">
+                            {{ Form::label('exampleInputEmail1','Work Order Number') }}
+
+                           <select class="form-control search selection" name="work_order_no" id="work_order_no_select" required disabled>
+                                <option value="">---Select Work Order--------</option>
+                                @foreach($availableWorkOrderNo as $workOrder)
+                                    <option value="{{ $workOrder->work_order_no }}">
+                                        {{$workOrder->work_order_no}} &nbsp;
+                                        -{{$workOrder->customer_name}} &nbsp;
+                                        -Ordered on:     {{ date('d-m-Y',strtotime($workOrder->purchase_order_date))  }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+
+
+                        <div class="form-group">
+                            {{ Form::label('exampleInputEmail1','Item no') }}
+                            <select class="form-control search selection" name="item" id="item_no_select" required disabled>
+                                <option value="">---Select Item Number --------</option>
+                            </select>
+                        </div>
+
+                        <?php $old_machining_work_order = $machining->work_order_no."-".$machining->item; ?>
+
+                            
                              <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Heat Number(available forging)') }}
 
@@ -104,6 +128,8 @@
                                         @if($machining->heat_no == $heat_no_element->heat_no && $machining->forging_size == $heat_no_element->size && $machining->forging_pressure == $heat_no_element->pressure && $machining->forging_type == $heat_no_element->type && $machining->forging_pressure == $heat_no_element->pressure)
 
                                             <option value="{{ $heat_no_element->heat_no }}-{{ $heat_no_element->size }}-{{ $heat_no_element->pressure }}-{{ $heat_no_element->type }}-{{ $heat_no_element->schedule }}" selected>{{$heat_no_element->heat_no}} - {{ $heat_no_element->size }}" - {{ $heat_no_element->pressure }}# - {{ $heat_no_element->type }} x {{ $heat_no_element->schedule }}</option>
+
+                                            <?php $old_machining_data = $heat_no_element->heat_no."-".$heat_no_element->size."-".$heat_no_element->pressure."-".$heat_no_element->type."-".$heat_no_element->schedule; ?>
                                         @else
                                             <option value="{{ $heat_no_element->heat_no }}-{{ $heat_no_element->size }}-{{ $heat_no_element->pressure }}-{{ $heat_no_element->type }}-{{ $heat_no_element->schedule }}">{{$heat_no_element->heat_no}} - {{ $heat_no_element->size }}" - {{ $heat_no_element->pressure }}# - {{ $heat_no_element->type }} x {{ $heat_no_element->schedule }}</option>
                                         @endif
@@ -115,6 +141,9 @@
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Quantity') }}
                                 {{ Form::text('quantity',$machining->quantity,array('class'=>'form-control inputfix','placeholder'=>'Quantity','id'=>'justAnything')) }}
+
+                                <?php $old_machining_quantity = $machining->quantity; ?>
+
                             </div>
 
 
@@ -122,14 +151,6 @@
                                 {{ Form::label('exampleInputEmail1','Machine Name') }}
                                 {{ Form::text('machine_name',$machining->machine_name,array('class'=>'form-control inputfix','placeholder'=>'Machine Name','id'=>'exampleInputEnail1')) }}
                             </div>
-
-                            <!-- Employee name removed after new review from the client  -->
-
-                           {{--  <div class="form-group">
-                                {{ Form::label('exampleInputEmail1','quantity') }}
-                                {{ Form::text('quantity',null,array('class'=>'form-control inputfix','placeholder'=>'Quantity','id'=>'exampleInputEnail1')) }}
-                            </div> --}}
-
 
                             <!-- to be fetched from master grades -->
 
@@ -160,6 +181,10 @@
                                 {{ Form::text('remarks',$machining->remarks,array('class'=>'form-control inputfix','placeholder'=>'Remarks','id'=>'anything')) }}
                             </div>
 
+                        {{ Form::hidden('old_machining_work_order',$old_machining_work_order,array('class'=>'form-control inputfix'))}}
+                        {{ Form::hidden('old_machining_data',$old_machining_data,array('class'=>'form-control inputfix'))}}
+                        {{ Form::hidden('old_machining_quantity',$old_machining_quantity,array('class'=>'form-control inputfix'))}}
+
                             @endforeach
 
                             <div class="loginButton">
@@ -180,7 +205,6 @@
                     onChange : function(){ 
 
                         var work_order_no = $(this)[0].value;
-                        $("#item_no_select").addClass("search selection");
 
                         $.ajax({
 
@@ -205,6 +229,14 @@
                 $('#heat_no_select').dropdown();
                 $('#grade_select').dropdown();
             });
+
+function change_parameters()
+{
+    $('#work_order_no_select').removeAttr('disabled');
+    $('#work_order_no_select').parent().removeClass('disabled');
+    $('#item_no_select').removeAttr('disabled');
+    $('#item_no_select').parent().removeClass('disabled');
+}
         </script>
 
 

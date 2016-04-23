@@ -1,6 +1,6 @@
 <?php
 
-class Drilling extends Eloquent {
+class DrillingStock extends Eloquent {
 	protected $fillable = [];
 
 	/* --------------------------------- DRILLING MODULE -------------------------------
@@ -8,23 +8,16 @@ class Drilling extends Eloquent {
 
 	public static function insertData($input_array)
 	{
-		return DB::table('drilling_records')
+		return DB::table('drilling_work_order_stock')
 				->insert($input_array);
 	}
 
-
-
-	public static function insertRemarks($input_array)
-	{
-		return DB::table('drilling_remarks')
-				->insert($input_array);
-	}
 
 	public static function getRecord($id)
 	{
 		return DB::table('drilling_records')
 				->select()
-				->where('drill_id','=',$id)
+				->where('drilling_id','=',$id)
 				->get();
 	}
 
@@ -57,11 +50,28 @@ class Drilling extends Eloquent {
 			->delete();
 	}
 
-	public static function updateAllData($drill_id,$array)
+	public static function decrementWorkOrderItemData($work_order_no,$item_no,$quantity)
 	{
-		return DB::table('drilling_records')
-			  ->where('drill_id',$drill_id)
-			  ->update($array);
+		return DB::table('drilling_work_order_stock')
+			   ->where('work_order_no',$work_order_no)
+			   ->where('item',$item_no)
+			   ->decrement('quantity',$quantity);
+	}
+
+	public static function incrementWorkOrderItemData($work_order_no,$item_no,$quantity)
+	{
+		return DB::table('drilling_work_order_stock')
+			   ->where('work_order_no',$work_order_no)
+			   ->where('item',$item_no)
+			   ->increment('quantity',$quantity);
+	}
+
+	public static function getWorkOrderItemData($work_order_no,$item_no)
+	{
+		return DB::table('drilling_work_order_stock')
+			   ->where('work_order_no',$work_order_no)
+			   ->where('item',$item_no)
+			   ->get();
 	}
 
 

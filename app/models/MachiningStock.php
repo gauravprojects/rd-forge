@@ -95,6 +95,30 @@ class MachiningStock extends Eloquent
 			   ->increment('available_weight_cutting',$weight);
 	}
 
+	public static function decrementWorkOrderItemData($work_order_no,$item_no,$quantity)
+	{
+		return DB::table('machining_work_order_stock')
+			   ->where('work_order_no',$work_order_no)
+			   ->where('item',$item_no)
+			   ->decrement('quantity',$quantity);
+	}
+
+	public static function incrementWorkOrderItemData($work_order_no,$item_no,$quantity)
+	{
+		return DB::table('machining_work_order_stock')
+			   ->where('work_order_no',$work_order_no)
+			   ->where('item',$item_no)
+			   ->increment('quantity',$quantity);
+	}
+
+	public static function getWorkOrderItemData($work_order_no,$item_no)
+	{
+		return DB::table('machining_work_order_stock')
+			   ->where('work_order_no',$work_order_no)
+			   ->where('item',$item_no)
+			   ->get();
+	}
+
 }
 
 

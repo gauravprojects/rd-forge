@@ -90,20 +90,6 @@
 
 
                         <div class="form-group">
-                            {{ Form::label('exampleInputEmail1','Heat Number  (from forged data)') }}
-                            <select class="form-control search selection" name="heat_no" id="heat_no_select" required>
-                                <option value="">---Select Heat Number --------</option>
-                                <option value="Job Work">Job Work</option>
-                                @foreach($heat_no as $heat_no_element)
-                                    <option value="{{ $heat_no_element->heat_no }}">
-                                        {{ $heat_no_element->heat_no }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-
-
-                        <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Quantity') }}
                             {{ Form::text('quantity',null,array('class'=>'form-control inputfix','placeholder'=>'Quantity','id'=>'justAnything')) }}
                         </div>
@@ -113,17 +99,12 @@
                             {{ Form::text('machine_name',null,array('class'=>'form-control inputfix','placeholder'=>'Machine Name','id'=>'exampleInputEnail1')) }}
                         </div>
 
-{{--                         <div class="form-group">
-                            {{ Form::label('exampleInputEmail1','quantity') }}
-                            {{ Form::text('quantity',null,array('class'=>'form-control inputfix','placeholder'=>'Quantity','id'=>'exampleInputEnail1')) }}
-                        </div>
- --}}
-                        <div class="form-group">
+                       <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Material Grade') }}
-                            <select name="grade" class="form-control search selection" id="grade_select" required>
-                                <option value="">---Select Grade --------</option>
-                                @foreach($grades as $grade)
-                                    <option value="{{ $grade->grade_name }}">{{ $grade->grade_name }}</option>
+                            <select class="form-control search selection" name="grade" id="grade_select" required>
+                                <option value="">---Select Grade--------</option>
+                                @foreach($grades as $grade_element)
+                                    <option value="{{ $grade_element->grade_name }}">{{$grade_element->grade_name}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -139,8 +120,6 @@
                         </div>
 
                         <div class="loginButton">
-
-                            {{-- {{ Form::submit('Submit',array('class'=>'waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button')) }} --}}
 
                              <button class="waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button" type="submit">Submit</button>
                              
@@ -160,7 +139,7 @@
 
                         var work_order_no = $(this)[0].value;
 
-                        $.ajax({
+                         $.ajax({
 
                             'type' : 'GET',
                             'url' : 'workOrderMaterial',
@@ -172,11 +151,10 @@
                             $.each(JSON.parse(data),function(key,value)
                             {
                             $("#item_no_select").append(
-                            '<option value="'+value['item_no']+'">'+value['work_order_no']+"/"+value['item_no']+'</option>');
+                            '<option value="'+value['work_order_no']+'-'+value['item_no']+'-'+value['size']+'-'+value['pressure']+'-'+value['type']+'-'+value['schedule']+'">'+value['work_order_no']+"/"+value['item_no']+' - '+value['size']+'" - '+value['pressure']+'# - '+value['type']+' x '+value['schedule']+'</option>');
                             });
                             
                         });
-
                      }
                 });
         $('#item_no_select').dropdown();

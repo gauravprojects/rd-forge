@@ -45,7 +45,7 @@
 
                         <div class="span9 btn-block excelPrint">
                             <button class="btn btn-small btn-block" type="button" id="excel_button">
-                                <a href="{{ action('machiningController@update',array('id'=>$confirmation->machining_id))}}" class="link" >Update</a>
+                                <a href="{{ action('machiningController@update',array('id'=>$confirmation->mach_id))}}" class="link" >Update</a>
                             </button>
                         </div>
                         <br><br><br><br>

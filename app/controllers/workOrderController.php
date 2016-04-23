@@ -53,19 +53,7 @@ class WorkOrderController extends BaseController {
 					'remarks' => $data_input['remarks_mat'][$i]
 				);
 
-				$work_order_material_stock_array = array(
-					'work_order_no' => $data_input['work_order_no'],
-					'item_no' => $data_input['item_no'][$i],
-					'size' => $data_input['standard_size'][$i],
-					'pressure' => $data_input['pressure'][$i],
-					'type' => $data_input['type'][$i],
-					'schedule' => $data_input['schedule'][$i],
-					'quantity' => $data_input['quantity'][$i],
-					'weight' => $data_input['weight'][$i],
-				);
-
 				DB::table('work_order_material_details')->insert($work_order_material_array);
-				DB::table('work_order_material_stock')->insert($work_order_material_stock_array);
 
 		}
 
@@ -145,8 +133,6 @@ class WorkOrderController extends BaseController {
 		WorkOrder::updateRecord($data_array,$data_input['work_order_no']);
 		WorkOrder::deleteRecordMaterialDetails($data_input['work_order_no']);
 
-		$old_stock = WorkOrder::getOldStockDetails($data_input['work_order_no']);
-
 		// var_dump($old_stock);
 
 		WorkOrder::deleteStockMaterialDetails($data_input['work_order_no']);
@@ -168,19 +154,7 @@ class WorkOrderController extends BaseController {
 					'status' => $data_input['order_status'][$i]
 				);
 
-				$work_order_material_stock_array = array(
-					'work_order_no' => $data_input['work_order_no'],
-					'item_no' => $data_input['item_no'][$i],
-					'size' => $data_input['standard_size'][$i],
-					'pressure' => $data_input['pressure'][$i],
-					'type' => $data_input['type'][$i],
-					'schedule' => $data_input['schedule'][$i],
-					'quantity' => $data_input['quantity'][$i],
-					'weight' => $data_input['weight'][$i],
-				);
-
 				DB::table('work_order_material_details')->insert($work_order_material_array);
-				DB::table('work_order_material_stock')->insert($work_order_material_stock_array);
 
 		}
 

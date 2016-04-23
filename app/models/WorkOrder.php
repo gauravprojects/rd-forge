@@ -66,6 +66,13 @@ class WorkOrder extends Eloquent
 				->get();
 	}
 
+	public static function availableWorkOrderItemNo()
+	{
+		return DB::table('work_order_records')
+				->join('work_order_material_details','work_order_records.work_order_no','=','work_order_material_details.work_order_no')
+				->get();
+	}
+
 	public static function respectiveItemNo($work_order_no)
 	{
 		return DB::table('work_order_material_details')

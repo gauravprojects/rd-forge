@@ -40,8 +40,8 @@
                                 <td>{{ $serration_data->machine_name }}</td>
                                 <td>{{ $serration_data->grade }}</td>
                                 <td>
-                                        <a href="{{ action('serrationController@update',array('id'=>$serration_data->serration_id))}}" class="link" >Update</a>
-                                        <a href="{{ action('serrationController@destroy',array('id'=>$serration_data->serration_id))}}" class="link" >Delete</a>
+                                    <a href="{{ action('serrationController@update',array('id'=>$serration_data->serr_id))}}" class="link" >Update</a>
+                                    <a href="{{ action('serrationController@destroy',array('id'=>$serration_data->serr_id))}}" class="link" >Delete</a>
                                 </td>
 
 

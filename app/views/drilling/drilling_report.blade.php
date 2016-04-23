@@ -40,9 +40,9 @@
                                 <td>{{ $drilling_data->machine_name }}</td>
                                 <td>{{ $drilling_data->grade }}</td>
                                 <td>
-                                        <a href="{{ action('drillingController@update',array('id'=>$drilling_data->drilling_id))}}" class="link" >Update</a>
+                                        <a href="{{ action('drillingController@update',array('id'=>$drilling_data->drill_id))}}" class="link" >Update</a>
                                     <br>
-                                    <a href="{{ action('drillingController@destroy',array('id'=>$drilling_data->drilling_id))}}" class="link" >Delete</a>
+                                    <a href="{{ action('drillingController@destroy',array('id'=>$drilling_data->drill_id))}}" class="link" >Delete</a>
                                 </td>
 
 

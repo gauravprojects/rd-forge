@@ -19,7 +19,7 @@ class Serration extends Eloquent {
 	{
 		return DB::table('serration_records')
 				->select()
-				->where('serration_id','=',$id)
+				->where('serr_id','=',$id)
 				->get();
 	}
 
@@ -27,7 +27,7 @@ class Serration extends Eloquent {
 	public static function getLastRecord()
 	{
 		return DB::table('serration_records')
-				->orderBy('serration_id', 'desc')
+				->orderBy('serr_id', 'desc')
 				->first();
 	}
 
@@ -43,5 +43,12 @@ class Serration extends Eloquent {
 		return DB::table('serration_records')
 			->where('serration_id','=',$serration_id)
 			->delete();
+	}
+
+	public static function updateAllData($serr_id,$array)
+	{
+		return DB::table('serration_records')
+			  ->where('serr_id',$serr_id)
+			  ->update($array);
 	}
 }

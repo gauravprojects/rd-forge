@@ -24,33 +24,65 @@
 
 		public function store()
 		{
-			$input_data= Input::all();
 
-			$input_array_serration_table= array(
+			$serration_input = Input::all();
+
+			$work_order_no = explode("-",$serration_input['item'])[0];
+			$work_order_item_no = explode("-",$serration_input['item'])[1];
+			$work_order_size = explode("-",$serration_input['item'])[2];
+			$work_order_pressure = explode("-",$serration_input['item'])[3];
+			$work_order_type = explode("-",$serration_input['item'])[4];
+			$work_order_schedule = explode("-",$serration_input['item'])[5];
+
+			$serration_array= array(
 				'date' => date('Y-m-d'),
-				'work_order_no' => $input_data['work_order_no'] ,
-				'item'  	=> $input_data['item'],
-				'heat_no'	=> $input_data['heat_no'],
-				'quantity'	=>$input_data['quantity'],
-				'machine_name'=>$input_data['machine_name'],
-				'grade' => $input_data['grade'],
-				'remarks' => $input_data['remarks']
+				'work_order_no' => $work_order_no,
+				'item'  	=> $work_order_item_no,			
+				'quantity'	=>	$serration_input['quantity'],
+				'machine_name'=> $serration_input['machine_name'],
+				'grade' => $serration_input['grade'],
+				'weight'	=> $serration_input['weight'],
+				'remarks' => $serration_input['remarks']
 			);
 
-			$input_response_serration_table=Serration::insertData($input_array_serration_table);
+			$serration_stock_array = array(
 
-			//get last record
+				'work_order_no' => $work_order_no,
+				'item'  	=> $work_order_item_no,
+				'size' => $work_order_size,
+				'pressure' => $work_order_pressure,
+				'type' =>	$work_order_type,
+				'schedule' =>	$work_order_schedule,
+				'quantity'  => $serration_input['quantity'],
+				'weight'	=> $serration_input['weight']
 
-			$last_record=Serration::getLastRecord();
+				);
 
-			// now insert remarks data using the mach_id obtained form last record
+			DB::beginTransaction();
 
-			// $input_array_serration_remarks= array(
-			// 	'serration_id' => $last_record->serration_id,
-			// 	'remarks' => $input_data['remarks']
-			// );
+			try
+			{
+				if(!Serration::insertData($serration_array))
+					throw new Exception("Could not insert serration data",1);
 
-			// $input_response_serration_remarks= Serration::insertRemarks($input_array_serration_remarks);
+				if(!SerrationStock::insertData($serration_stock_array))
+					throw new Exception("Could not insert serration data",1);
+
+				//Decrements the cutting stock data weight on the basis of given OLD heat,size,pressure,type and schedule
+				if(!DrillingStock::decrementWorkOrderItemData($work_order_no,$work_order_item_no,$serration_input['quantity']))
+					throw new Exception("Could not decrement data for work order",1);
+
+				else
+					DB::commit();
+			}
+			catch(Exception $e)
+			{
+				DB::rollback();
+				var_dump($e);
+				return 0;
+			}
+
+			$last_record = Serration::getLastRecord();
 
 			return View::make('serration.confirm')->with('last_record',$last_record);
 		}
@@ -64,38 +96,123 @@
 		public function update($id)
 		{
 				$serration_array = Serration::getRecord($id);
-			$availableWorkOrder= WorkOrder::availableWorkOrderNo();
+			
 				$grades = Grades::getGrades();
-			$heatNo_available_forging_weight= Drilling::HeatNo_availableWeightForging();
-				//$heat_no = RawMaterial::getHeatNo();
+
+			$availableWorkOrder = WorkOrder::availableWorkOrderNo();
+		$availableWorkOrderItem = WorkOrder::availableWorkOrderItemNo();
+			
 
 				return View::make('serration.serration_update')
 				->with('serration_array',$serration_array)
 				->with('grades',$grades)
 				->with('availableWorkOrderNo',$availableWorkOrder)
-				->with('heat_no',$heatNo_available_forging_weight);
+				->with('availableWorkOrderItemNo',$availableWorkOrderItem);
 		}
 
 
 		public function update_store($id)
 		{
 			
-			$serration = Input::all();
+			$serration_input = Input::all();
 
-			$data_array_update = array(
-						'work_order_no' => $serration['work_order_no'] ,
-						'item'  	=> $serration['item'],
-						'heat_no'	=> $serration['heat_no'],
-						'quantity'	=>$serration['quantity'],
-						'machine_name'=>$serration['machine_name'],
-						'grade' => $serration['grade'],
-						'weight'	=> $serration['weight'],
-						'remarks'=> $serration['remarks']
-						);
+			$old_work_order_no = explode("-",$serration_input['old_serration_work_order'])[0];
+			$old_work_order_item_no = explode("-",$serration_input['old_serration_work_order'])[1];
 
-			$update_response= DB::table('serration_records')
-								->where('serration_id',$serration['serration_id'])
-								->update($data_array_update);
+			$work_order_no = explode("-",$serration_input['item'])[0];
+			$work_order_item_no = explode("-",$serration_input['item'])[1];
+			$work_order_size = explode("-",$serration_input['item'])[2];
+			$work_order_pressure = explode("-",$serration_input['item'])[3];
+			$work_order_type = explode("-",$serration_input['item'])[4];
+			$work_order_schedule = explode("-",$serration_input['item'])[5];
+
+			$drilling_array= array(
+				'date' => date('Y-m-d'),
+				'work_order_no' => $work_order_no,
+				'item'  	=> $work_order_item_no,			
+				'quantity'	=>	$serration_input['quantity'],
+				'machine_name'=> $serration_input['machine_name'],
+				'grade' => $serration_input['grade'],
+				'remarks' => $serration_input['remarks']
+			);
+
+
+			$drilling_stock_array = array(
+
+				'work_order_no' => $work_order_no,
+				'item'  	=> $work_order_item_no,
+				'size' => $work_order_size,
+				'pressure' => $work_order_pressure,
+				'type' =>	$work_order_type,
+				'schedule' =>	$work_order_schedule,
+				'quantity'  => $serration_input['quantity'],
+				'weight'	=> $serration_input['weight']
+
+			);
+
+			
+			DB::beginTransaction();
+
+			try{
+				//Checks whether the stock of given heat,size,pressure,type and schedule is present or not in stock table
+				$whether_stock_present = SerrationStock::getWorkOrderItemData($work_order_no,$work_order_item_no);
+
+				if(!$whether_stock_present)
+				{
+					if(!Serration::updateAllData($serration_input['serration_id'],$serration_array))
+						throw new Exception("Could not update drilling records data",1);
+
+					//Insert data in the stock table
+					if(!SerrationStock::insertData($serration_stock_array))
+						throw new Exception("Could not insert drilling data in the stock table",1);
+
+					//Decrements the cutting stock data weight on the basis of given OLD heat,size,pressure,type and schedule
+					if(!SerrationStock::decrementWorkOrderItemData($old_work_order_no,$old_work_order_item_no,$serration_input['old_serration_quantity']))
+						throw new Exception("Could not decrement data for old work order number",1);
+
+					//Decrements the raw material stock data weight on the basis of given heat and size
+					if(!DrillingStock::decrementWorkOrderItemData($work_order_no,$work_order_item_no,$serration_input['quantity']))
+						throw new Exception("Cannot update quantity", 1);
+
+					//Increments the raw material stock data weight on the basis of given old heat and size
+					if(!DrillingStock::incrementWorkOrderItemData($old_work_order_no,$old_work_order_item_no,$serration_input['old_serration_quantity']))
+						throw new Exception("Cannot update quantity", 1);
+
+					else
+						DB::commit();
+				}
+				else
+				{
+					//Update all data in the cutting records table
+					if(!Serration::updateAllData($serration_input['drilling_id'],$serration_array))
+						throw new Exception("Could not update all data",1);
+
+					//Decrements the cutting stock data weight on the basis of given OLD heat,size,pressure,type and schedule
+					if(!SerrationStock::decrementWorkOrderItemData($old_work_order_no,$old_work_order_item_no,$serration_input['old_serration_quantity']))
+						throw new Exception("Could not decrement data for old work order number",1);
+
+					//Decrements the cutting stock data weight on the basis of given OLD heat,size,pressure,type and schedule
+					if(!SerrationStock::incrementWorkOrderItemData($work_order_no,$work_order_item_no,$serration_input['quantity']))
+						throw new Exception("Could not increment data for old work order number",1);
+
+					//Decrements the raw material stock data weight on the basis of given heat and size
+					if(!DrillingStock::decrementWorkOrderItemData($work_order_no,$work_order_item_no,$serration_input['quantity']))
+						throw new Exception("Cannot update quantity", 1);
+
+					//Increments the raw material stock data weight on the basis of given old heat and size
+					if(!DrillingStock::incrementWorkOrderItemData($old_work_order_no,$old_work_order_item_no,$serration_input['old_drilling_quantity']))
+						throw new Exception("Cannot update quantity", 1);
+
+					else
+						DB::commit();
+				}
+			}
+			catch(Exception $e)
+			{
+				DB::rollback();
+				var_dump($e);
+				return $e;
+			}
 
 
 			$get_record_array= Serration::getRecord($serration['serration_id']);

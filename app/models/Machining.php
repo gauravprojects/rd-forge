@@ -38,4 +38,11 @@ class Machining extends Eloquent {
 			->where('mach_id','=',$mach_id)
 			->delete();
 	}
+
+	public static function updateAllData($mach_id,$array)
+	{
+		return DB::table('machining_records')
+			  ->where('mach_id',$mach_id)
+			  ->update($array);
+	}
 }

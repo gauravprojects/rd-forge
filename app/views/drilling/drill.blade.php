@@ -58,7 +58,7 @@
 
                         <!-- For WORK ORDER NUMBER -->
                         <div class="form-group">
-                            {{ Form::label('exampleInputEmail1','Work Order Number') }}
+                            {{ Form::label('exampleInputEmail1','Work Order Number (from machined data)') }}
 
                             <select class="form-control search selection" name="work_order_no" id="work_order_no_select" required>
                                 <option value="">----Select Work Order-----</option>
@@ -80,19 +80,6 @@
                             </select>
                         </div>
 
-                        <div class="form-group">
-                            {{ Form::label('exampleInputEmail1','Heat Number (from forging data)') }}
-                                <select class="form-control search selection" name="heat_no" id="heat_no_select" required>
-                                    <option value="">---Select Heat Number --------</option>
-                                    <option value="Job Work">Job Work</option>
-                                    @foreach($heat_no as $heat_no_element)
-                                        <option value="{{ $heat_no_element->heat_no }}">
-                                            {{ $heat_no_element->heat_no }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
-
 
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail1','Size') }}
@@ -106,7 +93,7 @@
 
 
                          <div class="form-group">
-                            {{ Form::label('exampleInputEmail1','quantity') }}
+                            {{ Form::label('exampleInputEmail1','Quantity') }}
                             {{ Form::text('quantity',null,array('class'=>'form-control inputfix','placeholder'=>'Quantity','id'=>'exampleInputEnail1')) }}
                         </div>
 
@@ -162,7 +149,7 @@
                             $.each(JSON.parse(data),function(key,value)
                             {
                             $("#item_no_select").append(
-                            '<option value="'+value['item_no']+'">'+value['work_order_no']+"/"+value['item_no']+'</option>');
+                            '<option value="'+value['work_order_no']+'-'+value['item_no']+'-'+value['size']+'-'+value['pressure']+'-'+value['type']+'-'+value['schedule']+'">'+value['work_order_no']+"/"+value['item_no']+' - '+value['size']+'" - '+value['pressure']+'# - '+value['type']+' x '+value['schedule']+'</option>');
                             });
                             
                         });

@@ -21,34 +21,66 @@ class DrillingController extends BaseController {
 	}
 	public function store()
 	{
-		$input_data= Input::all();
+		$drilling_input = Input::all();
 
-		$input_array_drilling_table= array(
+		$work_order_no = explode("-",$drilling_input['item'])[0];
+		$work_order_item_no = explode("-",$drilling_input['item'])[1];
+		$work_order_size = explode("-",$drilling_input['item'])[2];
+		$work_order_pressure = explode("-",$drilling_input['item'])[3];
+		$work_order_type = explode("-",$drilling_input['item'])[4];
+		$work_order_schedule = explode("-",$drilling_input['item'])[5];
+
+		$drilling_array= array(
 			'date' => date('Y-m-d'),
-			'work_order_no' => $input_data['work_order_no'] ,
-			'item'  	=> $input_data['item'],
-			'heat_no'	=> $input_data['heat_no'],
-			'quantity'	=>$input_data['quantity'],
-			'machine_name'=>$input_data['machine_name'],
-			'grade' => $input_data['grade'],
-			'remarks' => $input_data['remarks']
+			'work_order_no' => $work_order_no,
+			'item'  	=> $work_order_item_no,			
+			'quantity'	=>	$drilling_input['quantity'],
+			'machine_name'=> $drilling_input['machine_name'],
+			'grade' => $drilling_input['grade'],
+			'weight'	=> $drilling_input['weight'],
+			'remarks' => $drilling_input['remarks']
 		);
 
 
-		$input_response_drilling_table=Drilling::insertData($input_array_drilling_table);
+		$drilling_stock_array = array(
 
-		//get last record
+			'work_order_no' => $work_order_no,
+			'item'  	=> $work_order_item_no,
+			'size' => $work_order_size,
+			'pressure' => $work_order_pressure,
+			'type' =>	$work_order_type,
+			'schedule' =>	$work_order_schedule,
+			'quantity'  => $drilling_input['quantity'],
+			'weight'	=> $drilling_input['weight']
 
-		$last_record= Drilling::getLastRecord();
+			);
 
-		// now insert remarks data using the mach_id obtained form last record
+		DB::beginTransaction();
 
-		$input_array_drilling_remarks= array(
-			'drilling_id' => $last_record->drilling_id,
-			'remarks' => $input_data['remarks']
-		);
+		try
+		{
+			if(!Drilling::insertData($drilling_array))
+				throw new Exception("Could not insert drilling data",1);
 
-		$input_response_drilling_remarks= Drilling::getLastRecord();
+			if(!DrillingStock::insertData($drilling_stock_array))
+				throw new Exception("Could not insert machining data",1);
+
+			//Decrements the cutting stock data weight on the basis of given OLD heat,size,pressure,type and schedule
+			if(!MachiningStock::decrementWorkOrderItemData($work_order_no,$work_order_item_no,$drilling_input['quantity']))
+				throw new Exception("Could not decrement data for work order",1);
+
+			else
+				DB::commit();
+		}
+		catch(Exception $e)
+		{
+			DB::rollback();
+			var_dump($e);
+			return 0;
+		}
+
+	
+		$last_record = Drilling::getLastRecord();
 
 		return View::make('drilling.confirm')->with('last_record',$last_record);
 
@@ -62,42 +94,126 @@ class DrillingController extends BaseController {
 
 	public function update($id)
 	{
-			$drilling_array = Drilling::getRecord($id);
+		$drilling_array = Drilling::getRecord($id);
 
-			$grades = Grades::getGrades();
-			//$heat_no = RawMaterial::getHeatNo();
-			$heatNo_available_forging_weight= Drilling::HeatNo_availableWeightForging();
-			$availableWorkOrder= WorkOrder::availableWorkOrderNo();
+		$grades = Grades::getGrades();
+		//$heat_no = RawMaterial::getHeatNo();
+		$availableWorkOrder = WorkOrder::availableWorkOrderNo();
+		$availableWorkOrderItem = WorkOrder::availableWorkOrderItemNo();
 
-			return View::make('drilling.drilling_update')
-			->with('drilling_array',$drilling_array)
-			->with('grades',$grades)
-			->with('heat_no',$heatNo_available_forging_weight)
-				->with('availableWorkOrderNo',$availableWorkOrder);
+		return View::make('drilling.drilling_update')
+		->with('drilling_array',$drilling_array)
+		->with('grades',$grades)
+		->with('availableWorkOrderNo',$availableWorkOrder)
+		->with('availableWorkOrderItemNo',$availableWorkOrderItem);
 	}
 
 
 	public function update_store($id)
 	{
 		
-		$drilling = Input::all();
+		$drilling_input = Input::all();
 
-		$data_array_update = array(
-					'work_order_no' => $drilling['work_order_no'] ,
-					'item'  	=> $drilling['item'],
-					'heat_no'	=> $drilling['heat_no'],
-					'quantity'	=>$drilling['quantity'],
-					'machine_name'=>$drilling['machine_name'],
-					'grade' => $drilling['grade'],
-					'remarks'=> $drilling['remarks']
-					);
+		$old_work_order_no = explode("-",$drilling_input['old_drilling_work_order'])[0];
+		$old_work_order_item_no = explode("-",$drilling_input['old_drilling_work_order'])[1];
 
-		$update_response= DB::table('drilling_records')
-							->where('drilling_id',$drilling['drilling_id'])
-							->update($data_array_update);
+		$work_order_no = explode("-",$drilling_input['item'])[0];
+		$work_order_item_no = explode("-",$drilling_input['item'])[1];
+		$work_order_size = explode("-",$drilling_input['item'])[2];
+		$work_order_pressure = explode("-",$drilling_input['item'])[3];
+		$work_order_type = explode("-",$drilling_input['item'])[4];
+		$work_order_schedule = explode("-",$drilling_input['item'])[5];
+
+		$drilling_array= array(
+			'date' => date('Y-m-d'),
+			'work_order_no' => $work_order_no,
+			'item'  	=> $work_order_item_no,			
+			'quantity'	=>	$drilling_input['quantity'],
+			'machine_name'=> $drilling_input['machine_name'],
+			'grade' => $drilling_input['grade'],
+			'remarks' => $drilling_input['remarks']
+		);
 
 
-		$get_record_array= Drilling::getRecord($drilling['drilling_id']);
+		$drilling_stock_array = array(
+
+			'work_order_no' => $work_order_no,
+			'item'  	=> $work_order_item_no,
+			'size' => $work_order_size,
+			'pressure' => $work_order_pressure,
+			'type' =>	$work_order_type,
+			'schedule' =>	$work_order_schedule,
+			'quantity'  => $drilling_input['quantity'],
+			'weight'	=> $drilling_input['weight']
+
+			);
+
+		
+		DB::beginTransaction();
+
+		try{
+			//Checks whether the stock of given heat,size,pressure,type and schedule is present or not in stock table
+			$whether_stock_present = DrillingStock::getWorkOrderItemData($work_order_no,$work_order_item_no);
+
+			if(!$whether_stock_present)
+			{
+				if(!Drilling::updateAllData($drilling_input['drilling_id'],$drilling_array))
+					throw new Exception("Could not update drilling records data",1);
+
+				//Insert data in the stock table
+				if(!DrillingStock::insertData($drilling_stock_array))
+					throw new Exception("Could not insert drilling data in the stock table",1);
+
+				//Decrements the cutting stock data weight on the basis of given OLD heat,size,pressure,type and schedule
+				if(!DrillingStock::decrementWorkOrderItemData($old_work_order_no,$old_work_order_item_no,$drilling_input['old_drilling_quantity']))
+					throw new Exception("Could not decrement data for old work order number",1);
+
+				//Decrements the raw material stock data weight on the basis of given heat and size
+				if(!MachiningStock::decrementWorkOrderItemData($work_order_no,$work_order_item_no,$drilling_input['quantity']))
+					throw new Exception("Cannot update quantity", 1);
+
+				//Increments the raw material stock data weight on the basis of given old heat and size
+				if(!MachiningStock::incrementWorkOrderItemData($old_work_order_no,$old_work_order_item_no,$drilling_input['old_drilling_quantity']))
+					throw new Exception("Cannot update quantity", 1);
+
+				else
+					DB::commit();
+			}
+			else
+			{
+				//Update all data in the cutting records table
+				if(!Drilling::updateAllData($drilling_input['drilling_id'],$drilling_array))
+					throw new Exception("Could not update all data",1);
+
+				//Decrements the cutting stock data weight on the basis of given OLD heat,size,pressure,type and schedule
+				if(!DrillingStock::decrementWorkOrderItemData($old_work_order_no,$old_work_order_item_no,$drilling_input['old_drilling_quantity']))
+					throw new Exception("Could not decrement data for old work order number",1);
+
+				//Decrements the cutting stock data weight on the basis of given OLD heat,size,pressure,type and schedule
+				if(!DrillingStock::incrementWorkOrderItemData($work_order_no,$work_order_item_no,$drilling_input['quantity']))
+					throw new Exception("Could not increment data for old work order number",1);
+
+				//Decrements the raw material stock data weight on the basis of given heat and size
+				if(!MachiningStock::decrementWorkOrderItemData($work_order_no,$work_order_item_no,$drilling_input['quantity']))
+					throw new Exception("Cannot update quantity", 1);
+
+				//Increments the raw material stock data weight on the basis of given old heat and size
+				if(!MachiningStock::incrementWorkOrderItemData($old_work_order_no,$old_work_order_item_no,$drilling_input['old_drilling_quantity']))
+					throw new Exception("Cannot update quantity", 1);
+
+				else
+					DB::commit();
+			}
+		}
+		catch(Exception $e)
+		{
+			DB::rollback();
+			var_dump($e);
+			return $e;
+		}
+
+
+		$get_record_array= Drilling::getRecord($drilling_input['drilling_id']);
 		return View::make('drilling.confirm_drilling_update')->with('confirmations',$get_record_array);
 	}
 
