@@ -29,10 +29,10 @@
                                 <tr>
 
                                     <th class="heading" style="text-align:center;">Purchase Order Date</th>
-                                    <td>{{ $work_order_detail->purchase_order_date }}</td>
+                                    <td>{{ date('d-m-y',strtotime($work_order_detail->purchase_order_date)) }}</td>
 
                                     <th class="heading" style="text-align:center;">Required Delivery Date</th>
-                                    <td>{{ $work_order_detail->required_delivery_date }}</td>
+                                    <td>{{ date('d-m-y',strtotime($work_order_detail->required_delivery_date)) }}</td>
                                 </tr>
                                 <tr>
                                     <th class="heading" style="text-align:center;">Remarks</th>
@@ -108,7 +108,7 @@
                         @endforeach
 
 
-                            <a href="{{ action('workOrderController@excel') }}" class="link" ><button class="waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button" type="submit">Generate report in excel</button></a>
+                            <a href="<?php echo route('workOrder.report_excel'); ?>" class="link" ><button class="waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button" type="submit">Generate report in excel</button></a>
 
                     </div>
 

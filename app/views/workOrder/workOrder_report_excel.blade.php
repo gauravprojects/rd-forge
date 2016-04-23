@@ -32,10 +32,10 @@
             <tr>
 
                 <th class="heading" style="text-align:center;">Purchase Order Date</th>
-                <td>{{ $work_order_detail->purchase_order_date }}</td>
+                <td>{{ date('d-m-y',strtotime($work_order_detail->purchase_order_date)) }}</td>
 
                 <th class="heading" style="text-align:center;">Required Delivery Date</th>
-                <td>{{ $work_order_detail->required_delivery_date }}</td>
+                <td>{{ date('d-m-y',strtotime($work_order_detail->required_delivery_date)) }}</td>
             </tr>
             <tr>
                 <th class="heading" style="text-align:center;">Remarks</th>
@@ -55,7 +55,7 @@
             </tr>
             <tr>
                 <th class="heading" style="text-align:center;">Quatation No</th>
-                <td>{{ $work_order_detail->quatation_no }}</td>
+                <td>{{ $work_order_detail->quotation_no }}</td>
             </tr>
         </table>
 

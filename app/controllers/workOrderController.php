@@ -53,7 +53,19 @@ class WorkOrderController extends BaseController {
 					'remarks' => $data_input['remarks_mat'][$i]
 				);
 
+				$work_order_material_stock_array = array(
+					'work_order_no' => $data_input['work_order_no'],
+					'item_no' => $data_input['item_no'][$i],
+					'size' => $data_input['standard_size'][$i],
+					'pressure' => $data_input['pressure'][$i],
+					'type' => $data_input['type'][$i],
+					'schedule' => $data_input['schedule'][$i],
+					'quantity' => $data_input['quantity'][$i],
+					'weight' => $data_input['weight'][$i],
+				);
+
 				DB::table('work_order_material_details')->insert($work_order_material_array);
+				DB::table('work_order_material_stock')->insert($work_order_material_stock_array);
 
 		}
 
@@ -133,6 +145,13 @@ class WorkOrderController extends BaseController {
 		WorkOrder::updateRecord($data_array,$data_input['work_order_no']);
 		WorkOrder::deleteRecordMaterialDetails($data_input['work_order_no']);
 
+		$old_stock = WorkOrder::getOldStockDetails($data_input['work_order_no']);
+
+		// var_dump($old_stock);
+
+		WorkOrder::deleteStockMaterialDetails($data_input['work_order_no']);
+
+
 		for($i=0;$i<count($data_input['item_no']);$i++)
 		{
 				$work_order_material_array = array(
@@ -149,9 +168,30 @@ class WorkOrderController extends BaseController {
 					'status' => $data_input['order_status'][$i]
 				);
 
+				$work_order_material_stock_array = array(
+					'work_order_no' => $data_input['work_order_no'],
+					'item_no' => $data_input['item_no'][$i],
+					'size' => $data_input['standard_size'][$i],
+					'pressure' => $data_input['pressure'][$i],
+					'type' => $data_input['type'][$i],
+					'schedule' => $data_input['schedule'][$i],
+					'quantity' => $data_input['quantity'][$i],
+					'weight' => $data_input['weight'][$i],
+				);
+
 				DB::table('work_order_material_details')->insert($work_order_material_array);
+				DB::table('work_order_material_stock')->insert($work_order_material_stock_array);
 
 		}
+
+		foreach($old_stock as $os)
+		{
+			DB::table('work_order_material_stock')
+			->where('work_order_no',$os->work_order_no)
+			->where('item_no',$os->item_no)
+			->decrement('quantity',$os->quantity);
+		}
+
 
 		$work_order_details= WorkOrder::getRecordByWorkOrderDetails($data_input['work_order_no']);
 		$work_order_material_details= WorkOrder::getRecordByWorkOrderMaterialDetails($data_input['work_order_no']);
@@ -162,14 +202,14 @@ class WorkOrderController extends BaseController {
 				->with('work_order_material_details',$work_order_material_details);
 
 
-
 	}
 
 
 	public function excel()
 	{
-		$all_records_work_order_details= WorkOrder::getAllRecordsWorkOrderDetails();
-		$all_records_work_order_material_details=WorkOrder::getAllRecordsWorkOrderMaterialDetails();
+		$all_records_work_order_details = WorkOrder::getAllRecordsWorkOrderDetails();
+		$all_records_work_order_material_details = WorkOrder::getAllRecordsWorkOrderMaterialDetails();
+
 		return View::make('workOrder.workOrder_report_excel')
 			->with('work_order_details',$all_records_work_order_details)
 			->with('work_order_material_details',$all_records_work_order_material_details);
@@ -188,6 +228,7 @@ class WorkOrderController extends BaseController {
 		WorkOrder::deleteRecord($id);
 		$all_records_work_order_details= WorkOrder::getAllRecordsWorkOrderDetails();
 		$all_records_work_order_material_details=WorkOrder::getAllRecordsWorkOrderMaterialDetails();
+
 		return View::make('workOrder.work_report')
 			->with('work_order_details',$all_records_work_order_details)
 			->with('work_order_material_details',$all_records_work_order_material_details);

@@ -35,26 +35,50 @@ class machiningController extends BaseController
 	{
 		$machining_input = Input::all();
 
-		$final_heat_no = explode("-",$machining_input['heat_no'])[0];
-		$final_size = explode("-",$machining_input['heat_no'])[1];
-		$final_pressure = explode("-",$machining_input['heat_no'])[2];
-		$final_type = explode("-",$machining_input['heat_no'])[3];
-		$final_schedule = explode("-",$machining_input['heat_no'])[4];
+		$machining_heat_no = explode("-",$machining_input['heat_no'])[0];
+		$forging_size = explode("-",$machining_input['heat_no'])[1];
+		$forging_pressure = explode("-",$machining_input['heat_no'])[2];
+		$forging_type = explode("-",$machining_input['heat_no'])[3];
+		$forging_schedule = explode("-",$machining_input['heat_no'])[4];
+
+		$work_order_no = explode("-",$machining_input['item'])[0];
+		$work_order_item_no = explode("-",$machining_input['item'])[1];
+		$work_order_size = explode("-",$machining_input['item'])[2];
+		$work_order_pressure = explode("-",$machining_input['item'])[3];
+		$work_order_type = explode("-",$machining_input['item'])[4];
+		$work_order_schedule = explode("-",$machining_input['item'])[5];
 
 		$machining_array= array(
-				'date' => date('Y-m-d',strtotime($machining['date'])),
-				'work_order_no' => $machining['work_order_no'] ,
-				'item'  	=> $machining['item'],
-				'heat_no'	=> $final_heat_no,
-				'quantity'  => $machining['quantity'],
-				'machine_name'=>$machining['machine_name'],
-				'grade' => $machining['grade'],
-				'weight'	=> $machining['weight'],
-				'remarks'=> $machining['remarks']
+				'date' => date('Y-m-d',strtotime($machining_input['date'])),
+				'work_order_no' => $work_order_no,
+				'item'  	=> $work_order_item_no,
+				'heat_no'	=> $machining_heat_no,
+				'forging_size' => $forging_size,
+				'forging_pressure' => $forging_pressure,
+				'forging_type' => $forging_type,
+				'forging_schedule' => $forging_schedule,
+				'quantity'  => $machining_input['quantity'],
+				'machine_name'=>$machining_input['machine_name'],
+				'grade' => $machining_input['grade'],
+				'weight'	=> $machining_input['weight'],
+				'remarks'=> $machining_input['remarks']
 		);
 
-		$work_order_material_details = WorkOrder::getRecordFromItem($machining['work_order_no'],$machining['item']);
-		$work_order_material_details = $work_order_material_details[0];
+		$machining_work_order_stock_array = array(
+
+			'work_order_no' => $work_order_no,
+			'item'  	=> $work_order_item_no,
+			'size' => $work_order_size,
+			'pressure' => $work_order_pressure,
+			'type' =>	$work_order_type,
+			'schedule' =>	$work_order_schedule,
+			'quantity'  => $machining_input['quantity'],
+			'weight'	=> $machining_input['weight']
+
+			);
+
+		// $work_order_material_details = WorkOrder::getRecordFromItem($work_order_no,$work_order_item_no);
+		// $work_order_material_details = $work_order_material_details[0];
 
 		DB::beginTransaction();
 
@@ -63,7 +87,10 @@ class machiningController extends BaseController
 			if(!Machining::insertData($machining_array))
 				throw new Exception("Could not insert machining data",1);
 
-			if(!ForgingStock::decrementHeatSizePressureTypeScheduleData())
+			if(!MachiningStock::insertData($machining_work_order_stock_array))
+				throw new Exception("Could not insert machining data",1);
+
+			if(!ForgingStock::decrementHeatSizePressureTypeScheduleData($machining_heat_no,$forging_size,$forging_pressure,$forging_type,$forging_schedule,$machining_input['quantity']))
 				throw new Exception("Could not deduct forging data",1);
 
 			else
@@ -97,23 +124,20 @@ class machiningController extends BaseController
 
 	public function update($id)
 	{
-			$machining_array = Machining::getRecord($id);
+		$machining_array = Machining::getRecord($id);		
 
-			$grades = Grades::getGrades();
-			$heat_no = RawMaterial::getHeatNo();
+		$grades = Grades::getGrades();
+		$heat_no = ForgingStock::getHeatNo();
 
 		// shows index page for machining form
 		$availableWorkOrder= WorkOrder::availableWorkOrderNo();
-		$grades= Grades::getGrades();
-		$heatNo_available_forging_weight= Drilling::HeatNo_availableWeightForging();
 		return View::make('machining.machining_update')
 			->with('grades',$grades)
-			->with('heat_no',$heatNo_available_forging_weight)
+			->with('heat_no',$heat_no)
 			->with('availableWorkOrderNo',$availableWorkOrder)
 			->with('machining_array',$machining_array);
 
 	}
-
 
 	public function update_store($id)
 	{

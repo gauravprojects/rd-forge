@@ -51,7 +51,7 @@
 					->get();
 		}
 
-		public static function getAllData()
+		public static function getAllRecords()
 		{
 
 			// returns all records for forging reports

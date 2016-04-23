@@ -46,7 +46,7 @@
             <td>{{ $cutting_data->quantity }}</td>
             <td>{{ $cutting_data->weight_per_piece }}</td>
             <td>{{ $cutting_data->total_weight }}</td>
-            <td>{{ $cutting_data->size }}</td>
+            <td>{{ $cutting_data->standard_size }}</td>
             <td>{{ $cutting_data->pressure }}</td>
             <td>{{ $cutting_data->type }}</td>
             <td>{{ $cutting_data->schedule }}</td>

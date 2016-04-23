@@ -22,6 +22,7 @@ return array(
     'IlluminateQueueClosure' => $vendorDir . '/laravel/framework/src/Illuminate/Queue/IlluminateQueueClosure.php',
     'LoginPageController' => $baseDir . '/app/controllers/loginPageController.php',
     'Machining' => $baseDir . '/app/models/Machining.php',
+    'MachiningStock' => $baseDir . '/app/models/MachiningStock.php',
     'Manufactures' => $baseDir . '/app/models/Manufactures.php',
     'MasterController' => $baseDir . '/app/controllers/masterController.php',
     'MaterialType' => $baseDir . '/app/models/MaterialType.php',

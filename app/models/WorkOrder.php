@@ -122,6 +122,20 @@ class WorkOrder extends Eloquent
 			 ->delete();
 	}
 
+	public static function deleteStockMaterialDetails($id)
+	{
+		 return DB::table('work_order_material_stock')
+			 ->where('work_order_no','=',$id)
+			 ->delete();
+	}
+
+	public static function getOldStockDetails($id)
+	{
+		return DB::table('work_order_material_stock')
+			 ->where('work_order_no','=',$id)
+			 ->get();
+	}	
+
 
 
 }

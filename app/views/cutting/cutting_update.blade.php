@@ -25,21 +25,6 @@
                                  {{ Form::text('date',date('d-m-Y',strtotime($cutting->date)),array('class'=>'form-control inputfix','id'=>'date','name'=>'date','placeholder'=>'Date','readonly','data-date-format'=>'dd-mm-yyyy')) }}
                             </div>
 
-                            <div class="form-group">
-                                {{ Form::label('exampleInputEmail1','Size') }}
-
-                                <select class="form-control" name="size" id="size_select" required>
-                                    <option value="">---Select Size--------</option>
-                                    @foreach($sizes as $size_element)
-                                        @if($size_element->size == $cutting->raw_mat_size)
-                                            <option value="{{ $size_element->size }}" selected>{{$size_element->size}}</option>
-                                        @else
-                                            <option value="{{ $size_element->size }}">{{$size_element->size}}</option>
-                                        @endif
-                                    @endforeach
-                                </select>
-                            </div>
-
 
                             <!-- here it will show only those heat no who have available weight
                             in raw_material table -->
@@ -80,7 +65,7 @@
                                 <select class="form-control search selection" name="standard_size" id="standardsize_select" required>
                                     <option value="">---Select Standard Size--------</option>
                                     @foreach($standard_size as $standard_size_element)
-                                        @if($standard_size_element->std_size == $cutting->size)
+                                        @if($standard_size_element->std_size == $cutting->standard_size)
                                             <option value="{{ $standard_size_element->std_size }}" selected>{{$standard_size_element->std_size}}</option>
                                             <?php $old_standard_size = $standard_size_element->std_size; ?>
                                         @else

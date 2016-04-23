@@ -24,10 +24,10 @@
                                 <tr>
 
                                 <th class="heading" style="text-align:center;">Purchase Order Date</th>
-                                    <td>{{ $work_order_details[0]->purchase_order_date }}</td>
+                                    <td>{{ date('d-m-y',strtotime($work_order_details[0]->purchase_order_date)) }}</td>
 
                                     <th class="heading" style="text-align:center;">Required Delivery Date</th>
-                                    <td>{{ $work_order_details[0]->required_delivery_date }}</td>
+                                    <td>{{ date('d-m-y',strtotime($work_order_details[0]->required_delivery_date)) }}</td>
                                 </tr>
                                 <tr>
                                     <th class="heading" style="text-align:center;">Remarks</th>

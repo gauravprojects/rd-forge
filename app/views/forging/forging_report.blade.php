@@ -50,7 +50,7 @@
                                     <a href="{{ action('forgingController@update',array('id'=>$confirmation->forging_id))}}" class="link" >Update</a>
 
                                     <!-- Delete link -->
-                                    <a href="{{ action('forgingController@update',array('id'=>$confirmation->forging_id))}}" class="link" >Delete</a>
+                                    <a href="{{ action('forgingController@destroy',array('id'=>$confirmation->forging_id))}}" class="link" >Delete</a>
                                 </td>
                             </tr>
                         @endforeach

@@ -29,7 +29,7 @@
                             </tr>
                             @foreach($confirmations as $confirmation)
                             <tr>
-                                <td>{{ $confirmation->date }}</td>
+                                <td>{{ date('d-m-Y',strtotime($confirmation->date)) }}</td>
                                 <td>{{ $confirmation->weight_per_piece }}</td>
                                 <td>{{ $confirmation->heat_no }}</td>
                                 <td> {{ $confirmation->size }}</td>

@@ -176,7 +176,7 @@
                             $.each(JSON.parse(data),function(key,value)
                             {
                             $("#item_no_select").append(
-                            '<option value="'+value['item_no']+'">'+value['work_order_no']+"/"+value['item_no']+' - '+value['item_no']+'" - '+value['pressure']+'# - '+value['type']+' x '+value['schedule']+'</option>');
+                            '<option value="'+value['work_order_no']+'-'+value['item_no']+'-'+value['size']+'-'+value['pressure']+'-'+value['type']+'-'+value['schedule']+'">'+value['work_order_no']+"/"+value['item_no']+' - '+value['size']+'" - '+value['pressure']+'# - '+value['type']+' x '+value['schedule']+'</option>');
                             });
                             
                         });

@@ -220,7 +220,7 @@ class rawMaterialController extends BaseController {
 				throw new Exception("Cannot delete record", 1);
 
 			//Delete the record from the raw material stock table as well !!
-			if(!RawMaterialStock::decrementRecordByHeatSize($get_details[0]->heat_no,$get_details[0]->size))
+			if(!RawMaterialStock::decrementRecordByHeatSize($get_details[0]->heat_no,$get_details[0]->size,$get_details[0]->weight))
 				throw new Exception("Cannot decrement from stock", 1);
 
 			else

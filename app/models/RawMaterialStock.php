@@ -109,6 +109,13 @@ class RawMaterialStock extends Eloquent
 			   ->decrement('available_weight',$weight);
 	}
 
+	public static function checkZeroWeight()
+	{
+		return DB::table('raw_material_stock')
+			   ->where('available_weight','<',0)
+			   ->get();
+	}
+
 }
 
 ?>

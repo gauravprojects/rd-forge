@@ -27,7 +27,7 @@
                                 <th>Total Weight</th>
                             <tr>
                                 
-                                <td>{{ $last_record->date }}</td>
+                                <td>{{ date('d-m-Y',strtotime($last_record->date)) }}</td>
                                 <td>{{ $last_record->weight_per_piece }}</td>
                                 <td>{{ $last_record->heat_no }}</td>
                                 <td> {{ $last_record->size }}</td>

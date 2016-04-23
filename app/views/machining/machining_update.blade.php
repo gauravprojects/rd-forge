@@ -66,10 +66,10 @@
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Work Order Number') }}
 
-                                <select class="form-control search selection" name="work_order_no" id="work_order_no_select" required>
+                            <select class="form-control search selection" name="work_order_no" id="work_order_no_select" required>
                                     <option value="">---Select Work Order--------</option>
                                     @foreach($availableWorkOrderNo as $workOrder)
-                                        @if($drilling->work_order_no == $workOrder->work_order_no)
+                                        @if($machining->work_order_no == $workOrder->work_order_no)
                                             <option value="{{ $workOrder->work_order_no }}" selected>
                                                 {{$workOrder->work_order_no}} &nbsp;
                                                 -{{$workOrder->customer_name}} &nbsp;
@@ -83,28 +83,29 @@
                                             </option>
                                         @endif
                                     @endforeach
+
                                 </select>
                             </div>
 
 
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Item no') }}
-                                <select class="form-control search selection" name="item" id="item_no_select">
-                                    <option value="">---Select Item Number --------</option>
+                                <select class="form-control" name="item" id="item_no_select" required>
+                                    <option value="{{ $machining->work_order_no }}-{{ $machining->item }}-{{ $machining->forging_size }}-{{ $machining->forging_pressure }}-{{ $machining->forging_type }}-{{$machining->forging_schedule}}">{{ $machining->work_order_no }}/{{ $machining->item }} - {{ $machining->forging_size }}" - {{ $machining->forging_pressure }}# - {{ $machining->forging_type }} x {{$machining->forging_schedule}}</option>
                                 </select>
                             </div>
 
                              <div class="form-group">
-                                {{ Form::label('exampleInputEmail1','Heat Number(available raw material)') }}
+                                {{ Form::label('exampleInputEmail1','Heat Number(available forging)') }}
 
                                 <select class="form-control search selection" name="heat_no" id="heat_no_select" required>
                                     <option value="">------Select Heat Number----------</option>
-                                    <option value="Job Work">Job Work</option>
                                     @foreach($heat_no as $heat_no_element)
-                                        @if($machining->heat_no == $heat_no_element->heat_no)
-                                            <option value="{{ $heat_no_element->heat_no }}" selected>{{$heat_no_element->heat_no}}</option>
+                                        @if($machining->heat_no == $heat_no_element->heat_no && $machining->forging_size == $heat_no_element->size && $machining->forging_pressure == $heat_no_element->pressure && $machining->forging_type == $heat_no_element->type && $machining->forging_pressure == $heat_no_element->pressure)
+
+                                            <option value="{{ $heat_no_element->heat_no }}-{{ $heat_no_element->size }}-{{ $heat_no_element->pressure }}-{{ $heat_no_element->type }}-{{ $heat_no_element->schedule }}" selected>{{$heat_no_element->heat_no}} - {{ $heat_no_element->size }}" - {{ $heat_no_element->pressure }}# - {{ $heat_no_element->type }} x {{ $heat_no_element->schedule }}</option>
                                         @else
-                                            <option value="{{ $heat_no_element->heat_no }}">{{$heat_no_element->heat_no}}</option>
+                                            <option value="{{ $heat_no_element->heat_no }}-{{ $heat_no_element->size }}-{{ $heat_no_element->pressure }}-{{ $heat_no_element->type }}-{{ $heat_no_element->schedule }}">{{$heat_no_element->heat_no}} - {{ $heat_no_element->size }}" - {{ $heat_no_element->pressure }}# - {{ $heat_no_element->type }} x {{ $heat_no_element->schedule }}</option>
                                         @endif
                                     @endforeach
                                 </select>
@@ -172,19 +173,19 @@
             </div>		<!-- wrapper ends here -->
         </div>		<!-- row ends here -->
     </div> 		<!-- col-12 ends here -->
-
-<script type="text/javascript">
-    $(function () {
-        $('#date').datepicker();
-        $('#work_order_no_select').dropdown({
+ <script type="text/javascript">
+            $(function () {
+                $('#date').datepicker();
+                $('#work_order_no_select').dropdown({
                     onChange : function(){ 
 
                         var work_order_no = $(this)[0].value;
+                        $("#item_no_select").addClass("search selection");
 
                         $.ajax({
 
                             'type' : 'GET',
-                            'url' : 'workOrderMaterial',
+                            'url' : 'http://localhost/rd-forge/public/workOrderMaterial',
                             'data' : {work_order_no : work_order_no}
 
                         })
@@ -193,18 +194,18 @@
                             $.each(JSON.parse(data),function(key,value)
                             {
                             $("#item_no_select").append(
-                            '<option value="'+value['item_no']+'">'+value['work_order_no']+"/"+value['item_no']+'</option>');
+                            '<option value="'+value['work_order_no']+'-'+value['item_no']+'-'+value['size']+'-'+value['pressure']+'-'+value['type']+'-'+value['schedule']+'">'+value['work_order_no']+"/"+value['item_no']+' - '+value['size']+'" - '+value['pressure']+'# - '+value['type']+' x '+value['schedule']+'</option>');
                             });
                             
                         });
 
                      }
                 });
-        $('#item_no_select').dropdown();
-        $('#heat_no_select').dropdown();
-        $('#grade_select').dropdown();
-    });
-    </script>
+                $('#item_no_select').dropdown();
+                $('#heat_no_select').dropdown();
+                $('#grade_select').dropdown();
+            });
+        </script>
 
 
 @stop

@@ -280,7 +280,7 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 	public function show()
 	{
 		//this functions shows all forging records for forging reports
-		$forging_data= Forging::getAllData();
+		$forging_data= Forging::getAllRecords();
 		return View::make('forging.forging_report')->with('forging_data',$forging_data);
 	}
 
@@ -316,21 +316,55 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 	public function excel()
 	{
 
-		$forging_data= Forging::getAllData();
+		$forging_data= Forging::getAllRecords();
 		return View::make('forging.forging_report_excel')->with('forging_data',$forging_data);
 	}
 
 	public function destroy($id)
 	{
-		$delete_response= Forging::delete_record($id);
-		$forging_data= Forging::getAllRecords();
+		$forging_response = Forging::getRecord($id);
+		$total_weight = $forging_response[0]->weight_per_piece * $forging_response[0]->quantity;
+
+		DB::beginTransaction();
+			try
+			{
+				// //Increments the raw material stock data weight on the basis of given heat,size,pressure,type and schedule
+				if(!CuttingStock::incrementHeatSizePressureTypeScheduleData($forging_response[0]->heat_no,$forging_response[0]->cutting_size,$forging_response[0]->cutting_pressure,$forging_response[0]->cutting_type,$forging_response[0]->cutting_schedule,$total_weight))
+					throw new Exception("Cannot not increment data for cutting stock", 1);
+
+				//Decrements the cutting stock data weight on the basis of given heat,size,pressure,type and schedule
+				for($counter = 0; $counter < count(explode(",",$forging_response[0]->size)); $counter++)
+				{
+				
+					if(!ForgingStock::decrementHeatSizePressureTypeScheduleData($forging_response[0]->heat_no,explode(",",$forging_response[0]->size)[$counter],explode(",",$forging_response[0]->pressure)[$counter],explode(",",$forging_response[0]->type)[$counter],explode(",",$forging_response[0]->schedule)[$counter],$forging_response[0]->quantity))
+						throw new Exception("Cannot decrement forging stock data",1);
+				}
+					
+				//Delete the cutting records specified by the internal number
+				if(!Forging::delete_record($id))
+					throw new Exception("Cannot delete cutting record", 1);
+
+				else
+					DB::commit();
+					
+			}
+			catch(Exception $e)
+			{
+				DB::rollback();
+				var_dump($e);
+				return 0;
+			}
+
+
+		$forging_data = Forging::getAllRecords();
+
 		return View::make('forging.forging_report')->with('forging_data',$forging_data);
 
 	}
 
 	public function search_display()
     {
-        return View::make('search.forging_search')->with('data',Forging::getAllData());
+        return View::make('search.forging_search')->with('data',Forging::getAllRecords());
     }
 
 }

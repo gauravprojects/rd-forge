@@ -46,8 +46,11 @@
                   <!-- remarks -->
                   $remarks= '<td><input type="text" name="remarks_mat[]" class="form-control inputfix" value="" placeholder="Remarks"></td>';
 
+                   <!-- order_status -->
+                  $order_status= '<td><input type="text" name="order_status[]" class="form-control inputfix" value="" placeholder="Order Status"></td>';
+
              <!-- Jquery append function to append everything to the table -->
-              $("table").append("<tr>"+$item_no+$material_grade+$size+$pressure+$type+$schedule+$quantity+$weight+$remarks+"</tr>");
+              $("table").append("<tr>"+$item_no+$material_grade+$size+$pressure+$type+$schedule+$quantity+$weight+$remarks+$order_status+"</tr>");
 
               });
 
@@ -100,13 +103,13 @@
                         <!-- Puchase order date -->
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail','Purchase Order Date') }}
-                            {{ Form::text('purchase_order_date',$record->purchase_order_date,array('class'=>'form-control inputfix','id'=>'purchase_order_date','name'=>'purchase_order_date','placeholder'=>'Purchase Order Date','readonly','data-date-format'=>'dd-mm-yyyy')) }}
+                            {{ Form::text('purchase_order_date',date('d-m-Y',strtotime($record->purchase_order_date)),array('class'=>'form-control inputfix','id'=>'purchase_order_date','name'=>'purchase_order_date','placeholder'=>'Purchase Order Date','readonly','data-date-format'=>'dd-mm-yyyy')) }}
                         </div>
 
                         <!-- Required Delivery date when the order is required -->
                         <div class="form-group">
                             {{ Form::label('exampleInputEmail','Required Delivery Date') }}
-                            {{ Form::text('required_delivery_date',$record->required_delivery_date,array('class'=>'form-control inputfix','id'=>'required_delivery_date','name'=>'required_delivery_date','placeholder'=>'Required Delivery Date','readonly','data-date-format'=>'dd-mm-yyyy')) }}
+                            {{ Form::text('required_delivery_date',date('d-m-Y',strtotime($record->required_delivery_date)),array('class'=>'form-control inputfix','id'=>'required_delivery_date','name'=>'required_delivery_date','placeholder'=>'Required Delivery Date','readonly','data-date-format'=>'dd-mm-yyyy')) }}
                         </div>
 
                         <div class="form-group">
