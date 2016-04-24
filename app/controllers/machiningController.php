@@ -77,24 +77,41 @@ class machiningController extends BaseController
 
 			);
 
-		// $work_order_material_details = WorkOrder::getRecordFromItem($work_order_no,$work_order_item_no);
-		// $work_order_material_details = $work_order_material_details[0];
-
 		DB::beginTransaction();
+
+		$whether_stock_present = MachiningStock::getWorkOrderItemData($work_order_no,$work_order_item_no);
 
 		try
 		{
-			if(!Machining::insertData($machining_array))
-				throw new Exception("Could not insert machining data",1);
+			if(!$whether_stock_present)
+			{
+				if(!Machining::insertData($machining_array))
+					throw new Exception("Could not insert machining data",1);
 
-			if(!MachiningStock::insertData($machining_work_order_stock_array))
-				throw new Exception("Could not insert machining data",1);
+				if(!MachiningStock::insertData($machining_work_order_stock_array))
+					throw new Exception("Could not insert machining data",1);
 
-			if(!ForgingStock::decrementHeatSizePressureTypeScheduleData($machining_heat_no,$forging_size,$forging_pressure,$forging_type,$forging_schedule,$machining_input['quantity']))
-				throw new Exception("Could not deduct forging data",1);
+				if(!ForgingStock::decrementHeatSizePressureTypeScheduleData($machining_heat_no,$forging_size,$forging_pressure,$forging_type,$forging_schedule,$machining_input['quantity']))
+					throw new Exception("Could not deduct forging data",1);
 
+				else
+					DB::commit();
+			}
 			else
-				DB::commit();
+			{
+				if(!Machining::insertData($machining_array))
+					throw new Exception("Could not insert machining data",1);
+
+				//Decrements the cutting stock data weight on the basis of given OLD heat,size,pressure,type and schedule
+				if(!MachiningStock::incrementWorkOrderItemData($work_order_no,$work_order_item_no,$machining_input['quantity']))
+					throw new Exception("Could not increment data for old heat number",1);
+
+				if(!ForgingStock::decrementHeatSizePressureTypeScheduleData($machining_heat_no,$forging_size,$forging_pressure,$forging_type,$forging_schedule,$machining_input['quantity']))
+					throw new Exception("Could not deduct forging data",1);
+
+				else
+					DB::commit();
+			}
 		}
 		catch(Exception $e)
 		{
@@ -119,7 +136,7 @@ class machiningController extends BaseController
 	public function excel()
 	{
 
-		$all_data=Machining::getAllData();
+		$all_data = Machining::getAllData();
 		return View::make('machining.machining_report_excel')->with('data',$all_data);
 	}
 
@@ -268,8 +285,35 @@ class machiningController extends BaseController
 
 	public function destroy($id)
 	{
-		$delete_response= Machining::deleteRecord($id);
-		$all_data= Machining::getAllData();
+		$machining_response = Machining::getRecord($id);
+
+		DB::beginTransaction();
+
+		try
+		{
+			if(!Machining::delete_record($id))
+				throw new Exception("Cannot delete machining record", 1);
+
+			//Decrements the cutting stock data weight on the basis of given OLD heat,size,pressure,type and schedule
+			if(!MachiningStock::decrementWorkOrderItemData($machining_response[0]->work_order_no,$machining_response[0]->item,$machining_response[0]->quantity))
+				throw new Exception("Could not decrement data for old heat number",1);
+
+			//Increments the raw material stock data weight on the basis of given old heat and size
+			if(!ForgingStock::incrementHeatSizePressureTypeScheduleData($machining_response[0]->heat_no,$machining_response[0]->forging_size,$machining_response[0]->forging_pressure,$machining_response[0]->forging_type,$machining_response[0]->forging_schedule,$machining_response[0]->quantity))
+				throw new Exception("Cannot update weight", 1);
+
+			else
+				DB::commit();
+			
+		}
+		catch(Exception $e)
+		{
+			DB::rollback();
+			var_dump($e);
+			return $e;
+		}
+
+		
 		return View::make('machining.machining_report')->with('data',$all_data);
 
 	}

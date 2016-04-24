@@ -342,7 +342,7 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 					
 				//Delete the cutting records specified by the internal number
 				if(!Forging::delete_record($id))
-					throw new Exception("Cannot delete cutting record", 1);
+					throw new Exception("Cannot delete forging record", 1);
 
 				else
 					DB::commit();

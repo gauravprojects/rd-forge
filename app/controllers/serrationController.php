@@ -60,20 +60,40 @@
 
 			DB::beginTransaction();
 
+			$whether_stock_present = SerrationStock::getWorkOrderItemData($work_order_no,$work_order_item_no);
+
 			try
 			{
-				if(!Serration::insertData($serration_array))
-					throw new Exception("Could not insert serration data",1);
+				if(!$whether_stock_present)
+				{
+					if(!Serration::insertData($serration_array))
+						throw new Exception("Could not insert serration data",1);
 
-				if(!SerrationStock::insertData($serration_stock_array))
-					throw new Exception("Could not insert serration data",1);
+					if(!SerrationStock::insertData($serration_stock_array))
+						throw new Exception("Could not insert serration data",1);
 
-				//Decrements the cutting stock data weight on the basis of given OLD heat,size,pressure,type and schedule
-				if(!DrillingStock::decrementWorkOrderItemData($work_order_no,$work_order_item_no,$serration_input['quantity']))
-					throw new Exception("Could not decrement data for work order",1);
+					//Decrements the cutting stock data weight on the basis of given OLD heat,size,pressure,type and schedule
+					if(!DrillingStock::decrementWorkOrderItemData($work_order_no,$work_order_item_no,$serration_input['quantity']))
+						throw new Exception("Could not decrement data for work order",1);
 
+					else
+						DB::commit();
+				}
 				else
-					DB::commit();
+				{
+					if(!Serration::insertData($serration_array))
+						throw new Exception("Could not insert serration data",1);
+
+					if(!SerrationStock::incrementWorkOrderItemData($work_order_no,$work_order_item_no,$serration_input['quantity']))
+						throw new Exception("Could not insert serration data",1);
+
+					//Decrements the cutting stock data weight on the basis of given OLD heat,size,pressure,type and schedule
+					if(!DrillingStock::decrementWorkOrderItemData($work_order_no,$work_order_item_no,$serration_input['quantity']))
+						throw new Exception("Could not decrement data for work order",1);
+
+					else
+						DB::commit();
+				}
 			}
 			catch(Exception $e)
 			{
@@ -229,8 +249,35 @@
 
 		public function destroy($id)
 		{
-			$delete_response= Serration::deleteRecord($id);
-			$all_data=Serration::getAllData();
+			$serration_response = Serration::getRecord($id);
+
+			DB::beginTransaction();
+
+			try
+			{
+				if(!Serration::delete_record($id))
+					throw new Exception("Cannot delete machining record", 1);
+
+				//Decrements the cutting stock data weight on the basis of given OLD heat,size,pressure,type and schedule
+				if(!SerrationStock::decrementWorkOrderItemData($serration_response[0]->work_order_no,$serration_response[0]->item,$serration_response[0]->quantity))
+					throw new Exception("Could not decrement data for old heat number",1);
+
+				//Increments the raw material stock data weight on the basis of given old heat and size
+				if(!DrillingStock::incrementWorkOrderItemData($serration_response[0]->work_order_no,$serration_response[0]->item,$serration_response[0]->quantity))
+					throw new Exception("Cannot update weight", 1);
+
+				else
+					DB::commit();
+				
+			}
+			catch(Exception $e)
+			{
+				DB::rollback();
+				var_dump($e);
+				return $e;
+			}
+
+			$all_data = Serration::getAllData();
 			return View::make('serration.serration_report')->with('data',$all_data);
 		}
 

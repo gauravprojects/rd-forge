@@ -38,10 +38,10 @@ class Serration extends Eloquent {
 				->get();
 	}
 
-	public static function deleteRecord($serration_id)
+	public static function delete_record($serr_id)
 	{
 		return DB::table('serration_records')
-			->where('serration_id','=',$serration_id)
+			->where('serr_id','=',$serr_id)
 			->delete();
 	}
 

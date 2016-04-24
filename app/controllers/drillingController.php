@@ -57,20 +57,40 @@ class DrillingController extends BaseController {
 
 		DB::beginTransaction();
 
+		$whether_stock_present = DrillingStock::getWorkOrderItemData($work_order_no,$work_order_item_no);
+
 		try
 		{
-			if(!Drilling::insertData($drilling_array))
-				throw new Exception("Could not insert drilling data",1);
+			if(!$whether_stock_present)
+			{
+				if(!Drilling::insertData($drilling_array))
+					throw new Exception("Could not insert drilling data",1);
 
-			if(!DrillingStock::insertData($drilling_stock_array))
-				throw new Exception("Could not insert machining data",1);
+				if(!DrillingStock::insertData($drilling_stock_array))
+					throw new Exception("Could not insert machining data",1);
 
-			//Decrements the cutting stock data weight on the basis of given OLD heat,size,pressure,type and schedule
-			if(!MachiningStock::decrementWorkOrderItemData($work_order_no,$work_order_item_no,$drilling_input['quantity']))
-				throw new Exception("Could not decrement data for work order",1);
+				//Decrements the cutting stock data weight on the basis of given OLD heat,size,pressure,type and schedule
+				if(!MachiningStock::decrementWorkOrderItemData($work_order_no,$work_order_item_no,$drilling_input['quantity']))
+					throw new Exception("Could not decrement data for work order",1);
 
+				else
+					DB::commit();
+			}
 			else
-				DB::commit();
+			{
+				if(!Drilling::insertData($drilling_array))
+					throw new Exception("Could not insert drilling data",1);
+
+				if(!DrillingStock::incrementWorkOrderItemData($work_order_no,$work_order_item_no,$drilling_input['quantity']))
+					throw new Exception("Could not insert machining data",1);
+
+				//Decrements the cutting stock data weight on the basis of given OLD heat,size,pressure,type and schedule
+				if(!MachiningStock::decrementWorkOrderItemData($work_order_no,$work_order_item_no,$drilling_input['quantity']))
+					throw new Exception("Could not decrement data for work order",1);
+
+				else
+					DB::commit();
+			}
 		}
 		catch(Exception $e)
 		{
@@ -227,8 +247,35 @@ class DrillingController extends BaseController {
 
 	public function destroy($id)
 	{
-		$delete_response=Drilling::deleteRecord($id);
-		$all_data= Drilling::getAllData();
+		$drilling_response = Drilling::getRecord($id);
+
+		DB::beginTransaction();
+
+		try
+		{
+			if(!Drilling::delete_record($id))
+				throw new Exception("Cannot delete machining record", 1);
+
+			//Decrements the cutting stock data weight on the basis of given OLD heat,size,pressure,type and schedule
+			if(!DrillingStock::decrementWorkOrderItemData($drilling_response[0]->work_order_no,$drilling_response[0]->item,$drilling_response[0]->quantity))
+				throw new Exception("Could not decrement data for old heat number",1);
+
+			//Increments the raw material stock data weight on the basis of given old heat and size
+			if(!MachiningStock::incrementWorkOrderItemData($drilling_response[0]->work_order_no,$drilling_response[0]->item,$drilling_response[0]->quantity))
+				throw new Exception("Cannot update weight", 1);
+
+			else
+				DB::commit();
+			
+		}
+		catch(Exception $e)
+		{
+			DB::rollback();
+			var_dump($e);
+			return $e;
+		}
+
+		$all_data = Drilling::getAllData();		
 		return View::make('drilling.drilling_report')->with('data',$all_data);
 
 	}
