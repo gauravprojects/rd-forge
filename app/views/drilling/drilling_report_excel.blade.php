@@ -24,7 +24,6 @@
         <th>Date</th>
         <th>Work Order Number</th>
         <th>Item</th>
-        <th>Heat no</th>
         <th>Quantity</th>
         <th>Machine Name</th>
         <th>Grade</th>
@@ -38,7 +37,6 @@
             <td>{{ date('d-m-Y',strtotime($drilling_data->date)) }}</td>
             <td>{{ $drilling_data->work_order_no }}</td>
             <td>{{ $drilling_data->item }}</td>
-            <td>{{ $drilling_data->heat_no }}</td>
             <td>{{ $drilling_data->quantity }}</td>
             <td>{{ $drilling_data->machine_name }}</td>
             <td>{{ $drilling_data->grade }}</td>

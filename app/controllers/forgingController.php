@@ -27,7 +27,7 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 		$pressure = Pressure::getPressure();
 		$schedule = Schedule::getSchedule();
 		$type = DescriptionType::getType();
-		$grades=Grades::getGrades();
+		$grades = Grades::getGrades();
 		$manufacturers= Manufactures::getManufactures();
 
 		return array('sizes'=>$sizes,'heat_no'=>$heat_no,'standard_size'=>$standard_sizes,'sizes'=>$sizes,

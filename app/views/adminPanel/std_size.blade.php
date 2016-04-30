@@ -14,7 +14,7 @@
                     <div class="row" id="left-col">
                         <table>
                             <tr class="heading">
-                                <th>No</th>
+                                <th>S.No</th>
                                 <th>Size(Inches)</th>
                                 <th>Action</th>
                             </tr>

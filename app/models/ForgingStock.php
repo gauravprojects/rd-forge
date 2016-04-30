@@ -10,9 +10,7 @@ class ForgingStock extends Eloquent
 
 	public static function getHeatNo()
 	{
-		return DB::table('forging_stock')
-			->where('available_quantity_forging','>',0)
-			->get();
+		return DB::table('forging_stock')->get();
 	}
 
 	//Gets the stock data on the basis of given heat,size,pressure,type and schedule

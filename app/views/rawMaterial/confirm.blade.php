@@ -48,10 +48,6 @@
                                 <a href="{{ action('rawMaterialController@update',array('id'=>$confirmation->internal_no))}}" class="link" >Update</a>
                             </button>
 
-                            <!-- Delete button -->
-                            <button class="btn btn-small btn-block" type="button" id="excel_button">
-                                <a href="{{ action('rawMaterialController@destroy',array('id'=>$confirmation->internal_no))}}" class="link" >Delete</a>
-                            </button>
                         </div>
                         <div class="span9 btn-block excelPrint">
                             <button class="btn btn-small btn-block" type="button" id="excel_button">

@@ -12,6 +12,9 @@
                             <br><br>
                         </div>
                     </div>
+
+                    @if($data)
+
                     <?php $serial_number = 1; ?>
                     <div class="row">
                         <table>
@@ -32,10 +35,13 @@
 
                         </table>
 
-
-
                         <br><br><br><br>
                     </div>		<!-- row conatining form ends here -->
+
+                    @else
+                        <p class="center-align">No material currently present</p>    
+                    @endif    
+
                 </div>		<!-- card ends here -->
             </div>		<!-- wrapper ends here -->
         </div>		<!-- row ends here -->

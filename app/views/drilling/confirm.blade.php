@@ -19,7 +19,6 @@
                                 <th>Date</th>
                                 <th>Work Order Number</th>
                                 <th>Item</th>
-                                <th>Heat no</th>
                                 <th>Quantity</th>
                                 <th>Machine Name</th>
                                 <th>Grade</th>
@@ -29,7 +28,6 @@
                                 <td>{{ date('d-m-Y',strtotime($last_record->date)) }}</td>
                                 <td>{{ $last_record->work_order_no }}</td>
                                 <td>{{ $last_record->item }}</td>
-                                <td>{{ $last_record->heat_no }}</td>
                                 <td>{{ $last_record->quantity }}</td>
                                 <td>{{ $last_record->machine_name }}</td>
                                 <td>{{ $last_record->grade }}</td>

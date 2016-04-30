@@ -15,7 +15,7 @@
 
                         <table>
                             <tr class="heading">
-                                <th>No</th>
+                                <th>S.No</th>
                                 <th>Manufacturer's Name</th>
                                 <th>Item</th>
                                 <th>Action</th>
@@ -41,7 +41,7 @@
                     </div>		<!-- row conatining form ends here -->
                     <div class="row" id="right-col">
 
-                        <p class="heading">Add Manufacturer's here</p>
+                        <p class="heading">Add Manufacturers here</p>
                         {{ Form::open(array('action'=> 'masterController@storeManufacturers')) }}
                                 <!-- For recipt number of the material coming from outside -->
 

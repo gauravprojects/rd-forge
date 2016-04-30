@@ -15,7 +15,7 @@
 
                         <table>
                             <tr class="heading">
-                                <th>No</th>
+                                <th>S.No</th>
                                 <th>Types</th>
                                 <th>Action</th>
                             </tr>

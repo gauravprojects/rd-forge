@@ -475,6 +475,11 @@
 
 		//Routes for manufacture
 
+	Route::get('admin/showWorkOrderStatus',array(
+		'as' => 'showWorkOrderStatus',
+		'uses' => 'masterController@showWorkOrderStatus'
+	));
+
 	Route::get('admin/manufacturers',array(
 		'as' => 'manufacturers.show',
 		'uses' => 'masterController@showManufactures'

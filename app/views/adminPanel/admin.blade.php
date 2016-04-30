@@ -24,6 +24,7 @@
                         <li><a href="{{ action('masterController@showType'); }}" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 waves-effect waves-light btn link">Description Types</a></li>
                         <li><a href="{{ action('masterController@showMaterialType'); }}" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 waves-effect waves-light btn link">Material Types</a></li>
                         <li><a href="{{ action('masterController@showStatus'); }}" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 waves-effect waves-light btn link">Status</a></li>
+                        <li><a href="{{ action('masterController@showWorkOrderStatus'); }}" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 waves-effect waves-light btn link">Work Order Status</a></li>
 
                     </ul>
                     <div class="row">

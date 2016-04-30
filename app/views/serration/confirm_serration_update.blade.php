@@ -19,7 +19,6 @@
                                 <th>Date</th>
                                 <th>Work Order Number</th>
                                 <th>Item</th>
-                                <th>Heat no</th>
                                 <th>Quantity</th>
                                 <th>Machine Name</th>
                                 <th>Grade</th>
@@ -31,7 +30,6 @@
                                 <td>{{ date('d-m-Y',strtotime($confirmation->date)) }}</td>
                                 <td>{{ $confirmation->work_order_no }}</td>
                                 <td>{{ $confirmation->item }}</td>
-                                <td>{{ $confirmation->heat_no }}</td>
                                 <td>{{ $confirmation->quantity }}</td>
                                 <td>{{ $confirmation->machine_name }}</td>
                                 <td>{{ $confirmation->grade }}</td>

@@ -31,7 +31,7 @@ class Drilling extends Eloquent {
 	public static function getLastRecord()
 	{
 		return DB::table('drilling_records')
-				->orderBy('drilling_id', 'desc')
+				->orderBy('drill_id', 'desc')
 				->first();
 	}
 

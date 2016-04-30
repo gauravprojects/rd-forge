@@ -32,7 +32,7 @@
                             <tr>
                                 <td>{{date('d-m-Y',strtotime($confirmation->date))}}</td>
                                 <td>{{$confirmation->raw_mat_size}}</td>
-                                <td>{{$confirmation->size}}</td>
+                                <td>{{$confirmation->standard_size}}</td>
                                 <td>{{$confirmation->pressure }}</td>
                                 <td>{{$confirmation->type }}</td>
                                 <td>{{$confirmation->schedule}}</td>

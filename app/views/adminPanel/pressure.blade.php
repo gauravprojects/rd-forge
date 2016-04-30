@@ -15,7 +15,7 @@
 
                         <table>
                             <tr class="heading">
-                                <th>No</th>
+                                <th>S.No</th>
                                 <th>Pressure</th>
                                 <th>Action</th>
                             </tr>
@@ -39,7 +39,7 @@
                     </div>		<!-- row conatining form ends here -->
                     <div class="row" id="right-col">
 
-                        <p class="heading">Add Sizes here</p>
+                        <p class="heading">Add Pressures here</p>
                         {{ Form::open(array('action'=> 'masterController@storePressure')) }}
                                 <!-- For recipt number of the material coming from outside -->
 

@@ -30,7 +30,7 @@
                             <tr>
                                 <td>{{date('d-m-Y',strtotime($last_record->date)) }}</td>
                                 <td>{{$last_record->raw_mat_size}}</td>
-                                <td>{{ $last_record->size}}</td>
+                                <td>{{ $last_record->standard_size}}</td>
                                 <td>{{ $last_record->pressure }}</td>
                                 <td>{{ $last_record->type }}</td>
                                 <td>{{$last_record->schedule}}</td>

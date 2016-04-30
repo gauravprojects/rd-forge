@@ -99,8 +99,6 @@
                     
                         <a href="{{ action('workOrderController@update',array('id'=>$work_order_details[0]->work_order_no))}}" class="link"><button class="waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button" type="submit">Update</button></a>
 
-                          <a href="{{ action('workOrderController@destroy',array('id'=>$work_order_details[0]->work_order_no))}}" class="link"><button class="waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button" type="submit">Delete</button></a>
-
                 </div>		<!-- card ends here -->
             </div>		<!-- wrapper ends here -->
         </div>		<!-- row ends here -->

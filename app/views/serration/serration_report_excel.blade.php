@@ -24,7 +24,6 @@
         <th>Date</th>
         <th>Work Order Number</th>
         <th>Item</th>
-        <th>Heat no</th>
         <th>Quantity</th>
         <th>Machine Name</th>
         <th>Grade</th>
@@ -38,7 +37,6 @@
             <td>{{ date('d-m-Y',strtotime($serration_data->date)) }}</td>
             <td>{{ $serration_data->work_order_no }}</td>
             <td>{{ $serration_data->item }}</td>
-            <td>{{ $serration_data->heat_no }}</td>
             <td>{{ $serration_data->quantity }}</td>
             <td>{{ $serration_data->machine_name }}</td>
             <td>{{ $serration_data->grade }}</td>
