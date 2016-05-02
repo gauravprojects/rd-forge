@@ -13,27 +13,27 @@
                   $item_no= '<td><input type="text" name="item_no[]" class="form-control inputfix" value=" '+ ++$item_no_count+ '"  </td>';
 
                   <!-- material grade -->
-                  $material_grade= '<td> <select class="form-control" name="grade[]"> @foreach($grades as $grade_element)
+                  $material_grade= '<td> <select class="form-control ui fluid search dropdown grade_select" name="grade[]">                    @foreach($grades as $grade_element)
                                             <option value="{{ $grade_element->grade_name }}">{{ $grade_element->grade_name }}</option> @endforeach </select> </td>';
 
                   <!-- Size -->
-                  $size= '<td><select class="form-control" name="standard_size[]"> @foreach($standard_size as $standard_size_element)
+                  $size= '<td><select class="form-control ui fluid search dropdown standardsize_select" name="standard_size[]"> @foreach($standard_size as $standard_size_element)
                               <option value="{{ $standard_size_element->std_size }}">{{$standard_size_element->std_size}}</option> @endforeach
                                 </select></td>';
 
                   <!-- pressure -->
-                  $pressure= '<td><select class="form-control" name="pressure[]">@foreach($pressure as $pressure_element)
+                  $pressure= '<td><select class="form-control ui fluid search dropdown pressure_select" name="pressure[]">@foreach($pressure as $pressure_element)
                               <option value="{{ $pressure_element->pressure }}">{{$pressure_element->pressure}}</option>@endforeach
                       </select></td>';
 
                   <!-- Type -->
-                  $type= '<td><select class="form-control" name="type[]">@foreach($type as $type_element)
+                  $type= '<td><select class="form-control ui fluid search dropdown standardtype_select" name="type[]">@foreach($type as $type_element)
                               <option value="{{ $type_element->type }}">{{$type_element->type}}</option>@endforeach
                       </select></td>';
 
 
                   <!-- Schedule -->
-                  $schedule= '<td><select class="form-control" name="schedule[]"> @foreach($schedule as $schedule_element)
+                  $schedule= '<td><select class="form-control ui fluid search dropdown schedule_select" name="schedule[]"> @foreach($schedule as $schedule_element)
                               <option value="{{ $schedule_element->schedule }}">{{$schedule_element->schedule}}</option> @endforeach
                       </select></td>';
 
@@ -51,6 +51,12 @@
 
              <!-- Jquery append function to append everything to the table -->
               $("table").append("<tr>"+$item_no+$material_grade+$size+$pressure+$type+$schedule+$quantity+$weight+$remarks+$order_status+"</tr>");
+
+                $('.grade_select').dropdown();
+                $('.standardsize_select').dropdown();
+                $('.pressure_select').dropdown();
+                $('.standardtype_select').dropdown();
+                $('.schedule_select').dropdown(); 
 
               });
 
@@ -174,7 +180,7 @@
 
                                     <!-- Material Grade -->
                                     <td>
-                                        <select class="form-control" name="grade[]">
+                                        <select class="form-control ui fluid search dropdown grade_select" name="grade[]">
                                             @foreach($grades as $grade_element)
                                                 @if($pushpam_matah->material_grade == $grade_element->grade_name)
                                                     <option value="{{ $grade_element->grade_name }}" selected>{{ $grade_element->grade_name }}</option>
@@ -188,7 +194,7 @@
 
                                     <td>
                                         <!-- Size -->
-                                        <select class="form-control" name="standard_size[]">
+                                        <select class="form-control ui fluid search dropdown standardsize_select" name="standard_size[]">
                                             @foreach($standard_size as $standard_size_element)
                                                 @if($pushpam_matah->size == $standard_size_element->std_size)
                                                     <option value="{{ $standard_size_element->std_size }}" selected>{{$standard_size_element->std_size}}</option>
@@ -201,7 +207,7 @@
 
                                     <td>
                                         <!-- Pressure -->
-                                        <select class="form-control" name="pressure[]">
+                                        <select class="form-control ui fluid search dropdown pressure_select" name="pressure[]">
                                             @foreach($pressure as $pressure_element)
                                                  @if($pushpam_matah->pressure == $pressure_element->pressure)
                                                     <option value="{{ $pressure_element->pressure }}" selected>{{$pressure_element->pressure}}</option>
@@ -214,7 +220,7 @@
 
                                     <td>
                                         <!-- Type -->
-                                        <select class="form-control" name="type[]">
+                                        <select class="form-control ui fluid search dropdown standardtype_select" name="type[]">
                                             @foreach($type as $type_element)
                                                  @if($pushpam_matah->type == $type_element->type)
                                                     <option value="{{ $type_element->type }}" selected>{{$type_element->type}}</option>
@@ -227,7 +233,7 @@
 
                                     <td>
                                         <!-- Schedule -->
-                                        <select class="form-control" name="schedule[]">
+                                        <select class="form-control ui fluid search dropdown schedule_select" name="schedule[]">
                                             @foreach($schedule as $schedule_element)
                                                 @if($pushpam_matah->schedule == $schedule_element->schedule)
                                                     <option value="{{ $schedule_element->schedule }}" selected>{{$schedule_element->schedule}}</option>
@@ -289,6 +295,12 @@
         $(function () {
             $('#purchase_order_date').datepicker();
             $('#required_delivery_date').datepicker();
+            $('.grade_select').dropdown();
+            $('.standardsize_select').dropdown();
+            $('.pressure_select').dropdown();
+            $('.standardtype_select').dropdown();
+            $('.schedule_select').dropdown(); 
+
         });
     </script>
 

@@ -109,11 +109,7 @@ class WorkOrder extends Eloquent
 
 	public static function deleteRecord($id)
 	{
-		 DB::table('work_order_records')
-			 ->where('work_order_no','=',$id)
-			 ->delete();
-
-		 return DB::table('work_order_material_details')
+		 return DB::table('work_order_records')
 			 ->where('work_order_no','=',$id)
 			 ->delete();
 	}
@@ -124,20 +120,6 @@ class WorkOrder extends Eloquent
 			 ->where('work_order_no','=',$id)
 			 ->delete();
 	}
-
-	public static function deleteStockMaterialDetails($id)
-	{
-		 return DB::table('work_order_material_stock')
-			 ->where('work_order_no','=',$id)
-			 ->delete();
-	}
-
-	public static function getOldStockDetails($id)
-	{
-		return DB::table('work_order_material_stock')
-			 ->where('work_order_no','=',$id)
-			 ->get();
-	}	
 
 
 

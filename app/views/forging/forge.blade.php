@@ -206,7 +206,6 @@ i.icon.delete:before {
                                     <td>
                                         <!-- Size -->
                                 <select class="form-control ui fluid search dropdown standardsize_select" name="standard_size[]" required>
-                                    <option value="">---Select Standard Size--------</option>
                                     @foreach($standard_size as $standard_size_element)
                                         <option value="{{ $standard_size_element->std_size }}">{{$standard_size_element->std_size}}</option>
                                     @endforeach
@@ -216,7 +215,6 @@ i.icon.delete:before {
                                     <td>
                                         <!-- Pressure -->
                                 <select class="form-control ui fluid search dropdown pressure_select" name="pressure[]" required>
-                                    <option value="">---Select Pressure--------</option>
                                     @foreach($pressure as $pressure_element)
                                         <option value="{{ $pressure_element->pressure }}">{{$pressure_element->pressure}}</option>
                                     @endforeach
@@ -226,7 +224,6 @@ i.icon.delete:before {
                                     <td>
                                         <!-- Type -->
                                 <select class="form-control ui fluid search dropdown standardtype_select" name="type[]" required>
-                                    <option value="">---Select Type--------</option>
                                     @foreach($type as $type_element)
                                         <option value="{{ $type_element->type }}">{{$type_element->type}}</option>
                                     @endforeach
@@ -236,7 +233,6 @@ i.icon.delete:before {
                                     <td>
                                         <!-- Schedule -->
                                 <select class="form-control ui fluid search dropdown schedule_select" name="schedule[]" required>
-                                    <option value="">---Select Schedule--------</option>
                                     @foreach($schedule as $schedule_element)
                                         <option value="{{ $schedule_element->schedule }}">{{$schedule_element->schedule}}</option>
                                     @endforeach

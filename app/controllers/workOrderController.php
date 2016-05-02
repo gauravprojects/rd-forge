@@ -133,10 +133,6 @@ class WorkOrderController extends BaseController {
 		WorkOrder::updateRecord($data_array,$data_input['work_order_no']);
 		WorkOrder::deleteRecordMaterialDetails($data_input['work_order_no']);
 
-		// var_dump($old_stock);
-
-		WorkOrder::deleteStockMaterialDetails($data_input['work_order_no']);
-
 
 		for($i=0;$i<count($data_input['item_no']);$i++)
 		{
@@ -158,14 +154,6 @@ class WorkOrderController extends BaseController {
 
 		}
 
-		foreach($old_stock as $os)
-		{
-			DB::table('work_order_material_stock')
-			->where('work_order_no',$os->work_order_no)
-			->where('item_no',$os->item_no)
-			->decrement('quantity',$os->quantity);
-		}
-
 
 		$work_order_details= WorkOrder::getRecordByWorkOrderDetails($data_input['work_order_no']);
 		$work_order_material_details= WorkOrder::getRecordByWorkOrderMaterialDetails($data_input['work_order_no']);
@@ -174,7 +162,6 @@ class WorkOrderController extends BaseController {
 		return View::make('workOrder.confirm')
 				->with('work_order_details',$work_order_details)
 				->with('work_order_material_details',$work_order_material_details);
-
 
 	}
 
