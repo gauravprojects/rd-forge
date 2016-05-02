@@ -11,7 +11,7 @@ class DrillingController extends BaseController {
 
 	public function index()
 	{
-		$availableWorkOrder= WorkOrder::availableWorkOrderNo();
+		$availableWorkOrder = MachiningStock::getMachinedWorkOrderNo();
 		$grades= Grades::getGrades();
 		$heatNo_available_forging_weight= Drilling::HeatNo_availableWeightForging();
 		return View::make('drilling.drill')
@@ -118,8 +118,8 @@ class DrillingController extends BaseController {
 
 		$grades = Grades::getGrades();
 		//$heat_no = RawMaterial::getHeatNo();
-		$availableWorkOrder = WorkOrder::availableWorkOrderNo();
-		$availableWorkOrderItem = WorkOrder::availableWorkOrderItemNo();
+		$availableWorkOrder= MachiningStock::getMachinedWorkOrderNo();
+		$availableWorkOrderItem = MachiningStock::getMachinedWorkOrderItemNo();
 
 		return View::make('drilling.drilling_update')
 		->with('drilling_array',$drilling_array)
@@ -237,7 +237,12 @@ class DrillingController extends BaseController {
 		return View::make('drilling.confirm_drilling_update')->with('confirmations',$get_record_array);
 	}
 
-
+	public function getMachinedWorkOrderMaterial()
+	{
+		$work_order_no = Input::get('work_order_no');
+		$details = MachiningStock::getMachinedWorkOrderItemNo($work_order_no);
+		return json_encode($details);
+	}
 
 	public function excel()
 	{

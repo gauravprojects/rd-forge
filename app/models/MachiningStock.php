@@ -119,6 +119,21 @@ class MachiningStock extends Eloquent
 			   ->get();
 	}
 
+	public static function getMachinedWorkOrderNo()
+	{
+		return DB::table('machining_work_order_stock')
+				->join('work_order_records','machining_work_order_stock.work_order_no','=','work_order_records.work_order_no')
+				->distinct()
+				->get();
+	}
+
+	public static function getMachinedWorkOrderItemNo($work_order_no)
+	{
+		return DB::table('machining_work_order_stock')
+				->where('work_order_no',$work_order_no)
+				->get();
+	}
+
 }
 
 

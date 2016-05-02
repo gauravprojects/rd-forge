@@ -140,7 +140,7 @@
                         $.ajax({
 
                             'type' : 'GET',
-                            'url' : 'workOrderMaterial',
+                            'url' : 'machinedWorkOrderMaterial',
                             'data' : {work_order_no : work_order_no}
 
                         })
@@ -149,7 +149,7 @@
                             $.each(JSON.parse(data),function(key,value)
                             {
                             $("#item_no_select").append(
-                            '<option value="'+value['work_order_no']+'-'+value['item_no']+'-'+value['size']+'-'+value['pressure']+'-'+value['type']+'-'+value['schedule']+'">'+value['work_order_no']+"/"+value['item_no']+' - '+value['size']+'" - '+value['pressure']+'# - '+value['type']+' x '+value['schedule']+'</option>');
+                            '<option value="'+value['work_order_no']+'-'+value['item']+'-'+value['size']+'-'+value['pressure']+'-'+value['type']+'-'+value['schedule']+'">'+value['work_order_no']+"/"+value['item']+' - '+value['size']+'" - '+value['pressure']+'# - '+value['type']+' x '+value['schedule']+'</option>');
                             });
                             
                         });

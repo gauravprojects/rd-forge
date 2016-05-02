@@ -13,9 +13,9 @@
 	*/
 		public function index()
 		{
-			$availableWorkOrder= WorkOrder::availableWorkOrderNo();
-			$grades= Grades::getGrades();
-			$heatNo_available_forging_weight= Drilling::HeatNo_availableWeightForging();
+			$availableWorkOrder= DrillingStock::getDrilledWorkOrderNo();
+			$grades = Grades::getGrades();
+			$heatNo_available_forging_weight = Drilling::HeatNo_availableWeightForging();
 			return View::make('serration.serration')
 					->with('grades',$grades)
 					->with('availableWorkOrderNo',$availableWorkOrder)
@@ -115,19 +115,18 @@
 
 		public function update($id)
 		{
-				$serration_array = Serration::getRecord($id);
-			
-				$grades = Grades::getGrades();
+			$serration_array = Serration::getRecord($id);
+		
+			$grades = Grades::getGrades();
 
-			$availableWorkOrder = WorkOrder::availableWorkOrderNo();
-		$availableWorkOrderItem = WorkOrder::availableWorkOrderItemNo();
-			
-
-				return View::make('serration.serration_update')
-				->with('serration_array',$serration_array)
-				->with('grades',$grades)
-				->with('availableWorkOrderNo',$availableWorkOrder)
-				->with('availableWorkOrderItemNo',$availableWorkOrderItem);
+			$availableWorkOrder = DrillingStock::getDrilledWorkOrderNo();
+			$availableWorkOrderItem = DrillingStock::getDrilledWorkOrderItemNo();
+		
+			return View::make('serration.serration_update')
+			->with('serration_array',$serration_array)
+			->with('grades',$grades)
+			->with('availableWorkOrderNo',$availableWorkOrder)
+			->with('availableWorkOrderItemNo',$availableWorkOrderItem);
 		}
 
 
@@ -239,10 +238,16 @@
 			return View::make('serration.confirm_serration_update')->with('confirmations',$get_record_array);
 		}
 
+		public function getDrilledWorkOrderMaterial()
+		{
+			$work_order_no = Input::get('work_order_no');
+			$details = DrillingStock::getDrilledWorkOrderMaterial($work_order_no);
+			return json_encode($details);
+		}
 
 		public function excel()
 		{
-			$all_data=Serration::getAllData();
+			$all_data = Serration::getAllData();
 			return View::make('serration.serration_report_excel')->with('data',$all_data);
 
 		}
