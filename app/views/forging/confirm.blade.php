@@ -25,18 +25,21 @@
                                 <th>Schedule</th>
                                 <th>Quantity</th>
                                 <th>Total Weight</th>
-                            <tr>
-                                
-                                <td>{{ date('d-m-Y',strtotime($last_record->date)) }}</td>
-                                <td>{{ $last_record->weight_per_piece }}</td>
-                                <td>{{ $last_record->heat_no }}</td>
-                                <td> {{ $last_record->size }}</td>
-                                <td>{{ $last_record->pressure }}</td>
-                                <td>{{ $last_record->type }}</td>
-                                <td> {{ $last_record->schedule }}</td>
-                                <td>{{ $last_record->quantity }}</td>
-                                <td>{{ $last_record->total_weight }}</td>
                             </tr>
+
+                           @for($p = 0; $p < count(explode(',',$last_record->size)); $p++) 
+                                <tr>
+                                    <td>{{ date('d-m-Y',strtotime($last_record->date)) }}</td>
+                                    <td>{{ $last_record->weight_per_piece }}</td>
+                                    <td>{{ $last_record->heat_no }}</td>
+                                    <td> {{ explode(',',$last_record->size)[$p] }}</td>
+                                    <td>{{ explode(',',$last_record->pressure)[$p] }}</td>
+                                    <td>{{ explode(',',$last_record->type)[$p] }}</td>
+                                    <td> {{ explode(',',$last_record->schedule)[$p] }}</td>
+                                    <td>{{ $last_record->quantity }}</td>
+                                    <td>{{ $last_record->total_weight }}</td>
+                                </tr>
+                            @endfor
                         </table>
                         
                         <div class="span9 btn-block excelPrint">

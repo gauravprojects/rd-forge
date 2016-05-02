@@ -28,17 +28,19 @@
 
                             </tr>
                             @foreach($confirmations as $confirmation)
-                            <tr>
-                                <td>{{ date('d-m-Y',strtotime($confirmation->date)) }}</td>
-                                <td>{{ $confirmation->weight_per_piece }}</td>
-                                <td>{{ $confirmation->heat_no }}</td>
-                                <td> {{ $confirmation->size }}</td>
-                                <td>{{ $confirmation->pressure }}</td>
-                                <td>{{ $confirmation->type }}</td>
-                                <td> {{ $confirmation->schedule }}</td>
-                                <td>{{ $confirmation->quantity }}</td>
-                                <td>{{ $confirmation->total_weight }}</td>
-                            </tr>
+                                @for($p = 0; $p < count(explode(',',$confirmation->size)); $p++) 
+                                    <tr>
+                                        <td>{{ date('d-m-Y',strtotime($confirmation->date)) }}</td>
+                                        <td>{{ $confirmation->weight_per_piece }}</td>
+                                        <td>{{ $confirmation->heat_no }}</td>
+                                        <td> {{ explode(',',$confirmation->size)[$p] }}</td>
+                                        <td>{{ explode(',',$confirmation->pressure)[$p] }}</td>
+                                        <td>{{ explode(',',$confirmation->type)[$p] }}</td>
+                                        <td> {{ explode(',',$confirmation->schedule)[$p] }}</td>
+                                        <td>{{ $confirmation->quantity }}</td>
+                                        <td>{{ $confirmation->total_weight }}</td>
+                                    </tr>
+                                @endfor
                             @endforeach
 
 

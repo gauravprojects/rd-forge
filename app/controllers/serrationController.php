@@ -241,7 +241,7 @@
 		public function getDrilledWorkOrderMaterial()
 		{
 			$work_order_no = Input::get('work_order_no');
-			$details = DrillingStock::getDrilledWorkOrderMaterial($work_order_no);
+			$details = DrillingStock::getDrilledWorkOrderItemNo($work_order_no);
 			return json_encode($details);
 		}
 

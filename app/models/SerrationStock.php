@@ -12,44 +12,6 @@ class SerrationStock extends Eloquent {
 				->insert($input_array);
 	}
 
-
-	public static function getRecord($id)
-	{
-		return DB::table('drilling_records')
-				->select()
-				->where('drilling_id','=',$id)
-				->get();
-	}
-
-	public static function getLastRecord()
-	{
-		return DB::table('drilling_records')
-				->orderBy('drilling_id', 'desc')
-				->first();
-	}
-
-	public static function getAllData()
-	{
-		return DB::table('drilling_records')
-				->select()
-				->get();
-	}
-
-	public static function HeatNo_availableWeightForging()
-	{
-		return DB::table('forging_records')
-			->select('heat_no')
-			->where('available_weight_forging','>','0')
-			->get();
-	}
-
-	public static function deleteRecord($drilling_id)
-	{
-		return DB::table('drilling_records')
-			->where('drilling_id','=',$drilling_id)
-			->delete();
-	}
-
 	public static function decrementWorkOrderItemData($work_order_no,$item_no,$quantity)
 	{
 		return DB::table('serration_work_order_stock')

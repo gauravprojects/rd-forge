@@ -31,14 +31,12 @@ class WorkOrder extends Eloquent
 				->get();
 	}
 
-
 	public static function getLastRecord()
 	{
 		return DB::table('work_order_records')
 				->orderBy('work_order_no','desc')
 				->first();
 	}
-
 
 	public static function getWorkOrderDetails($work_order_no)
 	{
@@ -55,8 +53,6 @@ class WorkOrder extends Eloquent
 				->where('work_order_no','=',$work_order_no)
 				->get();
 	}
-
-
 
 	public static function availableWorkOrderNo()
 	{
