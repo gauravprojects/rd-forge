@@ -3,18 +3,17 @@
 class Serration extends Eloquent {
 	protected $fillable = [];
 
+	/* --------------------------------- SERRATION MODULE -------------------------------
+									TABLE NAME:  serration_records				*/
+
+	//Insert data in the specified table
 	public static function insertData($input_array)
 	{
 		return DB::table('serration_records')
 				->insert($input_array);
 	}
 
-	public static function insertRemarks($input_array)
-	{
-		return DB::table('serration_remarks')
-				->insert($input_array);
-	}
-
+	//Get data based on id from the specified table
 	public static function getRecord($id)
 	{
 		return DB::table('serration_records')
@@ -23,7 +22,7 @@ class Serration extends Eloquent {
 				->get();
 	}
 
-
+	//Get the last entered record from the specified table
 	public static function getLastRecord()
 	{
 		return DB::table('serration_records')
@@ -31,13 +30,13 @@ class Serration extends Eloquent {
 				->first();
 	}
 
+	//Get all the data from the specified table
 	public static function getAllData()
 	{
-		return DB::table('serration_records')
-				->select()
-				->get();
+		return DB::table('serration_records')->get();
 	}
 
+	// Deletes all the serration record data based on specified serration_id
 	public static function delete_record($serr_id)
 	{
 		return DB::table('serration_records')
@@ -45,6 +44,7 @@ class Serration extends Eloquent {
 			->delete();
 	}
 
+	// Updates all the serration record data based on specified serration_id
 	public static function updateAllData($serr_id,$array)
 	{
 		return DB::table('serration_records')

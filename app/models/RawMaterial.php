@@ -2,6 +2,9 @@
 
 class RawMaterial extends Eloquent
 {
+	/* --------------------------------- RAW MATERIAL MODULE -------------------------------
+									TABLE NAME:  raw_material_records				*/
+
 	//Insert data in the specified table
 	public static function insertData($records_array)
 	{

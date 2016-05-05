@@ -15,12 +15,14 @@ class MaterialType extends Eloquent {
 				->get();
 	}
 
+	//Inserts material type into master data
 	public static function insertMaterialType($input_data)
 	{
 		return DB::table('master_material_type')
 				->insert($input_data);
 	}
 
+	//Deletes material type from master data
 	public static function deleteMaterialType($id)
 	{
 		return DB::table('master_material_type')

@@ -2,12 +2,17 @@
 
 class ForgingStock extends Eloquent
 {
+	/* --------------------------------- FORGING MODULE -------------------------------
+									TABLE NAME:  forging_stock					*/
+
+	//Insert data in the specified table	
 	public static function insertData($records_array)
 	{
 		return DB::table('forging_stock')
 			->insert($records_array);
 	}
 
+	//Get all the forging stock data
 	public static function getHeatNo()
 	{
 		return DB::table('forging_stock')->get();
@@ -49,11 +54,20 @@ class ForgingStock extends Eloquent
 			   ->decrement('available_quantity_forging',$quantity);
 	}
 
+	//Gets available quantity where it is > 0
 	public static function availableQuantity()
 	{
 		return DB::table('forging_stock')
 			->where('available_quantity_forging','>',0)
 			->get();
+	}
+
+	//Checks for negative weights in stock table
+	public static function checkZeroWeight()
+	{
+		return DB::table('forging_stock')
+			   ->where('quantity','<',0)
+			   ->get();
 	}
 
 }

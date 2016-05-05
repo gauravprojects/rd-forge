@@ -125,7 +125,7 @@
                             
                             <div class="loginButton">
 
-                            <button class="waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button" type="submit">Submit</button>
+                            <button class="waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal submit" type="submit">Submit</button>
 
                             </div>
                         {{ Form::close() }}
@@ -146,7 +146,12 @@
         $('#grade_select').dropdown();
         $('#manufacturer_select').dropdown();
         $('#material_type_select').dropdown();
+
+        $(".submit").on("click",function(){
+            $(this).attr("disabled",true);
+        }); 
     });
+
 </script>
 
 @stop

@@ -53,7 +53,7 @@ class WorkOrderController extends BaseController {
 					'remarks' => $data_input['remarks_mat'][$i]
 				);
 
-				DB::table('work_order_material_details')->insert($work_order_material_array);
+		WorkOrder::insertMaterialData($work_order_material_array);
 
 		}
 

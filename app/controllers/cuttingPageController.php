@@ -256,6 +256,9 @@
 				if(!RawMaterialStock::incrementRecordByHeatSize($cutting['old_heat_no'],$cutting['old_size'],$cutting['old_weight']))
 					throw new Exception("Cannot update weight", 1);
 
+				if(RawMaterialStock::checkZeroWeight())
+					throw new Exception("Insufficient weight in the raw material stock", 1);
+
 				else
 					DB::commit();
 			}
@@ -277,21 +280,21 @@
 			return View::make('cutting.cutting_report_excel')->with('all_records', $all_records);
 		}
 
-		public function availableTotalWeight()
-		{
-			$wpp = Input::get('wpp');
-			$heat_no = Input::get('heat_no');
-			$quantity = Input::get('quantity');
+		// public function availableTotalWeight()
+		// {
+		// 	$wpp = Input::get('wpp');
+		// 	$heat_no = Input::get('heat_no');
+		// 	$quantity = Input::get('quantity');
 
-			$response = Cutting::availabeWeight($heat_no);
-			$response = (array)$response[0];
-			$available_weight = $response['available_weight'];
-			$total_weight = $wpp * $quantity;
-			if ($total_weight > $available_weight)
-				return 0;
-			if ($total_weight < $available_weight)
-				return 1;
-		}
+		// 	$response = Cutting::availabeWeight($heat_no);
+		// 	$response = (array)$response[0];
+		// 	$available_weight = $response['available_weight'];
+		// 	$total_weight = $wpp * $quantity;
+		// 	if ($total_weight > $available_weight)
+		// 		return 0;
+		// 	if ($total_weight < $available_weight)
+		// 		return 1;
+		// }
 
 		//Shows all the material that is available in the current stock
 		public function available()

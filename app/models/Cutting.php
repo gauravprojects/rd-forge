@@ -2,6 +2,8 @@
 
 class Cutting extends Eloquent
 {
+	/* --------------------------------- CUTTING MODULE -------------------------------
+									TABLE NAME:  cutting_records					*/
 
 	//Insert data in the specified table
 	public static function insertData($records_array)
@@ -11,10 +13,10 @@ class Cutting extends Eloquent
 			->insert($records_array);
 	}
 
+	//Get data based on id from the specified table
 	public static function getRecord($id)
 	{
 		return DB::table('cutting_records')
-				->select()
 				->where('cutting_id','=',$id)
 				->get();
 	}
@@ -45,29 +47,6 @@ class Cutting extends Eloquent
 		return DB::table('cutting_records')->get();
 	}
 
-	public static function returnNullData()
-	{
-		// to send null data while entering form data
-		// on cutting blade, $dataArray[] has been used to show the data which is to be updated,
-		// but intially while filling entries they are supposed to to empty, so for this $nullArray has been used
-
-		$nullArray= array(
-				'cutting_id'=> null,
-				'date'=> null,
-				'raw_mat_size' => null,
-				'heat_no' => null,
-				'quantity' => null,
-				'weight_per_piece' => null,
-				'total_weight' => null,
-				'size' => null,
-				'pressure' => null,
-				'schedule' => null,
-				'type' => null
-				);
-
-		return $nullArray;
-
-	}
 
 	public static function availableCutting()
 	{
@@ -94,12 +73,14 @@ class Cutting extends Eloquent
 		return $available_weight_object;
 	}
 
+	// Deletes all the cutting record data based on specified cutting_id
 	public static function delete_record($id)
 	{
 		return DB::table('cutting_records')
 			->where('cutting_id','=',$id)
 			->delete();
 	}
+
 
 	public static  function getHeatNo()
 	{
@@ -109,6 +90,8 @@ class Cutting extends Eloquent
 			->get();
 	}
 
+
+	// Updates all the cutting record data based on specified cutting_id
 	public static function updateAllData($cutting_id,$array)
 	{
 		return DB::table('cutting_records')

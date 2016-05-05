@@ -70,7 +70,7 @@
         <br><br>
         <a href="{{route('workOrder.report')}}" class="waves-effect waves-light btn link right">Work Order Reports</a>
 
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top:-80px;">
         <div class="row">
             <div class="wrapper">
                 <div class="card">

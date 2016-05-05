@@ -7,7 +7,7 @@
 class DescriptionType extends Eloquent {
 	protected $fillable = [];
 
-	//returns type form master data
+	//Returns type form master data
 	public static function getType()
 	{
 		return DB::table('master_description_type')
@@ -15,12 +15,14 @@ class DescriptionType extends Eloquent {
 				->get();
 	}
 
+	//Inserts type into master data
 	public static function insertType($input_data)
 	{
 		return DB::table('master_description_type')
 				->insert($input_data);
 	}
 
+	//Deletes type from master data
 	public static function deleteType($id)
 	{
 		return DB::table('master_description_type')

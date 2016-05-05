@@ -2,12 +2,17 @@
 
 class MachiningStock extends Eloquent
 {
+	/* --------------------------------- MACHINING MODULE -------------------------------
+									TABLE NAME:  machining_work_order_stock				*/
+
+	//Insert data in the specified table
 	public static function insertData($records_array)
 	{
 		return DB::table('machining_work_order_stock')
 			->insert($records_array);
 	}
 
+	//Decrements the quantity of specified work order in the machining stock
 	public static function decrementWorkOrderItemData($work_order_no,$item_no,$quantity)
 	{
 		return DB::table('machining_work_order_stock')
@@ -16,6 +21,7 @@ class MachiningStock extends Eloquent
 			   ->decrement('quantity',$quantity);
 	}
 
+	//Increments the quantity of specified work order in the machining stock
 	public static function incrementWorkOrderItemData($work_order_no,$item_no,$quantity)
 	{
 		return DB::table('machining_work_order_stock')
@@ -24,6 +30,7 @@ class MachiningStock extends Eloquent
 			   ->increment('quantity',$quantity);
 	}
 
+	//Gets the data based on the work order and item numbers from machining stock
 	public static function getWorkOrderItemData($work_order_no,$item_no)
 	{
 		return DB::table('machining_work_order_stock')
@@ -32,6 +39,7 @@ class MachiningStock extends Eloquent
 			   ->get();
 	}
 
+	//Gets the complete data of all the machined parts from all work orders (used in work order status)
 	public static function getMachinedWorkOrderNo()
 	{
 		return DB::table('machining_work_order_stock')
@@ -40,11 +48,20 @@ class MachiningStock extends Eloquent
 				->get();
 	}
 
+	//Gets the item number from the specified work order (used in work order status)
 	public static function getMachinedWorkOrderItemNo($work_order_no)
 	{
 		return DB::table('machining_work_order_stock')
 				->where('work_order_no',$work_order_no)
 				->get();
+	}
+
+	//Checks for negative weights in stock table
+	public static function checkZeroWeight()
+	{
+		return DB::table('machining_work_order_stock')
+			   ->where('quantity','<',0)
+			   ->get();
 	}
 
 }
