@@ -38,11 +38,7 @@
                         </table>
                         <div class="span9 btn-block excelPrint">
                             <button class="btn btn-small btn-block" type="button" id="excel_button">
-                                <a href="{{ action('drillingController@update',array('id'=>$last_record->drilling_id))}}" class="link" >Update</a>
-                            </button>
-
-                            <button class="btn btn-small btn-block" type="button" id="excel_button">
-                                <a href="{{ action('drillingController@destroy',array('id'=>$last_record->drilling_id))}}" class="link" >Delete</a>
+                                <a href="{{ action('drillingController@update',array('id'=>$last_record->drill_id))}}" class="link" >Update</a>
                             </button>
 
                         </div>

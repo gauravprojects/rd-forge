@@ -66,7 +66,7 @@ class ForgingStock extends Eloquent
 	public static function checkZeroWeight()
 	{
 		return DB::table('forging_stock')
-			   ->where('quantity','<',0)
+			   ->where('available_quantity_forging','<',0)
 			   ->get();
 	}
 

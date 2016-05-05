@@ -43,10 +43,15 @@
 
                         <div class="span9 btn-block excelPrint">
                             <button class="btn btn-small btn-block" type="button" id="excel_button">
-                                <a href="{{ action('serrationController@update',array('id'=>$confirmation->serration_id))}}" class="link" >Update</a>
+                                <a href="{{ action('serrationController@update',array('id'=>$confirmation->serr_id))}}" class="link" >Update</a>
                             </button>
                         </div>
-                        <br><br><br><br>
+                        <div class="span9 btn-block excelPrint">
+                            <button class="btn btn-small btn-block" type="button" id="excel_button">
+                                <a href="{{ action('serrationController@index')  }}" class="link" >New Serration Entry</a>
+                            </button>
+                        </div>
+                        
                     </div>		<!-- row conatining form ends here -->
                 </div>		<!-- card ends here -->
             </div>		<!-- wrapper ends here -->

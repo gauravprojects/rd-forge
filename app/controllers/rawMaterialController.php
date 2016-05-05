@@ -55,17 +55,7 @@ class rawMaterialController extends BaseController {
 			'available_weight' => $data['weight']
 			);
 
-
-		//Checks whether the stock of given heat and size is present or not in stock table
-		$whether_stock_present = RawMaterialStock::getHeatSizeData($data['heatNo'],$data['size']);
 		
-		if($whether_stock_present)
-			//If present increment the current stock on the basis of heat number and size
-			RawMaterialStock::incrementWeight($data['heatNo'],$data['size'],$data['weight']);	
-		else
-			//Else insert the new stock data
-			RawMaterialStock::insertData($raw_material_stock_array);	
-
 		$raw_material_array = array(
 			'receipt_code' => $data['receiptCode'],
 			'date' => date('Y-m-d',strtotime($data['date'])),
@@ -82,10 +72,49 @@ class rawMaterialController extends BaseController {
 			'available_weight' => $data['weight']
 		);
 
-		RawMaterial::insertData($raw_material_array);
+
+		//Checks whether the stock of given heat and size is present or not in stock table
+		$whether_stock_present = RawMaterialStock::getHeatSizeData($data['heatNo'],$data['size']);
+
+		DB::beginTransaction();
+
+		try
+		{
+			if(!$whether_stock_present)
+			{
+				//Insert the raw material data
+				if(!RawMaterial::insertData($raw_material_array))
+					throw new Exception("Cannot insert raw material data", 1);
+
+				//Insert the raw material stock data
+				if(!RawMaterialStock::insertData($raw_material_stock_array))
+					throw new Exception("Cannot Insert stock data", 1);
+
+				else
+					DB::commit();
+			}
+			else
+			{
+				//Insert the raw material data
+				if(!RawMaterial::insertData($raw_material_array))
+					throw new Exception("Cannot insert raw material data", 1);
+
+				//If present increment the current stock on the basis of heat number and size
+				if(!RawMaterialStock::incrementWeight($data['heatNo'],$data['size'],$data['weight']))
+					throw new Exception("Cannot increment stock data", 1);
+
+				else
+					DB::commit();
+			}
+		}
+		catch(Exception $e)
+		{
+			DB::rollback();
+			return 0;
+		}
+
 
 		$last_record = RawMaterial::getLastRecord();		
-		//returns the view to the confirmation page that shows last entered raw material entry
 		return View::make('rawMaterial.confirm')->with('confirmation',$last_record);
 	}
 
@@ -159,11 +188,11 @@ class rawMaterialController extends BaseController {
 				if(!RawMaterial::updateAllData($data['internal_no'],$raw_material_array))
 					throw new Exception("Could not update all data",1);
 
-				//Insert the new stock data in the table
+				//Insert the new raw material stock data in the table
 				if(!RawMaterialStock::insertData($raw_material_stock_array))
 					throw new Exception("Could not insert data for new heat number",1);
 
-				//Decrement the stock from the previous heat number or/and size
+				//Decrement the raw material stock from the old heat number or/and size
 				if(!RawMaterialStock::decrementRecordByHeatSize($data['old_heat_no'],$data['old_size'],$data['old_weight']))
 					throw new Exception("Could not decrement data for old heat number and old size",1);
 
@@ -176,11 +205,11 @@ class rawMaterialController extends BaseController {
 				if(!RawMaterial::updateAllData($data['internal_no'],$raw_material_array))
 					throw new Exception("Could not update all data",1);
 
-				//Decrement the stock from the previous heat number or/and size
+				//Decrement the raw material stock from the old heat number or/and size
 				if(!RawMaterialStock::decrementRecordByHeatSize($data['old_heat_no'],$data['old_size'],$data['old_weight']))
 					throw new Exception("Could not decrement data for old heat number",1);
 
-				//Increment the stock from the updated heat number or/and size
+				//Increment the raw material stock from the new heat number or/and size
 				if(!RawMaterialStock::incrementRecordByHeatSize($data['heatNo'],$data['size'],$data['weight']))
 					throw new Exception("Could not increment data for new heat number",1);
 
@@ -219,7 +248,7 @@ class rawMaterialController extends BaseController {
 			if(!RawMaterial::deleteRecord($id))
 				throw new Exception("Cannot delete record", 1);
 
-			//Delete the record from the raw material stock table as well !!
+			//Delete the record from the raw material stock table as well 
 			if(!RawMaterialStock::decrementRecordByHeatSize($get_details[0]->heat_no,$get_details[0]->size,$get_details[0]->weight))
 				throw new Exception("Cannot decrement from stock", 1);
 

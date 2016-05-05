@@ -38,12 +38,8 @@
                         </table>
                          <div class="span9 btn-block excelPrint">
                             <button class="btn btn-small btn-block" type="button" id="excel_button">
-                                <a href="{{ action('serrationController@update',array('id'=>$last_record->serration_id))}}" class="link" >Update</a>
+                                <a href="{{ action('serrationController@update',array('id'=>$last_record->serr_id))}}" class="link" >Update</a>
                             </button>
-
-                             <button class="btn btn-small btn-block" type="button" id="excel_button">
-                                 <a href="{{ action('serrationController@destroy',array('id'=>$last_record->serration_id))}}" class="link" >Delete</a>
-                             </button>
                         </div>
                          <div class="span9 btn-block excelPrint">
                             <button class="btn btn-small btn-block" type="button" id="excel_button">

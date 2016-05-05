@@ -130,7 +130,7 @@ class DrillingController extends BaseController {
 		$grades = Grades::getGrades();
 		//$heat_no = RawMaterial::getHeatNo();
 		$availableWorkOrder= MachiningStock::getMachinedWorkOrderNo();
-		$availableWorkOrderItem = MachiningStock::getMachinedWorkOrderItemNo();
+		$availableWorkOrderItem = MachiningStock::getMachinedWorkOrderItemNo($availableWorkOrder[0]->work_order_no);
 
 		return View::make('drilling.drilling_update')
 		->with('drilling_array',$drilling_array)

@@ -71,58 +71,6 @@
 					'available_weight_cutting' => $total_weight
 				);
 
-
-		//Checks whether the stock of given heat,size,pressure,type and schedule is present or not in stock table
-		$whether_stock_present = CuttingStock::getHeatSizePressureTypeScheduleData($final_heat_no,$cutting['standard_size'],$cutting['pressure'],$cutting['type'],$cutting['schedule']);
-		
-		
-		//Transaction begins
-		DB::beginTransaction();
-
-		try
-		{
-			if(!$whether_stock_present)
-			{
-				//Insert the stock data
-				if(!CuttingStock::insertData($cutting_stock_array))
-					throw new Exception("Cannot Insert cutting data", 1);
-
-				//Decrement the data from the raw material stock depending on the heat and size
-				if(!RawMaterialStock::decrementRecordByHeatSize($final_heat_no,$final_size,$total_weight))
-					throw new Exception("Cannot update weight", 1);
-
-				if(RawMaterialStock::checkZeroWeight())
-					throw new Exception("Insufficient weight in the raw material stock", 1);
-
-				else
-					DB::commit();
-			}
-			else
-			{
-				//Increments the stock data weight on the basis of given heat,size,pressure,type and schedule
-				if(!CuttingStock::incrementHeatSizePressureTypeScheduleData($final_heat_no,$cutting['standard_size'],$cutting['pressure'],$cutting['type'],$cutting['schedule'],$total_weight))
-					throw new Exception("Cannot increment cutting data", 1);
-
-				//Decrements the stock data weight on the basis of heat number and size
-				if(!RawMaterialStock::decrementRecordByHeatSize($final_heat_no,$final_size,$total_weight))
-					throw new Exception("Cannot update weight", 1);
-
-				if(RawMaterialStock::checkZeroWeight())
-					throw new Exception("Insufficient weight in the raw material stock", 1);
-
-
-				else
-					DB::commit();
-			}
-				
-		}
-		catch(Exception $e)
-		{
-			DB::rollback();
-			return 0;
-		}
-
-			// array for table cutting records
 			$cutting_array = array(
 					'date' => date('Y-m-d',strtotime($cutting['date'])),
 					'raw_mat_size' => $final_size, // Raw material size cut from the heat number
@@ -139,8 +87,63 @@
 					'description' => $cutting['cutDes']
 			);
 
-			// Insert the cutting data 
-			$cutting_response = Cutting::insertData($cutting_array);
+
+		//Checks whether the stock of given heat,size,pressure,type and schedule is present or not in stock table
+		$whether_stock_present = CuttingStock::getHeatSizePressureTypeScheduleData($final_heat_no,$cutting['standard_size'],$cutting['pressure'],$cutting['type'],$cutting['schedule']);
+		
+		
+		//Transaction begins
+		DB::beginTransaction();
+
+			try
+			{
+				if(!$whether_stock_present)
+				{
+					//Inserts the cutting data
+					if(!Cutting::insertData($cutting_array))
+						throw new Exception("Cannot insert cutting data", 1);
+
+					//Insert the cutting stock data
+					if(!CuttingStock::insertData($cutting_stock_array))
+						throw new Exception("Cannot Insert cutting data", 1);
+
+					//Decrement the data from the raw material stock depending on the heat and size
+					if(!RawMaterialStock::decrementRecordByHeatSize($final_heat_no,$final_size,$total_weight))
+						throw new Exception("Cannot update weight", 1);
+
+					if(RawMaterialStock::checkZeroWeight())
+						throw new Exception("Insufficient weight in the raw material stock", 1);
+
+					else
+						DB::commit();
+				}
+				else
+				{
+					//Inserts the cutting data
+					if(!Cutting::insertData($cutting_array))
+						throw new Exception("Cannot insert cutting data", 1);
+
+					//Increments the stock data weight on the basis of given heat,size,pressure,type and schedule
+					if(!CuttingStock::incrementHeatSizePressureTypeScheduleData($final_heat_no,$cutting['standard_size'],$cutting['pressure'],$cutting['type'],$cutting['schedule'],$total_weight))
+						throw new Exception("Cannot increment cutting data", 1);
+
+					//Decrements the stock data weight on the basis of heat number and size
+					if(!RawMaterialStock::decrementRecordByHeatSize($final_heat_no,$final_size,$total_weight))
+						throw new Exception("Cannot update weight", 1);
+
+					if(RawMaterialStock::checkZeroWeight())
+						throw new Exception("Insufficient weight in the raw material stock", 1);
+
+					else
+						DB::commit();
+				}
+					
+			}
+			catch(Exception $e)
+			{
+				DB::rollback();
+				return 0;
+			}
 
 			$last_record = Cutting::getLastRecord();
 	

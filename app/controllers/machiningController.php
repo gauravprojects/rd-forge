@@ -131,7 +131,7 @@ class machiningController extends BaseController
 		catch(Exception $e)
 		{
 			DB::rollback();
-			var_dump($e);
+			echo $e->getMessage();
 			return 0;
 		}
 		//get last record
@@ -184,7 +184,6 @@ class machiningController extends BaseController
 
 		$old_work_order_no = explode("-",$machining_input['old_machining_work_order'])[0];
 		$old_work_order_item_no = explode("-",$machining_input['old_machining_work_order'])[1];
-
 
 		$machining_heat_no = explode("-",$machining_input['heat_no'])[0];
 		$forging_size = explode("-",$machining_input['heat_no'])[1];

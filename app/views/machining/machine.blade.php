@@ -57,7 +57,6 @@
                         </div>
 
 
-
                         <!-- For WORK ORDER NUMBER -->
                         <!-- All those workorder will be shown whose status is still incomplete -->
                          <div class="form-group">

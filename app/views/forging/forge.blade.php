@@ -163,14 +163,14 @@ i.icon.delete:before {
                             <!-- Weight per peice for forged item -->
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Weight Per Piece') }}
-                                {{ Form::text('weight_per_peice',$dataArray['weight_per_piece'],array('class'=>'form-control inputfix','placeholder'=>'Weight per peice','id'=>'wpp')) }}
+                                {{ Form::text('weight_per_peice',null,array('class'=>'form-control inputfix','placeholder'=>'Weight per peice','id'=>'wpp')) }}
                             </div>
 
 
                             <!-- Quantity -->
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail','Quantity') }}
-                                {{ Form::text('quantity',$dataArray['quantity'],array('class'=>'form-control inputfix' ,'placeholder'=>'Quantity of material','id'=>'quantity')) }}
+                                {{ Form::text('quantity',null,array('class'=>'form-control inputfix' ,'placeholder'=>'Quantity of material','id'=>'quantity')) }}
                             </div>
 
 
@@ -247,7 +247,7 @@ i.icon.delete:before {
                             <!-- Forging remarks -->
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail','Forging Remarks') }}
-                                {{ Form::text('remarks',$dataArray['remarks'],array('class'=>'form-control inputfix','placeholder'=>'Remarks for forging Material','id'=>'JustAnything')) }}
+                                {{ Form::text('remarks',null,array('class'=>'form-control inputfix','placeholder'=>'Remarks for forging Material','id'=>'JustAnything')) }}
                             </div>
 
 

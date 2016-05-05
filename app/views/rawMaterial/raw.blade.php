@@ -147,9 +147,7 @@
         $('#manufacturer_select').dropdown();
         $('#material_type_select').dropdown();
 
-        $(".submit").on("click",function(){
-            $(this).attr("disabled",true);
-        }); 
+        
     });
 
 </script>

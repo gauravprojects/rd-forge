@@ -35,20 +35,18 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 
 	}
 
-
+	//Display the main forging page
 	public function index()
 	{
-		//getting null array
-		$dataArray= Forging::getNullArray();
 
 		//getting standard master values from respective models
 		$data = ForgingController::getStandardData();
 
 		return View::make('forging.forge')
-			->with('dataArray',$dataArray)
 			->with($data);
 	}
 
+	//Allows storage of data into the forging records
 	public function store()
 	{
 		$forging_input= Input::all();
@@ -84,17 +82,18 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 			'available_weight_forging' => $total_weight
 		);
 
-		Forging::insertData($forging_array);
+		
 
 		// forging array for input
 	DB::beginTransaction();
 
 		try
 		{
-			//Decrement the data from the cutting stock depending on the heat and size
+			//Decrement the data from the cutting stock depending on the heat,size,pressure,type and schedule
 			if(!CuttingStock::decrementHeatSizePressureTypeScheduleData($final_heat_no,$final_standard_size,$final_pressure,$final_type,$final_schedule,$total_weight))
 				throw new Exception("Cannot update weight", 1);
 
+			//Since the record amount of standard size will mean amount of other params, hence we check length of standard size
 			for($counter = 0; $counter < count($forging_input['standard_size']); $counter++)
 			{
 		
@@ -107,15 +106,21 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 						'available_quantity_forging' => $forging_input['quantity']
 				);
 
+			//Checks whether the forging stock present or not depending on the heat,size,type,pressure,schedule
 			$whether_stock_present = ForgingStock::getHeatSizePressureTypeScheduleData($forging_input['heat_no'],$forging_input['standard_size'][$counter],$forging_input['pressure'][$counter],$forging_input['type'][$counter],$forging_input['schedule'][$counter]);
 
 	
 				if(!$whether_stock_present)
 				{
-					//Insert the stock data
+					//Insert the forging data
+					if(!Forging::insertData($forging_array))
+						throw new Exception("Cannot insert forging data", 1);
+
+					//Insert the forging stock data
 					if(!ForgingStock::insertData($forging_stock_array))
 						throw new Exception("Cannot Insert forging stock data", 1);
 
+					//Checks for negative weights
 					if(CuttingStock::checkZeroWeight())
 						throw new Exception("Insufficient weight in the cutting stock", 1);
 
@@ -124,6 +129,10 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 				}
 				else
 				{
+					//Insert the forging data
+					if(!Forging::insertData($forging_array))
+						throw new Exception("Cannot insert forging data", 1);
+
 					//Increments the stock data weight on the basis of given heat,size,pressure,type and schedule
 					if(!ForgingStock::incrementHeatSizePressureTypeScheduleData($forging_input['heat_no'],$forging_input['standard_size'][$counter],$forging_input['pressure'][$counter],$forging_input['type'][$counter],$forging_input['schedule'][$counter],$forging_input['quantity']))
 						throw new Exception("Cannot increment forging data", 1);
@@ -132,6 +141,7 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 					if(!CuttingStock::decrementHeatSizePressureTypeScheduleData($final_heat_no,$final_standard_size,$final_pressure,$final_type,$final_schedule,$total_weight))
 						throw new Exception("Cannot update weight", 1);
 
+					//Checks for negative weights
 					if(CuttingStock::checkZeroWeight())
 						throw new Exception("Insufficient weight in the cutting stock", 1);
 
@@ -149,9 +159,7 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 		}
 
 		
-		// now getting the last record for getting forging_id
 		$last_record = Forging::getLastRecord();
-
 
 		//returning view for confirmation
 		return View::make('forging.confirm')->with('last_record',$last_record);
@@ -159,6 +167,7 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 
 	}
 
+	//Shows the forging update page
 	public function update($id)
 	{
 		
@@ -172,6 +181,7 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 
 	}
 
+	//Allows the forging update data
 	public function update_store($id)
 		{
 		
@@ -179,12 +189,15 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 
 		$total_weight = $forging['weight_per_peice']*$forging['quantity'];
 
+		//Split the components as they are hyphenated (new)
 		$final_heat_no = explode("-",$forging['heat_no'])[0];
 		$final_standard_size = explode("-",$forging['heat_no'])[1];
 		$final_pressure = explode("-",$forging['heat_no'])[2];
 		$final_type = explode("-",$forging['heat_no'])[3];
 		$final_schedule = explode("-",$forging['heat_no'])[4];
 
+
+		//Split the components as they are hyphenated (old)
 		$old_heat_no = explode("-",$forging['old_heat_no'])[0];
 		$old_standard_size = explode("-",$forging['old_heat_no'])[1];
 		$old_pressure = explode("-",$forging['old_heat_no'])[2];
@@ -220,15 +233,15 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 
 		try
 		{
-			//Decrement the data from the cutting stock depending on the heat and size
-
+			//Increment the data from the cutting stock depending on the old heat,size,pressure,type,schedule
 			if(!CuttingStock::incrementHeatSizePressureTypeScheduleData($old_heat_no,$old_standard_size,$old_pressure,$old_type,$old_schedule,$old_weight))
 				throw new Exception("Cannot update weight", 1);
 
+			//Decrement the data from the cutting stock depending on the new heat,size,pressure,type,schedule
 			if(!CuttingStock::decrementHeatSizePressureTypeScheduleData($final_heat_no,$final_standard_size,$final_pressure,$final_type,$final_schedule,$total_weight))
 				throw new Exception("Cannot update weight", 1);
 
-			//Decrement of the old data
+			//Decrement of the old data for forging
 			for($counter = 0; $counter < count(explode(",",$forging['old_standard_size'])); $counter++)
 			{
 			
@@ -252,30 +265,35 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 							'available_quantity_forging' => $forging['quantity']
 					);
 
-				$whether_stock_present = ForgingStock::getHeatSizePressureTypeScheduleData($final_heat_no,$forging['standard_size'][$counter],$forging['pressure'][$counter],$forging['type'][$counter],$forging['schedule'][$counter]);
+			//Checks if the stock of given heat,size,pressure,type and schedule present or not
+			$whether_stock_present = ForgingStock::getHeatSizePressureTypeScheduleData($final_heat_no,$forging['standard_size'][$counter],$forging['pressure'][$counter],$forging['type'][$counter],$forging['schedule'][$counter]);
 
-				if(!$whether_stock_present)
-				{
-					if(!ForgingStock::insertData($forging_stock_array))
-						throw new Exception("Cannot insert forging stock data",1);
+			if(!$whether_stock_present)
+			{
+				//Insert the new forging stock array data
+				if(!ForgingStock::insertData($forging_stock_array))
+					throw new Exception("Cannot insert forging stock data",1);
 
-					if(CuttingStock::checkZeroWeight())
-						throw new Exception("Insufficient weight in the raw material stock", 1);
+				//Checks the negative weights
+				if(CuttingStock::checkZeroWeight())
+					throw new Exception("Insufficient weight in the raw material stock", 1);
 
-					else
-						DB::commit();
-				}
 				else
-				{
-					if(!ForgingStock::incrementHeatSizePressureTypeScheduleData($final_heat_no,$forging['standard_size'][$counter],$forging['pressure'][$counter],$forging['type'][$counter],$forging['schedule'][$counter],$forging['quantity']))
-						throw new Exception("Cannot increment forging stock data",1);
+					DB::commit();
+			}
+			else
+			{
+				//Increment the data from the forging stock depending on the new heat,size,pressure,type,schedule
+				if(!ForgingStock::incrementHeatSizePressureTypeScheduleData($final_heat_no,$forging['standard_size'][$counter],$forging['pressure'][$counter],$forging['type'][$counter],$forging['schedule'][$counter],$forging['quantity']))
+					throw new Exception("Cannot increment forging stock data",1);
 
-					if(CuttingStock::checkZeroWeight())
-						throw new Exception("Insufficient weight in the raw material stock", 1);
+				//Checks the negative weights
+				if(CuttingStock::checkZeroWeight())
+					throw new Exception("Insufficient weight in the raw material stock", 1);
 
-					else
-						DB::commit();
-				}
+				else
+					DB::commit();
+			}
 			}
 
 		}
@@ -296,27 +314,6 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 		return View::make('forging.forging_report')->with('forging_data',$forging_data);
 	}
 
-	public function availableTotalWeight()
-	{
-
-		$wpp = Input::get('wpp');
-		$heat_no = Input::get('heat_no');
-		$quantity = Input::get('quantity');
-
-		//hence $total_weight
-		$total_weight= $wpp * $quantity;
-
-		//now avialbale weight from cutting table for this heat no
-		$available_weight= Forging::availableWeight($heat_no);
-		$available_weight=(array) $available_weight[0];
-		$available_weight= $available_weight['available_weight_cutting'];
-
-		if($available_weight > $total_weight)
-			return 1;
-		if($available_weight <= $total_weight)
-			return 0;
-	}
-
 	//Shows all the material that is available in the current stock
 	public function available()
 	{
@@ -325,6 +322,7 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 				->with('data',$data);
 	}
 
+	//Generates the excel data for forging
 	public function excel()
 	{
 
@@ -332,6 +330,7 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 		return View::make('forging.forging_report_excel')->with('forging_data',$forging_data);
 	}
 
+	//Deletes the particular records for the forging
 	public function destroy($id)
 	{
 		$forging_response = Forging::getRecord($id);
@@ -340,11 +339,11 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 		DB::beginTransaction();
 			try
 			{
-				// //Increments the raw material stock data weight on the basis of given heat,size,pressure,type and schedule
+				// //Increments the cutting stock data on basis of given heat,size,pressure,type and schedule
 				if(!CuttingStock::incrementHeatSizePressureTypeScheduleData($forging_response[0]->heat_no,$forging_response[0]->cutting_size,$forging_response[0]->cutting_pressure,$forging_response[0]->cutting_type,$forging_response[0]->cutting_schedule,$total_weight))
 					throw new Exception("Cannot not increment data for cutting stock", 1);
 
-				//Decrements the cutting stock data weight on the basis of given heat,size,pressure,type and schedule
+				//Decrements the forging stock data weight on the basis of given heat,size,pressure,type and schedule
 				for($counter = 0; $counter < count(explode(",",$forging_response[0]->size)); $counter++)
 				{
 				
@@ -352,7 +351,7 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 						throw new Exception("Cannot decrement forging stock data",1);
 				}
 					
-				//Delete the cutting records specified by the internal number
+				//Delete the forging records specified by the id
 				if(!Forging::delete_record($id))
 					throw new Exception("Cannot delete forging record", 1);
 
@@ -363,7 +362,6 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 			catch(Exception $e)
 			{
 				DB::rollback();
-				var_dump($e);
 				return 0;
 			}
 
@@ -374,6 +372,7 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 
 	}
 
+	//Returns the search view in the search panel
 	public function search_display()
     {
         return View::make('search.forging_search')->with('data',Forging::getAllRecords());

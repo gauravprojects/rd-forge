@@ -4,6 +4,66 @@
 
 
     <script type="application/javascript">
+    function change_parameters()
+    {
+        $work_order_no = '<div class="form-group">'+
+                        '<select class="form-control search selection" name="work_order_no" id="work_order_no_select" required>'+
+                                '<option value="">---Select Work Order--------</option>'+
+                                '@foreach($availableWorkOrderNo as $workOrder)'+
+                                    '<option value="{{ $workOrder->work_order_no }}">'+
+                                        '{{$workOrder->work_order_no}} &nbsp;'+
+                                        '-{{$workOrder->customer_name}} &nbsp;'+
+                                        '-Ordered on:     {{ date("d-m-Y",strtotime($workOrder->purchase_order_date))  }}'+
+                                    '</option>'+
+                                '@endforeach'+
+                            '</select>'+
+                        '</div>';
+        $item =  '<div class="form-group">'+
+                                '<select class="form-control search selection" id="item_no_select" required>'+
+                                    '<option value="">---Select Item Number --------</option>'+
+                                '</select>'+
+                            '</div>';
+                            
+        $("#avinash").html($work_order_no+$item);
+
+        $(".parameter_button").attr("onclick","revert_parameters()");
+        $('#work_order_no_select').attr("name","work_order_no");
+        $('#item_no_select').attr("name","item");
+
+         $('#work_order_no_select').dropdown({
+                    onChange : function(){ 
+
+                        var work_order_no = $(this)[0].value;
+
+                        $.ajax({
+
+                            'type' : 'GET',
+                            'url' : 'http://localhost/rd-forge/public/drilledWorkOrderMaterial',
+                            'data' : {work_order_no : work_order_no}
+
+                        })
+                        .done(function(data)
+                        {                            
+                            $.each(JSON.parse(data),function(key,value)
+                            {
+                            $("#item_no_select").append(
+                            '<option value="'+value['work_order_no']+'-'+value['item']+'-'+value['size']+'-'+value['pressure']+'-'+value['type']+'-'+value['schedule']+'">'+value['work_order_no']+"/"+value['item']+' - '+value['size']+'" - '+value['pressure']+'# - '+value['type']+' x '+value['schedule']+'</option>');
+                            });
+                            
+                        });
+
+                     }
+                });
+                $('#item_no_select').dropdown();
+                $('#heat_no_select').dropdown();
+                $('#grade_select').dropdown();
+    }
+
+    function revert_parameters()
+    {
+         $("#avinash").html("");
+         $(".parameter_button").attr("onclick","change_parameters()");
+    }
         // $(document).ready(function(){
         //     $('#work_order_no').click(function () {
         //         var work_order_no= $(this).val();
@@ -57,65 +117,52 @@
 
                         {{ Form::hidden('serration_id',$serration->serr_id,array('class'=>'form-control inputfix','id'=>'serration_id','name'=>'serration_id','placeholder'=>'Date')) }}
 
-
-                           <div class="form-group">
+                        <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Work Order Number') }}
-
+                                <select class="form-control search selection" name="work_order_no" readonly>
                                     @foreach($availableWorkOrderNo as $workOrder)
                                         @if($serration->work_order_no == $workOrder->work_order_no)
-                                            
-                                                {{$workOrder->work_order_no}} &nbsp;
-                                                -{{$workOrder->customer_name}} &nbsp;
-                                                -Ordered on:    {{ date('d-m-Y',strtotime($workOrder->purchase_order_date))  }}
+                                        
+                                        <option value="{{ $workOrder->work_order_no }}" selected>
+                                            {{$workOrder->work_order_no}} &nbsp;
+                                            -{{$workOrder->customer_name}} &nbsp;
+                                            -Ordered on:     {{ date('d-m-Y',strtotime($workOrder->purchase_order_date))  }}
+                                        </option>
                                         
                                         @endif
                                     @endforeach
+                                </select>
 
                             </div>
 
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Work Order Item') }}
+                                <select class="form-control search selection" name="item" readonly>
 
                                     @foreach($availableWorkOrderItemNo as $workOrder)
-                                        @if($serration->work_order_no == $workOrder->work_order_no && $serration->item == $workOrder->item_no)
+                                        @if($serration->work_order_no == $workOrder->work_order_no && $serration->item == $workOrder->item)
                                             
-                                         {{ $workOrder->work_order_no }}/{{ $workOrder->item_no }} - {{ $workOrder->size }}" - {{ $workOrder->pressure }}# - {{ $workOrder->type }} x {{$workOrder->schedule}}
+                                            <option value=" {{ $workOrder->work_order_no }}-{{ $workOrder->item }}-{{ $workOrder->size }}-{{ $workOrder->pressure }}-{{ $workOrder->type }}- {{$workOrder->schedule}}" selected>{{ $workOrder->work_order_no }}/{{ $workOrder->item }} - {{ $workOrder->size }}" - {{ $workOrder->pressure }}# - {{ $workOrder->type }} x {{$workOrder->schedule}}
+                                                </option>
+
 
                                         @endif
                                     @endforeach
+                                </select>
 
                             </div>
 
-                             <a href="#" class="waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button" onclick="change_parameters()">Change parameters</a>
+                        <a href="#" class="waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button parameter_button" onclick="change_parameters()">Change parameters</a>
                            
+                        <div id="avinash"></div>
+
                             <!-- FOR ITEM TYPE -->
                             <!-- These items will be of that particular work order above mentioned
                                        ------- AJAX REQUIRED HERE----------------
                                        input -> work_order_no
                                        required-> work_order_details to be autofilled on this page
                             -->
-                       <div class="form-group">
-                        {{ Form::label('exampleInputEmail1','Work Order Number') }}
-
-                           <select class="form-control search selection" name="work_order_no" id="work_order_no_select" required disabled>
-                                <option value="">---Select Work Order--------</option>
-                                @foreach($availableWorkOrderNo as $workOrder)
-                                    <option value="{{ $workOrder->work_order_no }}">
-                                        {{$workOrder->work_order_no}} &nbsp;
-                                        -{{$workOrder->customer_name}} &nbsp;
-                                        -Ordered on:     {{ date('d-m-Y',strtotime($workOrder->purchase_order_date))  }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-
-
-                        <div class="form-group">
-                            {{ Form::label('exampleInputEmail1','Item no') }}
-                            <select class="form-control search selection" name="item" id="item_no_select" required disabled>
-                                <option value="">---Select Item Number --------</option>
-                            </select>
-                        </div>
+                       
 
                         <?php $old_serration_work_order = $serration->work_order_no."-".$serration->item; ?>
 
@@ -181,42 +228,10 @@
 <script type="text/javascript">
     $(function () {
         $('#date').datepicker();
-        $('#work_order_no_select').dropdown({
-                    onChange : function(){ 
 
-                        var work_order_no = $(this)[0].value;
-
-                       $.ajax({
-
-                            'type' : 'GET',
-                            'url' : 'http://localhost/rd-forge/public/drilledWorkOrderMaterial',
-                            'data' : {work_order_no : work_order_no}
-
-                        })
-                        .done(function(data)
-                        {                            
-                            $.each(JSON.parse(data),function(key,value)
-                            {
-                            $("#item_no_select").append(
-                            '<option value="'+value['work_order_no']+'-'+value['item']+'-'+value['size']+'-'+value['pressure']+'-'+value['type']+'-'+value['schedule']+'">'+value['work_order_no']+"/"+value['item']+' - '+value['size']+'" - '+value['pressure']+'# - '+value['type']+' x '+value['schedule']+'</option>');
-                            });
-                            
-                        });
-
-                     }
-                });
-        $('#item_no_select').dropdown();
-        $('#heat_no_select').dropdown();
-        $('#grade_select').dropdown();
     });
 
-function change_parameters()
-{
-    $('#work_order_no_select').removeAttr('disabled');
-    $('#work_order_no_select').parent().removeClass('disabled');
-    $('#item_no_select').removeAttr('disabled');
-    $('#item_no_select').parent().removeClass('disabled');
-}
+
     </script>
 
 

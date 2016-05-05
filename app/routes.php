@@ -242,6 +242,13 @@
 
 		//form1 for index
 
+		Route::get('/workOrderMaterial',array(
+
+		'as'=>'work.getWorkOrderMaterial',
+		'uses'=>'workOrderController@getWorkOrderMaterial'
+
+		));
+
 		Route::get('/machinedWorkOrderMaterial',array(
 
 		'as'=>'drilling.getMachinedWorkOrderMaterial',
