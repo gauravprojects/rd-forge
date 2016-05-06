@@ -36,26 +36,39 @@ class WorkOrderController extends BaseController {
 			'status' => '0'
 		);
 
-		WorkOrder::insertData($work_order_array);
-	
-		for($i=0;$i<count($data_input['item_no']);$i++)
+		try
 		{
-				$work_order_material_array = array(
-					'work_order_no' => $data_input['work_order_no'],
-					'item_no' => $data_input['item_no'][$i],
-					'material_grade' => $data_input['grade'][$i],
-					'size' => $data_input['standard_size'][$i],
-					'pressure' => $data_input['pressure'][$i],
-					'type' => $data_input['type'][$i],
-					'schedule' => $data_input['schedule'][$i],
-					'quantity' => $data_input['quantity'][$i],
-					'weight' => $data_input['weight'][$i],
-					'remarks' => $data_input['remarks_mat'][$i]
-				);
+			if(!WorkOrder::insertData($work_order_array))
+				throw new Exception("Cannot insert work order data", 1);
 
-		WorkOrder::insertMaterialData($work_order_material_array);
+			for($i=0;$i<count($data_input['item_no']);$i++)
+			{
+					$work_order_material_array = array(
+						'work_order_no' => $data_input['work_order_no'],
+						'item_no' => $data_input['item_no'][$i],
+						'material_grade' => $data_input['grade'][$i],
+						'size' => $data_input['standard_size'][$i],
+						'pressure' => $data_input['pressure'][$i],
+						'type' => $data_input['type'][$i],
+						'schedule' => $data_input['schedule'][$i],
+						'quantity' => $data_input['quantity'][$i],
+						'weight' => $data_input['weight'][$i],
+						'remarks' => $data_input['remarks_mat'][$i]
+					);
+
+			if(!WorkOrder::insertMaterialData($work_order_material_array))
+				throw new Exception("Cannot insert work order material data", 1);
+			}
+
+			DB::commit();
 
 		}
+		catch(Exception $e)
+		{
+			DB::rollback();
+			return $e;
+		}
+		
 
 		$work_order_details= WorkOrder::getRecordByWorkOrderDetails($data_input['work_order_no']);
 		$work_order_material_details= WorkOrder::getRecordByWorkOrderMaterialDetails($data_input['work_order_no']);
@@ -165,7 +178,7 @@ class WorkOrderController extends BaseController {
 
 	}
 
-
+	//Generates the excel report of all work orders
 	public function excel()
 	{
 		$all_records_work_order_details = WorkOrder::getAllRecordsWorkOrderDetails();

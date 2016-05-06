@@ -104,7 +104,7 @@ class SerrationController extends BaseController {
 			catch(Exception $e)
 			{
 				DB::rollback();
-				var_dump($e);
+				echo $e->getMessage();
 				return 0;
 			}
 
@@ -248,7 +248,7 @@ class SerrationController extends BaseController {
 			catch(Exception $e)
 			{
 				DB::rollback();
-				var_dump($e);
+				echo $e->getMessage();
 				return $e;
 			}
 
@@ -301,7 +301,7 @@ class SerrationController extends BaseController {
 			catch(Exception $e)
 			{
 				DB::rollback();
-				var_dump($e);
+				echo $e->getMessage();
 				return $e;
 			}
 

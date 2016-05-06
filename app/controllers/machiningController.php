@@ -114,7 +114,7 @@ class machiningController extends BaseController
 
 				//Increments the machining stock on the basis of work order and item numbers
 				if(!MachiningStock::incrementWorkOrderItemData($work_order_no,$work_order_item_no,$machining_input['quantity']))
-					throw new Exception("Could not increment data for old heat number",1);
+					throw new Exception("Could not increment data for work order",1);
 
 				//Decrements the forging stock on the basis of given new heat,size,pressure,type and schedule
 				if(!ForgingStock::decrementHeatSizePressureTypeScheduleData($machining_heat_no,$forging_size,$forging_pressure,$forging_type,$forging_schedule,$machining_input['quantity']))
@@ -265,7 +265,7 @@ class machiningController extends BaseController
 			{
 				//Update all data in the machining records table
 				if(!Machining::updateAllData($machining_input['machining_id'],$machining_array))
-					throw new Exception("Could not update all data",1);
+					throw new Exception("Could not update machining records data",1);
 
 				//Decrements the machining stock on the basis of old work order and item numbers
 				if(!MachiningStock::decrementWorkOrderItemData($old_work_order_no,$old_work_order_item_no,$machining_input['old_machining_quantity']))
@@ -293,8 +293,8 @@ class machiningController extends BaseController
 		}
 		catch(Exception $e)
 		{
-			DB::rollback();
-			var_dump($e);
+			DB::rollback();			
+			echo $e->getMessage();
 			return $e;
 		}
 
@@ -338,7 +338,7 @@ class machiningController extends BaseController
 		catch(Exception $e)
 		{
 			DB::rollback();
-			var_dump($e);
+			echo $e->getMessage();
 			return $e;
 		}
 

@@ -111,6 +111,7 @@
 					if(!RawMaterialStock::decrementRecordByHeatSize($final_heat_no,$final_size,$total_weight))
 						throw new Exception("Cannot update weight", 1);
 
+					//Checks for negative weights
 					if(RawMaterialStock::checkZeroWeight())
 						throw new Exception("Insufficient weight in the raw material stock", 1);
 
@@ -131,6 +132,7 @@
 					if(!RawMaterialStock::decrementRecordByHeatSize($final_heat_no,$final_size,$total_weight))
 						throw new Exception("Cannot update weight", 1);
 
+					//Checks for negative weights
 					if(RawMaterialStock::checkZeroWeight())
 						throw new Exception("Insufficient weight in the raw material stock", 1);
 
@@ -142,6 +144,7 @@
 			catch(Exception $e)
 			{
 				DB::rollback();
+				echo $e->getMessage();
 				return 0;
 			}
 
@@ -269,6 +272,7 @@
 		catch(Exception $e)
 		{
 			DB::rollback();
+			echo $e->getMessage();
 			return $e;
 		}
 
@@ -336,7 +340,7 @@
 			catch(Exception $e)
 			{
 				DB::rollback();
-				var_dump($e);
+				echo $e->getMessage();
 				return 0;
 			}
 

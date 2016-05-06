@@ -5,7 +5,7 @@
     function change_parameters()
     {
         $work_order_no = '<div class="form-group">'+
-                        '<select class="form-control search selection" name="work_order_no" id="work_order_no_select" required>'+
+                        '<select class="form-control search selection" id="work_order_no_select" required>'+
                                 '<option value="">---Select Work Order--------</option>'+
                                 '@foreach($availableWorkOrderNo as $workOrder)'+
                                     '<option value="{{ $workOrder->work_order_no }}">'+
@@ -143,7 +143,7 @@
                                     @foreach($availableWorkOrderItemNo as $workOrder)
                                         @if($drilling->work_order_no == $workOrder->work_order_no && $drilling->item == $workOrder->item)
                                             
-                                            <option value=" {{ $workOrder->work_order_no }}-{{ $workOrder->item }}-{{ $workOrder->size }}-{{ $workOrder->pressure }}-{{ $workOrder->type }}- {{$workOrder->schedule}}" selected>{{ $workOrder->work_order_no }}/{{ $workOrder->item }} - {{ $workOrder->size }}" - {{ $workOrder->pressure }}# - {{ $workOrder->type }} x {{$workOrder->schedule}}
+                                            <option value="{{$workOrder->work_order_no}}-{{ $workOrder->item }}-{{ $workOrder->size }}-{{ $workOrder->pressure }}-{{ $workOrder->type }}- {{$workOrder->schedule}}" selected>{{ $workOrder->work_order_no }}/{{ $workOrder->item }} - {{ $workOrder->size }}" - {{ $workOrder->pressure }}# - {{ $workOrder->type }} x {{$workOrder->schedule}}
                                                 </option>
 
 

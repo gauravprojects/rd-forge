@@ -110,6 +110,7 @@ class rawMaterialController extends BaseController {
 		catch(Exception $e)
 		{
 			DB::rollback();
+			echo $e->getMessage();
 			return 0;
 		}
 
@@ -220,6 +221,7 @@ class rawMaterialController extends BaseController {
 		catch(Exception $e)
 		{
 			DB::rollback();
+			echo $e->getMessage();
 			return 0;
 		}
 
@@ -258,6 +260,7 @@ class rawMaterialController extends BaseController {
 		catch(Exception $e)
 		{
 			DB::rollback();
+			echo $e->getMessage();
 			return 0;
 		}
 		

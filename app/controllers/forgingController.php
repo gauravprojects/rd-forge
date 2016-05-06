@@ -89,6 +89,10 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 
 		try
 		{
+			//Insert the forging data
+			if(!Forging::insertData($forging_array))
+				throw new Exception("Cannot insert forging data", 1);
+
 			//Decrement the data from the cutting stock depending on the heat,size,pressure,type and schedule
 			if(!CuttingStock::decrementHeatSizePressureTypeScheduleData($final_heat_no,$final_standard_size,$final_pressure,$final_type,$final_schedule,$total_weight))
 				throw new Exception("Cannot update weight", 1);
@@ -112,9 +116,6 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 	
 				if(!$whether_stock_present)
 				{
-					//Insert the forging data
-					if(!Forging::insertData($forging_array))
-						throw new Exception("Cannot insert forging data", 1);
 
 					//Insert the forging stock data
 					if(!ForgingStock::insertData($forging_stock_array))
@@ -129,9 +130,6 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 				}
 				else
 				{
-					//Insert the forging data
-					if(!Forging::insertData($forging_array))
-						throw new Exception("Cannot insert forging data", 1);
 
 					//Increments the stock data weight on the basis of given heat,size,pressure,type and schedule
 					if(!ForgingStock::incrementHeatSizePressureTypeScheduleData($forging_input['heat_no'],$forging_input['standard_size'][$counter],$forging_input['pressure'][$counter],$forging_input['type'][$counter],$forging_input['schedule'][$counter],$forging_input['quantity']))
@@ -155,6 +153,7 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 		catch(Exception $e)
 		{
 			DB::rollback();
+			echo $e->getMessage();
 			return 0;
 		}
 
@@ -300,6 +299,7 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 		catch(Exception $e)
 		{
 			DB::rollback();
+			echo $e->getMessage();
 			return $e;
 		}
 
@@ -362,6 +362,7 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 			catch(Exception $e)
 			{
 				DB::rollback();
+				echo $e->getMessage();
 				return 0;
 			}
 

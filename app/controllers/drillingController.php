@@ -104,7 +104,7 @@ class DrillingController extends BaseController {
 		catch(Exception $e)
 		{
 			DB::rollback();
-			var_dump($e);
+			echo $e->getMessage();
 			return 0;
 		}
 
@@ -247,7 +247,7 @@ class DrillingController extends BaseController {
 		catch(Exception $e)
 		{
 			DB::rollback();
-			var_dump($e);
+			echo $e->getMessage();
 			return $e;
 		}
 
@@ -299,7 +299,7 @@ class DrillingController extends BaseController {
 		catch(Exception $e)
 		{
 			DB::rollback();
-			var_dump($e);
+			echo $e->getMessage();
 			return $e;
 		}
 
