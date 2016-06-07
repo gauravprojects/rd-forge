@@ -18,7 +18,7 @@ class DrillingController extends BaseController {
 	public function store()
 	{
 		$drilling_input = Input::all();
-
+		//dd(explode("-",$drilling_input['item'])[0]);
 		$work_order_no = explode("-",$drilling_input['item'])[0];
 		$work_order_item_no = explode("-",$drilling_input['item'])[1];
 		$work_order_size = explode("-",$drilling_input['item'])[2];
@@ -179,6 +179,8 @@ class DrillingController extends BaseController {
 
 			);
 
+		dd($drilling_stock_array);
+		DrillingStock::updateData($drilling_stock_array);
 		
 		DB::beginTransaction();
 
@@ -192,8 +194,8 @@ class DrillingController extends BaseController {
 					throw new Exception("Could not update drilling records data",1);
 
 				//Insert data in the drilling stock table
-				if(!DrillingStock::insertData($drilling_stock_array))
-					throw new Exception("Could not insert drilling data in the stock table",1);
+				//if(!DrillingStock::insertData($drilling_stock_array))
+					//throw new Exception("Could not insert drilling data in the stock table",1);
 
 				//Decrements the drilling stock on the basis of old work order and item numbers
 				if(!DrillingStock::decrementWorkOrderItemData($old_work_order_no,$old_work_order_item_no,$drilling_input['old_drilling_quantity']))

@@ -65,6 +65,8 @@ class machiningController extends BaseController
 				'remarks'=> $machining_input['remarks']
 		);
 
+
+
 		$machining_work_order_stock_array = array(
 
 			'work_order_no' => $work_order_no,
@@ -77,6 +79,8 @@ class machiningController extends BaseController
 			'weight'	=> $machining_input['weight']
 
 			);
+
+
 
 		DB::beginTransaction();
 
@@ -214,6 +218,8 @@ class machiningController extends BaseController
 				'remarks'=> $machining_input['remarks']
 			);
 
+
+
 		$machining_stock_array = array(	
 					'work_order_no' => $work_order_no,
 					'item'  	=> $work_order_item_no,
@@ -225,6 +231,7 @@ class machiningController extends BaseController
 					'weight'	=> $machining_input['weight']
 				);
 
+		MachiningStock::updateData($machining_stock_array);
 
 		DB::beginTransaction();
 
@@ -239,8 +246,8 @@ class machiningController extends BaseController
 					throw new Exception("Could not update machining records data",1);
 
 				//Insert data in the machining stock table
-				if(!MachiningStock::insertData($machining_stock_array))
-					throw new Exception("Could not insert machining data in the stock table",1);
+				//if(!MachiningStock::updateData($machining_stock_array))
+					//throw new Exception("Could not insert machining data in the stock table",1);
 
 				//Decrements the machining stock on the basis of old work order and item numbers
 				if(!MachiningStock::decrementWorkOrderItemData($old_work_order_no,$old_work_order_item_no,$machining_input['old_machining_quantity']))

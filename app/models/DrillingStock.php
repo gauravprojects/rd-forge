@@ -13,6 +13,13 @@ class DrillingStock extends Eloquent {
 				->insert($input_array);
 	}
 
+	public static function updateData($input_array)
+	{
+		return DB::table('drilling_work_order_stock')
+			->where('work_order_no',$input_array['work_order_no'])
+			->update($input_array);
+	}
+
 	//Decrements the quantity of specified work order in the drilling stock
 	public static function decrementWorkOrderItemData($work_order_no,$item_no,$quantity)
 	{

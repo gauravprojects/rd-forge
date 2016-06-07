@@ -12,6 +12,15 @@ class MachiningStock extends Eloquent
 			->insert($records_array);
 	}
 
+	public static function updateData($records_array)
+	{
+		// trying raw php query here
+		//return DB::select( DB::raw("UPDATE machining_work_order_stock SET weight='20' WHERE work_order_no='123456789' ") );
+
+		DB::table('machining_work_order_stock')
+			->where('work_order_no',$records_array['work_order_no'])
+			->update($records_array);
+	}
 	//Decrements the quantity of specified work order in the machining stock
 	public static function decrementWorkOrderItemData($work_order_no,$item_no,$quantity)
 	{
