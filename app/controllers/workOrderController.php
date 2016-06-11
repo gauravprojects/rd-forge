@@ -130,6 +130,8 @@ class WorkOrderController extends BaseController {
 
 		$data_input = Input::all();
 
+
+
 		$data_array = array(
 			'customer_name' => $data_input['customer_name'],
 			'purchase_order_no' => $data_input['purchase_order_no'],
@@ -166,6 +168,7 @@ class WorkOrderController extends BaseController {
 				DB::table('work_order_material_details')->insert($work_order_material_array);
 
 		}
+
 
 
 		$work_order_details= WorkOrder::getRecordByWorkOrderDetails($data_input['work_order_no']);

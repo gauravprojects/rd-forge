@@ -2,9 +2,11 @@
 
 @section('links_data')
 
+    {{ $item_no= count($record_new); }}
+
     <script type="application/javascript">
 
-            var $item_no_count=1;
+            var $item_no_count='<?php echo $item_no ?>';
            $(document).ready(function(){
               $('#add_record').click(function(){
                     //alert("function being called");
@@ -170,6 +172,8 @@
                                         <th class="heading" style="text-align:center;">Remarks</th>
                                         <th class="heading" style="text-align:center;">Status</th>
                                     </tr>
+
+
 
                                 @foreach($record_new as $pushpam_matah)
 

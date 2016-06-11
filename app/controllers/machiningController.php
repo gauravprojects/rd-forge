@@ -36,6 +36,8 @@ class machiningController extends BaseController
 	{
 		$machining_input = Input::all();
 
+
+
 		$machining_heat_no = explode("-",$machining_input['heat_no'])[0];
 		$forging_size = explode("-",$machining_input['heat_no'])[1];
 		$forging_pressure = explode("-",$machining_input['heat_no'])[2];
@@ -247,11 +249,11 @@ class machiningController extends BaseController
 
 				//Insert data in the machining stock table
 				//if(!MachiningStock::updateData($machining_stock_array))
-					//throw new Exception("Could not insert machining data in the stock table",1);
+				//	throw new Exception("Could not insert machining data in the stock table",1);
 
 				//Decrements the machining stock on the basis of old work order and item numbers
-				if(!MachiningStock::decrementWorkOrderItemData($old_work_order_no,$old_work_order_item_no,$machining_input['old_machining_quantity']))
-					throw new Exception("Could not decrement data for old heat number",1);
+				//if(!MachiningStock::decrementWorkOrderItemData($old_work_order_no,$old_work_order_item_no,$machining_input['old_machining_quantity']))
+				//	throw new Exception("Could not decrement data for old heat number",1);
 
 				//Decrements the forging stock on the basis of given new heat,size,pressure,type and schedule
 				if(!ForgingStock::decrementHeatSizePressureTypeScheduleData($machining_heat_no,$forging_size,$forging_pressure,$forging_type,$forging_schedule,$machining_input['quantity']))
@@ -275,12 +277,12 @@ class machiningController extends BaseController
 					throw new Exception("Could not update machining records data",1);
 
 				//Decrements the machining stock on the basis of old work order and item numbers
-				if(!MachiningStock::decrementWorkOrderItemData($old_work_order_no,$old_work_order_item_no,$machining_input['old_machining_quantity']))
-					throw new Exception("Could not decrement data",1);
+				//if(!MachiningStock::decrementWorkOrderItemData($old_work_order_no,$old_work_order_item_no,$machining_input['old_machining_quantity']))
+				//	throw new Exception("Could not decrement data",1);
 
 				//Increments the machining stock on the basis of new work order and item numbers
-				if(!MachiningStock::incrementWorkOrderItemData($work_order_no,$work_order_item_no,$machining_input['quantity']))
-					throw new Exception("Could not increment data for old heat number",1);
+				//if(!MachiningStock::incrementWorkOrderItemData($work_order_no,$work_order_item_no,$machining_input['quantity']))
+					//throw new Exception("Could not increment data for old heat number",1);
 
 				//Decrements the forging stock on the basis of given new heat,size,pressure,type and schedule
 				if(!ForgingStock::decrementHeatSizePressureTypeScheduleData($machining_heat_no,$forging_size,$forging_pressure,$forging_type,$forging_schedule,$machining_input['quantity']))

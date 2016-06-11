@@ -19,7 +19,6 @@ class SerrationController extends BaseController {
 		{
 
 			$serration_input = Input::all();
-
 			$work_order_no = explode("-",$serration_input['item'])[0];
 			$work_order_item_no = explode("-",$serration_input['item'])[1];
 			$work_order_size = explode("-",$serration_input['item'])[2];
@@ -125,11 +124,11 @@ class SerrationController extends BaseController {
 		public function update($id)
 		{
 			$serration_array = Serration::getRecord($id);
-		
 			$grades = Grades::getGrades();
 
 			$availableWorkOrder = DrillingStock::getDrilledWorkOrderNo();
-			$availableWorkOrderItem = DrillingStock::getDrilledWorkOrderItemNo();
+			$availableWorkOrder_element= $availableWorkOrder[0]->work_order_no;
+			$availableWorkOrderItem = DrillingStock::getDrilledWorkOrderItemNo($availableWorkOrder_element);
 		
 			return View::make('serration.serration_update')
 			->with('serration_array',$serration_array)
@@ -143,7 +142,6 @@ class SerrationController extends BaseController {
 		{
 			
 			$serration_input = Input::all();
-
 			$old_work_order_no = explode("-",$serration_input['old_serration_work_order'])[0];
 			$old_work_order_item_no = explode("-",$serration_input['old_serration_work_order'])[1];
 
@@ -154,7 +152,7 @@ class SerrationController extends BaseController {
 			$work_order_type = explode("-",$serration_input['item'])[4];
 			$work_order_schedule = explode("-",$serration_input['item'])[5];
 
-			$drilling_array= array(
+			$serration_array= array(
 				'date' => date('Y-m-d'),
 				'work_order_no' => $work_order_no,
 				'item'  	=> $work_order_item_no,			
@@ -165,7 +163,7 @@ class SerrationController extends BaseController {
 			);
 
 
-			$drilling_stock_array = array(
+			$serration_stock_array = array(
 
 				'work_order_no' => $work_order_no,
 				'item'  	=> $work_order_item_no,
@@ -190,23 +188,23 @@ class SerrationController extends BaseController {
 				{
 					//Update all data in the serration records table
 					if(!Serration::updateAllData($serration_input['serration_id'],$serration_array))
-						throw new Exception("Could not update drilling records data",1);
+						throw new Exception("Could not update drilling records data if part",1);
 
 					//Insert data in the serration stock table
 					if(!SerrationStock::insertData($serration_stock_array))
 						throw new Exception("Could not insert drilling data in the stock table",1);
 
 					//Decrements the serration stock on the basis of old work order and item numbers
-					if(!SerrationStock::decrementWorkOrderItemData($old_work_order_no,$old_work_order_item_no,$serration_input['old_serration_quantity']))
-						throw new Exception("Could not decrement data for old work order number",1);
+					//if(!SerrationStock::decrementWorkOrderItemData($old_work_order_no,$old_work_order_item_no,$serration_input['old_serration_quantity']))
+						//throw new Exception("Could not decrement data for old work order number",1);
 
 					//Decrements the drilling stock on the basis of new work order and item numbers
-					if(!DrillingStock::decrementWorkOrderItemData($work_order_no,$work_order_item_no,$serration_input['quantity']))
-						throw new Exception("Cannot update quantity", 1);
+					//if(!DrillingStock::decrementWorkOrderItemData($work_order_no,$work_order_item_no,$serration_input['quantity']))
+						//throw new Exception("Cannot update drilling quantity", 1);
 
 					//Increments the drilling stock on the basis of old work order and item numbers
-					if(!DrillingStock::incrementWorkOrderItemData($old_work_order_no,$old_work_order_item_no,$serration_input['old_serration_quantity']))
-						throw new Exception("Cannot update quantity", 1);
+					//if(!DrillingStock::incrementWorkOrderItemData($old_work_order_no,$old_work_order_item_no,$serration_input['old_serration_quantity']))
+						//throw new Exception("Cannot update drilling quantity", 1);
 
 					//Checks negative weights if present
 					if(DrillingStock::checkZeroWeight())
@@ -218,24 +216,24 @@ class SerrationController extends BaseController {
 				else
 				{
 					//Update all data in the serration records table
-					if(!Serration::updateAllData($serration_input['drilling_id'],$serration_array))
-						throw new Exception("Could not update all data",1);
+					if(!Serration::updateAllData($serration_input['serration_id'],$serration_array))
+						throw new Exception("Could not update all data else part",1);
 
 					//Decrements the serration stock on the basis of old work order and item numbers
-					if(!SerrationStock::decrementWorkOrderItemData($old_work_order_no,$old_work_order_item_no,$serration_input['old_serration_quantity']))
-						throw new Exception("Could not decrement data for old work order number",1);
+					//if(!SerrationStock::decrementWorkOrderItemData($old_work_order_no,$old_work_order_item_no,$serration_input['old_serration_quantity']))
+						//throw new Exception("Could not decrement data for old work order number",1);
 
 					//Increments the serration stock on the basis of old work order and item numbers
-					if(!SerrationStock::incrementWorkOrderItemData($work_order_no,$work_order_item_no,$serration_input['quantity']))
-						throw new Exception("Could not increment data for old work order number",1);
+					//if(!SerrationStock::incrementWorkOrderItemData($work_order_no,$work_order_item_no,$serration_input['quantity']))
+						//throw new Exception("Could not increment data for old work order number",1);
 
 					//Decrements the drilling stock on the basis of new work order and item numbers
-					if(!DrillingStock::decrementWorkOrderItemData($work_order_no,$work_order_item_no,$serration_input['quantity']))
-						throw new Exception("Cannot update quantity", 1);
+					//if(!DrillingStock::decrementWorkOrderItemData($work_order_no,$work_order_item_no,$serration_input['quantity']))
+						//throw new Exception("Cannot update quantity", 1);
 
 					//Increments the drilling stock on the basis of old work order and item numbers
-					if(!DrillingStock::incrementWorkOrderItemData($old_work_order_no,$old_work_order_item_no,$serration_input['old_drilling_quantity']))
-						throw new Exception("Cannot update quantity", 1);
+					//if(!DrillingStock::incrementWorkOrderItemData($old_work_order_no,$old_work_order_item_no,$serration_input['old_drilling_quantity']))
+						//throw new Exception("Cannot update quantity", 1);
 
 					//Checks negative weights if present
 					if(DrillingStock::checkZeroWeight())
@@ -253,7 +251,7 @@ class SerrationController extends BaseController {
 			}
 
 
-			$get_record_array= Serration::getRecord($serration['serration_id']);
+			$get_record_array= Serration::getRecord($serration_array['serration_id']);
 			return View::make('serration.confirm_serration_update')->with('confirmations',$get_record_array);
 		}
 

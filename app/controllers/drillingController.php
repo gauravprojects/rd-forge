@@ -179,7 +179,7 @@ class DrillingController extends BaseController {
 
 			);
 
-		dd($drilling_stock_array);
+
 		DrillingStock::updateData($drilling_stock_array);
 		
 		DB::beginTransaction();
@@ -198,8 +198,8 @@ class DrillingController extends BaseController {
 					//throw new Exception("Could not insert drilling data in the stock table",1);
 
 				//Decrements the drilling stock on the basis of old work order and item numbers
-				if(!DrillingStock::decrementWorkOrderItemData($old_work_order_no,$old_work_order_item_no,$drilling_input['old_drilling_quantity']))
-					throw new Exception("Could not decrement data for old work order number",1);
+				//if(!DrillingStock::decrementWorkOrderItemData($old_work_order_no,$old_work_order_item_no,$drilling_input['old_drilling_quantity']))
+				//	throw new Exception("Could not decrement data for old work order number",1);
 
 				//Decrements the machining stock on the basis of new work order and item numbers
 				if(!MachiningStock::decrementWorkOrderItemData($work_order_no,$work_order_item_no,$drilling_input['quantity']))
@@ -223,12 +223,12 @@ class DrillingController extends BaseController {
 					throw new Exception("Could not update all data",1);
 
 				//Decrements the machining stock on the basis of old work order and item numbers
-				if(!DrillingStock::decrementWorkOrderItemData($old_work_order_no,$old_work_order_item_no,$drilling_input['old_drilling_quantity']))
-					throw new Exception("Could not decrement data for old work order number",1);
+				//if(!DrillingStock::decrementWorkOrderItemData($old_work_order_no,$old_work_order_item_no,$drilling_input['old_drilling_quantity']))
+				//	throw new Exception("Could not decrement data for old work order number",1);
 
 				//Increments the drilling stock on the basis of new work order and item numbers
-				if(!DrillingStock::incrementWorkOrderItemData($work_order_no,$work_order_item_no,$drilling_input['quantity']))
-					throw new Exception("Could not increment data for old work order number",1);
+				//if(!DrillingStock::incrementWorkOrderItemData($work_order_no,$work_order_item_no,$drilling_input['quantity']))
+				//	throw new Exception("Could not increment data for old work order number",1);
 
 				//Decrements the machining stock on the basis of new work order and item numbers
 				if(!MachiningStock::decrementWorkOrderItemData($work_order_no,$work_order_item_no,$drilling_input['quantity']))

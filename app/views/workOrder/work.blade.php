@@ -10,7 +10,7 @@
                     //alert("function being called");
 
                   <!-- item no -->
-                  $item_no= '<td><input type="text" name="item_no[]" class="form-control inputfix" value=" '+ ++$item_no_count+ '"  </td>';
+                  $item_no= '<td><input type="text" name="item_no[]" class="form-control inputfix" value=" '+ ++$item_no_count + '"  </td>';
 
                   <!-- material grade -->
                   $material_grade= '<td> <select class="form-control ui fluid search dropdown grade_select" name="grade[]">                         @foreach($grades as $grade_element)
