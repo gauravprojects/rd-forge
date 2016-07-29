@@ -32,6 +32,24 @@ class ForgingStock extends Eloquent
 			   ->get();
 	}
 
+	public static function checkForgingStock($heat_no,$size,$pressure,$type,$schedule)
+	{
+		return DB::table('forging_stock')
+			->where('heat_no',$heat_no)
+			->where('size',$size)
+			->where('pressure',$pressure)
+			->where('type',$type)
+			->where('schedule',$schedule)
+			->get();
+	}
+
+	public static function deleteNegativeOrNonZeroEntries()
+	{
+		return DB::table('forging_stock')
+			->where('available_quantity_forging','<',1)
+			->delete();
+	}
+
 	//Increments the stock data weight on the basis of given heat,size,pressure,type and schedule
 	public static function incrementHeatSizePressureTypeScheduleData($heat_no,$size,$pressure,$type,$schedule,$quantity)
 	{

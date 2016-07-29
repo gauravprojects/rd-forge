@@ -157,6 +157,7 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 			return 0;
 		}
 
+		ForgingStock::deleteNegativeOrNonZeroEntries();
 		
 		$last_record = Forging::getLastRecord();
 
@@ -303,6 +304,9 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 			echo $e->getMessage();
 			return $e;
 		}
+
+		//delete forging negative and zero entries
+		ForgingStock::deleteNegativeOrNonZeroEntries();
 
 		$get_record_array= Forging::getRecord($forging['forging_id']);
 		return View::make('forging.confirm_forging_update')->with('confirmations',$get_record_array);

@@ -90,13 +90,26 @@ class machiningController extends BaseController
 		DB::beginTransaction();
 
 		//Checks whether the stock of given work order and item number is present or not in stock table
-		$whether_stock_present = MachiningStock::getWorkOrderItemData($work_order_no,$work_order_item_no);
+//		$whether_stock_present = MachiningStock::getWorkOrderItemData($work_order_no,$work_order_item_no);
 
-		
+
+		$machining_heat_no=trim($machining_heat_no);
+		$forging_size=trim($forging_size);
+		$forging_pressure=trim($forging_pressure);
+		$forging_schedule=trim($forging_schedule);
+		$forging_type=trim($forging_type);
+		//dd(ForgingStock::checkForgingStock($machining_heat_no,$forging_size,$forging_pressure,$forging_type,$forging_schedule));
+		$whether_stock_present=ForgingStock::checkForgingStock($machining_heat_no,$forging_size,$forging_pressure,$forging_type,$forging_schedule);
+
+
+		$whether_stock_present=$whether_stock_present[0]->available_quantity_forging;
+
+
+
 
 		try
 		{
-			if(!$whether_stock_present)
+			if($whether_stock_present)
 			{
 				//Insert data in the machining records table
 				if(!Machining::insertData($machining_array))
@@ -164,7 +177,7 @@ class machiningController extends BaseController
 	//Open the update page of the module with the data
 	public function update($id)
 	{
-		$machining_array = Machining::getRecord($id);		
+		$machining_array = Machining::getRecord($id);
 
 		$grades = Grades::getGrades();
 		$heat_no = ForgingStock::getHeatNo();
@@ -172,7 +185,7 @@ class machiningController extends BaseController
 		// shows index page for machining form
 		$availableWorkOrder = WorkOrder::availableWorkOrderNo();
 		$availableWorkOrderItem = WorkOrder::availableWorkOrderItemNo();
-		
+
 		return View::make('machining.machining_update')
 			->with('grades',$grades)
 			->with('heat_no',$heat_no)
@@ -185,7 +198,7 @@ class machiningController extends BaseController
 	//Updates the new data
 	public function update_store($id)
 	{
-		
+
 		$machining_input = Input::all();
 
 		$old_machining_heat_no = explode("-",$machining_input['old_machining_data'])[0];
@@ -228,7 +241,7 @@ class machiningController extends BaseController
 
 
 
-		$machining_stock_array = array(	
+		$machining_stock_array = array(
 					'work_order_no' => $work_order_no,
 					'item'  	=> $work_order_item_no,
 					'size' => $work_order_size,
@@ -308,7 +321,7 @@ class machiningController extends BaseController
 		}
 		catch(Exception $e)
 		{
-			DB::rollback();			
+			DB::rollback();
 			echo $e->getMessage();
 			return $e;
 		}
@@ -348,7 +361,7 @@ class machiningController extends BaseController
 
 			else
 				DB::commit();
-			
+
 		}
 		catch(Exception $e)
 		{
@@ -357,7 +370,7 @@ class machiningController extends BaseController
 			return $e;
 		}
 
-		
+
 		return View::make('machining.machining_report')->with('data',$all_data);
 
 	}
