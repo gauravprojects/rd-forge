@@ -26,7 +26,8 @@ class RawMaterialStock extends Eloquent
 	{
 		return DB::table('raw_material_stock')
 			   ->where('heat_no','=',$heat_no)
-			   ->distinct()->get();
+			->where('heat_no','>','0')
+			->distinct()->get();
 	}
 
 	//Get the available stock from the specified table where its > 0
@@ -48,7 +49,9 @@ class RawMaterialStock extends Eloquent
 
 	public static function getHeatNo()
 	{
-		return DB::table('raw_material_stock')->get();
+		return DB::table('raw_material_stock')
+			->where('available_weight','>','0')
+			->get();
 	}
 
 	//Get all the data from the specified table belonging to the heat number and size

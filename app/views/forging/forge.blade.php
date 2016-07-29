@@ -154,7 +154,8 @@ i.icon.delete:before {
                                 <select class="form-control search selection" name="heat_no" id="heat_no_select" required>
                                     <option value="">---Select Heat Number--------</option>
                                     @foreach($heat_no as $heat_no_element)
-                                        <option value="{{ $heat_no_element->heat_no }}-{{ $heat_no_element->standard_size }}-{{ $heat_no_element->pressure }}-{{ $heat_no_element->type }}-{{ $heat_no_element->schedule }}">{{$heat_no_element->heat_no}} - {{ $heat_no_element->standard_size }}" - {{ $heat_no_element->pressure }}# - {{ $heat_no_element->type }} x {{ $heat_no_element->schedule }}</option>
+                                        <option value="{{ $heat_no_element->heat_no }}-{{ $heat_no_element->standard_size }}-{{ $heat_no_element->pressure }}-{{ $heat_no_element->type }}-{{ $heat_no_element->schedule }}">{{$heat_no_element->heat_no}} - {{ $heat_no_element->standard_size }}" - {{ $heat_no_element->pressure }}# -
+                                            {{ $heat_no_element->type }} x {{ $heat_no_element->schedule }}-Available weight{{$heat_no_element->available_weight_cutting}}</option>
                                     @endforeach
                                 </select>
                             </div>

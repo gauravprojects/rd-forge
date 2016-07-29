@@ -51,6 +51,9 @@ class machiningController extends BaseController
 		$work_order_type = explode("-",$machining_input['item'])[4];
 		$work_order_schedule = explode("-",$machining_input['item'])[5];
 
+
+
+
 		$machining_array= array(
 				'date' => date('Y-m-d',strtotime($machining_input['date'])),
 				'work_order_no' => $work_order_no,
@@ -89,6 +92,8 @@ class machiningController extends BaseController
 		//Checks whether the stock of given work order and item number is present or not in stock table
 		$whether_stock_present = MachiningStock::getWorkOrderItemData($work_order_no,$work_order_item_no);
 
+		
+
 		try
 		{
 			if(!$whether_stock_present)
@@ -102,8 +107,9 @@ class machiningController extends BaseController
 					throw new Exception("Could not insert machining data",1);
 
 				//Decrements the forging stock on the basis of given new heat,size,pressure,type and schedule
+
 				if(!ForgingStock::decrementHeatSizePressureTypeScheduleData($machining_heat_no,$forging_size,$forging_pressure,$forging_type,$forging_schedule,$machining_input['quantity']))
-					throw new Exception("Could not deduct forging data",1);
+					throw new Exception("Could not deduct forging data 1",1);
 
 				//Checks negative weights if present
 				if(ForgingStock::checkZeroWeight())
@@ -124,7 +130,7 @@ class machiningController extends BaseController
 
 				//Decrements the forging stock on the basis of given new heat,size,pressure,type and schedule
 				if(!ForgingStock::decrementHeatSizePressureTypeScheduleData($machining_heat_no,$forging_size,$forging_pressure,$forging_type,$forging_schedule,$machining_input['quantity']))
-					throw new Exception("Could not deduct forging data",1);
+					throw new Exception("Could not deduct forging data 2",1);
 
 				//Checks negative weights if present
 				if(ForgingStock::checkZeroWeight())

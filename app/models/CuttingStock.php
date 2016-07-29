@@ -23,7 +23,9 @@ class CuttingStock extends Eloquent
 	//Get all the cutting stock data
 	public static function getHeatNo()
 	{
-		return DB::table('cutting_stock')->get();
+		return DB::table('cutting_stock')
+				->where('available_weight_cutting','>',0)
+				->get();
 	}
 
 	//Get the cutting stock data depending on heat,size,pressure,type and schedule

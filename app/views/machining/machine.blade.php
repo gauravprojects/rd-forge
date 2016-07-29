@@ -93,7 +93,20 @@
                                 <option value="">---Select Heat Number --------</option>
                            {{--      <option value="Job work">Job Work</option> --}}
                                 @foreach($heat_no as $heat_no_element)
-                                        <option value="{{ $heat_no_element->heat_no }}-{{ $heat_no_element->size }}-{{ $heat_no_element->pressure }}-{{ $heat_no_element->type }}-{{ $heat_no_element->schedule }}">{{$heat_no_element->heat_no}} - {{ $heat_no_element->size }}" - {{ $heat_no_element->pressure }}# - {{ $heat_no_element->type }} x {{ $heat_no_element->schedule }}</option>
+
+                                        <option value="{{ $heat_no_element->heat_no }}
+                                                -{{ $heat_no_element->size }}
+                                                -{{ $heat_no_element->pressure }}
+                                                -{{ $heat_no_element->type }}
+                                                -{{ $heat_no_element->schedule }}">
+                                            {{$heat_no_element->heat_no}} -
+                                            {{ $heat_no_element->size }}" -
+                                            {{ $heat_no_element->pressure }}# -
+                                            {{ $heat_no_element->type }} x
+                                            {{ $heat_no_element->schedule }}
+                                            Available quantity-
+                                            {{ $heat_no_element->available_quantity_forging }}
+                                        </option>
                                 @endforeach
                             </select>
                         </div>

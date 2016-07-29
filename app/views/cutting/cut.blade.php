@@ -73,7 +73,7 @@
                                 <select class="form-control search selection" name="heatNo" id="heatno_select" required>
                                     <option value="">---Select Heat Number--------</option>
                                     @foreach($heat_no as $heat_no_element)
-                                        <option value="{{ $heat_no_element->heat_no }}-{{ $heat_no_element->size }}">{{$heat_no_element->heat_no}} - {{ $heat_no_element->size }}</option>
+                                        <option value="{{ $heat_no_element->heat_no }}-{{ $heat_no_element->size }}">{{$heat_no_element->heat_no}} - {{ $heat_no_element->size }}   -  Available Weight {{ $heat_no_element->available_weight }} </option>
                                     @endforeach
                                 </select>
                             </div>

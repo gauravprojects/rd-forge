@@ -226,7 +226,8 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 					'available_weight_forging' => $total_weight
 					);
 
-		Forging::updateAllData($forging['forging_id'],$forging_array);
+
+			Forging::updateAllData($forging['forging_id'],$forging_array);
 
 		DB::beginTransaction();
 
@@ -267,7 +268,7 @@ Note-> 1- forging is the process done after cutting and before machining.. there
 			//Checks if the stock of given heat,size,pressure,type and schedule present or not
 			$whether_stock_present = ForgingStock::getHeatSizePressureTypeScheduleData($final_heat_no,$forging['standard_size'][$counter],$forging['pressure'][$counter],$forging['type'][$counter],$forging['schedule'][$counter]);
 
-			if(!$whether_stock_present)
+				if(!$whether_stock_present)
 			{
 				//Insert the new forging stock array data
 				if(!ForgingStock::insertData($forging_stock_array))
