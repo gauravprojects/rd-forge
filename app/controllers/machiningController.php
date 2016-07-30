@@ -186,6 +186,7 @@ class machiningController extends BaseController
 		$availableWorkOrder = WorkOrder::availableWorkOrderNo();
 		$availableWorkOrderItem = WorkOrder::availableWorkOrderItemNo();
 
+		
 		return View::make('machining.machining_update')
 			->with('grades',$grades)
 			->with('heat_no',$heat_no)
