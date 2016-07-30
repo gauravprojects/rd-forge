@@ -168,11 +168,12 @@
                         <?php $old_machining_work_order = $machining->work_order_no."-".$machining->item; ?>
 
 
-                             <div class="form-group">
+                                <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Heat Number(available forging)') }}
 
                                 <select class="form-control search selection" name="heat_no" id="heat_no_select" required>
                                     <option value="">------Select Heat Number----------</option>
+
                                     @foreach($heat_no as $heat_no_element)
                                         <option value="{{ $heat_no_element->heat_no }}-{{ $heat_no_element->size }}-{{ $heat_no_element->pressure }}-{{ $heat_no_element->type }}-{{ $heat_no_element->schedule }}" selected>{{$heat_no_element->heat_no}} - {{ $heat_no_element->size }}" - {{ $heat_no_element->pressure }}# - {{ $heat_no_element->type }} x {{ $heat_no_element->schedule }}</option>
                                     <?php $old_machining_data = $heat_no_element->heat_no."-".$heat_no_element->size."-".$heat_no_element->pressure."-".$heat_no_element->type."-".$heat_no_element->schedule; ?>
@@ -183,6 +184,16 @@
                                         @else
                                             <option value="{{ $heat_no_element->heat_no }}-{{ $heat_no_element->size }}-{{ $heat_no_element->pressure }}-{{ $heat_no_element->type }}-{{ $heat_no_element->schedule }}">{{$heat_no_element->heat_no}} - {{ $heat_no_element->size }}" - {{ $heat_no_element->pressure }}# - {{ $heat_no_element->type }} x {{ $heat_no_element->schedule }}</option>
                                         @endif
+                                        {{--<?php $old_machining_data = $heat_no_element->heat_no."-".$heat_no_element->size."-".$heat_no_element->pressure."-".$heat_no_element->type."-".$heat_no_element->schedule; ?>--}}
+                                        {{--This was not Working So changed it to WORK for testing ^--}}
+                                    {{--  @if($machining->heat_no == $heat_no_element->heat_no && $machining->forging_size == $heat_no_element->size && $machining->forging_pressure == $heat_no_element->pressure && $machining->forging_type == $heat_no_element->type && $machining->forging_pressure == $heat_no_element->pressure)--}}
+
+                                            {{--<option value="{{ $heat_no_element->heat_no }}-{{ $heat_no_element->size }}-{{ $heat_no_element->pressure }}-{{ $heat_no_element->type }}-{{ $heat_no_element->schedule }}" selected>{{$heat_no_element->heat_no}} - {{ $heat_no_element->size }}" - {{ $heat_no_element->pressure }}# - {{ $heat_no_element->type }} x {{ $heat_no_element->schedule }}</option>--}}
+
+                                            {{--<?php $old_machining_data = $heat_no_element->heat_no."-".$heat_no_element->size."-".$heat_no_element->pressure."-".$heat_no_element->type."-".$heat_no_element->schedule; ?>--}}
+                                        {{--@else--}}
+                                             {{--<option value="{{ $heat_no_element->heat_no }}-{{ $heat_no_element->size }}-{{ $heat_no_element->pressure }}-{{ $heat_no_element->type }}-{{ $heat_no_element->schedule }}">{{$heat_no_element->heat_no}} - {{ $heat_no_element->size }}" - {{ $heat_no_element->pressure }}# - {{ $heat_no_element->type }} x {{ $heat_no_element->schedule }}</option>--}}
+                                        {{--@endif--}}
                                     @endforeach
                                 </select>
                             </div>
