@@ -22,7 +22,7 @@
                                     '<option value="">---Select Item Number --------</option>'+
                                 '</select>'+
                             '</div>';
-                            
+
         $("#avinash").html($work_order_no+$item);
 
         $(".parameter_button").attr("onclick","revert_parameters()");
@@ -30,7 +30,7 @@
         $('#item_no_select').attr("name","item");
 
          $('#work_order_no_select').dropdown({
-                    onChange : function(){ 
+                    onChange : function(){
 
                         var work_order_no = $(this)[0].value;
 
@@ -42,13 +42,13 @@
 
                         })
                         .done(function(data)
-                        {                            
+                        {
                             $.each(JSON.parse(data),function(key,value)
                             {
                             $("#item_no_select").append(
                             '<option value="'+value['work_order_no']+'-'+value['item_no']+'-'+value['size']+'-'+value['pressure']+'-'+value['type']+'-'+value['schedule']+'">'+value['work_order_no']+"/"+value['item_no']+' - '+value['size']+'" - '+value['pressure']+'# - '+value['type']+' x '+value['schedule']+'</option>');
                             });
-                            
+
                         });
 
                      }
@@ -125,13 +125,13 @@
                                 <select class="form-control search selection" name="work_order_no" readonly>
                                     @foreach($availableWorkOrderNo as $workOrder)
                                         @if($machining->work_order_no == $workOrder->work_order_no)
-                                        
+
                                         <option value="{{ $workOrder->work_order_no }}" selected>
                                             {{$workOrder->work_order_no}} &nbsp;
                                             -{{$workOrder->customer_name}} &nbsp;
                                             -Ordered on:     {{ date('d-m-Y',strtotime($workOrder->purchase_order_date))  }}
                                         </option>
-                                        
+
                                         @endif
                                     @endforeach
                                 </select>
@@ -144,7 +144,7 @@
 
                                     @foreach($availableWorkOrderItemNo as $workOrder)
                                         @if($machining->work_order_no == $workOrder->work_order_no && $machining->item == $workOrder->item_no)
-                                            
+
                                         <option value="{{$workOrder->work_order_no}}-{{ $workOrder->item_no }}-{{ $workOrder->size }}-{{ $workOrder->pressure }}-{{ $workOrder->type }}-{{$workOrder->schedule}}" selected>{{ $workOrder->work_order_no }}/{{ $workOrder->item_no }} - {{ $workOrder->size }}" - {{ $workOrder->pressure }}# - {{ $workOrder->type }} x {{$workOrder->schedule}}
                                                 </option>
 
@@ -158,7 +158,7 @@
 
 
                     <a href="#" class="waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button parameter_button" onclick="change_parameters()">Change parameters</a>
-                        
+
 
                     <div id="avinash">
 
@@ -167,18 +167,19 @@
 
                         <?php $old_machining_work_order = $machining->work_order_no."-".$machining->item; ?>
 
-                            
+
                              <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Heat Number(available forging)') }}
 
                                 <select class="form-control search selection" name="heat_no" id="heat_no_select" required>
                                     <option value="">------Select Heat Number----------</option>
                                     @foreach($heat_no as $heat_no_element)
-                                        @if($machining->heat_no == $heat_no_element->heat_no && $machining->forging_size == $heat_no_element->size && $machining->forging_pressure == $heat_no_element->pressure && $machining->forging_type == $heat_no_element->type && $machining->forging_pressure == $heat_no_element->pressure)
+                                        <option value="{{ $heat_no_element->heat_no }}-{{ $heat_no_element->size }}-{{ $heat_no_element->pressure }}-{{ $heat_no_element->type }}-{{ $heat_no_element->schedule }}" selected>{{$heat_no_element->heat_no}} - {{ $heat_no_element->size }}" - {{ $heat_no_element->pressure }}# - {{ $heat_no_element->type }} x {{ $heat_no_element->schedule }}</option>
+                                    <?php $old_machining_data = $heat_no_element->heat_no."-".$heat_no_element->size."-".$heat_no_element->pressure."-".$heat_no_element->type."-".$heat_no_element->schedule; ?>
 
-                                            <option value="{{ $heat_no_element->heat_no }}-{{ $heat_no_element->size }}-{{ $heat_no_element->pressure }}-{{ $heat_no_element->type }}-{{ $heat_no_element->schedule }}" selected>{{$heat_no_element->heat_no}} - {{ $heat_no_element->size }}" - {{ $heat_no_element->pressure }}# - {{ $heat_no_element->type }} x {{ $heat_no_element->schedule }}</option>
+                                    @if($machining->heat_no == $heat_no_element->heat_no && $machining->forging_size == $heat_no_element->size && $machining->forging_pressure == $heat_no_element->pressure && $machining->forging_type == $heat_no_element->type && $machining->forging_pressure == $heat_no_element->pressure)
 
-                                            <?php $old_machining_data = $heat_no_element->heat_no."-".$heat_no_element->size."-".$heat_no_element->pressure."-".$heat_no_element->type."-".$heat_no_element->schedule; ?>
+
                                         @else
                                             <option value="{{ $heat_no_element->heat_no }}-{{ $heat_no_element->size }}-{{ $heat_no_element->pressure }}-{{ $heat_no_element->type }}-{{ $heat_no_element->schedule }}">{{$heat_no_element->heat_no}} - {{ $heat_no_element->size }}" - {{ $heat_no_element->pressure }}# - {{ $heat_no_element->type }} x {{ $heat_no_element->schedule }}</option>
                                         @endif
@@ -224,7 +225,7 @@
                                 {{ Form::text('weight',$machining->weight,array('class'=>'form-control inputfix','placeholder'=>'Weight','id'=>'exampleInputEnail1')) }}
                             </div>
 
-                            
+
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Remarks') }}
                                 {{ Form::text('remarks',$machining->remarks,array('class'=>'form-control inputfix','placeholder'=>'Remarks','id'=>'anything')) }}
@@ -240,7 +241,7 @@
                             <div class="loginButton">
 
                                  <button class="waves-effect waves-light btn col-xs-12 col-sm-12 col-md-12 col-lg-12 teal button" type="submit">Submit</button>
-                                 
+
                             </div>
                             {{ Form::close() }}
                         </div>		<!-- row conatining form ends here -->

@@ -31,6 +31,15 @@ class MachiningStock extends Eloquent
 	}
 
 	//Increments the quantity of specified work order in the machining stock
+	public static function getStockData($id)
+	{
+		return DB::table('machining_work_order_stock')
+			->where('mach_id','=',$id)
+			->get();
+
+	}
+
+
 	public static function incrementWorkOrderItemData($work_order_no,$item_no,$quantity)
 	{
 		return DB::table('machining_work_order_stock')

@@ -179,6 +179,9 @@ class machiningController extends BaseController
 	{
 		$machining_array = Machining::getRecord($id);
 
+
+		$machining_stock_array= MachiningStock::getStockData($id);
+
 		$grades = Grades::getGrades();
 		$heat_no = ForgingStock::getHeatNo();
 
@@ -191,7 +194,8 @@ class machiningController extends BaseController
 			->with('heat_no',$heat_no)
 			->with('availableWorkOrderNo',$availableWorkOrder)
 			->with('availableWorkOrderItemNo',$availableWorkOrderItem)
-			->with('machining_array',$machining_array);
+			->with('machining_array',$machining_array)
+			->with('machining_stock_array',$machining_stock_array);
 
 	}
 
@@ -200,6 +204,8 @@ class machiningController extends BaseController
 	{
 
 		$machining_input = Input::all();
+		$machining_array = Machining::getRecord($id);
+
 
 		$old_machining_heat_no = explode("-",$machining_input['old_machining_data'])[0];
 		$old_forging_size = explode("-",$machining_input['old_machining_data'])[1];
@@ -342,6 +348,8 @@ class machiningController extends BaseController
 	public function destroy($id)
 	{
 		$machining_response = Machining::getRecord($id);
+
+		//dd($machining_response[0]->quantity);
 
 		DB::beginTransaction();
 
