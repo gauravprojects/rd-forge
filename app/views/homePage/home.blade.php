@@ -21,6 +21,7 @@
                         <li><a href="{{action('machiningController@index')}}" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 waves-effect waves-light btn link">Machining</a></li>
                         <li><a href="{{action('drillingController@index')}}" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 waves-effect waves-light btn link">Drilling</a></li>
                         <li><a href="{{action('serrationController@index')}}" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 waves-effect waves-light btn link">Serration</a></li>
+                        <li><a href="{{ action('dispatchController@index') }}" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 waves-effect waves-light btn link">Dispatch</a>  </li>
                     </ul>
                 </div>
                 <div class="row">

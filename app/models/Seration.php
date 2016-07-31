@@ -44,4 +44,13 @@ class Seration extends Eloquent {
 			->where('seration_id','=',$seration_id)
 			->delete();
 	}
+
+	public static function getAllStockRecords()
+	{
+		return DB::table('serration_work_order_stock')
+			->where('quantity','>',0)
+			->get();
+	}
+
+
 }

@@ -72,5 +72,12 @@ class DrillingStock extends Eloquent {
 			   ->get();
 	}
 
+	public static function getDrillingStockData()
+	{
+		return DB::table('drilling_work_order_stock')
+			->where('quantity','>',0)
+			->get();
+	}
+
 
 }
