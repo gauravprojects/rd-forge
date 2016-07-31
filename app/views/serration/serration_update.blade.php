@@ -132,20 +132,14 @@
                                         @endif
                                     @endforeach
                                 </select>
-
                             </div>
-
                             <div class="form-group">
                                 {{ Form::label('exampleInputEmail1','Work Order Item') }}
                                 <select class="form-control search selection" name="item" readonly>
-
                                     @foreach($availableWorkOrderItemNo as $workOrder)
                                         @if($serration->work_order_no == $workOrder->work_order_no && $serration->item == $workOrder->item)
-                                            
                                             <option value=" {{ $workOrder->work_order_no }}-{{ $workOrder->item }}-{{ $workOrder->size }}-{{ $workOrder->pressure }}-{{ $workOrder->type }}- {{$workOrder->schedule}}" selected>{{ $workOrder->work_order_no }}/{{ $workOrder->item }} - {{ $workOrder->size }}" - {{ $workOrder->pressure }}# - {{ $workOrder->type }} x {{$workOrder->schedule}}
-                                                </option>
-
-
+                                            </option>
                                         @endif
                                     @endforeach
                                 </select>

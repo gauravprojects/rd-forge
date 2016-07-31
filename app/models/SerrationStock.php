@@ -47,6 +47,25 @@ class SerrationStock extends Eloquent {
 			   ->where('quantity','<',0)
 			   ->get();
 	}
+	public static function updateData($id,$records_array)
+	{
+		// trying raw php query here
+		//return DB::select( DB::raw("UPDATE machining_work_order_stock SET weight='20' WHERE work_order_no='123456789' ") );
+//  			dd(DB::table('serration_work_order_stock')
+//				->where('serr_id',$id)
+//				->get(),$records_array);
+		return DB::table('serration_work_order_stock')
+			->where('serr_id',$id)
+			->update($records_array);
+	}
+
+	public static function  getDataSerationByOrderNoItemNo($order_no,$item_no)
+	{
+		return DB::table('serration_work_order_stock')
+			->where('work_order_no',$order_no)
+			->where('item',$item_no)
+			->first();
+	}
 
 
 }

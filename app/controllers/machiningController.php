@@ -178,13 +178,9 @@ class machiningController extends BaseController
 	public function update($id)
 	{
 		$machining_array = Machining::getRecord($id);
-
-
 		$machining_stock_array= MachiningStock::getStockData($id);
-
 		$grades = Grades::getGrades();
 		$heat_no = ForgingStock::getHeatNo();
-
 		// shows index page for machining form
 		$availableWorkOrder = WorkOrder::availableWorkOrderNo();
 		$availableWorkOrderItem = WorkOrder::availableWorkOrderItemNo();
@@ -266,7 +262,6 @@ class machiningController extends BaseController
 		try{
 			//Checks whether the stock of given work order and item number is present or not in stock table
 			$whether_stock_present = MachiningStock::getWorkOrderItemData($work_order_no,$work_order_item_no);
-
 			if(!$whether_stock_present)
 			{
 				//Update all data in the machining records table

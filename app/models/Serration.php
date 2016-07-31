@@ -48,7 +48,14 @@ class Serration extends Eloquent {
 	public static function updateAllData($serr_id,$array)
 	{
 		return DB::table('serration_records')
-			  ->where('serr_id',$serr_id)
-			  ->update($array);
+			->where('serr_id',$serr_id)
+			->update($array);
+	}
+	public static function  getDataSerationByOrderNoItemNo($order_no,$item_no)
+	{ 
+		return DB::table('serration_work_order_stock')
+				->where('work_order_no',$order_no)
+				->where('item',$item_no)
+				->first();
 	}
 }
