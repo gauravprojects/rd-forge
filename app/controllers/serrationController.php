@@ -144,6 +144,7 @@ class SerrationController extends BaseController {
 			$serration_input = Input::all();
 			$old_work_order_no = explode("-",$serration_input['old_serration_work_order'])[0];
 			$old_work_order_item_no = explode("-",$serration_input['old_serration_work_order'])[1];
+//			dd($old_work_order_item_no,$old_work_order_no);
 			$old_seration_quantity=Serration::getDataSerationByOrderNoItemNo($old_work_order_no,$old_work_order_item_no)->quantity;
 			$work_order_no = trim(explode("-",$serration_input['item'])[0]);
 			$work_order_item_no = explode("-",$serration_input['item'])[1];
