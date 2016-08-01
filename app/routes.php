@@ -747,4 +747,56 @@
 			'uses' => 'searchController@store'
 	));
 
-	Route::get('superfun','rawMaterialController@hottie');
+	// -------------------------- Dispatch module ----------------------------------
+
+	Route::get('/dispatch',array(
+		'as' => 'dispatch',
+		'uses' => 'dispatchController@index'
+	));
+
+	Route::get('/dispatch/forging',array(
+		'as' => 'dispatch.forging',
+		'uses' => 'dispatchController@forgingIndex'
+	));
+
+	Route::post('dispatch/forging',array(
+		'as' => 'dispatch.forging.store',
+		'uses' => 'dispatchController@forgingStore'
+	));
+
+	//machining routes
+
+	Route::get('/dispatch/machining',array(
+		'as' => 'dispatch.machining',
+		'uses' => 'dispatchController@machiningIndex'
+	));
+
+	Route::post('/dispatch/machining',array(
+		'as' => 'dispatch.maching.store',
+		'uses' => 'dispatchController@machiningStore'
+	));
+
+	//drilling routes
+
+	Route::get('dispatch/drilling',array(
+		'as' => 'dispatch.drilling',
+		'uses' => 'dispatchController@drillingIndex'
+	));
+
+	Route::post('dispatch/drilling',array(
+		'as' => 'dispatch.drilling.store',
+		'uses' => 'dispatchController@drillingStore'
+	));
+
+	//serration routes
+
+	Route::get('dispatch/serration',array(
+		'as' => 'dispatch.serration',
+		'uses' => 'dispatchController@serrationIndex'
+	));
+
+	Route::post('dispatch/serration',array(
+		'as' => 'dispatch.serration.store',
+		'uses' => 'dispatchController@serrationStore'
+	));
+
