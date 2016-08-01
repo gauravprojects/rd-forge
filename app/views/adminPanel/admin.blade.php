@@ -10,23 +10,60 @@
                             <span>Admin Panel</span>
                         </div>
                     </div>
-                    <ul>
-                    <li><a href="{{  action('adminPageController@show_reports');}} " class="col-xs-12 col-sm-12 col-md-12 col-lg-4 waves-effect waves-light btn link">Reports</a></li>
-                        <li><a href="{{ action('masterController@showManufactures'); }}" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 waves-effect waves-light btn link">Manufacturers</a></li>
-                        <li><a href="{{ action('masterController@showGrades'); }}" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 waves-effect waves-light btn link">Material Grades</a></li>
-                        <li><a href="{{ action('masterController@showSizes'); }}" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 waves-effect waves-light btn link">Raw Material Sizes</a></li>
-                        <li><a href="{{ action('rawMaterialController@available'); }}" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 waves-effect waves-light btn link">Available Raw Material</a></li>
-                        <li><a href="{{ action('cuttingPageController@available'); }}" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 waves-effect waves-light btn link">Available Cutting Material</a></li>
-                        <li><a href="{{ action('ForgingController@available'); }}" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 waves-effect waves-light btn link">Available Forging Material</a></li>
-                        <li><a href="{{ action('masterController@showStandardSizes'); }}" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 waves-effect waves-light btn link">Standard Sizes</a></li>
-                        <li><a href="{{ action('masterController@showPressure'); }}" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 waves-effect waves-light btn link">Standard Pressures</a></li>
-                        <li><a href="{{ action('masterController@showSchedule'); }}" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 waves-effect waves-light btn link">Standard Schedules</a></li>
-                        <li><a href="{{ action('masterController@showType'); }}" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 waves-effect waves-light btn link">Description Types</a></li>
-                        <li><a href="{{ action('masterController@showMaterialType'); }}" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 waves-effect waves-light btn link">Material Types</a></li>
-                        <li><a href="{{ action('masterController@showStatus'); }}" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 waves-effect waves-light btn link">Status</a></li>
-                        <li><a href="{{ action('masterController@showWorkOrderStatus'); }}" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 waves-effect waves-light btn link">Work Order Status</a></li>
-
-                    </ul>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 " id="button" >
+                            <a class="waves-effect waves-light btn link" href="{{  action('adminPageController@show_reports');}}"><i class="medium material-icons">list</i>&nbsp;<span style="width:550px;">Reports</span></a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4" id="button-1">
+                            <a class="waves-effect waves-light btn link" href="{{ action('masterController@showSizes'); }}" ><i class="material-icons">format_size</i>&nbsp; Raw Material Sizes</a>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 ">
+                            <a class="waves-effect waves-light btn link" href="{{ action('rawMaterialController@available'); }}" ><i class="medium material-icons">tab_unselected</i>&nbsp; Available Raw Material</a>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 ">
+                            <a class="waves-effect waves-light btn link" href="{{ action('cuttingPageController@available'); }}" ><i class="material-icons">content_cut</i> &nbsp;Available Cutting Material</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 ">
+                            <a class="waves-effect waves-light btn link" href="{{ action('masterController@showManufactures'); }}" ><i class="material-icons">gavel</i>&nbsp; Manufacturers</a>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 ">
+                            <a class="waves-effect waves-light btn link" href="{{ action('masterController@showGrades'); }}" ><i class="material-icons">grade</i>&nbsp;Material Grades</a>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+                            <a class=" waves-effect waves-light btn link" href="{{ action('ForgingController@available'); }}" ><i class="material-icons">select_all</i>&nbsp;Available Forging Material</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+                            <a href="{{ action('masterController@showStandardSizes'); }}" class=" waves-effect waves-light btn link"><i class="material-icons">format_size</i>&nbsp; Standard Sizes</a>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+                            <a href="{{ action('masterController@showPressure'); }}" class=" waves-effect waves-light btn link"><i class="material-icons">web_asset</i>&nbsp; Standard Pressures</a>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+                            <a href="{{ action('masterController@showSchedule'); }}" class=" waves-effect waves-light btn link"><i class="material-icons">schedule</i>&nbsp;Standard Schedules</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+                            <a href="{{ action('masterController@showType'); }}" class=" waves-effect waves-light btn link"><i class="medium material-icons">description</i>&nbsp;Description Types</a>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+                            <a href="{{ action('masterController@showMaterialType'); }}" class=" waves-effect waves-light btn link"><i class="medium material-icons">view_array</i>&nbsp;Material Types</a>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+                            <a href="{{ action('masterController@showStatus'); }}" class=" waves-effect waves-light btn link"><i class="medium material-icons">reorder</i>&nbsp;Status</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+                            <a href="{{ action('masterController@showWorkOrderStatus'); }}" class=" waves-effect waves-light btn link"><i class="material-icons">assignment</i>&nbsp;Work Order Status</a>
+                        </div>
+                    </div>
                     <div class="row">
 
                     </div>		<!-- row conatining form ends here -->
