@@ -317,7 +317,7 @@ class MasterController extends \BaseController
 
 	public function showWorkOrderStatus()
 	{
-		$data = DB::select(DB::raw("select w1.work_order_no,w1.item_no,ww1.required_delivery_date,m1.quantity as machining_quantity,d1.quantity as drilling_quantity,s1.quantity as serration_quantity from `work_order_material_details` AS `w1` left join `work_order_records` AS `ww1` on w1.work_order_no = ww1.work_order_no left join `machining_work_order_stock` AS `m1` on CONCAT(w1.work_order_no,'-',w1.item_no) = CONCAT(m1.work_order_no,'-',m1.item) left join `drilling_work_order_stock` AS `d1` on CONCAT(w1.work_order_no,'-',w1.item_no) = CONCAT(d1.work_order_no,'-',d1.item) left join `serration_work_order_stock` AS `s1` on CONCAT(w1.work_order_no,'-',w1.item_no) = CONCAT(s1.work_order_no,'-',s1.item)"));
+		$data = DB::select(DB::raw("select DISTINCT w1.work_order_no,w1.item_no,ww1.required_delivery_date,m1.quantity as machining_quantity,d1.quantity as drilling_quantity,s1.quantity as serration_quantity from `work_order_material_details` AS `w1` left join `work_order_records` AS `ww1` on w1.work_order_no = ww1.work_order_no left join `machining_work_order_stock` AS `m1` on CONCAT(w1.work_order_no,'-',w1.item_no) = CONCAT(m1.work_order_no,'-',m1.item) left join `drilling_work_order_stock` AS `d1` on CONCAT(w1.work_order_no,'-',w1.item_no) = CONCAT(d1.work_order_no,'-',d1.item) left join `serration_work_order_stock` AS `s1` on CONCAT(w1.work_order_no,'-',w1.item_no) = CONCAT(s1.work_order_no,'-',s1.item)"));
 		return View::make('adminPanel.workOrderStatus')->with('data',$data);
 	}
 
