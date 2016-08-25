@@ -749,6 +749,12 @@
 
 	// -------------------------- Dispatch module ----------------------------------
 
+	Route::get('/dispatch/reports',array(
+		'as' => 'dispatch.report',
+		'uses' => 'dispatchController@show'
+	));
+
+
 	Route::get('/dispatch',array(
 		'as' => 'dispatch',
 		'uses' => 'dispatchController@index'
@@ -763,11 +769,12 @@
 		'as' => 'dispatch.forging.store',
 		'uses' => 'dispatchController@forgingStore'
 	));
-//
-//	Route::get('dispatch/forging/report',array(
-//		'as' => 'dispatch.forging.report',
-//		'uses' => 'dispatchController@forgingReport'
-//	));
+
+	Route::get('dispatch/forging/report',array(
+		'as' => 'dispatch.forging.report',
+		'uses' => 'dispatchController@forgingDispatchReports'
+	));
+
 
 	//machining routes
 
@@ -780,6 +787,12 @@
 		'as' => 'dispatch.maching.store',
 		'uses' => 'dispatchController@machiningStore'
 	));
+	Route::get('dispatch/machining/report',array(
+		'as' => 'dispatch.machining.report',
+		'uses' => 'dispatchController@machiningDispatchReports'
+	));
+
+
 
 	//drilling routes
 
@@ -793,6 +806,10 @@
 		'uses' => 'dispatchController@drillingStore'
 	));
 
+	Route::get('dispatch/drilling/report',array(
+		'as' => 'dispatch.drilling.report',
+		'uses' => 'dispatchController@drillingDispatchReports'
+	));
 	//serration routes
 
 	Route::get('dispatch/serration',array(
@@ -803,5 +820,10 @@
 	Route::post('dispatch/serration',array(
 		'as' => 'dispatch.serration.store',
 		'uses' => 'dispatchController@serrationStore'
+	));
+
+	Route::get('dispatch/serration/report',array(
+		'as' => 'dispatch.serration.report',
+		'uses' => 'dispatchController@serrationDispatchReports'
 	));
 

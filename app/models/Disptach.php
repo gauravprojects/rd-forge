@@ -18,7 +18,7 @@ class Dispatch extends Eloquent {
             ->insert($array);
     }
 
-    public static function getForgingDispatchDetails($id)
+    public static function getForgingDispatchDetails()
     {
         // join lagao aur combined data return karo
         return DB::table('dispatch_forging')
@@ -80,13 +80,13 @@ class Dispatch extends Eloquent {
             ->get();
     }
 
-    //getting all dispatch drilling stocks data for reports
-
-    public static function getDispatchDrillingStocks()
+    public static function getSerrationDispatchDetails()
     {
-        return DB::table('dispatch_drilling')
-            ->select()
+        return DB::table('dispatch_serration')
+            ->join('serration_work_order_stock','dispatch_serration.serr_id','=','serration_work_order_stock.serr_id')
+            ->select('serration_work_order_stock.*','dispatch_serration.*')
             ->get();
+
     }
 
     //updating serration stock after material has been dispatched

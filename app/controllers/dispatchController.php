@@ -39,6 +39,38 @@ class dispatchController extends \BaseController {
 			->with('dispatchDetails',$dispatchDetails);
 	}
 
+
+
+	public function forgingDispatchReports()
+	{
+		$dispatchDetails= Dispatch::getForgingDispatchDetails();
+
+
+		return View::make('dispatch.forging_dispatch_reports')
+			->with('dispatchDetails',$dispatchDetails);
+	}
+
+
+	public function machiningDispatchReports()
+	{
+		$dispatchDetails = Dispatch::getMachiningDispatchDetails();
+		return View::make('dispatch.machining_dispatch_reports')
+			->with('dispatchDetails',$dispatchDetails);
+	}
+
+	public function drillingDispatchReports()
+	{
+		$dispatchDetails = Dispatch::getDrillingDispatchDetails();
+		return View::make('dispatch.drilling_dispatch_reports')
+			->with('dispatchDetails',$dispatchDetails);
+	}
+
+	public function serrationDispatchReports()
+	{
+		$dispatchDetails = Dispatch::getSerrationDispatchDetails();
+		return View::make('dispatch.serration_dispatch_reports')
+			->with('dispatchDetails',$dispatchDetails);
+	}
 	public function machiningIndex()
 	{
 
@@ -102,21 +134,19 @@ class dispatchController extends \BaseController {
 		$dispatch_data= Input::all();
 		$dispatch_array= array(
 			'serr_id' => $dispatch_data['serr_id'] ,
-			'date'    => $dispatch_data['date'],
+			'date'    => date('d-m-y',strtotime($dispatch_data['date'])),
 			'quantity' => $dispatch_data['quantityDispatched']
 			);
 		$dispatchSerrationStocks=Dispatch::dispatchSerrationStock($dispatch_data['serr_id'],$dispatch_data['quantityDispatched']);
-		//	$dispatchSerrationRecords= Dispatch::dispatchSerrationRecords($dispatch_data['serr_id'],$dispatch_data['quantityDispatched']);
 		Dispatch::insertSerrationDispatch($dispatch_array);
 
-//		$all_data=Serration::getAllData();
-//		return View::make('serration.serration_report')->with('data',$all_data);
-
-		$data = DB::select(DB::raw("select DISTINCT w1.work_order_no,w1.item_no,ww1.required_delivery_date,m1.quantity as machining_quantity,d1.quantity as drilling_quantity,s1.quantity as serration_quantity from `work_order_material_details` AS `w1` left join `work_order_records` AS `ww1` on w1.work_order_no = ww1.work_order_no left join `machining_work_order_stock` AS `m1` on CONCAT(w1.work_order_no,'-',w1.item_no) = CONCAT(m1.work_order_no,'-',m1.item) left join `drilling_work_order_stock` AS `d1` on CONCAT(w1.work_order_no,'-',w1.item_no) = CONCAT(d1.work_order_no,'-',d1.item) left join `serration_work_order_stock` AS `s1` on CONCAT(w1.work_order_no,'-',w1.item_no) = CONCAT(s1.work_order_no,'-',s1.item)"));
-		return View::make('adminPanel.workOrderStatus')->with('data',$data);
+		$dispatchDetails = Dispatch::getSerrationDispatchDetails();
+		return View::make('dispatch.serration_dispatch_reports')
+			->with('dispatchDetails',$dispatchDetails);
 
 
 	}
+
 
 
 
@@ -140,9 +170,9 @@ class dispatchController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show()
 	{
-		//
+		return View::make('dispatch.reportsHome');
 	}
 
 

@@ -1,8 +1,11 @@
 @extends('layouts.master')
 
 @section('links_data')
-
     <br><br>
+
+    <a href="{{route('dispatch.forging.report')}} " class="waves-effect waves-light btn link right">Dispatch Forging reports</a>
+
+
 
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top:-80px;">
         <div class="row">

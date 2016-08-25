@@ -4,13 +4,15 @@
 
     <br><br>
 
+    <a href="{{route('dispatch.drilling.report')}} " class="waves-effect waves-light btn link right">Dispatch Driiling reports</a>
+
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top:-80px;">
         <div class="row">
             <div class="wrapper">
                 <div class="card">
                     <div class="row text-center">
                         <div class="heading">
-                            <span>drilling dispatch</span>
+                            <span>Drilling dispatch</span>
                         </div>
                     </div>
 
