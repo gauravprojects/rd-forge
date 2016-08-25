@@ -763,6 +763,11 @@
 		'as' => 'dispatch.forging.store',
 		'uses' => 'dispatchController@forgingStore'
 	));
+//
+//	Route::get('dispatch/forging/report',array(
+//		'as' => 'dispatch.forging.report',
+//		'uses' => 'dispatchController@forgingReport'
+//	));
 
 	//machining routes
 

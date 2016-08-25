@@ -24,11 +24,20 @@ class dispatchController extends \BaseController {
 	public function forgingStore()
 	{
 		$dispatch_data= Input::all();
-		ForgingStock::dispatchForging($dispatch_data['stock_id'],$dispatch_data['quantityDispatched']);
+		$dispatch_array=array(
+			'forge_id' => $dispatch_data['stock_id'],
+			'date'	  => date('d-m-y',strtotime($dispatch_data['date'])),
+			'quantity' => $dispatch_data['quantityDispatched']
+		);
 
-		$forging_data= Forging::getAllRecords();
-		return View::make('forging.forging_report')
-			->with('forging_data',$forging_data);
+		Dispatch::dispatchForgingStock($dispatch_data['stock_id'],$dispatch_data['quantityDispatched']);
+		Dispatch::insertForgingDispatch($dispatch_array);
+		$dispatchDetails= Dispatch::getForgingDispatchDetails($dispatch_data['stock_id']);
+
+
+		return View::make('dispatch.forging_dispatch_reports')
+			->with('dispatchDetails',$dispatchDetails);
+		dd($dispatchDetails);
 
 	}
 
@@ -50,7 +59,7 @@ class dispatchController extends \BaseController {
 			'quantity' => $dispatch_data['quantityDispatched']
 		);
 		$dispatchMachiningStocks= Dispatch::dispatchMachiningStock($dispatch_data['mach_id'],$dispatch_data['quantityDispatched']);
-		$dispatchMachiningRecords= Dispatch::dispatchMachiningRecords($dispatch_data['mach_id'],$dispatch_data['quantityDispatched']);
+		//$dispatchMachiningRecords= Dispatch::dispatchMachiningRecords($dispatch_data['mach_id'],$dispatch_data['quantityDispatched']);
 		Dispatch::insertMachiningDispatch($dispatch_array);
 
 //		$all_data= Machining::getAllData();
@@ -78,7 +87,7 @@ class dispatchController extends \BaseController {
 		);
 
 		$dispatchDrillingStocks= Dispatch::dispatchDrillingStock($dispatch_data['drill_id'],$dispatch_data['quantityDispatched']);
-		$dispatchDrillingRecords= Dispatch::dispatchDrillingRecords($dispatch_data['drill_id'],$dispatch_data['quantityDispatched']);
+		//$dispatchDrillingRecords= Dispatch::dispatchDrillingRecords($dispatch_data['drill_id'],$dispatch_data['quantityDispatched']);
 		Dispatch::insertDrillingDispatch($dispatch_array);
 
 //		$all_data= Drilling::getAllData();
@@ -105,7 +114,7 @@ class dispatchController extends \BaseController {
 			'quantity' => $dispatch_data['quantityDispatched']
 			);
 		$dispatchSerrationStocks=Dispatch::dispatchSerrationStock($dispatch_data['serr_id'],$dispatch_data['quantityDispatched']);
-			$dispatchSerrationRecords= Dispatch::dispatchSerrationRecords($dispatch_data['serr_id'],$dispatch_data['quantityDispatched']);
+		//	$dispatchSerrationRecords= Dispatch::dispatchSerrationRecords($dispatch_data['serr_id'],$dispatch_data['quantityDispatched']);
 		Dispatch::insertSerrationDispatch($dispatch_array);
 
 //		$all_data=Serration::getAllData();

@@ -90,13 +90,6 @@ class ForgingStock extends Eloquent
 			   ->get();
 	}
 
-	//dispatches forging stock which is currently available
-	public static function dispatchForging($stock_id,$quantity)
-	{
-		return DB::table('forging_stock')
-			->where('stock_id','=',$stock_id)
-			->decrement('available_quantity_forging',$quantity);
-	}
 
 }
 

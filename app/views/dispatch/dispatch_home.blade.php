@@ -11,8 +11,7 @@
                         </div>
                     </div>
                     <ul>
-                      <!--  <li><a href="{{  action('dispatchController@forgingIndex');}} " class="col-xs-12 col-sm-12 col-md-12 col-lg-4 waves-effect waves-light btn link">Forging Dispatch</a></li>
--->
+                        <li><a href="{{  action('dispatchController@forgingIndex');}} " class="col-xs-12 col-sm-12 col-md-12 col-lg-4 waves-effect waves-light btn link">Forging Dispatch</a></li>
                         <li><a href="{{ action('dispatchController@machiningIndex'); }}" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 waves-effect waves-light btn link">Machining Dispatch</a>  </li>
                         <li><a href="{{ action('dispatchController@drillingIndex'); }}" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 waves-effect waves-light btn link">Drilling Dispatch</a>  </li>
                         <li><a href="{{ action('dispatchController@serrationIndex'); }}" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 waves-effect waves-light btn link">Serration Dispatch</a>  </li>
