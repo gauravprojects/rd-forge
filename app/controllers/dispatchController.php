@@ -37,8 +37,6 @@ class dispatchController extends \BaseController {
 
 		return View::make('dispatch.forging_dispatch_reports')
 			->with('dispatchDetails',$dispatchDetails);
-		dd($dispatchDetails);
-
 	}
 
 	public function machiningIndex()
@@ -55,18 +53,15 @@ class dispatchController extends \BaseController {
 		$dispatch_data= Input::all();
 		$dispatch_array=array(
 			'mach_id' => $dispatch_data['mach_id'],
-			'date'	  => $dispatch_data['date'],
+			'date'	  => date('d-m-y',strtotime($dispatch_data['date'])),
 			'quantity' => $dispatch_data['quantityDispatched']
 		);
 		$dispatchMachiningStocks= Dispatch::dispatchMachiningStock($dispatch_data['mach_id'],$dispatch_data['quantityDispatched']);
-		//$dispatchMachiningRecords= Dispatch::dispatchMachiningRecords($dispatch_data['mach_id'],$dispatch_data['quantityDispatched']);
 		Dispatch::insertMachiningDispatch($dispatch_array);
+		$dispatchDetails = Dispatch::getMachiningDispatchDetails();
+		return View::make('dispatch.machining_dispatch_reports')
+			->with('dispatchDetails',$dispatchDetails);
 
-//		$all_data= Machining::getAllData();
-//		return View::make('machining.machining_report')->with('data',$all_data);
-
-		$data = DB::select(DB::raw("select DISTINCT w1.work_order_no,w1.item_no,ww1.required_delivery_date,m1.quantity as machining_quantity,d1.quantity as drilling_quantity,s1.quantity as serration_quantity from `work_order_material_details` AS `w1` left join `work_order_records` AS `ww1` on w1.work_order_no = ww1.work_order_no left join `machining_work_order_stock` AS `m1` on CONCAT(w1.work_order_no,'-',w1.item_no) = CONCAT(m1.work_order_no,'-',m1.item) left join `drilling_work_order_stock` AS `d1` on CONCAT(w1.work_order_no,'-',w1.item_no) = CONCAT(d1.work_order_no,'-',d1.item) left join `serration_work_order_stock` AS `s1` on CONCAT(w1.work_order_no,'-',w1.item_no) = CONCAT(s1.work_order_no,'-',s1.item)"));
-		return View::make('adminPanel.workOrderStatus')->with('data',$data);
 	}
 
 
@@ -82,19 +77,16 @@ class dispatchController extends \BaseController {
 		$dispatch_data= Input::all();
 		$dispatch_array=array(
 			'drill_id' => $dispatch_data['drill_id'],
-			'date'	   => $dispatch_data['date'],
+			'date'	   => date('d-m-y',strtotime($dispatch_data['date'])),
 			'quantity' => $dispatch_data['quantityDispatched']
 		);
 
 		$dispatchDrillingStocks= Dispatch::dispatchDrillingStock($dispatch_data['drill_id'],$dispatch_data['quantityDispatched']);
-		//$dispatchDrillingRecords= Dispatch::dispatchDrillingRecords($dispatch_data['drill_id'],$dispatch_data['quantityDispatched']);
 		Dispatch::insertDrillingDispatch($dispatch_array);
 
-//		$all_data= Drilling::getAllData();
-//		return View::make('drilling.drilling_report')->with('data',$all_data);
-		$data = DB::select(DB::raw("select DISTINCT w1.work_order_no,w1.item_no,ww1.required_delivery_date,m1.quantity as machining_quantity,d1.quantity as drilling_quantity,s1.quantity as serration_quantity from `work_order_material_details` AS `w1` left join `work_order_records` AS `ww1` on w1.work_order_no = ww1.work_order_no left join `machining_work_order_stock` AS `m1` on CONCAT(w1.work_order_no,'-',w1.item_no) = CONCAT(m1.work_order_no,'-',m1.item) left join `drilling_work_order_stock` AS `d1` on CONCAT(w1.work_order_no,'-',w1.item_no) = CONCAT(d1.work_order_no,'-',d1.item) left join `serration_work_order_stock` AS `s1` on CONCAT(w1.work_order_no,'-',w1.item_no) = CONCAT(s1.work_order_no,'-',s1.item)"));
-		return View::make('adminPanel.workOrderStatus')->with('data',$data);
-
+		$dispatchDetails = Dispatch::getDrillingDispatchDetails();
+		return View::make('dispatch.drilling_dispatch_reports')
+			->with('dispatchDetails',$dispatchDetails);
 	}
 
 	public function serrationIndex()

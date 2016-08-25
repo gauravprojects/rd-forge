@@ -47,12 +47,12 @@ class Dispatch extends Eloquent {
     }
 
 
-    /// get machining dispatch details for dispatch reports
-
-    public static function getDispatchMachiningRecords()
+    //get machining dispatch details after applying join on both the tables
+    public static function getMachiningDispatchDetails()
     {
         return DB::table('dispatch_machining')
-            ->select()
+            ->join('machining_work_order_stock','dispatch_machining.mach_id','=','machining_work_order_stock.mach_id')
+            ->select('machining_work_order_stock.*','dispatch_machining.*')
             ->get();
     }
 
@@ -71,6 +71,13 @@ class Dispatch extends Eloquent {
     {
         return DB::table('dispatch_drilling')
             ->insert($array);
+    }
+    public static function getDrillingDispatchDetails()
+    {
+        return DB::table('dispatch_drilling')
+            ->join('drilling_work_order_stock','dispatch_drilling.drill_id','=','drilling_work_order_stock.drill_id')
+            ->select('drilling_work_order_stock.*','dispatch_drilling.*')
+            ->get();
     }
 
     //getting all dispatch drilling stocks data for reports
